@@ -25,7 +25,11 @@ Works in Progress
 Minimum Start Code
 ------------------------------------------------------------------------------------------------
 extend Game class.
+
 add 	to main.
+
 auto* eng = LunaLuxEngine::lunaLuxEngine::get();
+
 eng->m_game_main = new YourGameClass();
+
 eng->runEngine();
