@@ -1,7 +1,9 @@
-# LunaLuxEngine
+# LunaLuxEngine V0.0.1
 LunaLuxEngine is a 2D and 3D graphical engine.
+
 ----------------------------------------------------------------------------------------------
 # Copyright © Echo Studios 2019-2020
+
 you may use our code in your projects but clear public credit must be given
 ----------------------------------------------------------------------------------------------
 # TODO
@@ -22,8 +24,8 @@ Works in Progress
 
 Minimum Start Code
 ------------------------------------------------------------------------------------------------
-Undefined (Add when engine is or is nearing completion)
-
-Engine Version
------------------------------------------------------------------------------------------------
-# V0.0.1
+extend Game class.
+add 	to main.
+auto* eng = LunaLuxEngine::lunaLuxEngine::get();
+eng->m_game_main = new YourGameClass();
+eng->runEngine();
