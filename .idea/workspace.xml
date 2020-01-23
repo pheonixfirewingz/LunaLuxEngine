@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="LunaLuxEngine" targetName="LunaLuxEngineLib" />
+      <config projectName="LunaLuxEngine" targetName="LunaLuxEngine" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ba822d6-2713-4aef-8c81-660dbe1a3ddb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/includes_CXX.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/linklibs.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/objects1.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngine.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/cmake_clean_target.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/includes_CXX.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LunaLuxEngineLib.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets-debug.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/Export/lib/cmake/glfw3/glfw3Targets.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/progress.marks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/uninstall.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/uninstall.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/uninstall.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/CMakeFiles/uninstall.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/GLFW.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/cmake_uninstall.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/C.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/cmake_clean_target.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/includes_C.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/glfw.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/CMakeFiles/progress.marks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/glfw3.pc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/glfw3Config.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/glfw3ConfigVersion.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GLFW/src/glfw_config.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/LunaLuxEngine_DEV.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="aVGvLIYb" />
+  </component>
+  <component name="OCResolveContextSettings">
+    <option name="configuration" value="0-Debug-LunaLuxEngine" />
+  </component>
+  <component name="ProjectId" id="1WTbqX2mVcNL6mHedng59Egt45J" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\render" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\render\GL" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\window" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src_old" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\cmake-build-debug" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\lib" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\include" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV" />
+      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.LunaLuxEngine">
+    <configuration name="LunaLuxEngine" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LunaLuxEngine" TARGET_NAME="LunaLuxEngine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LunaLuxEngine" RUN_TARGET_NAME="LunaLuxEngine">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LunaLuxEngineLib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LunaLuxEngine" TARGET_NAME="LunaLuxEngineLib" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.LunaLuxEngineLib" />
+      <item itemvalue="CMake Application.LunaLuxEngine" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ba822d6-2713-4aef-8c81-660dbe1a3ddb" name="Default Changelist" comment="" />
+      <created>1579176722144</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579176722144</updated>
+      <workItem from="1579176723877" duration="8676000" />
+      <workItem from="1579207149885" duration="7716000" />
+      <workItem from="1579379093810" duration="12251000" />
+      <workItem from="1579435957602" duration="2026000" />
+      <workItem from="1579438182899" duration="1298000" />
+      <workItem from="1579455325970" duration="3091000" />
+      <workItem from="1579523638689" duration="3761000" />
+      <workItem from="1579692022346" duration="3372000" />
+      <workItem from="1579785329235" duration="5980000" />
+      <workItem from="1579804127041" duration="5536000" />
+      <workItem from="1579811767918" duration="2406000" />
+      <workItem from="1579815621429" duration="2526000" />
+      <workItem from="1579819390373" duration="102000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579208854824">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.832@0.0.1536.832" timestamp="1579208854824" />
+    <state x="449" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579692524784">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="449" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.832@0.0.1536.832" timestamp="1579692524784" />
+    <state x="499" y="164" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579811918804">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="499" y="164" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.832@0.0.1536.832" timestamp="1579811918804" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1579818890112">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1579818890112" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1579818890111">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1579818890111" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1579818890111">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1579818890111" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1579818890112">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1579818890112" />
+    <state width="1493" height="264" key="GridCell.Tab.1.bottom" timestamp="1579814912630">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="264" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
+    <state width="1493" height="264" key="GridCell.Tab.1.center" timestamp="1579814912630">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="264" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
+    <state width="1493" height="264" key="GridCell.Tab.1.left" timestamp="1579814912630">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="264" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
+    <state width="1493" height="264" key="GridCell.Tab.1.right" timestamp="1579814912630">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="264" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
+    <state x="277" y="59" key="SettingsEditor" timestamp="1579524087555">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="277" y="59" key="SettingsEditor/0.0.1536.832@0.0.1536.832" timestamp="1579524087555" />
+    <state x="425" y="189" key="run.anything.popup" timestamp="1579391315980">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.832@0.0.1536.832" timestamp="1579391315980" />
+    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup" timestamp="1579213397063">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup/0.0.1536.832@0.0.1536.832" timestamp="1579213397063" />
+  </component>
+</project>
