@@ -4,12 +4,12 @@ using namespace LunaLuxEngine;
 
 void lunaLuxEngine::initEngine()
 {
-	std::printf("%s\n", "loading LunaLuxEngine");
+    if(debug_level_0) std::printf("%s\n", "loading LunaLuxEngine");
 	window->setTitle(m_game_main->getGameName());
 	window->createWindow();
 	render->initRender();
 	_is_paused_ = false;
-	std::printf("%s\n", "loading Game");
+    if(debug_level_0) std::printf("%s\n", "loading Game");
 	if (m_game_main == nullptr)
 		std::exit(-9);
 	m_game_main->GameBoot();
@@ -38,12 +38,13 @@ void lunaLuxEngine::set3D()
 
 void lunaLuxEngine::runEngine()
 {
-	std::printf("%s\n\n", "Starting LunaLuxEngine Runloop");
-	initEngine();
+    initEngine();
+    if(debug_level_0) std::printf("%s\n\n", "Starting LunaLuxEngine Runloop");
 	while (!window->shouldClose())
 	{
 		updateEngine();
 	}
+    std::printf("%s\n", "shutdown LunaLuxEngine");
 	window->destoryWindow();
-	std::printf("%s\n", "shutdown LunaLuxEngine");
+
 }

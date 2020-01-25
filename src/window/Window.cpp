@@ -1,13 +1,16 @@
+#include <chrono>
 #include "Window.h"
 #include "Window.h"
 #include "../LunaLuxEngine.h"
 
+#ifdef MAC
 GLFWwindow* win__;
+#endif
 
 namespace LunaLuxEngine::window_api
 {
-#ifndef WIN32
-	void Window::updateWindow()
+#ifdef MAC
+	void CrossWindow::updateWindow()
 	{
 		glfwSwapBuffers(win__);
 		glfwPollEvents();
@@ -18,7 +21,7 @@ namespace LunaLuxEngine::window_api
 		glViewport(0,0,width,height);
 	}
 
-	void Window::createWindow()
+	void CrossWindow::createWindow()
 	{
 		if (!glfwInit())
 			throw std::invalid_argument( "Failed to initialize to GLFW" );
@@ -34,16 +37,87 @@ namespace LunaLuxEngine::window_api
 		glfwMakeContextCurrent(win__);
 	}
 
-	void Window::destoryWindow()
+	void CrossWindow::destoryWindow()
 	{
 		glfwTerminate();
 	}
+#endif
+#ifdef __linux__
+    void CrossWindow::updateWindow()
+    {
+        XNextEvent(dpy, &xev);
 
-	bool Window::getShouldClose()
-	{
-		return glfwWindowShouldClose(win__);
-	}
-#else
+        switch(xev.type)
+        {
+            case Expose:
+                XGetWindowAttributes(dpy, win, &gwa);
+                glXSwapBuffers(dpy, win);
+                break;
+            case ConfigureNotify:
+                glViewport(0, 0, xev.xconfigure.width, xev.xconfigure.height);
+                break;
+                //TODO fix this error not fatal to running but will not shutdown engine correctly
+
+                /* XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":0"
+                 * after 45 requests (45 known processed) with 0 events remaining.
+                 */
+            case DestroyNotify:
+                WIN_SHOULD_CLOSE = true;
+                break;
+        }
+    }
+
+    void CrossWindow::createWindow()
+    {
+        dpy = XOpenDisplay(nullptr);
+
+        if(dpy == nullptr)
+        {
+            std::printf("\n\tcannot connect to X server\n\n");
+            std::exit(0);
+        }
+
+        root = DefaultRootWindow(dpy);
+
+        GLint  att[] = { GLX_RGBA, GLX_DEPTH_SIZE, 24, GLX_DOUBLEBUFFER, None };
+        vi = glXChooseVisual(dpy, 0, att);
+
+        if(vi == nullptr)
+        {
+            std::printf("\n\tno appropriate visual found\n\n");
+            std::exit(0);
+        }
+
+        cmap = XCreateColormap(dpy, root, vi->visual, AllocNone);
+
+        swa.colormap = cmap;
+        swa.event_mask = ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask;
+
+        win = XCreateWindow(dpy, root, 0, 0, width, height, 0, vi->depth, InputOutput, vi->visual, CWColormap | CWEventMask, &swa);
+
+        XMapWindow(dpy, win);
+
+        XStoreName(dpy, win, Title);
+
+        glc = glXCreateContext(dpy, vi, nullptr, GL_TRUE);
+        glXMakeCurrent(dpy, win, glc);
+        glEnable(GL_DEPTH_TEST);
+        glViewport(0,0,width,height);
+        glClearColor(0, 0, 0, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    void CrossWindow::destoryWindow()
+    {
+        glXMakeCurrent(dpy, None, nullptr);
+        XFree(vi);
+        glXDestroyContext(dpy, glc);
+        XDestroyWindow(dpy, win);
+        XSync(dpy, false);
+        XCloseDisplay(dpy);
+    }
+#endif
+#ifdef WIN32
 	void Window::updateWindow()
 	{
 	
@@ -108,11 +182,11 @@ namespace LunaLuxEngine::window_api
 		return hwnd;
 	};
 #endif
-	void Window::setTitle(char* title)
+	void CrossWindow::setTitle(char* title)
 	{
 		Title = title;
 	}
-	bool Window::shouldClose() 
+	bool CrossWindow::shouldClose()
 	{
 		return  WIN_SHOULD_CLOSE; 
 	}

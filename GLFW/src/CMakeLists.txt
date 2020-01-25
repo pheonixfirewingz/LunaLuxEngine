@@ -7,28 +7,28 @@ set(common_SOURCES context.c init.c input.c monitor.c vulkan.c window.c)
 
 if (_GLFW_COCOA)
     set(glfw_HEADERS ${common_HEADERS} cocoa_platform.h cocoa_joystick.h
-                     posix_thread.h nsgl_context.h egl_context.h osmesa_context.h)
+                     posix_thread.h nsgl_context.h egl_context.h)
     set(glfw_SOURCES ${common_SOURCES} cocoa_init.m cocoa_joystick.m
                      cocoa_monitor.m cocoa_window.m cocoa_time.c posix_thread.c
-                     nsgl_context.m egl_context.c osmesa_context.c)
+                     nsgl_context.m egl_context.c)
 elseif (_GLFW_WIN32)
     set(glfw_HEADERS ${common_HEADERS}
-            wgl_context.h egl_context.h osmesa_context.h)
+            wgl_context.h egl_context.h)
     set(glfw_SOURCES ${common_SOURCES}
-            wgl_context.c egl_context.c osmesa_context.c)
+            wgl_context.c egl_context.c)
 elseif (_GLFW_X11)
-    set(glfw_HEADERS ${common_HEADERS} x11_platform.h xkb_unicode.h posix_time.h
-                     posix_thread.h glx_context.h egl_context.h osmesa_context.h)
-    set(glfw_SOURCES ${common_SOURCES} x11_init.c x11_monitor.c x11_window.c
-                     xkb_unicode.c posix_time.c posix_thread.c glx_context.c
-                     egl_context.c osmesa_context.c)
+    set(glfw_HEADERS ${common_HEADERS} xkb_unicode.h posix_time.h
+                     posix_thread.h glx_context.h egl_context.h)
+    set(glfw_SOURCES ${common_SOURCES}
+            xkb_unicode.c posix_time.c posix_thread.c glx_context.c
+                     egl_context.c)
 elseif (_GLFW_WAYLAND)
-    set(glfw_HEADERS ${common_HEADERS} wl_platform.h
-                     posix_time.h posix_thread.h xkb_unicode.h egl_context.h
-                     osmesa_context.h)
-    set(glfw_SOURCES ${common_SOURCES} wl_init.c wl_monitor.c wl_window.c
-                     posix_time.c posix_thread.c xkb_unicode.c
-                     egl_context.c osmesa_context.c)
+    set(glfw_HEADERS ${common_HEADERS}
+            posix_time.h posix_thread.h xkb_unicode.h egl_context.h
+            )
+    set(glfw_SOURCES ${common_SOURCES}
+            posix_time.c posix_thread.c xkb_unicode.c
+                     egl_context.c)
 
     ecm_add_wayland_client_protocol(glfw_SOURCES
         PROTOCOL
@@ -56,9 +56,9 @@ elseif (_GLFW_WAYLAND)
         BASENAME idle-inhibit-unstable-v1)
 elseif (_GLFW_OSMESA)
     set(glfw_HEADERS ${common_HEADERS} null_platform.h null_joystick.h
-                     posix_time.h posix_thread.h osmesa_context.h)
+                     posix_time.h posix_thread.h)
     set(glfw_SOURCES ${common_SOURCES} null_init.c null_monitor.c null_window.c
-                     null_joystick.c posix_time.c posix_thread.c osmesa_context.c)
+                     null_joystick.c posix_time.c posix_thread.c)
 endif()
 
 if (_GLFW_X11 OR _GLFW_WAYLAND)
@@ -117,7 +117,7 @@ if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU" OR
     set_source_files_properties(context.c init.c input.c monitor.c vulkan.c
                                 window.c
             wgl_context.c egl_context.c
-                                osmesa_context.c PROPERTIES
+            PROPERTIES
                                 COMPILE_FLAGS -Wdeclaration-after-statement)
 
     # Enable a reasonable set of warnings (no, -Wextra is not reasonable)

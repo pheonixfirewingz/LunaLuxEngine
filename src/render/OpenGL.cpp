@@ -1,18 +1,24 @@
 //
 // Created by luket on 16/01/2020.
 //
-#include "IRender.h"
-#include "../window/Window.h"
 #include "../Common_Header.h"
 #ifdef __linux__
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GL/gl.h>
+#include "IRender.h"
+#include "../window/Window.h"
+
 void IRender::initRender()
 {
-	GLenum state  = glewInit();
-	if (state != GLEW_OK)
-		std::exit(-10);
+    //TODO: Linux platform lib error
+    /* /usr/bin/ld: libLunaLuxEngineLib.a(OpenGL.cpp.o): in function `IRender::initRender()':
+     * /home/digitech/Desktop/LunaLuxEngine/src/render/OpenGL.cpp:14: undefined reference to `glewInit'
+     * collect2: error: ld returned 1 exit status
+     */
+	//GLenum state  = glewInit();
+	//if (state != GLEW_OK)
+		//std::exit(-10);
 }
 
 void IRender::destroyRender()
@@ -48,6 +54,7 @@ void IRender::fireRender()
 
 void IRender::prepRender()
 {
-
+    glClearColor(0, 0, 0, 0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 #endif

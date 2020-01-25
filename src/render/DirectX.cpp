@@ -2,6 +2,7 @@
 // Created by luket on 23/01/2020.
 //
 #include "IRender.h"
+#ifdef WIN32
 #include <d3d11.h>
 #include <d3d9.h>
 #pragma warning( disable : 4996 ) // disable deprecated warning
@@ -48,3 +49,4 @@ void IRender::prepRender()
 {
 
 }
+#endif

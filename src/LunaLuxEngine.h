@@ -1,23 +1,21 @@
 #ifndef LUNALLUXENGINE
 #define LUNALUXENGINE
 
-class Window;
-
 #include "utils/IGame.h"
 #include "Common_Header.h"
 #include "render/IRender.h"
 #include "window/Window.h"
-
+#include "Debug.h"
 namespace LunaLuxEngine
 {
 	class lunaLuxEngine
 	{
 	protected:
-		bool _is_paused_ = false;
-		bool _2DOr3D_ = false;
+		bool _is_paused_ = false, _2DOr3D_ = false;
+		const static bool debug_level_0 = false;
 
 		IRender* render = new IRender();
-		window_api::Window* window = new window_api::Window();
+		window_api::CrossWindow* window = new window_api::CrossWindow();
 		void initEngine();
 		int8 updateEngine();
 	public:
