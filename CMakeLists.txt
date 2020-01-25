@@ -21,7 +21,7 @@ endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/include STATIC IMPORTED)
 
-add_library(LunaLuxEngineLib src/LunaLuxEngine.cpp src/LunaLuxEngine.h src/utils/IGame.h src/render/IRender.h src/window/Window.h src/window/Window.cpp src/utils/types.h src/render/OpenGL.cpp src/Common_Header.h src/common/Entity.cpp src/common/Entity.h src/render/DirectX.cpp src/Debug.h)
+add_library(LunaLuxEngineLib src/LunaLuxEngine.cpp src/LunaLuxEngine.h src/utils/IGame.h src/render/IRender.h src/window/Window.h src/window/Window.cpp src/utils/types.h src/render/OpenGL.cpp src/Common_Header.h src/common/Entity.cpp src/common/Entity.h src/render/DirectX.cpp)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 

@@ -118,7 +118,7 @@ namespace LunaLuxEngine::window_api
     }
 #endif
 #ifdef WIN32
-	void Window::updateWindow()
+	void CrossWindow::updateWindow()
 	{
 	
 	}
@@ -136,7 +136,7 @@ namespace LunaLuxEngine::window_api
 		return 0;
 	}
 
-	void Window::createWindow()
+	void CrossWindow::createWindow()
 	{
 		Inst = GetModuleHandle(nullptr);
 
@@ -171,13 +171,13 @@ namespace LunaLuxEngine::window_api
 		ShowWindow(hwnd, SW_SHOWDEFAULT);
 	}
 
-	void Window::destoryWindow()
+	void CrossWindow::destoryWindow()
 	{
 		DestroyWindow(hwnd);
 		UnregisterClassW((LPCWSTR)Title, Inst);
 	}
 
-	HWND Window::getWindow()
+	HWND CrossWindow::getWindow()
 	{
 		return hwnd;
 	};
