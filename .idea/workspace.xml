@@ -131,8 +131,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.LunaLuxEngine" />
       <item itemvalue="CMake Application.LunaLuxEngineLib" />
+      <item itemvalue="CMake Application.LunaLuxEngine" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -172,6 +172,7 @@
       <workItem from="1579819390373" duration="102000" />
       <workItem from="1579908623254" duration="3275000" />
       <workItem from="1579912572210" duration="3630000" />
+      <workItem from="1579916388068" duration="91000" />
     </task>
     <servers />
   </component>

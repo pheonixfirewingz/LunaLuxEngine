@@ -5,7 +5,6 @@
 #include "Common_Header.h"
 #include "render/IRender.h"
 #include "window/Window.h"
-#include "Debug.h"
 namespace LunaLuxEngine
 {
 	class lunaLuxEngine
