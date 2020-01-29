@@ -9,6 +9,7 @@ GLFWwindow* win__;
 
 namespace LunaLuxEngine::window_api
 {
+	bool sc_temp;
 #ifdef MAC
 	void CrossWindow::updateWindow()
 	{
@@ -120,7 +121,7 @@ namespace LunaLuxEngine::window_api
 #ifdef WIN32
 	void CrossWindow::updateWindow()
 	{
-	
+		if (sc_temp) WIN_SHOULD_CLOSE = true;
 	}
 
 	inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
@@ -128,7 +129,9 @@ namespace LunaLuxEngine::window_api
 		switch (Msg)
 		{
 		case WM_CLOSE:
-				PostQuitMessage(0);
+		{
+			sc_temp = true;
+		}
 			break;
 		default:
 			return DefWindowProcA(hWnd, Msg, wParam, lParam);
@@ -138,8 +141,8 @@ namespace LunaLuxEngine::window_api
 
 	void CrossWindow::createWindow()
 	{
+		WIN_SHOULD_CLOSE = false;
 		Inst = GetModuleHandle(nullptr);
-
 		WNDCLASSEX wc = { 0 };
 		wc.cbSize = sizeof(wc);
 		wc.style = CS_OWNDC;
@@ -189,6 +192,16 @@ namespace LunaLuxEngine::window_api
 	bool CrossWindow::shouldClose()
 	{
 		return  WIN_SHOULD_CLOSE; 
+	}
+
+	CrossWindow* CrossWindow::get()
+	{
+		return window;
+	}
+
+	void CrossWindow::setShouldClose(bool in)
+	{
+		this->WIN_SHOULD_CLOSE = in;
 	}
 
 }

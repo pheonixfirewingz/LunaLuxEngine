@@ -55,6 +55,7 @@
 #endif
 namespace LunaLuxEngine::window_api
 {
+
 class CrossWindow
 {
 #ifdef WIN32
@@ -77,13 +78,16 @@ class CrossWindow
         XEvent                  xev{};
 #endif
 protected:
-    bool WIN_SHOULD_CLOSE = false;
     char* Title = (char*)"temp";
 	int16 width = 800,  height = 600;
+	CrossWindow* window = this;
 public:
+	bool WIN_SHOULD_CLOSE;
+	CrossWindow* get();
 	void createWindow();
 	void setTitle(char*);
 	bool shouldClose();
+	void setShouldClose(bool);
 	void updateWindow();
 	void destoryWindow();
 };

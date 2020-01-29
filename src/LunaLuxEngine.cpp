@@ -12,7 +12,6 @@ void lunaLuxEngine::initEngine()
     if(debug_level_0) std::printf("%s\n", "loading Game");
 	if (m_game_main == nullptr)
 		std::exit(-9);
-	m_game_main->GameBoot();
 }
 
 int8 lunaLuxEngine::updateEngine()
@@ -39,6 +38,8 @@ void lunaLuxEngine::set3D()
 void lunaLuxEngine::runEngine()
 {
     initEngine();
+	std::printf("\n%s\n", "loaded LunaLuxEngine");
+	m_game_main->GameBoot();
     if(debug_level_0) std::printf("%s\n\n", "Starting LunaLuxEngine Runloop");
 	while (!window->shouldClose())
 	{
