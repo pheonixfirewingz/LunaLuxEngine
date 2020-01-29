@@ -7,7 +7,7 @@ LunaLuxEngine is a 2D and 3D graphical engine.
 you may use our code in your projects but clear public credit must be given
 ----------------------------------------------------------------------------------------------
 # TODO
-- remove dependence on glfw on linux & mac
+- remove dependence on glfw on mac
 
 Supported Platforms
 -----------------------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ Planned Platforms
 -----------------------------------------------------------------------------------------------
  - Linux
  - OSX
- - SerenityOS
+ - SerenityOS (maybe)
 
 Planned Platforms (after decktop)
 -----------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Planned Platforms (after decktop)
  - Android
  - Xbox
 
-Works in Progress
+Working Progress
 ------------------------------------------------------------------------------------------------
 - Cross platform window (will make this standalone in the future for public used)
 - Opengl Renderer (Linux Only)
@@ -34,7 +34,8 @@ Works in Progress
 Minimum Start Code
 ------------------------------------------------------------------------------------------------
 extend Game class.
-
+The pre boot is used to configure required variables in the game class.
+- preBoot();
 the game class is called by the engine as for the main game loop and inatalization faze this is done through
 - BootGame();
 this is used to load external game fetures not part of the engine.
@@ -42,6 +43,7 @@ this is used to load external game fetures not part of the engine.
 this is used to allows custom game logic not handled by the engine to run in the engine's run loop
 
 add to main class.
+#include <LunaLuxEngineCore.h>
 
 auto* eng = LunaLuxEngine::lunaLuxEngine::get();
 
