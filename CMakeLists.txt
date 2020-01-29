@@ -21,14 +21,14 @@ endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/include STATIC IMPORTED)
 
-add_library(LunaLuxEngineLib src/LunaLuxEngine.cpp src/LunaLuxEngine.h src/utils/IGame.h src/render/IRender.h src/window/Window.h src/window/Window.cpp src/utils/types.h src/render/OpenGL.cpp src/Common_Header.h src/common/Entity.cpp src/common/Entity.h src/render/DirectX.cpp src/Debug.h)
+add_library(LunaLuxEngineLib src/LunaLuxEngine.cpp src/LunaLuxEngine.h src/utils/IGame.h src/render/IRender.h src/window/Window.h src/window/Window.cpp src/utils/types.h src/render/OpenGL.cpp src/Common_Header.h src/common/Entity.cpp src/common/Entity.h src/render/DirectX.cpp)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-
+	target_link_libraries(LunaLuxEngineLib ${OPENGL_LIBRARIES})
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-	target_link_libraries(LunaLuxEngineLib ${GLEW_LIBRARY} ${X11_LIBRARIES})
+	target_link_libraries(LunaLuxEngineLib GLEW::GLEW ${X11_LIBRARIES} ${OPENGL_LIBRARIES})
 endif()
-target_link_libraries(LunaLuxEngineLib ${OPENGL_LIBRARIES})
+
 
 add_executable(LunaLuxEngine test.cpp Game.cpp Game.h)
 
