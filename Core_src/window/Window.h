@@ -1,5 +1,6 @@
 #pragma once
-#include "../Common_Header.h"
+
+#include <Common_Header.h>
 #ifdef WIN32
 /*
  * The following #defines disable a bunch of unused windows stuff

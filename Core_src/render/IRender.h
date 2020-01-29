@@ -1,12 +1,10 @@
 #pragma once
 
-#include "../Common_Header.h"
-#include "../common/Entity.h"
+#include <Common_Header.h>
 #include <vector>
 class IRender
 {
 protected:
-	std::vector<IEntity> entitys;
 public:
 	void initRender();
 	void prepRender();

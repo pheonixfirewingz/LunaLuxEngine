@@ -1,17 +1,27 @@
-#include "LunaLuxEngine.h"
+#include "LunaLuxEngineCore.h"
 
 using namespace LunaLuxEngine;
 
 void lunaLuxEngine::initEngine()
 {
     if(debug_level_0) std::printf("%s\n", "loading LunaLuxEngine");
+    if (m_game_main == nullptr)
+    {
+        std::printf("no game class given");
+        std::exit(-1);
+    }
+    m_game_main->preBoot();
+    if(m_game_main->getGameName() == nullptr)
+    {
+        std::printf("game name null");
+        std::exit(-1);
+    }
 	window->setTitle(m_game_main->getGameName());
 	window->createWindow();
 	render->initRender();
+	Core_Physics_Controller->initPhysicsEngine();
 	_is_paused_ = false;
     if(debug_level_0) std::printf("%s\n", "loading Game");
-	if (m_game_main == nullptr)
-		std::exit(-9);
 	m_game_main->GameBoot();
 }
 

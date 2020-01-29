@@ -1,7 +1,7 @@
 #include <chrono>
 #include "Window.h"
 #include "Window.h"
-#include "../LunaLuxEngine.h"
+#include "../LunaLuxEngineCore.h"
 
 #ifdef MAC
 GLFWwindow* win__;

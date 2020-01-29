@@ -1,8 +1,9 @@
 #ifndef LUNALLUXENGINE
 #define LUNALUXENGINE
 
+#include <LunaLuxEnginePhysics.h>
+#include <Common_Header.h>
 #include "utils/IGame.h"
-#include "Common_Header.h"
 #include "render/IRender.h"
 #include "window/Window.h"
 namespace LunaLuxEngine
@@ -15,6 +16,7 @@ namespace LunaLuxEngine
 
 		IRender* render = new IRender();
 		window_api::CrossWindow* window = new window_api::CrossWindow();
+		Physics::LunaLuxEnginePhysics* Core_Physics_Controller = new Physics::LunaLuxEnginePhysics();
 		void initEngine();
 		int8 updateEngine();
 	public:

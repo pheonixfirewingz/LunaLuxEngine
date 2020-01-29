@@ -1,7 +1,6 @@
 //
 // Created by luket on 16/01/2020.
 //
-#include "../Common_Header.h"
 #ifdef __linux__
 #define GLEW_STATIC
 #include <GL/glew.h>

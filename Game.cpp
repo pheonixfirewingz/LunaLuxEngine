@@ -10,5 +10,9 @@ void TestGame::GameBoot()
 void TestGame::GameMain()
 {
 
-};
+}
 
+void TestGame::preBoot()
+{
+    TestGame::setGameName("testGame");
+};

@@ -1,7 +1,7 @@
 //
 // Created by luket on 20/01/2020.
 //
-#include "src/LunaLuxEngine.h"
+#include <LunaLuxEngineCore.h>
 #include "Game.h"
 int main()
 {
