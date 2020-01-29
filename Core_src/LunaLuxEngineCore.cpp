@@ -22,7 +22,12 @@ void lunaLuxEngine::initEngine()
 	Core_Physics_Controller->initPhysicsEngine();
 	_is_paused_ = false;
     if(debug_level_0) std::printf("%s\n", "loading Game");
+<<<<<<< HEAD:Core_src/LunaLuxEngineCore.cpp
 	m_game_main->GameBoot();
+=======
+	if (m_game_main == nullptr)
+		std::exit(-9);
+>>>>>>> master:src/LunaLuxEngine.cpp
 }
 
 int8 lunaLuxEngine::updateEngine()
@@ -49,6 +54,8 @@ void lunaLuxEngine::set3D()
 void lunaLuxEngine::runEngine()
 {
     initEngine();
+	std::printf("\n%s\n", "loaded LunaLuxEngine");
+	m_game_main->GameBoot();
     if(debug_level_0) std::printf("%s\n\n", "Starting LunaLuxEngine Runloop");
 	while (!window->shouldClose())
 	{

@@ -14,8 +14,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2ba822d6-2713-4aef-8c81-660dbe1a3ddb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LunaLuxEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/LunaLuxEngine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LunaLuxEngine.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/LunaLuxEngine.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/window/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/Window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/window/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/Window.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +78,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.LunaLuxEngine" />
       <item itemvalue="CMake Application.LunaLuxEngineLib" />
+      <item itemvalue="CMake Application.LunaLuxEngine" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -123,7 +125,13 @@
 =======
       <workItem from="1579917936110" duration="46000" />
       <workItem from="1579918080041" duration="145000" />
+<<<<<<< Updated upstream
 >>>>>>> master
+=======
+      <workItem from="1580066661540" duration="2113000" />
+      <workItem from="1580069102233" duration="1365000" />
+      <workItem from="1580127555758" duration="354000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -148,6 +156,7 @@
     </state>
     <state x="499" y="164" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.832@0.0.1536.832" timestamp="1579811918804" />
     <state x="444" y="166" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.707@0.27.1366.707" timestamp="1579911084224" />
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <state width="1320" height="161" key="GridCell.Tab.0.bottom" timestamp="1580265328783">
       <screen x="0" y="27" width="1366" height="707" />
@@ -171,24 +180,27 @@
     <state width="1320" height="161" key="GridCell.Tab.0.right/0.27.1366.707@0.27.1366.707" timestamp="1580265328782" />
 =======
     <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1579918226496">
+=======
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1580070519382">
+>>>>>>> Stashed changes
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1579918226496" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
     <state width="1320" height="161" key="GridCell.Tab.0.bottom/0.27.1366.707@0.27.1366.707" timestamp="1579916226905" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1579918226496">
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1580070519382">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1579918226496" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
     <state width="1320" height="161" key="GridCell.Tab.0.center/0.27.1366.707@0.27.1366.707" timestamp="1579916226897" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1579918226496">
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1580070519382">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1579918226496" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
     <state width="1320" height="161" key="GridCell.Tab.0.left/0.27.1366.707@0.27.1366.707" timestamp="1579916226895" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1579918226496">
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1580070519382">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1579918226496" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
     <state width="1320" height="161" key="GridCell.Tab.0.right/0.27.1366.707@0.27.1366.707" timestamp="1579916226904" />
 >>>>>>> master
     <state width="1493" height="264" key="GridCell.Tab.1.bottom" timestamp="1579814912630">
