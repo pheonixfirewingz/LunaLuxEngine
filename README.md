@@ -27,9 +27,13 @@ Planned Platforms (after decktop)
 
 Working Progress
 ------------------------------------------------------------------------------------------------
-- Cross platform window (will make this standalone in the future for public used)
+- Cross platform window (will make this standalone in the future for public use)
 - Opengl Renderer (Linux Only)
 - Directx11 Renderer (window Desktop for now)
+
+Current Bugs
+------------------------------------------------------------------------------------------------
+- Window is crashing on windows (win32) need rewrite
 
 Minimum Start Code
 ------------------------------------------------------------------------------------------------

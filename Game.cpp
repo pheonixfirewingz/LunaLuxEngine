@@ -14,5 +14,5 @@ void TestGame::GameMain()
 
 void TestGame::preBoot()
 {
-    TestGame::setGameName("testGame");
+    TestGame::setGameName((char*)"testGame");
 };

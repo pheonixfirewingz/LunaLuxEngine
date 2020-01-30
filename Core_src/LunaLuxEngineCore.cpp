@@ -1,5 +1,5 @@
 #include "LunaLuxEngineCore.h"
-
+#include <cstdio>
 using namespace LunaLuxEngine;
 
 void lunaLuxEngine::initEngine()
@@ -26,15 +26,11 @@ void lunaLuxEngine::initEngine()
 	Core_Physics_Controller->initPhysicsEngine();
 =======
 #endif
->>>>>>> Stashed changes:src/LunaLuxEngine.cpp
 	_is_paused_ = false;
     if(debug_level_0) std::printf("%s\n", "loading Game");
-<<<<<<< HEAD:Core_src/LunaLuxEngineCore.cpp
 	m_game_main->GameBoot();
-=======
 	if (m_game_main == nullptr)
 		std::exit(-9);
->>>>>>> master:src/LunaLuxEngine.cpp
 }
 
 int8 lunaLuxEngine::updateEngine()

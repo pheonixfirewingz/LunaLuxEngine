@@ -1,14 +1,12 @@
 #pragma once
 
-#include <Common_Header.h>
+#include <LunaLuxEngine/Common_Header.h>
 #include <vector>
 
 #ifdef  WIN32
 #include <windows.h>
 class IRender
 {
-protected:
-	std::vector<IEntity> entitys;
 public:
 	void initRender(HWND);
 	void prepRender();

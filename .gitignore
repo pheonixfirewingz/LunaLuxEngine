@@ -35,3 +35,16 @@
 /out
 /cmake-build-debug
 /.vs
+/CMakeFiles
+/Debug
+/LunaLuxEngineCoreLib.dir
+/LunaLuxEnginePhysicsLib.dir
+/TestGame.dir
+/x64
+
+#other
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.cmake
