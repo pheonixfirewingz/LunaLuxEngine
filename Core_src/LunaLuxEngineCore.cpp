@@ -18,8 +18,15 @@ void lunaLuxEngine::initEngine()
     }
 	window->setTitle(m_game_main->getGameName());
 	window->createWindow();
+#ifdef WIN32
+	render->initRender(window->getWindow());
+#else
 	render->initRender();
+<<<<<<< Updated upstream:Core_src/LunaLuxEngineCore.cpp
 	Core_Physics_Controller->initPhysicsEngine();
+=======
+#endif
+>>>>>>> Stashed changes:src/LunaLuxEngine.cpp
 	_is_paused_ = false;
     if(debug_level_0) std::printf("%s\n", "loading Game");
 <<<<<<< HEAD:Core_src/LunaLuxEngineCore.cpp
