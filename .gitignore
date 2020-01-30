@@ -48,3 +48,4 @@
 *.vcxproj.user
 *.sln
 *.cmake
+CMakeCache.txt
