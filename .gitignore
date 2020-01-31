@@ -41,6 +41,9 @@
 /LunaLuxEnginePhysicsLib.dir
 /TestGame.dir
 /x64
+/gradlew
+/.gradle
+/gradle
 
 #other
 *.vcxproj
@@ -49,3 +52,10 @@
 *.sln
 *.cmake
 CMakeCache.txt
+*.xml
+*.gradle
+*.pro
+*.iml
+*.properties
+*.bat
+

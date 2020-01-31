@@ -1,2 +1,7 @@
-﻿  DirectX.cpp
+﻿  Building Custom Rule C:/Users/luket/Desktop/LunaLuxEngine/CMakeLists.txt
+  LunaLuxEngineCore.cpp
+  Window.cpp
+  Vulkan.cpp
+  DirectX.cpp
+  Generating Code...
   LunaLuxEngineCoreLib.vcxproj -> C:\Users\luket\Desktop\LunaLuxEngine\Debug\LunaLuxEngineCoreLib.lib

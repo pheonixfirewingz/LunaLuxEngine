@@ -18,8 +18,7 @@
   -- Detecting CXX compiler ABI info - done
   -- Detecting CXX compile features
   -- Detecting CXX compile features - done
-  -- Found OpenGL: opengl32   
-  STATE,"Windows mode"
+  -- Found Vulkan: C:/VulkanSDK/1.2.131.1/Lib/vulkan-1.lib  
   -- Configuring done
   -- Generating done
   -- Build files have been written to: C:/Users/luket/Desktop/LunaLuxEngine

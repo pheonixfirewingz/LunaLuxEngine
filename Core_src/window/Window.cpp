@@ -134,7 +134,8 @@ namespace LunaLuxEngine::window_api
 		}
 			break;
 		default:
-			return DefWindowProcA(hWnd, Msg, wParam, lParam);
+            		return DefWindowProc(hwnd, msg, wparam, lparam);
+            		break;
 		}
 		return 0;
 	}
@@ -142,34 +143,31 @@ namespace LunaLuxEngine::window_api
 	void CrossWindow::createWindow()
 	{
 		WIN_SHOULD_CLOSE = false;
+		const char* class_name = "LunaLuxEngine_WindowClass";
+
 		Inst = GetModuleHandle(nullptr);
-		WNDCLASSEX wc = { 0 };
-		wc.cbSize = sizeof(wc);
-		wc.style = CS_OWNDC;
-		wc.lpfnWndProc = WndProc;
-		wc.cbClsExtra = 0;
-		wc.cbWndExtra = 0;
-		wc.hInstance = Inst;
-		wc.hIcon = static_cast<HICON>(LoadImage(Inst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 32, 32, 0));
-		wc.hCursor = nullptr;
-		wc.hbrBackground = nullptr;
-		wc.lpszMenuName = nullptr;
-		wc.lpszClassName = Title;
-		wc.hIconSm = static_cast<HICON>(LoadImage(Inst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0));
-		RegisterClassEx(&wc);
 
-		RECT wr;
-		wr.left = 100;
-		wr.right = width + wr.left;
-		wr.top = 100;
-		wr.bottom = height + wr.top;
+		WNDCLASSEX win_class = {};
+		win_class.cbSize = sizeof(WNDCLASSEX);
+		win_class.style = CS_HREDRAW | CS_VREDRAW;
+		win_class.lpfnWndProc =  WndProc;
+		win_Class.cbClsExtra = 0;
+		win_class.cbWndExtra = 0;
+		win_class.hInstance = Inst;
+		win_class.hCursor = LoadCursor(nullptr, IDC_ARROW);
+		win_class.lpszClassName = class_name;
+		RegisterClassEx(&win_class);
 
-		hwnd = CreateWindow(
-			Title, Title,
-			WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
-			CW_USEDEFAULT, CW_USEDEFAULT, wr.right - wr.left, wr.bottom - wr.top,
-			nullptr, nullptr, Inst, this
-		);
+		const DWORD win_style = WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_VISIBLE | WS_OVERLAPPEDWINDOW;
+
+		RECT win_rect = {0, 0, 1280, 720};
+		AdjustWindowRect(&win_rect, win_style, false);
+
+		hwnd = CreateWindowEx(WS_EX_APPWINDOW, class_name, Title, win_style, 0, 0,
+				win_rect.right - win_rect.left, win_rect.bottom - win_rect.top, nullptr, nullptr, Inst, nullptr);
+
+		SetForegroundWindow(hwnd);
+		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR) this);
 
 		ShowWindow(hwnd, SW_SHOWDEFAULT);
 	}
@@ -177,7 +175,7 @@ namespace LunaLuxEngine::window_api
 	void CrossWindow::destoryWindow()
 	{
 		DestroyWindow(hwnd);
-		UnregisterClassW((LPCWSTR)Title, Inst);
+		UnregisterClassW((LPCWSTR)"LunaLuxEngine_WindowClass", Inst);
 	}
 
 	HWND CrossWindow::getWindow()
