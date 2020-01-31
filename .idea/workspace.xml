@@ -2,8 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="LunaLuxEngine" targetName="LunaLuxEngineLib" />
-      <config projectName="LunaLuxEngine" targetName="LunaLuxEngine" />
+      <config projectName="LunaLuxEngine" targetName="LunaLuxEnginePhysicsLib" />
+      <config projectName="LunaLuxEngine" targetName="TestGame" />
+      <config projectName="LunaLuxEngine" targetName="LunaLuxEngineCoreLib" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -12,13 +13,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ba822d6-2713-4aef-8c81-660dbe1a3ddb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LunaLuxEngine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/LunaLuxEngine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LunaLuxEngine.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/LunaLuxEngine.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/Window.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/Window.h" afterDir="false" />
-    </list>
+    <list default="true" id="dd203c0b-e05a-4f31-b8cc-1f0a1acf7cd5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,12 +27,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
-    <option name="directoryName" value="aVGvLIYb" />
+    <option name="directoryName" value="UoUHilHV" />
   </component>
-  <component name="OCResolveContextSettings">
-    <option name="configuration" value="0-Debug-LunaLuxEngine" />
-  </component>
-  <component name="ProjectId" id="1WTbqX2mVcNL6mHedng59Egt45J" />
+  <component name="ProjectId" id="1X8Wcc5I7KP9TBraw73iDJhuTar" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -45,93 +37,51 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\cmake-build-debug" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\lib" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\include" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\utils" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Mac_Includes" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\render" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\render\GL" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV\src\window" />
-      <recent name="C:\Users\luket\Desktop\LunaLuxEngine_DEV" />
+      <recent name="$PROJECT_DIR$/CrossEngineIncludes/GL" />
+      <recent name="$PROJECT_DIR$/Core_src/glew" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.LunaLuxEngine">
-    <configuration name="LunaLuxEngine" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LunaLuxEngine" TARGET_NAME="LunaLuxEngine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LunaLuxEngine" RUN_TARGET_NAME="LunaLuxEngine">
+  <component name="RunManager" selected="CMake Application.TestGame">
+    <configuration name="LunaLuxEngineCoreLib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LunaLuxEngine" TARGET_NAME="LunaLuxEngineCoreLib" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LunaLuxEngineLib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LunaLuxEngine" TARGET_NAME="LunaLuxEngineLib" CONFIG_NAME="Debug">
+    <configuration name="LunaLuxEnginePhysicsLib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LunaLuxEngine" TARGET_NAME="LunaLuxEnginePhysicsLib" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGame" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LunaLuxEngine" TARGET_NAME="TestGame" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LunaLuxEngine" RUN_TARGET_NAME="TestGame">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.LunaLuxEngineLib" />
-      <item itemvalue="CMake Application.LunaLuxEngine" />
+      <item itemvalue="CMake Application.LunaLuxEngineCoreLib" />
+      <item itemvalue="CMake Application.LunaLuxEnginePhysicsLib" />
+      <item itemvalue="CMake Application.TestGame" />
     </list>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2ba822d6-2713-4aef-8c81-660dbe1a3ddb" name="Default Changelist" comment="" />
-      <created>1579176722144</created>
+      <changelist id="dd203c0b-e05a-4f31-b8cc-1f0a1acf7cd5" name="Default Changelist" comment="" />
+      <created>1580427905124</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1579176722144</updated>
-      <workItem from="1579176723877" duration="8676000" />
-      <workItem from="1579207149885" duration="7716000" />
-      <workItem from="1579379093810" duration="12251000" />
-      <workItem from="1579435957602" duration="2026000" />
-      <workItem from="1579438182899" duration="1298000" />
-      <workItem from="1579455325970" duration="3091000" />
-      <workItem from="1579523638689" duration="3761000" />
-      <workItem from="1579692022346" duration="3372000" />
-      <workItem from="1579785329235" duration="5980000" />
-      <workItem from="1579804127041" duration="5536000" />
-      <workItem from="1579811767918" duration="2406000" />
-      <workItem from="1579815621429" duration="2526000" />
-      <workItem from="1579819390373" duration="102000" />
-      <workItem from="1579908623254" duration="3275000" />
-      <workItem from="1579912572210" duration="3630000" />
-      <workItem from="1579916388068" duration="91000" />
-<<<<<<< HEAD
-      <workItem from="1580264608947" duration="688000" />
-=======
-      <workItem from="1579917936110" duration="46000" />
-      <workItem from="1579918080041" duration="145000" />
-<<<<<<< Updated upstream
->>>>>>> master
-=======
-      <workItem from="1580066661540" duration="2113000" />
-      <workItem from="1580069102233" duration="1365000" />
-      <workItem from="1580127555758" duration="354000" />
->>>>>>> Stashed changes
+      <updated>1580427905124</updated>
+      <workItem from="1580427925340" duration="320000" />
+      <workItem from="1580428307902" duration="544000" />
+      <workItem from="1580429435741" duration="703000" />
+      <workItem from="1580431431033" duration="1361000" />
+      <workItem from="1580433382290" duration="405000" />
     </task>
     <servers />
   </component>
@@ -139,97 +89,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="278" y="42" width="800" height="684" key="#Notifications" timestamp="1579909982511">
+    <state width="1320" height="161" key="GridCell.Tab.0.bottom" timestamp="1580432928480">
       <screen x="0" y="27" width="1366" height="707" />
     </state>
-    <state x="278" y="42" width="800" height="684" key="#Notifications/0.27.1366.707@0.27.1366.707" timestamp="1579909982511" />
-    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579208854824">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="223" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.832@0.0.1536.832" timestamp="1579208854824" />
-    <state x="449" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579917944596">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="449" y="153" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.832@0.0.1536.832" timestamp="1579917944596" />
-    <state x="444" y="166" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579911084224">
+    <state width="1320" height="161" key="GridCell.Tab.0.bottom/0.27.1366.707@0.27.1366.707" timestamp="1580432928480" />
+    <state width="1320" height="161" key="GridCell.Tab.0.center" timestamp="1580432928479">
       <screen x="0" y="27" width="1366" height="707" />
     </state>
-    <state x="499" y="164" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.832@0.0.1536.832" timestamp="1579811918804" />
-    <state x="444" y="166" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.707@0.27.1366.707" timestamp="1579911084224" />
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    <state width="1320" height="161" key="GridCell.Tab.0.bottom" timestamp="1580265328783">
+    <state width="1320" height="161" key="GridCell.Tab.0.center/0.27.1366.707@0.27.1366.707" timestamp="1580432928479" />
+    <state width="1320" height="161" key="GridCell.Tab.0.left" timestamp="1580432928478">
       <screen x="0" y="27" width="1366" height="707" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1579818890112" />
-    <state width="1320" height="161" key="GridCell.Tab.0.bottom/0.27.1366.707@0.27.1366.707" timestamp="1580265328783" />
-    <state width="1320" height="161" key="GridCell.Tab.0.center" timestamp="1580265328781">
+    <state width="1320" height="161" key="GridCell.Tab.0.left/0.27.1366.707@0.27.1366.707" timestamp="1580432928478" />
+    <state width="1320" height="161" key="GridCell.Tab.0.right" timestamp="1580432928480">
       <screen x="0" y="27" width="1366" height="707" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1579818890111" />
-    <state width="1320" height="161" key="GridCell.Tab.0.center/0.27.1366.707@0.27.1366.707" timestamp="1580265328781" />
-    <state width="1320" height="161" key="GridCell.Tab.0.left" timestamp="1580265328778">
-      <screen x="0" y="27" width="1366" height="707" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1579818890111" />
-    <state width="1320" height="161" key="GridCell.Tab.0.left/0.27.1366.707@0.27.1366.707" timestamp="1580265328778" />
-    <state width="1320" height="161" key="GridCell.Tab.0.right" timestamp="1580265328782">
-      <screen x="0" y="27" width="1366" height="707" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1579818890112" />
-    <state width="1320" height="161" key="GridCell.Tab.0.right/0.27.1366.707@0.27.1366.707" timestamp="1580265328782" />
-=======
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1579918226496">
-=======
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1580070519382">
->>>>>>> Stashed changes
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
-    <state width="1320" height="161" key="GridCell.Tab.0.bottom/0.27.1366.707@0.27.1366.707" timestamp="1579916226905" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1580070519382">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
-    <state width="1320" height="161" key="GridCell.Tab.0.center/0.27.1366.707@0.27.1366.707" timestamp="1579916226897" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1580070519382">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
-    <state width="1320" height="161" key="GridCell.Tab.0.left/0.27.1366.707@0.27.1366.707" timestamp="1579916226895" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1580070519382">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1580070519382" />
-    <state width="1320" height="161" key="GridCell.Tab.0.right/0.27.1366.707@0.27.1366.707" timestamp="1579916226904" />
->>>>>>> master
-    <state width="1493" height="264" key="GridCell.Tab.1.bottom" timestamp="1579814912630">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
-    <state width="1493" height="264" key="GridCell.Tab.1.center" timestamp="1579814912630">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
-    <state width="1493" height="264" key="GridCell.Tab.1.left" timestamp="1579814912630">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
-    <state width="1493" height="264" key="GridCell.Tab.1.right" timestamp="1579814912630">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1579814912630" />
-    <state x="277" y="59" key="SettingsEditor" timestamp="1579524087555">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="277" y="59" key="SettingsEditor/0.0.1536.832@0.0.1536.832" timestamp="1579524087555" />
-    <state x="425" y="189" key="run.anything.popup" timestamp="1579391315980">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.832@0.0.1536.832" timestamp="1579391315980" />
-    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup" timestamp="1579213397063">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup/0.0.1536.832@0.0.1536.832" timestamp="1579213397063" />
+    <state width="1320" height="161" key="GridCell.Tab.0.right/0.27.1366.707@0.27.1366.707" timestamp="1580432928479" />
   </component>
 </project>
