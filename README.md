@@ -21,6 +21,7 @@ Note: if someone contributes to the engine out side of Echo-Studios© throught pu
 Supported Platforms
 -----------------------------------------------------------------------------------------------
 - NULL
+
 Planned Platforms
 -----------------------------------------------------------------------------------------------
  - Windows
