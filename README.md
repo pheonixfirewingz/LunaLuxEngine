@@ -19,7 +19,7 @@ Note: if someone contributes to the engine out side of Echo-Studios© throught p
 -------------When-Get-Mac--------------------
 - create Window using cocoa for mac
 - create Metal renderer and get a box on screen
------------.---------------.------------------
+# -----------.---------------.------------------
 
 - create Vulkan context for linux and get a box on screen
 - create directX11 context for windows and get a box on screen
