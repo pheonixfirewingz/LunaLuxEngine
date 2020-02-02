@@ -8,7 +8,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     endif()
 endif()
 
-include_directories(${PROJECT_SOURCE_DIR}/CrossEngineIncludes STATIC IMPORTED)
+include_directories(${PROJECT_SOURCE_DIR}/Includes STATIC IMPORTED)
 include_directories(${PROJECT_SOURCE_DIR}/Physics_src STATIC)
 include_directories(${PROJECT_SOURCE_DIR}/Core_src STATIC)
 include(${PROJECT_SOURCE_DIR}/CMakeScripts/CoreLib.cmake)

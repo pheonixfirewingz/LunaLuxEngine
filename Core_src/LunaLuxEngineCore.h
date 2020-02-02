@@ -2,11 +2,11 @@
 #define LUNALUXENGINE
 
 #include <LunaLuxEnginePhysics.h>
-#include <LunaLuxEngine/Common_Header.h>
-#include "utils/IGame.h"
+#include <LLESDK/IGame.h>
+#include <LLESDK/Common_Header.h>
 #include "render/IRender.h"
 #include "window/Window.h"
-#include "utils/IGame.h"
+
 #define LLE LunaLuxEngine::lunaLuxEngine::get();
 namespace LunaLuxEngine
 {

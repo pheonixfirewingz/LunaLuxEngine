@@ -4,7 +4,7 @@
 
 #ifndef LUNALUXENGINE_GAME_H
 #define LUNALUXENGINE_GAME_H
-#include <utils/IGame.h>
+#include <LLESDK/IGame.h>
 
 class TestGame : public Game
 {

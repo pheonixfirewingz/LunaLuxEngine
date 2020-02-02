@@ -1,6 +1,6 @@
 #pragma once
 
-#include <LunaLuxEngine/types.h>
+#include "types.h"
 
 class Game
 {
