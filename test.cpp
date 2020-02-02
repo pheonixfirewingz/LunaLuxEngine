@@ -5,9 +5,6 @@
 #include "Game.h"
 int main()
 {
-	auto* eng = LunaLuxEngine::lunaLuxEngine::get();
-	eng->m_game_main = new TestGame();
-	eng->runEngine();
-	return 0;
+	auto * eng = LLE;
+	eng->runEngine(new TestGame());
 }
-

@@ -14,7 +14,6 @@
 #include<GL/glx.h>
 #endif
 #ifdef MAC
-#include <GLFW/glfw3.h>
 #endif
 namespace LunaLuxEngine::window_api
 {
@@ -27,6 +26,7 @@ class CrossWindow
         HINSTANCE Inst{};
         public:
         HWND getWindow();
+        LPCSTR class_name = (LPCSTR)"LunaLuxEngine_WindowClass";
 #endif
 #ifdef __linux__
     private:
@@ -36,22 +36,31 @@ class CrossWindow
         Colormap                cmap{};
         XSetWindowAttributes    swa{};
         Window                  win{};
-        GLXContext              glc{};
         XWindowAttributes       gwa{};
         XEvent                  xev{};
+#endif
+#ifdef MAC
 #endif
 protected:
     char* Title = (char*)"temp";
 	int16 width = 800,  height = 600;
-	CrossWindow* window = this;
 public:
-	bool WIN_SHOULD_CLOSE;
-	CrossWindow* get();
+	bool WIN_SHOULD_CLOSE = false;
 	void createWindow();
-	void setTitle(char*);
-	bool shouldClose();
-	void setShouldClose(bool);
+	void setTitle(char* intitle)
+	{
+		Title = intitle;
+	};
+	void setSize(int16 inwidth,int inheight)
+	{
+		width = inwidth;
+		height = inheight;
+	};
+	bool shouldClose()
+	{
+		return  WIN_SHOULD_CLOSE;
+	};
 	void updateWindow();
 	void destoryWindow();
-};
+	};
 }

@@ -16,16 +16,21 @@ Note: if someone contributes to the engine out side of Echo-Studios© throught p
 
 ----------------------------------------------------------------------------------------------
 # TODO
-- remove dependence on glfw on mac
+-------------When-Get-Mac--------------------
+- create Window using cocoa for mac
+- create Metal renderer and get a box on screen
+---------------------------------------------
+- create Vulkan context for linux and get a box on screen
+- create directX11 context for windows and get a box on screen
 
 Supported Platforms
 -----------------------------------------------------------------------------------------------
-- NULL
+- NULL (window and renderers not finished)
 
 Planned Platforms
 -----------------------------------------------------------------------------------------------
  - Windows
- - Linux
+ - Linux (x11)(not Planning to Support wayland yet)
  - OSX
 
 Planned Platforms (after decktop)
@@ -37,19 +42,20 @@ Planned Platforms (after decktop)
 Working Progress
 ------------------------------------------------------------------------------------------------
 - Cross platform window (will make this standalone in the future for public use)
-- Vulkan Renderer (Linux Only)
+- Vulkan Renderer (Linux X11 Only)
 - Directx11 Renderer (window Desktop for now)
 
-Current Bugs
+Current Known Bugs
 ------------------------------------------------------------------------------------------------
-- Window is crashing on windows (win32) need rewrite
+- Closing dose not work properly on linux x11
 
 Minimum Start Code
 ------------------------------------------------------------------------------------------------
-extend Game class.
+extend Game class in "utils/IGame.h".
 The pre boot is used to configure required variables in the game class.
 - preBoot();
 the game class is called by the engine as for the main game loop and inatalization faze this is done through
+(engine logs will tell you if missing a config in the preBoot Stage)
 - BootGame();
 this is used to load external game fetures not part of the engine.
 - GameMain();
@@ -58,8 +64,5 @@ this is used to allows custom game logic not handled by the engine to run in the
 add to main class.
 #include <LunaLuxEngineCore.h>
 
-auto* eng = LunaLuxEngine::lunaLuxEngine::get();
-
-eng->m_game_main = new YourGameClass();
-
-eng->runEngine();
+auto* eng = LLE;
+eng->runEngine(new YourGameClass());

@@ -11,12 +11,24 @@ void lunaLuxEngine::initEngine()
         std::exit(-1);
     }
     m_game_main->preBoot();
+
     if(m_game_main->getGameName() == nullptr)
     {
         std::printf("game name null");
         std::exit(-1);
     }
+	if(m_game_main->getWindowWidth() == 0)
+	{
+		std::printf("game Window Width not set");
+		std::exit(-1);
+	}
+	if(m_game_main->getWindowHeight() == 0)
+	{
+		std::printf("game Window Height not set");
+		std::exit(-1);
+	}
 	window->setTitle(m_game_main->getGameName());
+	window->setSize(m_game_main->getWindowWidth(),m_game_main->getWindowHeight());
 	window->createWindow();
 #ifdef WIN32
 	render->initRender(window->getWindow());
@@ -25,8 +37,6 @@ void lunaLuxEngine::initEngine()
 	Core_Physics_Controller->initPhysicsEngine();
 #endif
 	_is_paused_ = false;
-    if(debug_level_0) std::printf("%s\n", "loading Game");
-	m_game_main->GameBoot();
 	if (m_game_main == nullptr)
 		std::exit(-9);
 }
@@ -52,17 +62,18 @@ void lunaLuxEngine::set3D()
 	_2DOr3D_ = true;
 }
 
-void lunaLuxEngine::runEngine()
+void lunaLuxEngine::runEngine(Game* game)
 {
+	m_game_main = game;
     initEngine();
-	std::printf("\n%s\n", "loaded LunaLuxEngine");
+	std::printf("%s\n", "loaded LunaLuxEngine");
 	m_game_main->GameBoot();
     if(debug_level_0) std::printf("%s\n\n", "Starting LunaLuxEngine Runloop");
 	while (!window->shouldClose())
 	{
 		updateEngine();
 	}
-    std::printf("%s\n", "shutdown LunaLuxEngine");
+    std::printf("\n%s", "shutdown LunaLuxEngine");
 	window->destoryWindow();
-
+	std::exit(0);
 }

@@ -9,7 +9,6 @@ GLFWwindow* win__;
 
 namespace LunaLuxEngine::window_api
 {
-	bool sc_temp;
 #ifdef MAC
 	void CrossWindow::updateWindow()
 	{
@@ -52,7 +51,6 @@ namespace LunaLuxEngine::window_api
         {
             case Expose:
                 XGetWindowAttributes(dpy, win, &gwa);
-                glXSwapBuffers(dpy, win);
                 break;
             case ConfigureNotify:
                 glViewport(0, 0, xev.xconfigure.width, xev.xconfigure.height);
@@ -80,8 +78,7 @@ namespace LunaLuxEngine::window_api
 
         root = DefaultRootWindow(dpy);
 
-        GLint  att[] = { GLX_RGBA, GLX_DEPTH_SIZE, 24, GLX_DOUBLEBUFFER, None };
-        vi = glXChooseVisual(dpy, 0, att);
+        vi = nullptr;
 
         if(vi == nullptr)
         {
@@ -99,29 +96,28 @@ namespace LunaLuxEngine::window_api
         XMapWindow(dpy, win);
 
         XStoreName(dpy, win, Title);
-
-        glc = glXCreateContext(dpy, vi, nullptr, GL_TRUE);
-        glXMakeCurrent(dpy, win, glc);
-        glEnable(GL_DEPTH_TEST);
-        glViewport(0,0,width,height);
-        glClearColor(0, 0, 0, 1.0);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     void CrossWindow::destoryWindow()
     {
-        glXMakeCurrent(dpy, None, nullptr);
         XFree(vi);
-        glXDestroyContext(dpy, glc);
         XDestroyWindow(dpy, win);
         XSync(dpy, false);
         XCloseDisplay(dpy);
     }
 #endif
 #ifdef WIN32
+bool sc_temp;
 	void CrossWindow::updateWindow()
 	{
 		if (sc_temp) WIN_SHOULD_CLOSE = true;
+		if (!WIN_SHOULD_CLOSE)
+		{
+			MSG msg;
+			GetMessage(&msg, nullptr, 0, 0);
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
 	}
 
 	inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
@@ -134,7 +130,7 @@ namespace LunaLuxEngine::window_api
 		}
 			break;
 		default:
-            		return DefWindowProc(hwnd, msg, wparam, lparam);
+            		return DefWindowProc(hWnd, Msg, wParam, lParam);
             		break;
 		}
 		return 0;
@@ -143,31 +139,22 @@ namespace LunaLuxEngine::window_api
 	void CrossWindow::createWindow()
 	{
 		WIN_SHOULD_CLOSE = false;
-		const char* class_name = "LunaLuxEngine_WindowClass";
-
 		Inst = GetModuleHandle(nullptr);
 
-		WNDCLASSEX win_class = {};
-		win_class.cbSize = sizeof(WNDCLASSEX);
-		win_class.style = CS_HREDRAW | CS_VREDRAW;
-		win_class.lpfnWndProc =  WndProc;
-		win_Class.cbClsExtra = 0;
-		win_class.cbWndExtra = 0;
-		win_class.hInstance = Inst;
-		win_class.hCursor = LoadCursor(nullptr, IDC_ARROW);
-		win_class.lpszClassName = class_name;
-		RegisterClassEx(&win_class);
+		WNDCLASS wc = {};
+		wc.lpfnWndProc   = WndProc;
+		wc.hInstance     = Inst;
+		wc.lpszClassName = class_name;
 
-		const DWORD win_style = WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_VISIBLE | WS_OVERLAPPEDWINDOW;
+		RegisterClass(&wc);
 
-		RECT win_rect = {0, 0, 1280, 720};
-		AdjustWindowRect(&win_rect, win_style, false);
+		hwnd = CreateWindowEx(0,class_name,Title,WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,
+				CW_USEDEFAULT, width, height,nullptr,nullptr,Inst,nullptr);
 
-		hwnd = CreateWindowEx(WS_EX_APPWINDOW, class_name, Title, win_style, 0, 0,
-				win_rect.right - win_rect.left, win_rect.bottom - win_rect.top, nullptr, nullptr, Inst, nullptr);
-
-		SetForegroundWindow(hwnd);
-		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR) this);
+		if (hwnd == nullptr)
+		{
+			std::exit(-11);
+		}
 
 		ShowWindow(hwnd, SW_SHOWDEFAULT);
 	}
@@ -175,7 +162,7 @@ namespace LunaLuxEngine::window_api
 	void CrossWindow::destoryWindow()
 	{
 		DestroyWindow(hwnd);
-		UnregisterClassW((LPCWSTR)"LunaLuxEngine_WindowClass", Inst);
+		UnregisterClassW((LPWSTR)class_name, Inst);
 	}
 
 	HWND CrossWindow::getWindow()
@@ -183,23 +170,4 @@ namespace LunaLuxEngine::window_api
 		return hwnd;
 	};
 #endif
-	void CrossWindow::setTitle(char* title)
-	{
-		Title = title;
-	}
-	bool CrossWindow::shouldClose()
-	{
-		return  WIN_SHOULD_CLOSE; 
-	}
-
-	CrossWindow* CrossWindow::get()
-	{
-		return window;
-	}
-
-	void CrossWindow::setShouldClose(bool in)
-	{
-		this->WIN_SHOULD_CLOSE = in;
-	}
-
 }
