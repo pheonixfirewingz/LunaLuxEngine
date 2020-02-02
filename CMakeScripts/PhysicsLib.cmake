@@ -1,1 +1,0 @@
-add_library(LunaLuxEnginePhysicsLib Physics_src/LunaLuxEnginePhysics.h Physics_src/LunaLuxEnginePhysics.cpp)
