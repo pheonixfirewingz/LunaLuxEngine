@@ -23,7 +23,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 # Formatting
 
 - cammel Case for names of functions
-- all lower clase for private varables
+- all lower case for private varables
 - all upper case for Public varables
 - used the Visual Studios default code format for brackets and indents
 - if and else statements with 1 funtion or opperation in them don't need brakets
