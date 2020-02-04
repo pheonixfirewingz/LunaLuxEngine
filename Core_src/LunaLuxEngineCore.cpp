@@ -30,33 +30,21 @@ void lunaLuxEngine::initEngine()
 	window->setTitle(m_game_main->getGameName());
 	window->setSize(m_game_main->getWindowWidth(),m_game_main->getWindowHeight());
 	window->createWindow();
-#ifdef WIN32
-	render->initRender(window->getWindow());
-#else
-	render->initRender();
+	render->initRender(window);
 	Core_Physics_Controller->initPhysicsEngine();
-#endif
-	_is_paused_ = false;
 	if (m_game_main == nullptr)
 		std::exit(-9);
 }
 
 int8 lunaLuxEngine::updateEngine()
 {
-	if (_is_paused_) render->prepRender();
+	render->prepRender();
 	window->updateWindow();
-	if (_is_paused_)
-	{
-		m_game_main->GameMain();
-		render->fireRender();
-	}
+	m_game_main->GameMain();
+	render->fireRender();
 	return 0;
 }
 
-bool lunaLuxEngine::isGamePaused()
-{
-	return _is_paused_; 
-}
 void lunaLuxEngine::set3D()
 {
 	_2DOr3D_ = true;
@@ -74,6 +62,7 @@ void lunaLuxEngine::runEngine(Game* game)
 		updateEngine();
 	}
     std::printf("\n%s", "shutdown LunaLuxEngine");
+	render->destroyRender();
 	window->destoryWindow();
 	std::exit(0);
 }

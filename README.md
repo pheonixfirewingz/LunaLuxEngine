@@ -1,5 +1,5 @@
 # LunaLuxEngine V0.0.1
-LunaLuxEngine is a 2D and 3D graphical engine.
+LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 
 ----------------------------------------------------------------------------------------------
 # Copyright © Echo Studios 2019-2020
@@ -18,15 +18,16 @@ Note: if someone contributes to the engine out side of Echo-Studios© throught p
 # TODO
 -------------When-Get-Mac--------------------
 - create Window using cocoa for mac
-- create Metal renderer and get a box on screen
+- create Metal renderer and get a 2D_box on screen
 # ------------------------
 
-- create Vulkan context for linux and get a box on screen
-- create directX11 context for windows and get a box on screen
+- create Vulkan context for linux and get a 2D_box on screen
+- directX11 get a 2D_box on screen
 
 Supported Platforms
 -----------------------------------------------------------------------------------------------
-- NULL (window and renderers not finished)
+- WINDOW(window finished. no renderer)
+- LINUX (window not finished)
 
 Planned Platforms
 -----------------------------------------------------------------------------------------------
@@ -49,6 +50,7 @@ Working Progress
 Current Known Bugs
 ------------------------------------------------------------------------------------------------
 - Closing dose not work properly on linux x11
+- DirectX 11 Shaders not being compiled
 
 Minimum Start Code
 ------------------------------------------------------------------------------------------------

@@ -2,7 +2,8 @@
 
 #include <LLESDK/Common_Header.h>
 #ifdef WIN32
-#include <Windows.h>
+#include <windows.h>
+#include <windowsx.h>
 #define IDI_ICON1 101
 #endif
 #ifdef __linux__
@@ -62,5 +63,9 @@ public:
 	};
 	void updateWindow();
 	void destoryWindow();
+
+		FLOAT getWindowW();
+
+		FLOAT getWindowH();
 	};
 }

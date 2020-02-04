@@ -1,27 +1,18 @@
 #pragma once
 
 #include <LLESDK/Common_Header.h>
-#include <vector>
-
-#ifdef  WIN32
-#include <windows.h>
-class IRender
+#include "../window/Window.h"
+namespace LunaLuxEngine
 {
-public:
-	void initRender(HWND);
-	void prepRender();
-	void fireRender();
-	void destroyRender();
-};
-#else
-class IRender
-{
-protected:
-public:
-	void initRender();
-	void prepRender();
-	void fireRender();
-	void destroyRender();
-};
-#endif
+	class IRender
+	{
+	public:
+		void initRender(window_api::CrossWindow*);
 
+		void prepRender();
+
+		void fireRender();
+
+		void destroyRender();
+	};
+}

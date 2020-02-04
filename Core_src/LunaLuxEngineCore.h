@@ -13,7 +13,7 @@ namespace LunaLuxEngine
 	class lunaLuxEngine
 	{
 	private:
-		bool _is_paused_ = false, _2DOr3D_ = false;
+		bool _2DOr3D_ = false;
 		const static bool debug_level_0 = false;
 		Game* m_game_main = nullptr;
 	private:
@@ -31,8 +31,6 @@ namespace LunaLuxEngine
 		}
 		~lunaLuxEngine() { m_game_main = nullptr; };
 		void runEngine(Game*);
-		//used to pause the game
-		bool isGamePaused();
 		//used to control 3D or 2D mode
 		void set3D();
 	};

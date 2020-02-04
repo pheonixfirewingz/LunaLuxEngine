@@ -141,20 +141,24 @@ bool sc_temp;
 		WIN_SHOULD_CLOSE = false;
 		Inst = GetModuleHandle(nullptr);
 
-		WNDCLASS wc = {};
-		wc.lpfnWndProc   = WndProc;
-		wc.hInstance     = Inst;
+		WNDCLASSEX wc;
+
+		ZeroMemory(&wc, sizeof(WNDCLASSEX));
+
+		wc.cbSize = sizeof(WNDCLASSEX);
+		wc.style = CS_HREDRAW | CS_VREDRAW;
+		wc.lpfnWndProc = WndProc;
+		wc.hInstance = Inst;
+		wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+		//wc.hbrBackground = (HBRUSH)COLOR_WINDOW;
 		wc.lpszClassName = class_name;
 
-		RegisterClass(&wc);
+		RegisterClassEx(&wc);
 
-		hwnd = CreateWindowEx(0,class_name,Title,WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,
-				CW_USEDEFAULT, width, height,nullptr,nullptr,Inst,nullptr);
+		RECT wr = {0, 0, 800, 600};
+		AdjustWindowRect(&wr, WS_OVERLAPPEDWINDOW, FALSE);
 
-		if (hwnd == nullptr)
-		{
-			std::exit(-11);
-		}
+		hwnd = CreateWindowEx(NULL,class_name,Title,WS_OVERLAPPEDWINDOW,300,300,wr.right - wr.left,wr.bottom - wr.top,nullptr,nullptr,Inst,nullptr);
 
 		ShowWindow(hwnd, SW_SHOWDEFAULT);
 	}
@@ -168,6 +172,16 @@ bool sc_temp;
 	HWND CrossWindow::getWindow()
 	{
 		return hwnd;
+	}
+
+	float CrossWindow::getWindowW()
+	{
+		return width;
+	}
+
+	float CrossWindow::getWindowH()
+	{
+		return height;
 	};
 #endif
 }
