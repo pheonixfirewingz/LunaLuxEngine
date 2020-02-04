@@ -54,7 +54,7 @@ Current Known Bugs
 
 Minimum Start Code
 ------------------------------------------------------------------------------------------------
-extend Game class in "#include <LunaLuxEngineSDK/IGame.h>".
+extend Game class in "#include <LLESDK/IGame.h>".
 The pre boot is used to configure required variables in the game class.
 - preBoot();
 the game class is called by the engine as for the main game loop and inatalization faze this is done through
