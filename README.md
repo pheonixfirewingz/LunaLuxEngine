@@ -2,11 +2,11 @@
 LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 
 ----------------------------------------------------------------------------------------------
-# Copyright © Echo Studios 2019-2020
+# Copyright ©Phoenixfirewingz 2019-2020
 
 you may use our code in your projects but clear public credit must be given
 
-Note: if someone contributes to the engine out side of Echo-Studios© throught pull request their code will be under the MIT licence
+Note: if someone contributes to the engine out side of Phoenixfirewingz© throught pull request their code will be under the MIT licence
 
 #Contribution rules
 ----------------------------------------------------------------------------------------------
