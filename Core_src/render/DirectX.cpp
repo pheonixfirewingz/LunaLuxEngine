@@ -32,8 +32,9 @@ VERTEX OurVertices[] =
 				{-0.45f, -0.5f, 0.0f, COLOUR(0.0f, 0.0f, 1.0f, 1.0f)}
 		};
 
-void IRender::initRender(window_api::CrossWindow* win)
+void DXRenderer::initRender(window_api::CrossWindow* win)
 {
+	std::printf("%s\n", "DirectX 11 mode(aka native windows mode)");
 // create a struct to hold information about the swap chain
 	DXGI_SWAP_CHAIN_DESC scd;
 
@@ -144,7 +145,7 @@ void IRender::initRender(window_api::CrossWindow* win)
 	devcon->IASetInputLayout(pLayout);
 }
 
-void IRender::destroyRender()
+void DXRenderer::destroyRender()
 {
 	// close and release all existing COM objects
 	pLayout->Release();
@@ -158,7 +159,7 @@ void IRender::destroyRender()
 	devcon->Release();
 }
 float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
-void IRender::fireRender()
+void DXRenderer::fireRender()
 {
 	// clear the back buffer to a deep blue
 	devcon->ClearRenderTargetView(backbuffer, color);
@@ -180,7 +181,7 @@ void IRender::fireRender()
 	swapchain->Present(0, 0);
 }
 
-void IRender::prepRender()
+void DXRenderer::prepRender()
 {
 
 }

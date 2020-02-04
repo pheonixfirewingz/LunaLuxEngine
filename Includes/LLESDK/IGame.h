@@ -1,22 +1,24 @@
 #pragma once
 
 #include "types.h"
-
 class Game
 {
 private:
-    char* Name = nullptr;
-    int16  Win_Width,Win_Height;
+	bool  usenative;
+    char* name = nullptr;
+    int16  win_width = 0 ,win_height = 0;
 public:
-	inline char* getGameName() const { return Name; };
-	inline int16 getWindowWidth() const {return Win_Width;}
-	inline int16 getWindowHeight() const {return Win_Height;}
+	[[nodiscard]] inline bool  getShouldUsNativeRenderer() const { return usenative;}
+	[[nodiscard]] inline char* getGameName() const { return name; };
+	[[nodiscard]] inline int16 getWindowWidth() const {return win_width;}
+	[[nodiscard]] inline int16 getWindowHeight() const {return win_height;}
 	virtual void preBoot() {}
 	virtual void GameBoot() {}
 	virtual void GameMain() {}
 protected:
-	inline void setGameName(char* name) { Name = name;}
-	inline void setWindowSize(int16 w,int16 h) { Win_Width = w; Win_Height = h;}
+	inline void setNativeMode(bool inusenative) { usenative = inusenative;}
+	inline void setGameName(char* inname) { name = inname;}
+	inline void setWindowSize(int16 w,int16 h) { win_width = w; win_height = h;}
 
 
 };

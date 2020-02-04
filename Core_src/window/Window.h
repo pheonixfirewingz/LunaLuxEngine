@@ -4,7 +4,6 @@
 #ifdef WIN32
 #include <windows.h>
 #include <windowsx.h>
-#define IDI_ICON1 101
 #endif
 #ifdef __linux__
 #include<cstdio>
@@ -13,8 +12,6 @@
 #include<X11/X.h>
 #include<X11/Xlib.h>
 #include<GL/glx.h>
-#endif
-#ifdef MAC
 #endif
 namespace LunaLuxEngine::window_api
 {
@@ -39,8 +36,6 @@ class CrossWindow
         Window                  win{};
         XWindowAttributes       gwa{};
         XEvent                  xev{};
-#endif
-#ifdef MAC
 #endif
 protected:
     char* Title = (char*)"temp";

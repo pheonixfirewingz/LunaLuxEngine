@@ -1,28 +1,25 @@
 //
 // Created by luket on 16/01/2020.
 //
-#ifdef __linux__
-#include <vulkan/vulkan.h>
-#include "IRender.h"
-#include "../window/Window.h"
+#include "Vulkan.h"
+using namespace LunaLuxEngine;
 
-void IRender::initRender()
+void VKRenderer::initRender(window_api::CrossWindow*)
+{
+	std::printf("%s\n", "Vulkan mode");
+}
+
+void VKRenderer::destroyRender()
 {
 
 }
 
-void IRender::destroyRender()
+void VKRenderer::fireRender()
 {
 
 }
 
-void IRender::fireRender()
+void VKRenderer::prepRender()
 {
 
 }
-
-void IRender::prepRender()
-{
-
-}
-#endif

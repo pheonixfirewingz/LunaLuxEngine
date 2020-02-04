@@ -7,12 +7,12 @@ namespace LunaLuxEngine
 	class IRender
 	{
 	public:
-		void initRender(window_api::CrossWindow*);
+		virtual void initRender(window_api::CrossWindow*) {};
 
-		void prepRender();
+		virtual void prepRender() {};
 
-		void fireRender();
+		virtual void fireRender() {};
 
-		void destroyRender();
+		virtual void destroyRender() {};
 	};
 }

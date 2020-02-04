@@ -1,5 +1,8 @@
 #include "LunaLuxEngineCore.h"
 #include <cstdio>
+
+
+
 using namespace LunaLuxEngine;
 
 void lunaLuxEngine::initEngine()
@@ -27,6 +30,13 @@ void lunaLuxEngine::initEngine()
 		std::printf("game Window Height not set");
 		std::exit(-1);
 	}
+#ifdef WIN32
+	if (m_game_main->getShouldUsNativeRenderer()) render = new DXRenderer();
+	else render = new VKRenderer();
+#endif
+#ifdef __linux__
+	render = new VKRenderer();
+#endif
 	window->setTitle(m_game_main->getGameName());
 	window->setSize(m_game_main->getWindowWidth(),m_game_main->getWindowHeight());
 	window->createWindow();

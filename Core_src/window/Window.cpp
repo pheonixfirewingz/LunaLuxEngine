@@ -1,47 +1,9 @@
 #include <chrono>
 #include "Window.h"
-#include "Window.h"
 #include "../LunaLuxEngineCore.h"
-
-#ifdef MAC
-GLFWwindow* win__;
-#endif
 
 namespace LunaLuxEngine::window_api
 {
-#ifdef MAC
-	void CrossWindow::updateWindow()
-	{
-		glfwSwapBuffers(win__);
-		glfwPollEvents();
-	}
-
-	void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-	{
-		glViewport(0,0,width,height);
-	}
-
-	void CrossWindow::createWindow()
-	{
-		if (!glfwInit())
-			throw std::invalid_argument( "Failed to initialize to GLFW" );
-
-		win__ = glfwCreateWindow(width, height, Title, NULL, NULL);
-		glfwSetFramebufferSizeCallback(win__, framebuffer_size_callback);
-
-		if (!win__)
-		{
-			glfwTerminate();
-			throw std::invalid_argument( "Failed to create to Window" );
-		}
-		glfwMakeContextCurrent(win__);
-	}
-
-	void CrossWindow::destoryWindow()
-	{
-		glfwTerminate();
-	}
-#endif
 #ifdef __linux__
     void CrossWindow::updateWindow()
     {

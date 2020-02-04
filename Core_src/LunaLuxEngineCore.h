@@ -5,6 +5,8 @@
 #include <LLESDK/IGame.h>
 #include <LLESDK/Common_Header.h>
 #include "render/IRender.h"
+#include "render/DirectX.h"
+#include "render/Vulkan.h"
 #include "window/Window.h"
 
 #define LLE LunaLuxEngine::lunaLuxEngine::get();
@@ -14,7 +16,7 @@ namespace LunaLuxEngine
 	{
 	private:
 		bool _2DOr3D_ = false;
-		const static bool debug_level_0 = false;
+		const static bool debug_level_0 = true;
 		Game* m_game_main = nullptr;
 	private:
 		void initEngine();
@@ -22,7 +24,7 @@ namespace LunaLuxEngine
 	protected:
 		window_api::CrossWindow* window = new window_api::CrossWindow();
 		Physics::LunaLuxEnginePhysics* Core_Physics_Controller = new Physics::LunaLuxEnginePhysics();
-		IRender* render = new IRender();
+		IRender* render;
 	public:
 		static lunaLuxEngine* get()
 		{
