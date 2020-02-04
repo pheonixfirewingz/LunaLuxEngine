@@ -1,20 +1,37 @@
-# LunaLuxEngine V0.0.1
+# LunaLuxEngine V0.0.2
 LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 
 ----------------------------------------------------------------------------------------------
-# Copyright ©Phoenixfirewingz 2019-2020
+# LICENCE
+Copyright 2020 Phoenixfirewingz
 
-you may use our code in your projects but clear public credit must be given
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Note: if someone contributes to the engine out side of Phoenixfirewingz© throught pull request their code will be under the MIT licence
+you can only used this software free if you are a Known Group or Game Studio To contribute to the Engine's Development.
+if you are not a Known Group or Game Studio To contribute to the Engine's Development then you must give Clean undesputed Evidence that you used this software.
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Contribution rules
 ----------------------------------------------------------------------------------------------
 - keep formatting the same as the rest of the project
+- focuse on speed and optamization
 - if is a class you made or patched note it at the top of the class
-- all notes (first party code changes to mutch to add notes before beta)
 
 ----------------------------------------------------------------------------------------------
+# Formatting
+----------------------------------------------------------------------------------------------
+- cammel Case for names of functions
+- all lower clase for private varables
+- all upper case for Public varables
+- used the Visual Studios default code format for brackets and indents
+- if and else statements with 1 funtion or opperation in them don't need brakets
+- naming convention must be understandable with out notes
+- if code is final and will not be changes detailed notes must be added
+- if code will be changed basic notes must be added for other devs to understand
+
 # TODO
 -------------When-Get-Mac--------------------
 - create Window using cocoa for mac
@@ -31,16 +48,17 @@ Supported Platforms
 
 Planned Platforms
 -----------------------------------------------------------------------------------------------
- - Windows
- - Linux (x11)(not Planning to Support wayland yet)
- - OSX
+ - Windows 10
+ - Linux ubuntu 18.04 STL (x11 window Manager)(no for Support wayland Window Manager)
+ - OSX high mountain
 
 Planned Platforms (after decktop)
 -----------------------------------------------------------------------------------------------
- - IOS
- - Android
- - Xbox
-
+ - IOS 13 and up
+ - Android api 20 and up
+ - Xbox One and up
+ - PlayStation 4 and up
+ - Switch (versions unknown)
 Working Progress
 ------------------------------------------------------------------------------------------------
 - Cross platform window (will make this standalone in the future for public use)
