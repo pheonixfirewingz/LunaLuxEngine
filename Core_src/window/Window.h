@@ -38,29 +38,32 @@ class CrossWindow
         XEvent                  xev{};
 #endif
 protected:
-    char* Title = (char*)"temp";
-	int16 width = 800,  height = 600;
+        char* Title = (char*)"temp";
+        int16 width = 800,  height = 600;
 public:
-	bool WIN_SHOULD_CLOSE = false;
-	void createWindow();
-	void setTitle(char* intitle)
-	{
-		Title = intitle;
-	};
-	void setSize(int16 inwidth,int inheight)
-	{
-		width = inwidth;
-		height = inheight;
-	};
-	bool shouldClose()
-	{
-		return  WIN_SHOULD_CLOSE;
-	};
-	void updateWindow();
-	void destoryWindow();
+        bool WIN_SHOULD_CLOSE = false;
+        void createWindow();
+        void setTitle(char* intitle)
+        {
+            Title = intitle;
+        };
+        void setSize(int16 inwidth,int inheight)
+        {
+            width = inwidth;
+            height = inheight;
+        };
+        char* getTitle()
+        {
+            return Title;
+        };
+        bool shouldClose()
+        {
+            return  WIN_SHOULD_CLOSE;
+        };
+        void updateWindow();
+        void destoryWindow();
 
-		FLOAT getWindowW();
-
-		FLOAT getWindowH();
+		float getWindowW();
+		float getWindowH();
 	};
 }

@@ -15,7 +15,6 @@ namespace LunaLuxEngine::window_api
                 XGetWindowAttributes(dpy, win, &gwa);
                 break;
             case ConfigureNotify:
-                glViewport(0, 0, xev.xconfigure.width, xev.xconfigure.height);
                 break;
                 //TODO fix this error not fatal to running but will not shutdown engine correctly
 
