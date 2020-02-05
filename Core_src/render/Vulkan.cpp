@@ -62,7 +62,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
 void VKRenderer::destroyRender()
 {
-
+    instance = nullptr;
 }
 
 void VKRenderer::fireRender()

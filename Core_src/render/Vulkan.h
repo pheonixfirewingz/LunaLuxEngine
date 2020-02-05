@@ -9,7 +9,7 @@
 #include <vulkan/vulkan.h>
 #include "../window/Window.h"
 #include <vector>
-#ifndef WIN32
+#ifdef WIN32
 #include <windows.h>
 #endif
 
