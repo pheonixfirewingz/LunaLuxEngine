@@ -68,6 +68,7 @@ Current Known Bugs
 ------------------------------------------------------------------------------------------------
 - Closing dose not work properly on linux x11
 - DirectX 11 Shaders not being compiled
+- Windows Vulkan Renderer backup (Exception thrown at 0x00007FF8384BFF20 (vulkan-1.dll) in TestGame.exe: 0xC0000005: Access violation reading location 0x0000000000000000. occurred)
 
 Minimum Start Code
 ------------------------------------------------------------------------------------------------

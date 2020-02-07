@@ -11,27 +11,44 @@
 #include <vector>
 #ifdef WIN32
 #include <windows.h>
+#include <vulkan/vulkan_win32.h>
+#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_win32_surface" 
 #endif
+#ifdef __linux__
+#include<X11/X.h>
+#include<X11/Xlib.h>
+#include<vulkan/vulkan_xlib.h>
+#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_xlib_surface" 
+#endif
+
 
 namespace LunaLuxEngine
 {
 	class VKRenderer : public IRender
     {
     private:
+#define CHECK(result) \
+if(result != VK_SUCCESS) std::exit(-5);
+#define CHECKB(result) \
+if(result != true) std::exit(-6);
+#define CHECKP(result) \
+if(result == nullptr) std::exit(-7);
+
 	    VkInstance instance = nullptr;
 	    VkSurfaceKHR surface = nullptr;
 	    VkPhysicalDevice pDevice = nullptr;
 	    VkDevice device = nullptr;
 	    VkSwapchainKHR swapChain = nullptr;
 	    VkImage* image = nullptr;
-	    VkImageView image_v = nullptr;
+	    VkImageView* image_v = nullptr;
 	    VkRenderPass renderPass = nullptr;
 	    VkFramebuffer* framebuffer = nullptr;
 	    VkCommandBuffer commandBuffer = nullptr;
 	    VkBuffer vertexInputBuffer = nullptr;
 	    VkPipeline pipeline = nullptr;
 	    VkPipelineLayout pipelineLayout = nullptr;
-	    const char *extentions[3] = {"VK_KHR_surface","VK_KHR_win32_surface","VK_EXT_debug_report"};
+		PFN_vkDebugReportMessageEXT   vkDebugReportMessageEXT = reinterpret_cast<PFN_vkDebugReportMessageEXT>(vkGetInstanceProcAddr(instance, "vkDebugReportMessageEXT"));
+		VkDebugReportCallbackEXT debug_ext = nullptr;
     public:
 		void initRender(window_api::CrossWindow*) override;
 		void prepRender() override;

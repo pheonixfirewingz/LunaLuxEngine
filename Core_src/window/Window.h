@@ -23,19 +23,23 @@ class CrossWindow
         HWND hwnd{};
         HINSTANCE Inst{};
         public:
-        HWND getWindow();
+        inline HWND getWindow()
+        {
+            return hwnd;
+        };
         LPCSTR class_name = (LPCSTR)"LunaLuxEngine_WindowClass";
 #endif
 #ifdef __linux__
     private:
         Display                 *dpy{};
         Window                  root{};
-        XVisualInfo             *vi{};
-        Colormap                cmap{};
-        XSetWindowAttributes    swa{};
         Window                  win{};
-        XWindowAttributes       gwa{};
         XEvent                  xev{};
+        inline Display getDisplay()
+        {
+            return dpy;
+        };
+
 #endif
 protected:
         char* Title = (char*)"temp";
@@ -43,27 +47,33 @@ protected:
 public:
         bool WIN_SHOULD_CLOSE = false;
         void createWindow();
-        void setTitle(char* intitle)
+        inline void setTitle(char* intitle)
         {
             Title = intitle;
         };
-        void setSize(int16 inwidth,int inheight)
+        inline void setSize(int16 inwidth,int inheight)
         {
             width = inwidth;
             height = inheight;
         };
-        char* getTitle()
+        inline char* getTitle()
         {
             return Title;
         };
-        bool shouldClose()
+        inline bool shouldClose()
         {
             return  WIN_SHOULD_CLOSE;
         };
         void updateWindow();
         void destoryWindow();
 
-		float getWindowW();
-		float getWindowH();
+		inline float getWindowW()
+        {
+            return width;
+        };
+		inline float getWindowH()
+		{
+			return height;
+		};
 	};
 }

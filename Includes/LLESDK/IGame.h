@@ -4,7 +4,7 @@
 class Game
 {
 private:
-	bool  usenative;
+	bool  usenative = false;
     char* name = nullptr;
     int16  win_width = 0 ,win_height = 0;
 public:

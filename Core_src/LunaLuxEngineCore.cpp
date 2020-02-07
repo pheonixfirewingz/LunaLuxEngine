@@ -8,11 +8,13 @@ using namespace LunaLuxEngine;
 void lunaLuxEngine::initEngine()
 {
     if(debug_level_0) std::printf("%s\n", "loading LunaLuxEngine");
+
     if (m_game_main == nullptr)
     {
         std::printf("no game class given");
         std::exit(-1);
     }
+
     m_game_main->preBoot();
 
     if(m_game_main->getGameName() == nullptr)
@@ -37,13 +39,15 @@ void lunaLuxEngine::initEngine()
 #ifdef __linux__
 	render = new VKRenderer();
 #endif
+	if (debug_level_0) render->toggleDebug();
+
 	window->setTitle(m_game_main->getGameName());
 	window->setSize(m_game_main->getWindowWidth(),m_game_main->getWindowHeight());
 	window->createWindow();
 	render->initRender(window);
 	Core_Physics_Controller->initPhysicsEngine();
-	if (m_game_main == nullptr)
-		std::exit(-9);
+
+	if (m_game_main == nullptr) std::exit(-9);
 }
 
 int8 lunaLuxEngine::updateEngine()
@@ -64,14 +68,14 @@ void lunaLuxEngine::runEngine(Game* game)
 {
 	m_game_main = game;
     initEngine();
-	std::printf("%s\n", "loaded LunaLuxEngine");
+	if (debug_level_0) std::printf("%s\n", "loaded LunaLuxEngine");
 	m_game_main->GameBoot();
     if(debug_level_0) std::printf("%s\n\n", "Starting LunaLuxEngine Runloop");
 	while (!window->shouldClose())
 	{
 		updateEngine();
 	}
-    std::printf("\n%s", "shutdown LunaLuxEngine");
+	if (debug_level_0) std::printf("\n%s", "shutdown LunaLuxEngine");
 	render->destroyRender();
 	window->destoryWindow();
 	std::exit(0);

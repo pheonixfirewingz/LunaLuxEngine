@@ -4,6 +4,7 @@
 
 namespace LunaLuxEngine::window_api
 {
+    bool sc_temp;
 #ifdef __linux__
     void CrossWindow::updateWindow()
     {
@@ -39,36 +40,21 @@ namespace LunaLuxEngine::window_api
 
         root = DefaultRootWindow(dpy);
 
-        vi = nullptr;
-
-        if(vi == nullptr)
-        {
-            std::printf("\n\tno appropriate visual found\n\n");
-            std::exit(0);
-        }
-
-        cmap = XCreateColormap(dpy, root, vi->visual, AllocNone);
-
-        swa.colormap = cmap;
-        swa.event_mask = ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask;
-
-        win = XCreateWindow(dpy, root, 0, 0, width, height, 0, vi->depth, InputOutput, vi->visual, CWColormap | CWEventMask, &swa);
+        win = XCreateWindow(dpy, root, 0, 0, width, height, 0, nullptr, InputOutput, nullptr, CWColormap | CWEventMask,nullptr);
 
         XMapWindow(dpy, win);
-
+		XSync(dpy, true);
         XStoreName(dpy, win, Title);
     }
 
     void CrossWindow::destoryWindow()
     {
-        XFree(vi);
         XDestroyWindow(dpy, win);
         XSync(dpy, false);
         XCloseDisplay(dpy);
     }
 #endif
 #ifdef WIN32
-bool sc_temp;
 	void CrossWindow::updateWindow()
 	{
 		if (sc_temp) WIN_SHOULD_CLOSE = true;
@@ -129,20 +115,5 @@ bool sc_temp;
 		DestroyWindow(hwnd);
 		UnregisterClassW((LPWSTR)class_name, Inst);
 	}
-
-	HWND CrossWindow::getWindow()
-	{
-		return hwnd;
-	}
-
-	float CrossWindow::getWindowW()
-	{
-		return width;
-	}
-
-	float CrossWindow::getWindowH()
-	{
-		return height;
-	};
 #endif
 }
