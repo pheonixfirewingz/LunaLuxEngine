@@ -1,0 +1,1680 @@
+loading LunaLuxEngine
+Vulkan mode
+Your Gpu Is(GPU NAME):Intel(R) UHD Graphics 620 (DRIVER VERSION):1644744
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\ki13
+0350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\F
+ileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverS
+tore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileRepository
+\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\
+DriverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\Driver
+Store\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\F
+ileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\Dr
+iverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\ki13
+0350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki
+130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki
+130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\Driver
+Store\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\
+DriverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore
+\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverS
+tore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileR
+epository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverStore\F
+ileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\D
+riverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverS
+tore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\Dr
+iverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileRepository
+\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileRepository
+\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileR
+epository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore
+\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileR
+epository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_swapchain (Unknown) version 0.0.70
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_swapchain (Unknown) version 0.0.70
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_swapchain (Unknown) version 0.0.70
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_swapchain (Unknown) version 0.0.70
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_swapchain (Unknown) version 0.0.70
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_memory (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_memory (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_memory (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_external_memory_host (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_external_memory_host (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_external_memory_host (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_external_memory_host (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_external_memory_host (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_semaphore (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_semaphore (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_semaphore (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_fence (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_fence (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_fence (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (Unknown) version 0.0
+.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance1 (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance1 (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance1 (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance1 (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance1 (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance3 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance3 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance3 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance3 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance3 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_push_descriptor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_push_descriptor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_push_descriptor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_push_descriptor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_push_descriptor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (Unknown) version 0.0.1
+
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_multiview (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_multiview (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_multiview (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_multiview (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_multiview (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_16bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_16bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_16bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_16bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_16bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_8bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_8bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_8bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_8bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_8bit_storage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (Unknown) version 0.0
+.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_variable_pointers (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_variable_pointers (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_variable_pointers (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_variable_pointers (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_variable_pointers (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_device_group (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_device_group (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_device_group (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_device_group (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_device_group (Unknown) version 0.0.3
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (Unknown) version 0.0.
+1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (Unknown) version 0.0.1
+
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_sample_locations (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_sample_locations (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_sample_locations (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_sample_locations (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_sample_locations (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_image_format_list (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_image_format_list (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_image_format_list (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_image_format_list (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_image_format_list (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (Unknown) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (Unknown) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Loading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Loading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Loading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validati
+on.dll
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Loading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Loading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Inserted device layer VK_LAYER_KHRONOS_validation (C:\VulkanSDK\1.2.131.1\Bin\.\VkL
+ayer_khronos_validation.dll)
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Inserted device layer VK_LAYER_KHRONOS_validation (C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer
+_khronos_validation.dll)
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Inserted device layer VK_LAYER_KHRONOS_validation (C:\VulkanSDK\1.2.131.1\B
+in\.\VkLayer_khronos_validation.dll)
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Inserted device layer VK_LAYER_KHRONOS_validation (C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_k
+hronos_validation.dll)
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Inserted device layer VK_LAYER_KHRONOS_validation (C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_k
+hronos_validation.dll)
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\ki13
+0350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_swapchain (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.70
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\F
+ileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_memory (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverS
+tore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_memory_win32 (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_external_memory_host (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_semaphore (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_semaphore_win32 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileRepository
+\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_fence (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_external_fence_win32 (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_get_memory_requirements2 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_bind_memory2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_dedicated_allocation (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\
+DriverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_sampler_mirror_clamp_to_edge (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance1 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance2 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_maintenance3 (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\Driver
+Store\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_shader_draw_parameters (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\F
+ileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_push_descriptor (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\Dr
+iverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_descriptor_update_template (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\ki13
+0350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_multiview (C:\WINDOWS\System32\DriverStore\FileRepository\ki1303
+50.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\
+ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki
+130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_16bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki
+130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_8bit_storage (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\Driver
+Store\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_ballot (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_subgroup_vote (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\
+DriverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_storage_buffer_storage_class (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore
+\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_variable_pointers (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverSt
+ore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_relaxed_block_layout (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverS
+tore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_sampler_filter_minmax (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileRepository\k
+i130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_device_group (C:\WINDOWS\System32\DriverStore\FileRepository\ki1
+30350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.3
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_sampler_ycbcr_conversion (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileR
+epository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_post_depth_coverage (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverStore\F
+ileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\D
+riverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_viewport_index_layer (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\Fil
+eRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverS
+tore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_shader_stencil_export (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStore\Fi
+leRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\Dr
+iverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_conservative_rasterization (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileRepo
+sitory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileRepository
+\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_sample_locations (C:\WINDOWS\System32\DriverStore\FileRepository
+\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileR
+epository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_draw_indirect_count (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileRep
+ository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore
+\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_image_format_list (C:\WINDOWS\System32\DriverStore\FileRepositor
+y\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\
+FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\File
+Repository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\Driv
+erStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_vertex_attribute_divisor (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileR
+epository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileRepos
+itory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverSto
+re\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_EXT_descriptor_indexing (C:\WINDOWS\System32\DriverStore\FileReposit
+ory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.2
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileRe
+pository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileReposi
+tory\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStor
+e\FileRepository\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Device Extension: VK_KHR_create_renderpass2 (C:\WINDOWS\System32\DriverStore\FileReposito
+ry\ki130350.inf_amd64_696b7c6764071b63\.\igvk64.dll) version 0.0.1
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT:  [ VUID-VkSwapchainCreateInfoKHR-surface-01270 ] Object: 0x23636712238 (Type = 3) | vkCre
+ateSwapchainKHR(): pCreateInfo->surface is not known at this time to be supported for presentation by this device. The v
+kGetPhysicalDeviceSurfaceSupportKHR() must be called beforehand, and it must return VK_TRUE support with this surface fo
+r at least one queue family of this device. The Vulkan spec states: surface must be a surface that is supported by the d
+evice as determined using vkGetPhysicalDeviceSurfaceSupportKHR (https://www.khronos.org/registry/vulkan/specs/1.1-extens
+ions/html/vkspec.html#VUID-VkSwapchainCreateInfoKHR-surface-01270)
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT:  [ VUID-VkSwapchainCreateInfoKHR-surface-01270 ] Object: 0x23636712238 (Type = 3) | vkCre
+ateSwapchainKHR(): pCreateInfo->surface is not known at this time to be supported for presentation by this device. The v
+kGetPhysicalDeviceSurfaceSupportKHR() must be called beforehand, and it must return VK_TRUE support with this surface fo
+r at least one queue family of this device. The Vulkan spec states: surface must be a surface that is supported by the d
+evice as determined using vkGetPhysicalDeviceSurfaceSupportKHR (https://www.khronos.org/registry/vulkan/specs/1.1-extens
+ions/html/vkspec.html#VUID-VkSwapchainCreateInfoKHR-surface-01270)
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT:  [ VUID-VkSwapchainCreateInfoKHR-imageExtent-01274 ] Object: 0x23636712238 (Type = 3) | v
+kCreateSwapchainKHR() called with imageExtent = (1280,720), which is outside the bounds returned by vkGetPhysicalDeviceS
+urfaceCapabilitiesKHR(): currentExtent = (800,600), minImageExtent = (800,600), maxImageExtent = (800,600). The Vulkan s
+pec states: imageExtent must be between minImageExtent and maxImageExtent, inclusive, where minImageExtent and maxImageE
+xtent are members of the VkSurfaceCapabilitiesKHR structure returned by vkGetPhysicalDeviceSurfaceCapabilitiesKHR for th
+e surface (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-VkSwapchainCreateInfoKHR-i
+mageExtent-01274)
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT:  [ VUID-VkSwapchainCreateInfoKHR-imageExtent-01274 ] Object: 0x23636712238 (Type = 3) | v
+kCreateSwapchainKHR() called with imageExtent = (1280,720), which is outside the bounds returned by vkGetPhysicalDeviceS
+urfaceCapabilitiesKHR(): currentExtent = (800,600), minImageExtent = (800,600), maxImageExtent = (800,600). The Vulkan s
+pec states: imageExtent must be between minImageExtent and maxImageExtent, inclusive, where minImageExtent and maxImageE
+xtent are members of the VkSurfaceCapabilitiesKHR structure returned by vkGetPhysicalDeviceSurfaceCapabilitiesKHR for th
+e surface (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-VkSwapchainCreateInfoKHR-i
+mageExtent-01274)
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT:  [ VUID-VkSwapchainCreateInfoKHR-presentMode-01281 ] Object: 0x23636712238 (Type = 3) | v
+kCreateSwapchainKHR() called with a non-supported presentMode (i.e. VK_PRESENT_MODE_MAILBOX_KHR). The Vulkan spec states
+: presentMode must be one of the VkPresentModeKHR values returned by vkGetPhysicalDeviceSurfacePresentModesKHR for the s
+urface (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-VkSwapchainCreateInfoKHR-pres
+entMode-01281)
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT:  [ VUID-VkSwapchainCreateInfoKHR-presentMode-01281 ] Object: 0x23636712238 (Type = 3) | v
+kCreateSwapchainKHR() called with a non-supported presentMode (i.e. VK_PRESENT_MODE_MAILBOX_KHR). The Vulkan spec states
+: presentMode must be one of the VkPresentModeKHR values returned by vkGetPhysicalDeviceSurfacePresentModesKHR for the s
+urface (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-VkSwapchainCreateInfoKHR-pres
+entMode-01281)
+loaded LunaLuxEngine
+loaded gameStarting LunaLuxEngine Runloop
+
+
+shutdown LunaLuxEngine
+VK_DEBUG_REPORT_ERROR_BIT_EXT:  [ VUID-vkDestroyDevice-device-00378 ] Object: 0x3ba5830000000006 (Type = 14) | OBJ ERROR
+ : For VkDevice 0x23636712238[], VkImageView 0x3ba5830000000006[] has not been destroyed. The Vulkan spec states: All ch
+ild objects created on device must have been destroyed prior to destroying device (https://www.khronos.org/registry/vulk
+an/specs/1.1-extensions/html/vkspec.html#VUID-vkDestroyDevice-device-00378)
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT:  [ VUID-vkDestroyDevice-device-00378 ] Object: 0x3ba5830000000006 (Type = 14) | OBJ ERROR
+ : For VkDevice 0x23636712238[], VkImageView 0x3ba5830000000006[] has not been destroyed. The Vulkan spec states: All ch
+ild objects created on device must have been destroyed prior to destroying device (https://www.khronos.org/registry/vulk
+an/specs/1.1-extensions/html/vkspec.html#VUID-vkDestroyDevice-device-00378)
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT:  [ VUID-vkDestroyDevice-device-00378 ] Object: 0x4c5b620000000007 (Type = 14) | OBJ ERROR
+ : For VkDevice 0x23636712238[], VkImageView 0x4c5b620000000007[] has not been destroyed. The Vulkan spec states: All ch
+ild objects created on device must have been destroyed prior to destroying device (https://www.khronos.org/registry/vulk
+an/specs/1.1-extensions/html/vkspec.html#VUID-vkDestroyDevice-device-00378)
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT:  [ VUID-vkDestroyDevice-device-00378 ] Object: 0x4c5b620000000007 (Type = 14) | OBJ ERROR
+ : For VkDevice 0x23636712238[], VkImageView 0x4c5b620000000007[] has not been destroyed. The Vulkan spec states: All ch
+ild objects created on device must have been destroyed prior to destroying device (https://www.khronos.org/registry/vulk
+an/specs/1.1-extensions/html/vkspec.html#VUID-vkDestroyDevice-device-00378)
+
+VK_DEBUG_REPORT_INFORMATION_BIT_EXT: Unloading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+
+
+VK_DEBUG_REPORT_WARNING_BIT_EXT: Unloading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+
+VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: Unloading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_valida
+tion.dll
+
+VK_DEBUG_REPORT_ERROR_BIT_EXT: Unloading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+
+VK_DEBUG_REPORT_DEBUG_BIT_EXT: Unloading layer library C:\VulkanSDK\1.2.131.1\Bin\.\VkLayer_khronos_validation.dll
+VUID-vkDestroyInstance-instance-00629(ERROR / SPEC): msgNum: 0 - OBJ ERROR : For VkInstance 0x23636074690[], VkSurfaceKH
+R 0xf8ce070000000002[] has not been destroyed. The Vulkan spec states: All child objects created using instance must hav
+e been destroyed prior to destroying instance (https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.
+html#VUID-vkDestroyInstance-instance-00629)
+    Objects: 1
+        [0] 0xf8ce070000000002, type: 1000000000, name: NULL
+
+Process finished with exit code -1073741819 (0xC0000005)
