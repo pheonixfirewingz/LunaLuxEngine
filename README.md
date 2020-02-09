@@ -64,7 +64,6 @@ Working Progress
 
 Current Known Bugs
 ------------------------------------------------------------------------------------------------
-- Closing dose not work properly on linux x11
 - DirectX 11 Shaders not being compiled
 - Random Crashes occur with the mouse movement? trying to under why only happens on boot.
 Minimum Start Code
