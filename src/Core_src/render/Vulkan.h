@@ -7,20 +7,11 @@
 
 #include "IRender.h"
 #include <vulkan/vulkan.h>
-#include "../window/Window.h"
-#include <vector>
-#ifdef WIN32
-#include <windows.h>
 #include <vulkan/vulkan_win32.h>
-#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_win32_surface" 
-#endif
-#ifdef __linux__
-#include<X11/X.h>
-#include<X11/Xlib.h>
-#include<vulkan/vulkan_xlib.h>
-#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_xlib_surface" 
-#endif
+#include "../window/Window.h"
+#include <windows.h>
 
+#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_win32_surface" 
 
 namespace LunaLuxEngine
 {
@@ -28,11 +19,11 @@ namespace LunaLuxEngine
     {
     private:
 #define CHECK(result) \
-if(result != VK_SUCCESS) std::exit(-5);
-#define CHECKB(result) \
-if(result != true) std::exit(-6);
-#define CHECKP(result) \
-if(result == nullptr) std::exit(-7);
+if(result != VK_SUCCESS) exit(EXIT_FAILURE);
+#define CHECK_B(result) \
+if(result != true) exit(EXIT_FAILURE);
+#define CHECK_P(result) \
+if(result == nullptr) exit(EXIT_FAILURE);
 
 	    VkInstance instance = nullptr;
 	    VkSurfaceKHR surface = nullptr;
@@ -47,8 +38,7 @@ if(result == nullptr) std::exit(-7);
 	    VkBuffer vertexInputBuffer = nullptr;
 	    VkPipeline pipeline = nullptr;
 	    VkPipelineLayout pipelineLayout = nullptr;
-		PFN_vkDebugReportMessageEXT   vkDebugReportMessageEXT = reinterpret_cast<PFN_vkDebugReportMessageEXT>(vkGetInstanceProcAddr(instance, "vkDebugReportMessageEXT"));
-		VkDebugReportCallbackEXT debug_ext = nullptr;
+	    VkDebugReportCallbackEXT debug_ext = nullptr;
     public:
 		void initRender(window_api::CrossWindow*) override;
 		void prepRender() override;

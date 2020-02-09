@@ -1,24 +1,16 @@
 #pragma once
+#include <LLESDK/types.h>
+#define WIN32_LEAN_AND_MEAN
+#define STRICT
 
-#include <LLESDK/Common_Header.h>
-#ifdef WIN32
 #include <windows.h>
 #include <windowsx.h>
-#endif
-#ifdef __linux__
-#include<cstdio>
-#include<thread>
-#include<cstdlib>
-#include<X11/X.h>
-#include<X11/Xlib.h>
-#include<GL/glx.h>
-#endif
+#define CWin LunaLuxEngine::window_api::CrossWindow::get()
+
 namespace LunaLuxEngine::window_api
 {
-
 class CrossWindow
 {
-#ifdef WIN32
     private:
         HWND hwnd{};
         HINSTANCE Inst{};
@@ -28,39 +20,26 @@ class CrossWindow
             return hwnd;
         };
         LPCSTR class_name = (LPCSTR)"LunaLuxEngine_WindowClass";
-#endif
-#ifdef __linux__
-    private:
-        Display                 *dpy{};
-        Window                  root{};
-        Window                  win{};
-        XEvent                  xev{};
-        inline Display getDisplay()
-        {
-            return dpy;
-        };
-
-#endif
 protected:
-        char* Title = (char*)"temp";
+        int8* Title = (int8*)"temp";
         int16 width = 800,  height = 600;
 public:
-        bool WIN_SHOULD_CLOSE = false;
+        LLEbool WIN_SHOULD_CLOSE = LLEfalse;
         void createWindow();
-        inline void setTitle(char* intitle)
+        inline void setTitle(int8* in_title)
         {
-            Title = intitle;
+            Title = in_title;
         };
-        inline void setSize(int16 inwidth,int inheight)
+        inline void setSize(int16 in_width,int in_height)
         {
-            width = inwidth;
-            height = inheight;
+            width = in_width;
+            height = in_height;
         };
-        inline char* getTitle()
+        inline int8* getTitle()
         {
             return Title;
         };
-        inline bool shouldClose()
+        inline LLEbool shouldClose()
         {
             return  WIN_SHOULD_CLOSE;
         };
@@ -75,5 +54,10 @@ public:
 		{
 			return height;
 		};
+		inline static CrossWindow* get()
+		{
+			static auto* window_ = new CrossWindow();
+			return window_;
+		}
 	};
 }

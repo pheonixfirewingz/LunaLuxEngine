@@ -42,8 +42,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Supported Platforms
 -----------------------------------------------------------------------------------------------
-- WINDOW(window finished. no renderer)
-- LINUX (window not finished)
+- WINDOW(window working on. working on renderers)
 
 Planned Platforms
 -----------------------------------------------------------------------------------------------
@@ -61,9 +60,7 @@ Planned Platforms (after decktop)
 
 Working Progress
 ------------------------------------------------------------------------------------------------
-- Cross platform window (will make this standalone in the future for public use)
-- Vulkan Renderer (Linux X11 Only)
-- Directx11 Renderer (window Desktop for now)
+- Vulkan Renderer
 
 Current Known Bugs
 ------------------------------------------------------------------------------------------------

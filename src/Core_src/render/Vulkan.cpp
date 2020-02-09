@@ -2,7 +2,8 @@
 // Created by luket on 16/01/2020.
 //
 #include "Vulkan.h"
-#include <string>
+#include <vector>
+
 using namespace LunaLuxEngine;
 
 VKAPI_ATTR VkBool32 VKAPI_CALL vkLLEDebugCallback(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT  objectType, uint64_t  object, size_t  location, int32_t  messageCode, const char* pLayerPrefix, const char* pMessage, void* pUserData)
@@ -10,57 +11,36 @@ VKAPI_ATTR VkBool32 VKAPI_CALL vkLLEDebugCallback(VkDebugReportFlagsEXT flags, V
     switch (flags)
     {
         case VK_DEBUG_REPORT_INFORMATION_BIT_EXT:
-            std::printf("\n%s%s\n", "VK_DEBUG_REPORT_INFORMATION_BIT_EXT: ", pMessage);
+            printf("\n%s%s\n", "VK_DEBUG_REPORT_INFORMATION_BIT_EXT: ", pMessage);
         case VK_DEBUG_REPORT_WARNING_BIT_EXT: 
-            std::printf("\n%s%s\n", "VK_DEBUG_REPORT_WARNING_BIT_EXT: ", pMessage);
+            printf("\n%s%s\n", "VK_DEBUG_REPORT_WARNING_BIT_EXT: ", pMessage);
         case VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT:
-            std::printf("\n%s%s\n", "VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: ", pMessage);
+            printf("\n%s%s\n", "VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: ", pMessage);
         case VK_DEBUG_REPORT_ERROR_BIT_EXT:
-            std::printf("\n%s%s\n", "VK_DEBUG_REPORT_ERROR_BIT_EXT: ", pMessage);
+            printf("\n%s%s\n", "VK_DEBUG_REPORT_ERROR_BIT_EXT: ", pMessage);
         case VK_DEBUG_REPORT_DEBUG_BIT_EXT: 
-            std::printf("\n%s%s\n", "VK_DEBUG_REPORT_DEBUG_BIT_EXT: ", pMessage);
+            printf("\n%s%s\n", "VK_DEBUG_REPORT_DEBUG_BIT_EXT: ", pMessage);
         default:
             return false;
     }
-    return false;
 }
 
 void VKRenderer::initRender(window_api::CrossWindow* win)
 {
-    if (EnabledDebug) std::printf("%s\n", "Vulkan mode");
+	if (EnabledDebug) printf("%s\n", "Vulkan Debug Log");
 	uint32 count = 0;
     VkResult result;
     /*==================================================================
-     *                                          CREATES INSTANCE
+     *						CREATES INSTANCE
      *=================================================================
      */
-    result = vkEnumerateInstanceLayerProperties(&count, nullptr);
-
-	CHECK(result);
-
-    std::vector<VkLayerProperties> instLay;
-    instLay.resize(count);
-
-    result = vkEnumerateInstanceLayerProperties(&count,&instLay[0]);
-
-    result = vkEnumerateInstanceExtensionProperties(nullptr,&count, nullptr);
-
-	CHECK(result);
-
-    std::vector<VkExtensionProperties> extPro;
-    extPro.resize(count);
-
-    result = vkEnumerateInstanceExtensionProperties(nullptr,&count, &extPro[0]);
-
-    CHECK(result);
-
     VkApplicationInfo ai = {};
     ai.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-    ai.pApplicationName = win->getTitle();
-    ai.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+    ai.pApplicationName = reinterpret_cast<const char*>(win->getTitle());
+    ai.applicationVersion = 1;
     ai.pEngineName = "LunaLuxEngine";
-    ai.engineVersion = VK_MAKE_VERSION(0,0,2);
-    ai.apiVersion = VK_API_VERSION_1_0;
+    ai.engineVersion = 002;
+    ai.apiVersion = 1;
     const char* lay[] = {"VK_LAYER_LUNARG_standard_validation"};
 #ifdef WIN32
     const char* ext[] = { "VK_KHR_surface",VK_KHR_PLATFOM_SUFRACE, VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
@@ -68,58 +48,58 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
     VkInstanceCreateInfo ici = {};
     ici.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     ici.flags = 0;
-    ici.pNext = 0;
+    ici.pNext = nullptr;
     ici.pApplicationInfo = &ai;
     ici.enabledLayerCount = 1;
     ici.ppEnabledLayerNames = lay;
     ici.enabledExtensionCount = 3;
-    ici.ppEnabledExtensionNames =ext ;
+    ici.ppEnabledExtensionNames = ext;
 
     result = vkCreateInstance(&ici, nullptr,&instance);
 
-    CHECK(result);
+    CHECK(result)
 
     if (EnabledDebug)
     {
-        VkDebugReportCallbackCreateInfoEXT deinf = {};
-        deinf.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT;
-        deinf.pNext = nullptr;
-        deinf.pfnCallback = vkLLEDebugCallback;
-        deinf.flags = VK_DEBUG_REPORT_INFORMATION_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT | VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT | VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_DEBUG_BIT_EXT;
-        deinf.pUserData = nullptr;
-        PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT = reinterpret_cast<PFN_vkCreateDebugReportCallbackEXT>(vkGetInstanceProcAddr(instance, "vkCreateDebugReportCallbackEXT"));
-        CHECKP(vkCreateDebugReportCallbackEXT);
-        result = vkCreateDebugReportCallbackEXT(instance, &deinf, nullptr, &debug_ext);
-        CHECK(result);
+        VkDebugReportCallbackCreateInfoEXT reportCallbackCreateInfoExt = {};
+		reportCallbackCreateInfoExt.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT;
+		reportCallbackCreateInfoExt.pNext = nullptr;
+		reportCallbackCreateInfoExt.pfnCallback = vkLLEDebugCallback;
+		reportCallbackCreateInfoExt.flags = 1 | 2 | 4 | 8 | 10;
+		reportCallbackCreateInfoExt.pUserData = nullptr;
+        auto vkCreateDebugReportCallbackEXT = reinterpret_cast<PFN_vkCreateDebugReportCallbackEXT>(vkGetInstanceProcAddr(instance, "vkCreateDebugReportCallbackEXT"));
+        CHECK_P(vkCreateDebugReportCallbackEXT)
+        result = vkCreateDebugReportCallbackEXT(instance, &reportCallbackCreateInfoExt, nullptr, &debug_ext);
+        CHECK(result)
     }
     /*==================================================================
-     *                                          CREATES PHYSICAL DEVICE
+     *					CREATES PHYSICAL DEVICE
      *=================================================================
      */
 	result = vkEnumeratePhysicalDevices(instance,&count, nullptr);
 
-    CHECK(result);
+    CHECK(result)
 
-    std::vector<VkPhysicalDevice> pdiv(count);
+    std::vector<VkPhysicalDevice> physical_device(count);
 
-    result = vkEnumeratePhysicalDevices(instance, &count, pdiv.data());
+    result = vkEnumeratePhysicalDevices(instance, &count, physical_device.data());
 
-    CHECK(result);
-    if (pdiv.size() == 1)
+    CHECK(result)
+    if (physical_device.size() == 1)
     {
-        pDevice = pdiv[0];
+        pDevice = physical_device[0];
 
         VkPhysicalDeviceProperties dProp;
 
         memset(&dProp, 0, sizeof dProp);
 
-        vkGetPhysicalDeviceProperties(pdiv[0], &dProp);
+        vkGetPhysicalDeviceProperties(physical_device[0], &dProp);
 
-        if (EnabledDebug) std::printf("%s%s%s%s%i\n","Your Gpu Is", "(GPU NAME):",dProp.deviceName," (DRIVER VERSION):", dProp.driverVersion);
+        if (EnabledDebug) printf("%s%s%s%s%i\n","Your Gpu Is", "(GPU NAME):",dProp.deviceName," (DRIVER VERSION):", dProp.driverVersion);
     }
     else
     {
-        std::vector<VkPhysicalDevice> pdiv_x(count);
+        std::vector<VkPhysicalDevice> physical_device_X(count);
 
         for (uint32 i = 0; i < count; i++)
         {
@@ -127,97 +107,89 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
             memset(&dProp, 0, sizeof dProp);
 
-            vkGetPhysicalDeviceProperties(pdiv[i], &dProp);
+            vkGetPhysicalDeviceProperties(physical_device[i], &dProp);
 
             if (dProp.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU)
             {
-                pdiv_x.push_back(pdiv[i]);
+				physical_device_X.push_back(physical_device[i]);
 
-                if (EnabledDebug)  std::printf("%s%s%s%s%i\n", "adding gpu to accepted list:", " (GPU NAME):", dProp.deviceName, " (DRIVER VERSION):", dProp.driverVersion);
+                if(EnabledDebug) printf("%s%s%s%s%i\n", "adding gpu to accepted list:", " (GPU NAME):", dProp.deviceName, " (DRIVER VERSION):", dProp.driverVersion);
             }
-            else
-            {
-                if (EnabledDebug) std::printf("%s%s%s%s%i\n", "rejected gpu from list:", " (GPU NAME):", dProp.deviceName, " (DRIVER VERSION):", dProp.driverVersion);
-            }
+            else if(EnabledDebug) printf("%s%s%s%s%i\n", "rejected gpu from list:", " (GPU NAME):", dProp.deviceName, " (DRIVER VERSION):", dProp.driverVersion);
         }
-        if (pdiv_x.size() == 1)
-        {
-            pDevice = pdiv_x[0];
-        }
+        if (physical_device_X.size() == 1) pDevice = physical_device_X[0];
         else
         {
-            if (EnabledDebug) std::printf("%s\n", "More that one non Intergrated Gpu Randomly choicing one");
-            int8 nam = rand() % pdiv.size() + 1;
-            pDevice = pdiv_x[nam];
+            if (EnabledDebug) printf("%s\n", "More that one non Intergrated Gpu Randomly choicing one");
+            int8 nam = rand() % physical_device.size() + 1;
+            pDevice = physical_device_X[nam];
         }
     }
     /*==================================================================
-     *                                          CREATES DEVICE
+     *							CREATES DEVICE
      *=================================================================
      */
     vkGetPhysicalDeviceQueueFamilyProperties(pDevice, &count, nullptr);
-    std::vector<VkQueueFamilyProperties> fampro (count);
-    vkGetPhysicalDeviceQueueFamilyProperties(pDevice, &count, fampro.data());
+    std::vector<VkQueueFamilyProperties> Family_Properties (count);
+    vkGetPhysicalDeviceQueueFamilyProperties(pDevice, &count, Family_Properties.data());
 
     bool found = false;
-    int8 indexnum;
+    int8 index_number = 0;
+
     for (uint32 i = 0; i < count; i++)
-    {
-        if (fampro[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)
+        if (Family_Properties[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)
         {
             found = true;
-            indexnum = i;
+			index_number = i;
         }
-    }
 
-    CHECKB(found);
+    CHECK_B(found);
 
-    float queueprioritys[] {  1.0f  };
+    float queue_p[] { 1.0f  };
 
-    VkDeviceQueueCreateInfo queinf = {};
+    VkDeviceQueueCreateInfo deviceQueueCreateInfo = {};
 
-    queinf.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+	deviceQueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
 
-    queinf.queueFamilyIndex = indexnum;
+	deviceQueueCreateInfo.queueFamilyIndex = index_number;
 
-    queinf.queueCount = 1;
+	deviceQueueCreateInfo.queueCount = 1;
 
-    queinf.pQueuePriorities = queueprioritys;
+	deviceQueueCreateInfo.pQueuePriorities = queue_p;
 
     const char* dLayers[] = { "VK_KHR_swapchain" };
 
-    VkDeviceCreateInfo devinf = {};
+    VkDeviceCreateInfo deviceCreateInfo = {};
 
-    devinf.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+	deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 
-    devinf.pNext = NULL;
+	deviceCreateInfo.pNext = nullptr;
 
-    devinf.queueCreateInfoCount = 1;
+	deviceCreateInfo.queueCreateInfoCount = 1;
 
-    devinf.pQueueCreateInfos = &queinf;
+	deviceCreateInfo.pQueueCreateInfos = &deviceQueueCreateInfo;
 
-    devinf.enabledExtensionCount = 1;
+	deviceCreateInfo.enabledExtensionCount = 1;
 
-    devinf.ppEnabledExtensionNames = dLayers;
+	deviceCreateInfo.ppEnabledExtensionNames = dLayers;
 
-    devinf.enabledLayerCount = 1;
+	deviceCreateInfo.enabledLayerCount = 1;
 
-    devinf.ppEnabledLayerNames = lay;
+	deviceCreateInfo.ppEnabledLayerNames = lay;
 
     VkPhysicalDeviceFeatures features = {};
     features.shaderClipDistance = VK_TRUE;
 
-    devinf.pEnabledFeatures = &features;
+	deviceCreateInfo.pEnabledFeatures = &features;
 
-  result = vkCreateDevice(pDevice, &devinf, NULL, &device);
+  result = vkCreateDevice(pDevice, &deviceCreateInfo, nullptr, &device);
 
   CHECK(result);
   /*==================================================================
-   *                                          CREATES SURFACE
+   *						CREATES SURFACE
    *==================================================================
    */
-#ifdef WIN32
-  HINSTANCE hInst = GetModuleHandle(NULL);
+  HINSTANCE hInst = GetModuleHandle(nullptr);
 
   VkWin32SurfaceCreateInfoKHR surf_ = {};
   surf_.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
@@ -227,15 +199,6 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
   result = vkCreateWin32SurfaceKHR(instance, &surf_, nullptr, &surface);
 
   CHECK(result);
-#endif
-#ifdef __linux__
-  VkXLibSurfaceCreateInfoKHR surf_ = {};
-  surf_.sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
-
-  result = vkCreateXLibSurfaceKHR(instance, &surf_, nullptr, &surface);
-
-  CHECK(result);
-#endif
 
   VkSurfaceCapabilitiesKHR surfaceCapabilities = {};
 
@@ -250,7 +213,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
   scrres.width = win->getWindowW();
 
   /*==================================================================
-   *                                          CREATES SWAPCHAIN
+   *						CREATES SWAPCHAIN
    *==================================================================
    */
 
@@ -272,39 +235,39 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
   result = vkCreateSwapchainKHR(device, &swcninf, nullptr, &swapChain);
 
-  CHECK(result);
+  CHECK(result)
 
  result =  vkGetSwapchainImagesKHR(device, swapChain, &count, nullptr);
  
- CHECK(result);
+ CHECK(result)
 
   image = new VkImage[0];
 
   result = vkGetSwapchainImagesKHR(device, swapChain, &count, image);
 
-  CHECK(result);
+  CHECK(result)
 
   image_v = new VkImageView[2];
 
   for (uint8 i = 0; i < 2; i++)
   {
-      VkImageViewCreateInfo imvwinf = {};
-      imvwinf.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
-      imvwinf.viewType = VK_IMAGE_VIEW_TYPE_2D;
-      imvwinf.format = VK_FORMAT_B8G8R8A8_UNORM;
-      imvwinf.components.r = VK_COMPONENT_SWIZZLE_R;
-      imvwinf.components.g = VK_COMPONENT_SWIZZLE_G;
-      imvwinf.components.b = VK_COMPONENT_SWIZZLE_B;
-      imvwinf.components.a = VK_COMPONENT_SWIZZLE_A;
-      imvwinf.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-      imvwinf.subresourceRange.baseMipLevel = 0;
-      imvwinf.subresourceRange.levelCount = 1;
-      imvwinf.subresourceRange.baseArrayLayer = 0;
-      imvwinf.subresourceRange.layerCount = 1;
-      imvwinf.image = image[i];
+      VkImageViewCreateInfo viewCreateInfo = {};
+	  viewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+	  viewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+	  viewCreateInfo.format = VK_FORMAT_B8G8R8A8_UNORM;
+	  viewCreateInfo.components.r = VK_COMPONENT_SWIZZLE_R;
+	  viewCreateInfo.components.g = VK_COMPONENT_SWIZZLE_G;
+	  viewCreateInfo.components.b = VK_COMPONENT_SWIZZLE_B;
+	  viewCreateInfo.components.a = VK_COMPONENT_SWIZZLE_A;
+	  viewCreateInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+	  viewCreateInfo.subresourceRange.baseMipLevel = 0;
+	  viewCreateInfo.subresourceRange.levelCount = 1;
+	  viewCreateInfo.subresourceRange.baseArrayLayer = 0;
+	  viewCreateInfo.subresourceRange.layerCount = 1;
+	  viewCreateInfo.image = image[i];
 
-      result = vkCreateImageView(device,&imvwinf , nullptr, &image_v[i]);
-      CHECK(result);
+      result = vkCreateImageView(device,&viewCreateInfo , nullptr, &image_v[i]);
+      CHECK(result)
   }
 
 }
@@ -314,8 +277,8 @@ void VKRenderer::destroyRender()
     vkDestroyDevice(device, nullptr);
     if (EnabledDebug)
     {
-        PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT = reinterpret_cast<PFN_vkDestroyDebugReportCallbackEXT>(vkGetInstanceProcAddr(instance, "vkDestroyDebugReportCallbackEXT"));
-        CHECKP(vkDestroyDebugReportCallbackEXT);
+        auto vkDestroyDebugReportCallbackEXT = reinterpret_cast<PFN_vkDestroyDebugReportCallbackEXT>(vkGetInstanceProcAddr(instance, "vkDestroyDebugReportCallbackEXT"));
+        CHECK_P(vkDestroyDebugReportCallbackEXT)
         vkDestroyDebugReportCallbackEXT(instance, debug_ext, nullptr);
     }
     vkDestroyInstance(instance, nullptr);

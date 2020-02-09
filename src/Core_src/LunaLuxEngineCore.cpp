@@ -1,82 +1,62 @@
 #include "LunaLuxEngineCore.h"
 #include <cstdio>
-
-
-
 using namespace LunaLuxEngine;
 
 void lunaLuxEngine::initEngine()
 {
-    if(debug_level_0) std::printf("%s\n", "loading LunaLuxEngine");
-
     if (m_game_main == nullptr)
     {
-        std::printf("no game class given");
-        std::exit(-1);
+		printf("no game class given");
+		exit(EXIT_FAILURE);
     }
-
     m_game_main->preBoot();
 
     if(m_game_main->getGameName() == nullptr)
     {
-        std::printf("game name null");
-        std::exit(-1);
+		printf("game name null");
+		exit(EXIT_FAILURE);
     }
 	if(m_game_main->getWindowWidth() == 0)
 	{
-		std::printf("game Window Width not set");
-		std::exit(-1);
+		printf("game Window Width not set");
+		exit(EXIT_FAILURE);
 	}
 	if(m_game_main->getWindowHeight() == 0)
 	{
-		std::printf("game Window Height not set");
-		std::exit(-1);
+		printf("game Window Height not set");
+		exit(EXIT_FAILURE);
 	}
-#ifdef WIN32
 	if (m_game_main->getShouldUsNativeRenderer()) render = new DXRenderer();
 	else render = new VKRenderer();
-#endif
-#ifdef __linux__
-	render = new VKRenderer();
-#endif
-	if (debug_level_0) render->toggleDebug();
-
-	window->setTitle(m_game_main->getGameName());
-	window->setSize(m_game_main->getWindowWidth(),m_game_main->getWindowHeight());
-	window->createWindow();
-	render->initRender(window);
+	render->toggleDebug();
+	CWin->setTitle(m_game_main->getGameName());
+	CWin->setSize(m_game_main->getWindowWidth(),m_game_main->getWindowHeight());
+	CWin->createWindow();
+	render->initRender(CWin);
 	Core_Physics_Controller->initPhysicsEngine();
-
-	if (m_game_main == nullptr) std::exit(-9);
 }
 
 int8 lunaLuxEngine::updateEngine()
 {
 	render->prepRender();
-	window->updateWindow();
+	CWin->updateWindow();
+	Core_Physics_Controller->updatePhysicsEngine();
 	m_game_main->GameMain();
 	render->fireRender();
-	return 0;
-}
-
-void lunaLuxEngine::set3D()
-{
-	_2DOr3D_ = true;
+	return EXIT_SUCCESS;
 }
 
 void lunaLuxEngine::runEngine(Game* game)
 {
 	m_game_main = game;
     initEngine();
-	if (debug_level_0) std::printf("%s\n", "loaded LunaLuxEngine");
 	m_game_main->GameBoot();
-    if(debug_level_0) std::printf("%s\n\n", "Starting LunaLuxEngine Runloop");
-	while (!window->shouldClose())
+	while (!CWin->shouldClose())
 	{
-		updateEngine();
+		if (updateEngine() != EXIT_SUCCESS) exit(EXIT_FAILURE);
+		//printf("%s%d%s%d\n","X:",Input::Input::get()->getPosX()," Y: ",Input::Input::get()->getPosY());
 	}
-	if (debug_level_0) std::printf("\n%s", "shutdown LunaLuxEngine");
 	render->destroyRender();
-	window->destoryWindow();
-	std::exit(0);
+	CWin->destoryWindow();
+	exit(0);
 }

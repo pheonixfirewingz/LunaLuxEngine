@@ -4,13 +4,13 @@
 
 #ifndef LUNALUXENGINE_LUNALUXENGINEPHYSICS_H
 #define LUNALUXENGINE_LUNALUXENGINEPHYSICS_H
-#include <LLESDK/Common_Header.h>
 namespace LunaLuxEngine::Physics
 {
     class LunaLuxEnginePhysics
     {
     public:
         void initPhysicsEngine();
+        void updatePhysicsEngine();
     };
 }
 

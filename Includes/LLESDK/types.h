@@ -1,6 +1,8 @@
 #ifndef _TYPES_
 #define _TYPES_
-
+/*
+ * used to keep reliance on one os
+ */
 #ifndef WIN32
 typedef __UINT64_TYPE__ uint64_t;
 typedef __UINT32_TYPE__ uint32_t;
@@ -34,4 +36,16 @@ typedef int8_t i8;
 typedef int16_t i16;
 typedef int32_t i32;
 typedef int64_t i64;
+
+typedef i8 LLEbool;
+#define LLEtrue 1;
+#define LLEfalse 0;
+
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE 1
+
+#define va_start __crt_va_start
+#define va_arg   __crt_va_arg
+#define va_end   __crt_va_end
+
 #endif

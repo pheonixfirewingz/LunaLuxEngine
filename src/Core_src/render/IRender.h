@@ -1,6 +1,4 @@
 #pragma once
-
-#include <LLESDK/Common_Header.h>
 #include "../window/Window.h"
 namespace LunaLuxEngine
 {

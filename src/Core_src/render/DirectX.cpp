@@ -7,10 +7,10 @@
 using namespace LunaLuxEngine;
 struct COLOUR
 {
-	FLOAT  r;
-	FLOAT  g;
-	FLOAT  b;
-	FLOAT  a;
+	float  r;
+	float  g;
+	float  b;
+	float  a;
 	COLOUR(float d, float d1, float d2, float d3)
 	{
 		this->r = d;
@@ -34,7 +34,6 @@ VERTEX OurVertices[] =
 
 void DXRenderer::initRender(window_api::CrossWindow* win)
 {
-	std::printf("%s\n", "DirectX 11 mode(aka native windows mode)");
 // create a struct to hold information about the swap chain
 	DXGI_SWAP_CHAIN_DESC scd;
 
@@ -50,22 +49,22 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	scd.OutputWindow = win->getWindow();                                // the window to be used
 	scd.SampleDesc.Count = 1;                               // how many multisamples
 	scd.SampleDesc.Quality = 0;                             // multisample quality level
-	scd.Windowed = TRUE;                                    // windowed/full-screen mode
+	scd.Windowed = true;                                    // windowed/full-screen mode
 	scd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;     // allow full-screen switching
 
 
 	// create a device, device context and swap chain using the information in the scd struct
-	D3D11CreateDeviceAndSwapChain(NULL,
+	D3D11CreateDeviceAndSwapChain(nullptr,
 			D3D_DRIVER_TYPE_HARDWARE,
+			nullptr,
 			NULL,
-			NULL,
-			NULL,
+			nullptr,
 			NULL,
 			D3D11_SDK_VERSION,
 			&scd,
 			&swapchain,
 			&dev,
-			NULL,
+			nullptr,
 			&devcon);
 
 
@@ -74,11 +73,11 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	swapchain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
 
 	// use the back buffer address to create the render target
-	dev->CreateRenderTargetView(pBackBuffer, NULL, &backbuffer);
+	dev->CreateRenderTargetView(pBackBuffer, nullptr, &backbuffer);
 	pBackBuffer->Release();
 
 	// set the render target as the back buffer
-	devcon->OMSetRenderTargets(1, &backbuffer, NULL);
+	devcon->OMSetRenderTargets(1, &backbuffer, nullptr);
 
 
 	// Set the viewport
@@ -103,14 +102,12 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	// create the vertex buffer
 	D3D11_BUFFER_DESC bd;
 	ZeroMemory(&bd, sizeof(bd));
-
 	bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
 	bd.ByteWidth = sizeof(VERTEX) * 3;             // size is the VERTEX struct * 3
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
 	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
 
-	dev->CreateBuffer(&bd, NULL, &pVBuffer);       // create the buffer
-
+	dev->CreateBuffer(&bd, nullptr, &pVBuffer);       // create the buffer
 
 	// copy the vertices into the buffer
 	D3D11_MAPPED_SUBRESOURCE ms;
@@ -136,10 +133,10 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 
 	// create the input layout object
 	D3D11_INPUT_ELEMENT_DESC ied[] =
-			{
-					{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
-					{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
-			};
+	{
+		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
+		{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
+	};
 
 	dev->CreateInputLayout(ied, 2, VS->GetBufferPointer(), VS->GetBufferSize(), &pLayout);
 	devcon->IASetInputLayout(pLayout);
@@ -163,20 +160,16 @@ void DXRenderer::fireRender()
 {
 	// clear the back buffer to a deep blue
 	devcon->ClearRenderTargetView(backbuffer, color);
-
 	// do 3D rendering on the back buffer here
 
 	// select which vertex buffer to display
 	UINT stride = sizeof(VERTEX);
 	UINT offset = 0;
 	devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
-
-	// select which primtive type we are using
+	// select which primitive type we are using
 	devcon->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
 	// draw the vertex buffer to the back buffer
 	devcon->Draw(3, 0);
-
 	// switch the back buffer and the front buffer
 	swapchain->Present(0, 0);
 }

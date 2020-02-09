@@ -9,3 +9,8 @@ void LunaLuxEnginePhysics::initPhysicsEngine()
 {
 
 }
+
+void LunaLuxEnginePhysics::updatePhysicsEngine()
+{
+
+}
