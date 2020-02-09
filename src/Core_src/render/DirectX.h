@@ -23,6 +23,7 @@ namespace LunaLuxEngine
 		void initRender(window_api::CrossWindow*) override;
 		void prepRender() override;
 		void fireRender() override;
+		void postRender() override;
 		void destroyRender() override;
 	};
 }

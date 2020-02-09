@@ -19,6 +19,8 @@ namespace LunaLuxEngine
 
 		virtual void fireRender() {};
 
+		virtual void postRender() {};
+
 		virtual void destroyRender() {};
 	};
 }
