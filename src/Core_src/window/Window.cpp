@@ -118,21 +118,11 @@ void CrossWindow::createWindow()
 {
     XInitThreads();
     dpy = XOpenDisplay(nullptr);
-
-    if(dpy == nullptr)
-    {
-        std::printf("\n\tcannot connect to X server\n\n");
-        std::exit(0);
-    }
-
+    CHECK_P(dpy,"cannot connect to X server")
     root = DefaultRootWindow(dpy);
-
     swa.event_mask = ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask;
-
     win = XCreateWindow(dpy, root, 0, 0, width, height, 0, CopyFromParent , InputOutput, CopyFromParent ,CWEventMask,&swa);
-
     XMapWindow(dpy, win);
-
     XStoreName(dpy, win, reinterpret_cast<const char *>(Title));
 }
 
