@@ -1,9 +1,11 @@
 #include <cstdio>
+#include <cstdlib>
 #include "Window.h"
 #include "Input.h"
 using namespace LunaLuxEngine::Input;
 namespace LunaLuxEngine::window_api
 {
+#ifdef WIN32
     LLEbool sc_temp;
 	void CrossWindow::updateWindow()
 	{
@@ -91,6 +93,56 @@ namespace LunaLuxEngine::window_api
 		DestroyWindow(hwnd);
 		UnregisterClassW((LPWSTR)class_name, Inst);
 	}
+#endif
+void CrossWindow::updateWindow()
+{
+    XNextEvent(dpy, &xev);
+
+    switch(xev.type)
+    {
+        case Expose:
+            break;
+        case ConfigureNotify:
+            break;
+            //TODO fix this error not fatal to running but will not shutdown engine correctly
+            /* XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":0"
+             * after 45 requests (45 known processed) with 0 events remaining.
+             */
+        case DestroyNotify:
+            WIN_SHOULD_CLOSE = true;
+            break;
+    }
+}
+
+void CrossWindow::createWindow()
+{
+    XInitThreads();
+    dpy = XOpenDisplay(nullptr);
+
+    if(dpy == nullptr)
+    {
+        std::printf("\n\tcannot connect to X server\n\n");
+        std::exit(0);
+    }
+
+    root = DefaultRootWindow(dpy);
+
+    swa.event_mask = ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask;
+
+    win = XCreateWindow(dpy, root, 0, 0, width, height, 0, CopyFromParent , InputOutput, CopyFromParent ,CWEventMask,&swa);
+
+    XMapWindow(dpy, win);
+
+    XStoreName(dpy, win, reinterpret_cast<const char *>(Title));
+}
+
+void CrossWindow::destoryWindow()
+{
+    XDestroyWindow(dpy, win);
+    XSync(dpy, false);
+    XCloseDisplay(dpy);
+}
+
 }
 namespace LunaLuxEngine::Input
 {

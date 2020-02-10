@@ -42,9 +42,8 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
     ai.engineVersion = 002;
     ai.apiVersion = 1;
     const char* lay[] = {"VK_LAYER_LUNARG_standard_validation"};
-#ifdef WIN32
     const char* ext[] = { "VK_KHR_surface",VK_KHR_PLATFOM_SUFRACE, VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
-#endif // WIN32
+
     VkInstanceCreateInfo ici = {};
     ici.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     ici.flags = 0;
@@ -57,7 +56,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
     result = vkCreateInstance(&ici, nullptr,&instance);
 
-    CHECK(result)
+    CHECK_N(result,"VULKAN ERROR")
 
     if (EnabledDebug)
     {
@@ -68,9 +67,9 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 		reportCallbackCreateInfoExt.flags = 1 | 2 | 4 | 8 | 10;
 		reportCallbackCreateInfoExt.pUserData = nullptr;
         auto vkCreateDebugReportCallbackEXT = reinterpret_cast<PFN_vkCreateDebugReportCallbackEXT>(vkGetInstanceProcAddr(instance, "vkCreateDebugReportCallbackEXT"));
-        CHECK_P(vkCreateDebugReportCallbackEXT)
+        CHECK_P(vkCreateDebugReportCallbackEXT, "VULKAN ERROR")
         result = vkCreateDebugReportCallbackEXT(instance, &reportCallbackCreateInfoExt, nullptr, &debug_ext);
-        CHECK(result)
+        CHECK_N(result,"VULKAN ERROR")
     }
     /*==================================================================
      *					CREATES PHYSICAL DEVICE
@@ -78,13 +77,13 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
      */
 	result = vkEnumeratePhysicalDevices(instance,&count, nullptr);
 
-    CHECK(result)
+    CHECK_N(result,"")
 
     std::vector<VkPhysicalDevice> physical_device(count);
 
     result = vkEnumeratePhysicalDevices(instance, &count, physical_device.data());
 
-    CHECK(result)
+    CHECK_N(result,"VULKAN ERROR")
     if (physical_device.size() == 1)
     {
         pDevice = physical_device[0];
@@ -126,7 +125,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
         }
     }
     /*==================================================================
-     *							                          CREATES DEVICE
+     *		                    CREATES DEVICE
      *=================================================================
      */
     vkGetPhysicalDeviceQueueFamilyProperties(pDevice, &count, nullptr);
@@ -143,7 +142,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 			index_number = i;
         }
 
-    CHECK_B(found);
+    CHECK_B(found,"VULKAN ERROR")
 
     float queue_p[] { 1.0f  };
 
@@ -184,11 +183,12 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
   result = vkCreateDevice(pDevice, &deviceCreateInfo, nullptr, &device);
 
-  CHECK(result);
+  CHECK_N(result,"VULKAN ERROR")
   /*==================================================================
-   *						                        CREATES SURFACE
+   *				        CREATES SURFACE
    *==================================================================
    */
+#ifdef WIN32
   HINSTANCE hInst = GetModuleHandle(nullptr);
 
   VkWin32SurfaceCreateInfoKHR surf_ = {};
@@ -197,8 +197,16 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
   surf_.hwnd = win->getWindow();
 
   result = vkCreateWin32SurfaceKHR(instance, &surf_, nullptr, &surface);
+#endif
+#ifdef __linux__
+  VkXlibSurfaceCreateInfoKHR surf_ = {};
+  surf_.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+  surf_.dpy = win->getWindowL();
+  surf_.window = win->getWindowL_();
 
-  CHECK(result);
+  result = vkCreateXlibSurfaceKHR(instance,&surf_,nullptr,&surface);
+#endif
+  CHECK_N(result,"VULKAN ERROR")
 
   VkSurfaceCapabilitiesKHR surfaceCapabilities = {};
 
@@ -213,39 +221,39 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
   scrres.width = win->getWindowW();
 
   /*==================================================================
-   *						                        CREATES SWAPCHAIN
+   *                    CREATES SWAP_CHAIN
    *==================================================================
    */
 
-  VkSwapchainCreateInfoKHR swcninf = {};
-  swcninf.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
-  swcninf.surface = surface;
-  swcninf.minImageCount = 2;
-  swcninf.imageFormat = VK_FORMAT_B8G8R8A8_UNORM;
-  swcninf.imageColorSpace = VK_COLORSPACE_SRGB_NONLINEAR_KHR;
-  swcninf.imageExtent = scrres;
-  swcninf.imageArrayLayers = 1;
-  swcninf.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
-  swcninf.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
-  swcninf.preTransform = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
-  swcninf.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
-  swcninf.presentMode = VK_PRESENT_MODE_MAILBOX_KHR;
-  swcninf.clipped = true;
-  swcninf.oldSwapchain = nullptr;
+  VkSwapchainCreateInfoKHR swap_chainCreateInfoKhr = {};
+    swap_chainCreateInfoKhr.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+    swap_chainCreateInfoKhr.surface = surface;
+    swap_chainCreateInfoKhr.minImageCount = 2;
+    swap_chainCreateInfoKhr.imageFormat = VK_FORMAT_B8G8R8A8_UNORM;
+    swap_chainCreateInfoKhr.imageColorSpace = VK_COLORSPACE_SRGB_NONLINEAR_KHR;
+    swap_chainCreateInfoKhr.imageExtent = scrres;
+    swap_chainCreateInfoKhr.imageArrayLayers = 1;
+    swap_chainCreateInfoKhr.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+    swap_chainCreateInfoKhr.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+    swap_chainCreateInfoKhr.preTransform = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
+    swap_chainCreateInfoKhr.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+    swap_chainCreateInfoKhr.presentMode = VK_PRESENT_MODE_MAILBOX_KHR;
+    swap_chainCreateInfoKhr.clipped = true;
+    swap_chainCreateInfoKhr.oldSwapchain = nullptr;
 
-  result = vkCreateSwapchainKHR(device, &swcninf, nullptr, &swapChain);
+  result = vkCreateSwapchainKHR(device, &swap_chainCreateInfoKhr, nullptr, &swapChain);
 
-  CHECK(result)
+  CHECK_N(result,"VULKAN ERROR")
 
  result =  vkGetSwapchainImagesKHR(device, swapChain, &count, nullptr);
  
- CHECK(result)
+ CHECK_N(result,"VULKAN ERROR")
 
   image = new VkImage[0];
 
   result = vkGetSwapchainImagesKHR(device, swapChain, &count, image);
 
-  CHECK(result)
+  CHECK_N(result,"VULKAN ERROR")
 
   image_v = new VkImageView[2];
 
@@ -267,7 +275,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 	  viewCreateInfo.image = image[i];
 
       result = vkCreateImageView(device,&viewCreateInfo , nullptr, &image_v[i]);
-      CHECK(result)
+      CHECK_N(result,"VULKAN ERROR")
   }
   //need to understand file path
   vertShaderModule = createShaderModule(readFile("vert.spv"));
@@ -391,7 +399,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
   result = vkCreatePipelineLayout(device, &pipelineLayoutInfo, nullptr, &pipelineLayout);
 
-  CHECK(result)
+  CHECK_N(result,"VULKAN ERROR")
 
  VkAttachmentDescription colorAttachment = {};
   colorAttachment.format = VK_FORMAT_B8G8R8A8_UNORM;
@@ -421,7 +429,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
   result = vkCreateRenderPass(device, &renderPassInfo, nullptr, &renderPass);
 
-  CHECK(result)
+  CHECK_N(result,"VULKAN ERROR")
 
  VkGraphicsPipelineCreateInfo pipelineInfo = {};
  pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -443,7 +451,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
  result = vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &pipeline);
 
- CHECK(result)
+ CHECK_N(result,"VULKAN ERROR")
 }
 
 void VKRenderer::destroyRender()
@@ -463,7 +471,7 @@ void VKRenderer::destroyRender()
     if (EnabledDebug)
     {
         auto vkDestroyDebugReportCallbackEXT = reinterpret_cast<PFN_vkDestroyDebugReportCallbackEXT>(vkGetInstanceProcAddr(instance, "vkDestroyDebugReportCallbackEXT"));
-        CHECK_P(vkDestroyDebugReportCallbackEXT)
+        CHECK_P(vkDestroyDebugReportCallbackEXT,"VULKAN ERROR")
         vkDestroyDebugReportCallbackEXT(instance, debug_ext, nullptr);
     }
     vkDestroyInstance(instance, nullptr);
@@ -477,16 +485,16 @@ void VKRenderer::prepRender()
 
     res = vkCreateSemaphore(device, &semaphoreInfo, nullptr, &imageAvailableSemaphore);
 
-    CHECK(res)
+    CHECK_N(res,"VULKAN ERROR")
 
     res = vkCreateSemaphore(device, &semaphoreInfo, nullptr, &renderFinishedSemaphore);
 
-    CHECK(res)
+    CHECK_N(res,"VULKAN ERROR")
 }
 
 void VKRenderer::fireRender()
 {
-    VkResult res;
+    VkResult res = VK_SUCCESS;
     uint32 imageIndex;
     vkAcquireNextImageKHR(device, swapChain, UINT64_MAX, imageAvailableSemaphore, VK_NULL_HANDLE, &imageIndex);
 
@@ -494,9 +502,9 @@ void VKRenderer::fireRender()
     VkSubmitInfo submitInfo = {};
     submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 
-    res = vkQueueSubmit(graphicsQueue, 1, &submitInfo, VK_NULL_HANDLE);
+    //res = vkQueueSubmit(graphicsQueue, 1, &submitInfo, VK_NULL_HANDLE);
 
-    CHECK(res)
+    CHECK_N(res,"VULKAN ERROR")
 
     VkSubpassDependency dependency = {};
     dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
@@ -516,9 +524,9 @@ void VKRenderer::fireRender()
     presentInfo.pImageIndices = &imageIndex;
     presentInfo.pResults = nullptr; // Optional
 
-    res = vkQueuePresentKHR(presentQueue, &presentInfo);
+    //res = vkQueuePresentKHR(presentQueue, &presentInfo);
 
-    CHECK(res)
+    CHECK_N(res,"VULKAN ERROR")
 }
 
 void VKRenderer::postRender()

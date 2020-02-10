@@ -12,7 +12,7 @@ void TestGame::preBoot()
 
 void TestGame::GameBoot()
 {
-	printf("loaded game");
+	LOG("loaded game");
 }
 
 void TestGame::GameMain()

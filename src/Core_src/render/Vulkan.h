@@ -5,27 +5,28 @@
 #ifndef LUNALUXENGINE_VULKAN_H
 #define LUNALUXENGINE_VULKAN_H
 
+#include <LLESDK/types.h>
 #include "IRender.h"
-#include <vulkan/vulkan.h>
-#include <vulkan/vulkan_win32.h>
 #include "../window/Window.h"
+#include <vulkan/vulkan.h>
+#ifdef WIN32
+#include <vulkan/vulkan_win32.h>
 #include <windows.h>
+#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_win32_surface"
+#endif
+#ifdef __linux__
+#include <vulkan/vulkan_xlib.h>
+#include <X11/Xlib.h>
+#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_xlib_surface"
+#endif
 #include <vector>
 #include <fstream>
-
-#define VK_KHR_PLATFOM_SUFRACE  "VK_KHR_win32_surface" 
 
 namespace LunaLuxEngine
 {
 	class VKRenderer : public IRender
     {
     private:
-#define CHECK(result) \
-if(result != VK_SUCCESS) exit(EXIT_FAILURE);
-#define CHECK_B(result) \
-if(result != true) exit(EXIT_FAILURE);
-#define CHECK_P(result) \
-if(result == nullptr) exit(EXIT_FAILURE);
 		/*
 		 * ===============================================
 		 * 				Context Variables
@@ -81,7 +82,7 @@ if(result == nullptr) exit(EXIT_FAILURE);
 			VkShaderModule shaderModule;
 			res = vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule);
 			
-			CHECK(res);
+			CHECK_N(res,"VULKAN ERROR")
 
 			return shaderModule;
 		}

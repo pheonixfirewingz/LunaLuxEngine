@@ -1,16 +1,23 @@
 #pragma once
 #include <LLESDK/types.h>
+#ifdef WIN32
 #define WIN32_LEAN_AND_MEAN
 #define STRICT
-
 #include <windows.h>
 #include <windowsx.h>
+#endif
+#ifdef __linux__
+#include <cstring>
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#endif
 #define CWin LunaLuxEngine::window_api::CrossWindow::get()
 
 namespace LunaLuxEngine::window_api
 {
 class CrossWindow
 {
+#ifdef WIN32
     private:
         HWND hwnd{};
         HINSTANCE Inst{};
@@ -20,6 +27,26 @@ class CrossWindow
             return hwnd;
         };
         LPCSTR class_name = (LPCSTR)"LunaLuxEngine_WindowClass";
+#endif
+#ifdef  __linux__
+private:
+    Display                 *dpy{};
+    Window                  root{};
+    Window                  win{};
+    XSetWindowAttributes    swa{};
+    Colormap                cmap{};
+    XEvent                  xev{};
+public:
+    inline Display* getWindowL()
+    {
+        return dpy;
+    };
+
+    inline Window getWindowL_()
+    {
+        return win;
+    }
+#endif
 protected:
         int8* Title = (int8*)"temp";
         int16 width = 800,  height = 600;
