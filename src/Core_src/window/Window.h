@@ -50,6 +50,7 @@ public:
 protected:
         int8* Title = (int8*)"temp";
         int16 width = 800,  height = 600;
+        void(*resizeCallback)(int32,int32) = nullptr;
 public:
         LLEbool WIN_SHOULD_CLOSE = LLEfalse;
         void createWindow();
@@ -61,6 +62,7 @@ public:
         {
             width = in_width;
             height = in_height;
+            //fireResizeCallback(in_width, in_height);
         };
         inline int8* getTitle()
         {
@@ -81,6 +83,12 @@ public:
 		{
 			return height;
 		};
+        inline void setResizeCallback(void(*callback)(int32, int32))
+        {
+            resizeCallback = callback;
+        }
+        void fireResizeCallback(int32, int32);
+
 		inline static CrossWindow* get()
 		{
 			static auto* window_ = new CrossWindow();

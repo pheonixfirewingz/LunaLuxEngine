@@ -30,6 +30,7 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 	if (EnabledDebug) printf("%s\n", "Vulkan Debug Log");
 	uint32 count = 0;
     VkResult result;
+    memset(&result, 0, 0);
     /*==================================================================
      *						CREATES INSTANCE
      *=================================================================
@@ -257,8 +258,6 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 
   image_v = new VkImageView[2];
 
-  for (uint8 i = 0; i < 2; i++)
-  {
       VkImageViewCreateInfo viewCreateInfo = {};
 	  viewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 	  viewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
@@ -272,14 +271,25 @@ void VKRenderer::initRender(window_api::CrossWindow* win)
 	  viewCreateInfo.subresourceRange.levelCount = 1;
 	  viewCreateInfo.subresourceRange.baseArrayLayer = 0;
 	  viewCreateInfo.subresourceRange.layerCount = 1;
-	  viewCreateInfo.image = image[i];
+	  viewCreateInfo.image = image[0];
 
+<<<<<<< HEAD
       result = vkCreateImageView(device,&viewCreateInfo , nullptr, &image_v[i]);
       CHECK_N(result,"VULKAN ERROR")
   }
+=======
+      result = vkCreateImageView(device,&viewCreateInfo , nullptr, &image_v[0]);
+      CHECK(result)
+
+      viewCreateInfo.image = image[1];
+
+      result = vkCreateImageView(device, &viewCreateInfo, nullptr, &image_v[1]);
+      CHECK(result)
+
+>>>>>>> master
   //need to understand file path
-  vertShaderModule = createShaderModule(readFile("vert.spv"));
-  fragShaderModule = createShaderModule(readFile("frag.spv"));
+  vertShaderModule = createShaderModule(FileSystem::FileReader::get()->readFile("vert.spv"));
+  fragShaderModule = createShaderModule(LunaLuxEngine::FileSystem::FileReader::get()->readFile("frag.spv"));
 
   VkPipelineShaderStageCreateInfo vertShaderStageInfo = {};
   vertShaderStageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
@@ -480,6 +490,7 @@ void VKRenderer::destroyRender()
 void VKRenderer::prepRender()
 {
     VkResult res;
+    memset(&res, 0, 0);
     VkSemaphoreCreateInfo semaphoreInfo = {};
     semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
 
@@ -494,7 +505,12 @@ void VKRenderer::prepRender()
 
 void VKRenderer::fireRender()
 {
+<<<<<<< HEAD
     VkResult res = VK_SUCCESS;
+=======
+    VkResult res;
+    memset(&res, 0, 0);
+>>>>>>> master
     uint32 imageIndex;
     vkAcquireNextImageKHR(device, swapChain, UINT64_MAX, imageAvailableSemaphore, VK_NULL_HANDLE, &imageIndex);
 

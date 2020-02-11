@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "Window.h"
-#include "Input.h"
+#include <LLESDK/Input.h>
 using namespace LunaLuxEngine::Input;
 namespace LunaLuxEngine::window_api
 {
@@ -25,6 +25,10 @@ namespace LunaLuxEngine::window_api
 		{
 		case WM_CLOSE:
 			sc_temp = LLEtrue
+			break;
+		case WM_SIZE:
+			const POINTS pt = MAKEPOINTS(lParam);
+			CWin->fireResizeCallback(pt.x, pt.y);
 			break;
 		case WM_MOUSEMOVE:
 		{
@@ -59,7 +63,6 @@ namespace LunaLuxEngine::window_api
 		default:
            return DefWindowProc(hWnd, Msg, wParam, lParam);
 		}
-		return 0;
 	}
 
 	void CrossWindow::createWindow()
@@ -93,6 +96,7 @@ namespace LunaLuxEngine::window_api
 		DestroyWindow(hwnd);
 		UnregisterClassW((LPWSTR)class_name, Inst);
 	}
+<<<<<<< HEAD
 #endif
 void CrossWindow::updateWindow()
 {
@@ -133,6 +137,13 @@ void CrossWindow::destoryWindow()
     XCloseDisplay(dpy);
 }
 
+=======
+	void CrossWindow::fireResizeCallback(int32 in_width, int32 in_height)
+	{
+		if(resizeCallback != nullptr)
+			resizeCallback(in_width, in_height);
+	}
+>>>>>>> master
 }
 namespace LunaLuxEngine::Input
 {

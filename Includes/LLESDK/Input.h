@@ -5,7 +5,7 @@
 #ifndef LUNALUXENGINE_INPUT_H
 #define LUNALUXENGINE_INPUT_H
 
-#include <LLESDK/types.h>
+#include "types.h"
 
 namespace LunaLuxEngine::Input
 {
