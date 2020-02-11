@@ -4,7 +4,9 @@
 #include "IRender.h"
 #ifdef WIN32
 #include "DirectX.h"
+#include "Shader.h"
 using namespace LunaLuxEngine;
+int32 r_width, r_height;
 struct COLOUR
 {
 	float  r;
@@ -27,14 +29,26 @@ struct VERTEX
 
 VERTEX OurVertices[] =
 		{
-				{0.0f, 0.5f, 0.0f, COLOUR(1.0f, 0.0f, 0.0f, 1.0f)},
-				{0.45f, -0.5, 0.0f, COLOUR(0.0f, 1.0f, 0.0f, 1.0f)},
-				{-0.45f, -0.5f, 0.0f, COLOUR(0.0f, 0.0f, 1.0f, 1.0f)}
+				{-0.5f, 0.5f, 0.0f, COLOUR(1.0f, 0.0f, 0.0f, 1.0f)},
+				{-0.5f, -0.5f, 0.0f, COLOUR(0.0f, 1.0f, 0.0f, 1.0f)},
+				{0.5f, -0.5f, 0.0f, COLOUR(0.0f, 1.0f, 0.0f, 1.0f)},
+				{0.0f, 0.0f, 0.0f, COLOUR(0.0f, 0.0f, 1.0f, 1.0f)}
 		};
 
+
+WORD indices[] =
+{
+	0,1,2,3
+};
+
+inline void WindowResizeCallback(int32 width,int32 height)
+{
+	r_width = width;
+	r_height = height;
+}
 void DXRenderer::initRender(window_api::CrossWindow* win)
 {
-// create a struct to hold information about the swap chain
+	// create a struct to hold information about the swap chain
 	DXGI_SWAP_CHAIN_DESC scd;
 
 	// clear out the struct for use
@@ -55,21 +69,21 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 
 	// create a device, device context and swap chain using the information in the scd struct
 	D3D11CreateDeviceAndSwapChain(nullptr,
-			D3D_DRIVER_TYPE_HARDWARE,
-			nullptr,
-			NULL,
-			nullptr,
-			NULL,
-			D3D11_SDK_VERSION,
-			&scd,
-			&swapchain,
-			&dev,
-			nullptr,
-			&devcon);
+		D3D_DRIVER_TYPE_HARDWARE,
+		nullptr,
+		NULL,
+		nullptr,
+		NULL,
+		D3D11_SDK_VERSION,
+		&scd,
+		&swapchain,
+		&dev,
+		nullptr,
+		&devcon);
 
 
 	// get the address of the back buffer
-	ID3D11Texture2D *pBackBuffer;
+	ID3D11Texture2D* pBackBuffer;
 	swapchain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
 
 	// use the back buffer address to create the render target
@@ -78,99 +92,41 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 
 	// set the render target as the back buffer
 	devcon->OMSetRenderTargets(1, &backbuffer, nullptr);
-
-
-	// Set the viewport
-	D3D11_VIEWPORT viewport;
-	ZeroMemory(&viewport, sizeof(D3D11_VIEWPORT));
-
-	viewport.TopLeftX = 0;
-	viewport.TopLeftY = 0;
-	viewport.Width = win->getWindowW();
-	viewport.Height = win->getWindowH();
-
-	devcon->RSSetViewports(1, &viewport);
-
-
 	/*
 	 * =====================================================
 	 * 				 GRAPHICS INIT END
 	 * =====================================================
 	 */
+	
+	CWin->setResizeCallback(&WindowResizeCallback);
+	CWin->fireResizeCallback(CWin->getWindowW(), CWin->getWindowH());
 
-
-	// create the vertex buffer
-	D3D11_BUFFER_DESC bd;
-	ZeroMemory(&bd, sizeof(bd));
-	bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
-	bd.ByteWidth = sizeof(VERTEX) * 3;             // size is the VERTEX struct * 3
-	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
-	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
-
-	dev->CreateBuffer(&bd, nullptr, &pVBuffer);       // create the buffer
-
-	// copy the vertices into the buffer
-	D3D11_MAPPED_SUBRESOURCE ms;
-	devcon->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);    // map the buffer
-	memcpy(ms.pData, OurVertices, sizeof(OurVertices));                 // copy the data
-	devcon->Unmap(pVBuffer, NULL);                                      // unmap the buffer
-
-	// load and compile the two shaders
-	ID3D10Blob *VS, *PS;
-
-	/*TODO: need setting up uninitialized local variables
-	 * Core_src\render\DirectX.cpp(125) : warning C4700: uninitialized local variable 'VS' used
-	 * Core_src\render\DirectX.cpp(126) : warning C4700: uninitialized local variable 'PS' used
-	 */
-
-	// encapsulate both shaders into shader objects
-	dev->CreateVertexShader(VS->GetBufferPointer(), VS->GetBufferSize(), NULL, &pVS);
-	dev->CreatePixelShader(PS->GetBufferPointer(), PS->GetBufferSize(), NULL, &pPS);
-
-	// set the shader objects
-	devcon->VSSetShader(pVS, 0, 0);
-	devcon->PSSetShader(pPS, 0, 0);
-
-	// create the input layout object
-	D3D11_INPUT_ELEMENT_DESC ied[] =
-	{
-		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
-		{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
-	};
-
-	dev->CreateInputLayout(ied, 2, VS->GetBufferPointer(), VS->GetBufferSize(), &pLayout);
-	devcon->IASetInputLayout(pLayout);
+	Shaders::get()->giveDevice(dev);
+	Shaders::get()->giveContext(devcon);
+	Shaders::get()->compileShader(L"shader.hlsl");
 }
 
 void DXRenderer::destroyRender()
 {
-	// close and release all existing COM objects
-	pLayout->Release();
-	pVS->Release();
-	pPS->Release();
-	pVBuffer->Release();
 	swapchain->SetFullscreenState(FALSE, NULL);    // switch to windowed mode
+
+	// close and release all existing COM objects
+	Shaders::get()->clearShaders();
+	pVBuffer->Release();
 	swapchain->Release();
 	backbuffer->Release();
 	dev->Release();
 	devcon->Release();
 }
-float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
+float color[4] = { 0.6f, 0.3f, 0.5f, 1.0f };
 void DXRenderer::fireRender()
 {
-	// clear the back buffer to a deep blue
 	devcon->ClearRenderTargetView(backbuffer, color);
-	// do 3D rendering on the back buffer here
-
-	// select which vertex buffer to display
+	devcon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	UINT stride = sizeof(VERTEX);
 	UINT offset = 0;
-	devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
-	// select which primitive type we are using
-	devcon->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	// draw the vertex buffer to the back buffer
-	devcon->Draw(3, 0);
-	// switch the back buffer and the front buffer
+	devcon->DrawIndexed(sizeof(indices), 0, 0);
+	devcon->Draw(sizeof(OurVertices), 0);
 	swapchain->Present(0, 0);
 }
 
@@ -180,6 +136,43 @@ void LunaLuxEngine::DXRenderer::postRender()
 
 void DXRenderer::prepRender()
 {
+	// Set the viewport
+	D3D11_VIEWPORT viewport;
+	ZeroMemory(&viewport, sizeof(D3D11_VIEWPORT));
 
+	viewport.TopLeftX = 0;
+	viewport.TopLeftY = 0;
+	viewport.Width = r_width;
+	viewport.Height = r_height;
+
+	devcon->RSSetViewports(1, &viewport);
+	D3D11_BUFFER_DESC bd;
+	ZeroMemory(&bd, sizeof(bd));
+	bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
+	bd.ByteWidth = sizeof(VERTEX) * sizeof(OurVertices);             // size is the VERTEX struct * 3
+	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
+	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
+
+	dev->CreateBuffer(&bd, nullptr, &pVBuffer);
+
+	UINT stride = sizeof(OurVertices);
+	UINT offset = 0;
+	devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
+
+	D3D11_MAPPED_SUBRESOURCE ms;
+	devcon->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
+	memcpy(ms.pData, OurVertices, sizeof(OurVertices));
+	devcon->Unmap(pVBuffer, NULL);
+
+	bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
+	bd.ByteWidth = sizeof(WORD) * sizeof(OurVertices);             // size is the VERTEX struct * 3
+	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
+	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
+
+	dev->CreateBuffer(&bd, nullptr, &pIBuffer);
+
+	devcon->IASetIndexBuffer(pIBuffer, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
+
+	
 }
 #endif

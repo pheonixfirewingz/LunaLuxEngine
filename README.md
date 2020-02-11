@@ -7,7 +7,7 @@ Copyright 2020 Phoenixfirewingz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-you can only used this software free if you are a Known Group or Game Studio To contribute to the Engine's Development.
+you can only used this software free of rolaltys if you are a Known Group or Game Studio To contribute to the Engine's Development.
 if you are not a Known Group or Game Studio To contribute to the Engine's Development then you must give Clean undesputed Evidence that you used this software.
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
@@ -39,10 +39,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 - create Vulkan context for linux and get a 2D_box on screen
 - directX11 get a 2D_box on screen
+- start work on Physics lib
 
 Supported Platforms
 -----------------------------------------------------------------------------------------------
-- WINDOW(window working on. working on renderers)
+- WINDOW(window adding as needed. working on DX11 renderer)
 
 Planned Platforms
 -----------------------------------------------------------------------------------------------
@@ -54,18 +55,23 @@ Planned Platforms (after decktop)
 -----------------------------------------------------------------------------------------------
  - IOS 13 and up
  - Android api 20 and up
+ - Switch (versions unknown)
+
+ Planned Platforms (after hand helds)
+-----------------------------------------------------------------------------------------------
  - Xbox One and up
  - PlayStation 4 and up
- - Switch (versions unknown)
 
 Working Progress
 ------------------------------------------------------------------------------------------------
-- Vulkan Renderer
+- Linux Vulkan Renderer
+- Windows DirectX 11 renderer
 
 Current Known Bugs
 ------------------------------------------------------------------------------------------------
-- DirectX 11 Shaders not being compiled
-- Random Crashes occur with the mouse movement? trying to under why only happens on boot.
+- 'TestGame.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\igc64.dll'. 
+Exception thrown at 0x00007FFB23C39C7E (igd10iumd64.dll) in TestGame.exe: 0xC0000005: Access violation reading location 0x0000000000000000.
+
 Minimum Start Code
 ------------------------------------------------------------------------------------------------
 extend Game class in "#include <LLESDK/IGame.h>".

@@ -7,7 +7,7 @@ void TestGame::preBoot()
 {
 	TestGame::setGameName((int8*)"testGame");
 	TestGame::setWindowSize(1280,720);
-	TestGame::setNativeMode(false);
+	TestGame::setNativeMode(true);
 }
 
 void TestGame::GameBoot()
