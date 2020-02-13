@@ -4,10 +4,8 @@
 //#include <LunaLuxEnginePhysics.h>
 #include <LLESDK/types.h>
 #include <LLESDK/IGame.h>
-#include <LLESDK/Input.h>
 #include "render/IRender.h"
 #include "render/DirectX.h"
-#include "render/Vulkan.h"
 #include "window/Window.h"
 #define LLE LunaLuxEngine::lunaLuxEngine::get();
 

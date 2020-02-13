@@ -57,8 +57,7 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 
 
 ## Known issues
-- 'TestGame.exe' (Win32) 'DriverStore\@\igc64.dll': #1
-Exception thrown at 0x00007FFB23C39C7E (igd10iumd64.dll) in TestGame.exe: 0xC0000005: Access violation reading location 0x0000000000000000
+Exception thrown at 0x00007FFB30F6A839 in TestGame.exe: Microsoft C++ exception: _com_error at memory location 0x000000E8120FFB80.
 
 ## Getting started
 

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include "Window.h"
-#include <LLESDK/Input.h>
-using namespace LunaLuxEngine::Input;
+#include <exception>
+//TODO: find out why when the mouse moves the program raidly eats memory?
 namespace LunaLuxEngine::window_api
 {
 #ifdef WIN32
@@ -18,50 +18,58 @@ namespace LunaLuxEngine::window_api
 			DispatchMessage(&msg);
 		}
 	}
-
+	bool in_win = true;
 	inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	{
 		switch (Msg)
 		{
-		case WM_CLOSE:
-			sc_temp = LLEtrue
+			case WM_CLOSE:
+				sc_temp = LLEtrue;
 			break;
-		case WM_SIZE:
-			const POINTS pt = MAKEPOINTS(lParam);
-			CWin->fireResizeCallback(pt.x, pt.y);
-			break;
-		case WM_MOUSEMOVE:
-		{
-			const POINTS pt = MAKEPOINTS(lParam);
-			if (pt.x >= 0 && pt.x < CWin->getWindowW() && pt.y >= 0 && pt.y < CWin->getWindowH())
-				Input::Input::get()->setMousePos(pt.x,pt.y);
-		}
-		case WM_KEYDOWN:
-			Input::Input::get()->setKey(wParam,1);
-			break;
-		case WM_KEYUP:
-			Input::Input::get()->setKey(wParam,0);
-			break;
-		case WM_RBUTTONDOWN:
-			Input::Input::get()->setButton(0,1);
-			break;
-		case WM_RBUTTONUP:
-			Input::Input::get()->setButton(0,0);
-			break;
-		case WM_LBUTTONDOWN:
-			Input::Input::get()->setButton(1,1);
-			break;
-		case WM_LBUTTONUP:
-			Input::Input::get()->setButton(1,0);
-			break;
-		case WM_MBUTTONDOWN:
-			Input::Input::get()->setButton(2,1);
-			break;
-		case WM_MBUTTONUP:
-			Input::Input::get()->setButton(2,0);
-			break;
-		default:
-           return DefWindowProc(hWnd, Msg, wParam, lParam);
+			case WM_SIZE:
+			{
+				POINTS pt = MAKEPOINTS(lParam);
+				CWin->fireResizeCallback(pt.x, pt.y);
+				break;
+			}
+			case WM_MOUSEHOVER:
+				in_win = true;
+			case WM_MOUSELEAVE:
+				in_win = false;
+			case WM_MOUSEMOVE:
+			{
+				if (in_win)
+				{
+					CWin->M_posx = ((DWORD_PTR)(lParam)) & 0xffff;
+					CWin->M_posy = (((DWORD_PTR)(lParam)) >> 16) & 0xffff;
+				}
+			}
+			case WM_KEYDOWN:
+				CWin->setKey(wParam,1);
+				break;
+			case WM_KEYUP:
+				CWin->setKey(wParam,0);
+				break;
+			case WM_RBUTTONDOWN:
+				CWin->setButton(0,1);
+				break;
+			case WM_RBUTTONUP:
+				CWin->setButton(0,0);
+				break;
+			case WM_LBUTTONDOWN:
+				CWin->setButton(1,1);
+				break;
+			case WM_LBUTTONUP:
+				CWin->setButton(1,0);
+				break;
+			case WM_MBUTTONDOWN:
+				CWin->setButton(2,1);
+				break;
+			case WM_MBUTTONUP:
+				CWin->setButton(2,0);
+				break;
+			default:
+			   return DefWindowProc(hWnd, Msg, wParam, lParam);
 		}
 	}
 
@@ -83,7 +91,7 @@ namespace LunaLuxEngine::window_api
 
 		RegisterClassEx(&wc);
 
-		RECT wr = {0, 0, 800, 600};
+		RECT wr = {0, 0, width, height};
 		AdjustWindowRect(&wr, WS_OVERLAPPEDWINDOW, FALSE);
 
 		hwnd = CreateWindowEx(NULL,class_name, reinterpret_cast<LPCSTR>(Title),WS_OVERLAPPEDWINDOW,300,300, wr.right - wr.left, wr.bottom - wr.top,nullptr,nullptr,Inst,nullptr);
@@ -96,8 +104,8 @@ namespace LunaLuxEngine::window_api
 		DestroyWindow(hwnd);
 		UnregisterClassW((LPWSTR)class_name, Inst);
 	}
-<<<<<<< HEAD
 #endif
+#ifdef __linux__
 void CrossWindow::updateWindow()
 {
     XNextEvent(dpy, &xev);
@@ -136,52 +144,10 @@ void CrossWindow::destoryWindow()
     XSync(dpy, false);
     XCloseDisplay(dpy);
 }
-
-=======
+#endif
 	void CrossWindow::fireResizeCallback(int32 in_width, int32 in_height)
 	{
 		if(resizeCallback != nullptr)
 			resizeCallback(in_width, in_height);
-	}
->>>>>>> master
-}
-namespace LunaLuxEngine::Input
-{
-	LLEbool Input::isKeyDown(KeyCodes code)
-	{
-		if (keys[code] != 0) return LLEtrue
-		else return LLEfalse
-	}
-
-	void Input::setKey(int32 code,LLEbool state)
-	{
-		keys[code] = state;
-	}
-
-	LLEbool Input::isMouseButtonDown(MouseButtons buttons)
-	{
-		if (M_buttons[buttons] != 0) return LLEtrue
-		else return LLEfalse
-	}
-
-	void Input::setButton(int32 code, LLEbool state)
-	{
-		M_buttons[code] = state;
-	}
-
-	void Input::setMousePos(float x, float y)
-	{
-		M_posx = x;
-		M_posy = y;
-	}
-
-	int32 Input::getPosX()
-	{
-		return (int32)M_posx;
-	}
-
-	int32 Input::getPosY()
-	{
-		return (int32)M_posy;
 	}
 }

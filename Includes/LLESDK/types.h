@@ -41,36 +41,44 @@ typedef i8 LLEbool;
 #define LLEtrue 1;
 #define LLEfalse 0;
 
+#define EXIT_ERROR -1
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 
-#define va_start __crt_va_start
-#define va_arg   __crt_va_arg
-#define va_end   __crt_va_end
 #define LOG(logtext)                                \
 printf("%s%s\n","Engine and Game Log:",logtext);
+
 #define CHECK_N(result,cause)                       \
 if(result != 0)                                     \
 {                                                   \
-    printf("%s%s\n","LunaLuxEngine check:",cause);  \
+    printf("%s%s\n","LunaLuxEngine internal number type 1 validation check failed:",cause);  \
     exit(EXIT_FAILURE);                             \
 };
+
 #define CHECK_N2(result,cause)                       \
 if(result == 0)                                     \
 {                                                   \
-    printf("%s%s\n","LunaLuxEngine check:",cause);  \
+    printf("%s%s\n","LunaLuxEngine internal number type 2 validation check failed:",cause);  \
     exit(EXIT_FAILURE);                             \
 };
+
 #define CHECK_B(result,cause)                       \
 if(result != true)                                  \
 {                                                   \
-    printf("%s%s\n","LunaLuxEngine check:",cause);  \
+    printf("%s%s\n","LunaLuxEngine internal LLEbool validation check failed:",cause);  \
     exit(EXIT_FAILURE);                             \
 };
+
 #define CHECK_P(result,cause)                       \
 if(result == nullptr)                               \
 {                                                   \
-    printf("%s%s\n","LunaLuxEngine check:",cause);  \
+    printf("%s%s\n","LunaLuxEngine internal pointer validation check failed:",cause);  \
     exit(EXIT_FAILURE);                             \
 };
+
+#define FOURCE_STOP(msg) \
+{\
+LOG(msg)\
+exit(EXIT_ERROR);\
+}
 #endif
