@@ -2,25 +2,14 @@
 LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 
 ----------------------------------------------------------------------------------------------
-# LICENCE
-Copyright 2020 Phoenixfirewingz
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-you can only used this software free of rolaltys if you are a Known Group or Game Studio To contribute to the Engine's Development.
-if you are not a Known Group or Game Studio To contribute to the Engine's Development then you must give Clean undesputed Evidence that you used this software.
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-# Contribution rules
+## Contribution rules
 
 - keep formatting the same as the rest of the project
 - focuse on speed and optamization
 - if is a class you made or patched note it at the top of the class
 
-# Formatting
+## Formatting
 
 - cammel Case for names of functions
 - all lower case for private varables
@@ -31,50 +20,51 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - if code is final and will not be changes detailed notes must be added
 - if code will be changed basic notes must be added for other devs to understand
 
-# TODO
--------------When-Get-Mac--------------------
-- create Window using cocoa for mac
-- create Metal renderer and get a 2D_box on screen
-# ------------------------
+## TODO
+- Create Window using cocoa for mac (waiting for OSX availability)
+- Create Metal renderer and get a 2D_box on screen (waiting for OSX availability)
+- Create Vulkan context for linux and get a 2D_box on screen
+- DirectX11 get a 2D_box on screen
+- Start work on Physics lib
 
-- create Vulkan context for linux and get a 2D_box on screen
-- directX11 get a 2D_box on screen
-- start work on Physics lib
+## WIP
+- Linux Vulkan Renderer
+- Windows DirectX 11 renderer
 
-Supported Platforms
------------------------------------------------------------------------------------------------
-- WINDOW(window adding as needed. working on DX11 renderer)
+-----------------------
+## Platforms
 
-Planned Platforms
+### Supported Platforms
+- WINDOW (window adding as needed. working on DX11 renderer)
+
+### Planned Platforms (Stage 1)
 -----------------------------------------------------------------------------------------------
  - Windows 10
  - Linux ubuntu 18.04 STL (x11 window Manager)(no for Support wayland Window Manager)
  - OSX high mountain
 
-Planned Platforms (after decktop)
+### Planned Platforms (Stage 2)
 -----------------------------------------------------------------------------------------------
  - IOS 13 and up
  - Android api 20 and up
  - Switch (versions unknown)
 
- Planned Platforms (after hand helds)
+### Planned Platforms (Stage 3)
 -----------------------------------------------------------------------------------------------
  - Xbox One and up
  - PlayStation 4 and up
 
-Working Progress
-------------------------------------------------------------------------------------------------
-- Linux Vulkan Renderer
-- Windows DirectX 11 renderer
 
-Current Known Bugs
-------------------------------------------------------------------------------------------------
-- 'TestGame.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki130350.inf_amd64_696b7c6764071b63\igc64.dll'. 
-Exception thrown at 0x00007FFB23C39C7E (igd10iumd64.dll) in TestGame.exe: 0xC0000005: Access violation reading location 0x0000000000000000.
 
-Minimum Start Code
-------------------------------------------------------------------------------------------------
-extend Game class in "#include <LLESDK/IGame.h>".
+## Known issues
+- 'TestGame.exe' (Win32) 'DriverStore\@\igc64.dll': #1
+Exception thrown at 0x00007FFB23C39C7E (igd10iumd64.dll) in TestGame.exe: 0xC0000005: Access violation reading location 0x0000000000000000
+
+## Getting started
+
+### Minimum Start Code
+-----------------------
+Extend Game class in "#include <LLESDK/IGame.h>".
 The pre boot is used to configure required variables in the game class.
 - preBoot();
 the game class is called by the engine as for the main game loop and inatalization faze this is done through
@@ -89,3 +79,20 @@ add to main class.
 
 auto* eng = LLE;
 eng->runEngine(new YourGameClass());
+
+-----------------------
+
+# The legal stuff
+
+## LICENCE
+Copyright 2020 Luke Shore
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, not including limitations to the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+- You, the user, use this software without royalties if you have made yourself known to the project, plan to contribute and the developer, Luke Shore, has agreed.
+
+- You, the user, understand that you *must* provide clear evidence that you have utilised our project in your non/commercial project.
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
