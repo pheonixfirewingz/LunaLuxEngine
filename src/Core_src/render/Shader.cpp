@@ -28,12 +28,9 @@ namespace LunaLuxEngine
 		devicecon->VSSetShader(pVS, 0, 0);
 		devicecon->PSSetShader(pPS, 0, 0);
 	}
-	void Shaders::giveDevice(ID3D11Device* dev)
+	void Shaders::giveInstance(ID3D11Device* dev, ID3D11DeviceContext* context)
 	{
 		device = dev;
-	}
-	void Shaders::giveContext(ID3D11DeviceContext* context)
-	{
 		devicecon = context;
 	}
 }

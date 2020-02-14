@@ -28,7 +28,6 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 - Start work on Physics lib
 
 ## WIP
-- Linux Vulkan Renderer
 - Windows DirectX 11 renderer
 
 -----------------------
@@ -54,10 +53,7 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
  - Xbox One and up
  - PlayStation 4 and up
 
-
-
 ## Known issues
-Exception thrown at 0x00007FFB30F6A839 in TestGame.exe: Microsoft C++ exception: _com_error at memory location 0x000000E8120FFB80.
 
 ## Getting started
 

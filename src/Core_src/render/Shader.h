@@ -32,8 +32,7 @@ namespace LunaLuxEngine
 				NativeMode = LLEtrue
 		}
 		void compileShader(LPCWSTR);
-		void giveDevice(ID3D11Device*);
-		void giveContext(ID3D11DeviceContext*);
+		void giveInstance(ID3D11Device*,ID3D11DeviceContext*);
 
 		inline void clearShaders()
 		{

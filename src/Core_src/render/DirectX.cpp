@@ -5,24 +5,10 @@
 #ifdef WIN32
 #include "DirectX.h"
 #include "Shader.h"
+#include "Buffer.h"
 #include "../utils/BufferUtil.h"
 using namespace LunaLuxEngine;
 int32 r_width, r_height;
-
-VERTEX OurVertices[] =
-{
-	VERTEX(VECTOR3(-0.5f, 0.5f, 0.0f), COLOUR(1.0f, 0.0f, 0.0f, 1.0f)),
-	VERTEX(VECTOR3(-0.5f, -0.5f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
-	VERTEX(VECTOR3(0.5f, -0.5f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
-	VERTEX(VECTOR3(0.5f, 0.5f, 0.0f), COLOUR(0.0f, 0.0f, 1.0f, 1.0f))
-};
-
-
-WORD indices[] =
-{
-	0,1,3,
-	3,1,2
-};
 
 inline void WindowResizeCallback(int32 width,int32 height)
 {
@@ -31,6 +17,11 @@ inline void WindowResizeCallback(int32 width,int32 height)
 }
 void DXRenderer::initRender(window_api::CrossWindow* win) 
 {
+	/*
+	  * =====================================================
+	  * 				 GRAPHICS SETUP INSTANCE
+	  * =====================================================
+	  */
 	// create a struct to hold information about the swap chain
 	DXGI_SWAP_CHAIN_DESC scd;
 	// clear out the struct for use
@@ -49,44 +40,50 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	// create a device, device context and swap chain using the information in the scd struct
 	D3D11CreateDeviceAndSwapChain(nullptr,D3D_DRIVER_TYPE_HARDWARE,nullptr,
 		NULL,nullptr,NULL,D3D11_SDK_VERSION,&scd,&swapchain,&dev,nullptr,&devcon);
-
 	// get the address of the back buffer
 	ID3D11Texture2D* pBackBuffer;
 	swapchain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
-
 	// use the back buffer address to create the render target
 	dev->CreateRenderTargetView(pBackBuffer, nullptr, &backbuffer);
 	pBackBuffer->Release();
-
 	// set the render target as the back buffer
 	devcon->OMSetRenderTargets(1, &backbuffer, nullptr);
 	/*
-	 * =====================================================
-	 * 				 GRAPHICS INIT END
-	 * =====================================================
-	 */
-	
+	  * =====================================================
+	  * 				 GRAPHICS SETUP INSTANCE END
+	  * =====================================================
+	  *
+	  *=======================================================
+	  *					SET UP RENDER DATA
+	  *=======================================================
+	  */
 	CWin->setResizeCallback(&WindowResizeCallback);
 	CWin->fireResizeCallback(CWin->getWindowW(), CWin->getWindowH());
-
-	Shaders::get()->giveDevice(dev);
-	Shaders::get()->giveContext(devcon);
+	BufferUtils::get()->giveInstance(devcon,dev);
+	Shaders::get()->giveInstance(dev,devcon);
+	//temp
 	Shaders::get()->compileShader(L"shader.hlsl");
+	/*
+	  *=======================================================
+	  *					END SET UP RENDER DATA
+	  *=======================================================
+	  */
 }
 
-void DXRenderer::destroyRender()
+void DXRenderer::prepRender()
 {
-	swapchain->SetFullscreenState(FALSE, NULL);    // switch to windowed mode
+	// Set the viewport
+	D3D11_VIEWPORT viewport;
+	ZeroMemory(&viewport, sizeof(D3D11_VIEWPORT));
+	viewport.TopLeftX = 0;
+	viewport.TopLeftY = 0;
+	viewport.Width = r_width;
+	viewport.Height = r_height;
 
-	// close and release all existing COM objects
-	Shaders::get()->clearShaders();
-	pVBuffer->Release();
-	swapchain->Release();
-	backbuffer->Release();
-	dev->Release();
-	devcon->Release();
+	devcon->RSSetViewports(1, &viewport);
 }
-float color[4] = { 0.6f, 0.3f, 0.5f, 1.0f };
+
+float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
 void DXRenderer::fireRender()
 {
 	devcon->ClearRenderTargetView(backbuffer, color);
@@ -97,49 +94,18 @@ void DXRenderer::fireRender()
 
 void LunaLuxEngine::DXRenderer::postRender()
 {
-	pVBuffer = nullptr;
-	pIBuffer = nullptr;
+	
 }
 
-void DXRenderer::prepRender()
+void DXRenderer::destroyRender()
 {
-	// Set the viewport
-	D3D11_VIEWPORT viewport;
-	ZeroMemory(&viewport, sizeof(D3D11_VIEWPORT));
-
-	viewport.TopLeftX = 0;
-	viewport.TopLeftY = 0;
-	viewport.Width = r_width;
-	viewport.Height = r_height;
-
-	devcon->RSSetViewports(1, &viewport);
-	int sizeofvertex = 4;
-	int sizeofindices = 6;
-	D3D11_BUFFER_DESC bd;
-	ZeroMemory(&bd, sizeof(bd));
-	bd.Usage = D3D11_USAGE_DYNAMIC;
-	bd.ByteWidth = sizeof VERTEX * sizeofvertex;             // size is the VERTEX struct * 3
-	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
-	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-
-	dev->CreateBuffer(&bd, nullptr, &pVBuffer);
-
-	UINT stride = sizeof(VERTEX);
-	UINT offset = 0;
-	devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
-
-	D3D11_MAPPED_SUBRESOURCE ms;
-	devcon->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-	memcpy(ms.pData, OurVertices, sizeofvertex);
-	devcon->Unmap(pVBuffer, NULL);
-
-	bd.Usage = D3D11_USAGE_DYNAMIC;
-	bd.ByteWidth = sizeof WORD * sizeofindices;
-	bd.BindFlags = D3D11_BIND_INDEX_BUFFER; 
-	bd.CPUAccessFlags = 0;
-
-	dev->CreateBuffer(&bd, nullptr, &pIBuffer);
-
-	devcon->IASetIndexBuffer(pIBuffer, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
+	swapchain->SetFullscreenState(FALSE, NULL);    // switch to windowed mode
+	// close and release all existing COM objects
+	Shaders::get()->clearShaders();
+	BufferUtils::get()->releaseBuffers();
+	swapchain->Release();
+	backbuffer->Release();
+	dev->Release();
+	devcon->Release();
 }
 #endif

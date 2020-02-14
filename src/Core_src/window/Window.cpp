@@ -94,7 +94,7 @@ namespace LunaLuxEngine::window_api
 		RECT wr = {0, 0, width, height};
 		AdjustWindowRect(&wr, WS_OVERLAPPEDWINDOW, FALSE);
 
-		hwnd = CreateWindowEx(NULL,class_name, reinterpret_cast<LPCSTR>(Title),WS_OVERLAPPEDWINDOW,300,300, wr.right - wr.left, wr.bottom - wr.top,nullptr,nullptr,Inst,nullptr);
+		hwnd = CreateWindowEx(NULL,class_name, reinterpret_cast<LPCSTR>(Title),WS_OVERLAPPEDWINDOW,0,0, wr.right - wr.left, wr.bottom - wr.top,nullptr,nullptr,Inst,nullptr);
 
 		ShowWindow(hwnd, SW_SHOWDEFAULT);
 	}

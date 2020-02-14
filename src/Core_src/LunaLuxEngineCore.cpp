@@ -1,8 +1,24 @@
 #include "LunaLuxEngineCore.h"
 #include <cstdio>
 #include <thread>
+#include "render/Buffer.h"
+#include "utils/BufferUtil.h"
 namespace LunaLuxEngine
 {
+	VERTEX OurVertices[] =
+	{
+		VERTEX(VECTOR3(-0.5f, 0.5f, 0.0f), COLOUR(1.0f, 0.0f, 0.0f, 1.0f)),
+		VERTEX(VECTOR3(-0.5f, -0.5f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
+		VERTEX(VECTOR3(0.5f, -0.5f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
+		VERTEX(VECTOR3(0.5f, 0.5f, 0.0f), COLOUR(0.0f, 0.0f, 1.0f, 1.0f))
+	};
+
+	WORD indices[] =
+	{
+		0,1,3,
+		3,1,2
+	};
+
 	void lunaLuxEngine::initEngine()
 	{
 		CHECK_P(m_game_main , "no game class given")
@@ -19,6 +35,7 @@ namespace LunaLuxEngine
 		CWin->setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin->createWindow();
 		render->initRender(CWin);
+		BufferUtils::get()->createBuffer(OurVertices);
 		//Core_Physics_Controller->initPhysicsEngine();
 	}
 	int8 lunaLuxEngine::updateEngine()
