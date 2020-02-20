@@ -4,6 +4,7 @@ namespace LunaLuxEngine
 {
 	void BufferUtils::createBuffer(VERTEX vers[])
 	{
+<<<<<<< refs/remotes/origin/master
 #ifdef WIN32
 		D3D11_BUFFER_DESC bd;
 		ZeroMemory(&bd, sizeof(bd));
@@ -23,6 +24,9 @@ namespace LunaLuxEngine
 		UINT offset = 0;
 		devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
 #endif
+=======
+		//TODO: create buffers that actuly Fucking render grrrrrrrrr
+>>>>>>> update to physics lib
 	}
 
 	void BufferUtils::releaseBuffers()

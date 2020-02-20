@@ -8,9 +8,9 @@ namespace LunaLuxEngine
 {
 	VERTEX OurVertices[] =
 	{
-		VERTEX(VECTOR3(-0.5f, 0.5f, 0.0f), COLOUR(1.0f, 0.0f, 0.0f, 1.0f)),
-		VERTEX(VECTOR3(-0.5f, -0.5f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
-		VERTEX(VECTOR3(0.5f, -0.5f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
+		VERTEX(VECTOR3(0.0f, 0.5f, 0.0f), COLOUR(1.0f, 0.0f, 0.0f, 1.0f)),
+		VERTEX(VECTOR3(0.5f, 0.5f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
+		VERTEX(VECTOR3(0.5f, 0.0f, 0.0f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
 		VERTEX(VECTOR3(0.5f, 0.5f, 0.0f), COLOUR(0.0f, 0.0f, 1.0f, 1.0f))
 	};
 
@@ -40,6 +40,7 @@ namespace LunaLuxEngine
 		CWin->setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin->createWindow();
 		render->initRender(CWin);
+		BufferUtils::get()->setVercount(0);
 		BufferUtils::get()->createBuffer(OurVertices);
 		//Core_Physics_Controller->initPhysicsEngine();
 	}

@@ -87,8 +87,8 @@ float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
 void DXRenderer::fireRender()
 {
 	devcon->ClearRenderTargetView(backbuffer, color);
-	devcon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_POINTLIST);
-	devcon->Draw(6, 0);
+	devcon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	devcon->Draw(BufferUtils::get()->getVerCont(),0);
 	swapchain->Present(0, 0);
 }
 
