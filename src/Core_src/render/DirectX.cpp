@@ -92,7 +92,7 @@ void DXRenderer::fireRender()
 	swapchain->Present(0, 0);
 }
 
-void LunaLuxEngine::DXRenderer::postRender()
+void DXRenderer::postRender()
 {
 	
 }

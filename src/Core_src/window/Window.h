@@ -10,6 +10,7 @@
 #include <cstring>
 #include <X11/X.h>
 #include <X11/Xlib.h>
+#include "Opengl_h.h"
 #endif
 #define CWin LunaLuxEngine::window_api::CrossWindow::get()
 
@@ -291,11 +292,13 @@ private:
 #endif
 #ifdef  __linux__
 private:
-    Display                 *dpy{};
+    int                     att[5] = { 4, 12, 24, 5, 0L };
+    Display                *dpy{};
     Window                  root{};
     Window                  win{};
     XSetWindowAttributes    swa{};
     Colormap                cmap{};
+    XVisualInfo            *vi{};
     XEvent                  xev{};
 public:
     inline Display* getWindowL()
@@ -306,6 +309,11 @@ public:
     inline Window getWindowL_()
     {
         return win;
+    }
+
+    inline XVisualInfo* getWindowV()
+    {
+        return vi;
     }
 #endif
 protected:

@@ -2,8 +2,9 @@
 
 namespace LunaLuxEngine
 {
-	void Shaders::compileShader(LPCWSTR file)
+	void Shaders::compileShader(char* file)
 	{
+#ifdef WIN32
 		ID3D10Blob* VS, * PS;
 		memset(&VS, 0, 0);
 		memset(&PS, 0, 0);
@@ -27,10 +28,14 @@ namespace LunaLuxEngine
 
 		devicecon->VSSetShader(pVS, 0, 0);
 		devicecon->PSSetShader(pPS, 0, 0);
+#endif
 	}
+
+#ifdef WIN32
 	void Shaders::giveInstance(ID3D11Device* dev, ID3D11DeviceContext* context)
 	{
 		device = dev;
 		devicecon = context;
 	}
+#endif
 }

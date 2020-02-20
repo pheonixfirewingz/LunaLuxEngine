@@ -6,6 +6,7 @@
 #include <LLESDK/IGame.h>
 #include "render/IRender.h"
 #include "render/DirectX.h"
+#include "render/Opengl.h"
 #include "window/Window.h"
 #define LLE LunaLuxEngine::lunaLuxEngine::get();
 

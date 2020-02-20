@@ -4,6 +4,7 @@ namespace LunaLuxEngine
 {
 	void BufferUtils::createBuffer(VERTEX vers[])
 	{
+#ifdef WIN32
 		D3D11_BUFFER_DESC bd;
 		ZeroMemory(&bd, sizeof(bd));
 		bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
@@ -21,18 +22,23 @@ namespace LunaLuxEngine
 		UINT stride = sizeof(vers);
 		UINT offset = 0;
 		devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
+#endif
 	}
 
-	void BufferUtils::giveInstance(ID3D11DeviceContext* in_con, ID3D11Device* in_dev)
-	{
-		dev = in_dev;
-		devcon = in_con;
-	}
 	void BufferUtils::releaseBuffers()
 	{
+#ifdef WIN32
 		if (pVBuffer != nullptr)
 			pVBuffer->Release();
 		if (pIBuffer != nullptr)
 			pIBuffer->Release();
+#endif
 	}
+#ifdef WIN32
+    void BufferUtils::giveInstance(ID3D11DeviceContext* in_con, ID3D11Device* in_dev)
+    {
+        dev = in_dev;
+        devcon = in_con;
+    }
+#endif
 }

@@ -4,6 +4,8 @@
  * used to keep reliance on one os
  */
 #ifndef WIN32
+#include <stdio.h>
+#include <stdlib.h>
 typedef __UINT64_TYPE__ uint64_t;
 typedef __UINT32_TYPE__ uint32_t;
 typedef __UINT16_TYPE__ uint16_t;

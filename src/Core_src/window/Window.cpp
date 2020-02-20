@@ -113,6 +113,7 @@ void CrossWindow::updateWindow()
     switch(xev.type)
     {
         case Expose:
+            fireResizeCallback(width,height);
             break;
         case ConfigureNotify:
             break;
@@ -132,8 +133,14 @@ void CrossWindow::createWindow()
     dpy = XOpenDisplay(nullptr);
     CHECK_P(dpy,"cannot connect to X server")
     root = DefaultRootWindow(dpy);
+    vi = glXChooseVisual(dpy, 0, att);
+
+    if(vi == NULL) FOURCE_STOP("\n\tno appropriate visual found\n\n")
+
+    cmap = XCreateColormap(dpy, root, vi->visual, AllocNone);
+    swa.colormap = cmap;
     swa.event_mask = ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask;
-    win = XCreateWindow(dpy, root, 0, 0, width, height, 0, CopyFromParent , InputOutput, CopyFromParent ,CWEventMask,&swa);
+    win = XCreateWindow(dpy, root, 0, 0, width, height, 0, vi->depth , InputOutput, vi->visual ,CWColormap | CWEventMask,&swa);
     XMapWindow(dpy, win);
     XStoreName(dpy, win, reinterpret_cast<const char *>(Title));
 }
