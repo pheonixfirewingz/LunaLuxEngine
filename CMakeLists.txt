@@ -18,12 +18,9 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     include_directories(C:/VulkanSDK/1.2.131.2/Include STATIC)
     link_directories(${Vulkan_LIBRARY})
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-<<<<<<< refs/remotes/origin/master
     add_compile_definitions(GLEW_STATIC)
     find_package(GLEW REQUIRED)
     find_package(OpenGL REQUIRED)
-=======
->>>>>>> update to physics lib
     find_package(Vulkan REQUIRED)
     find_package(X11 REQUIRED)
     link_directories(${X11_LIBRARIES})

@@ -9,6 +9,7 @@
 #include "window/Opengl_h.h"
 namespace LunaLuxEngine
 {
+#ifdef __linux__
     class OGLRenderer : public IRender
     {
     private:
@@ -20,5 +21,6 @@ namespace LunaLuxEngine
         void postRender() override;
         void destroyRender() override;
     };
+#endif // !
 }
 #endif //LUNALUXENGINE_OPENGL_H

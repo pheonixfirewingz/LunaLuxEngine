@@ -17,6 +17,8 @@ typedef __INT16_TYPE__ int16_t;
 typedef __INT8_TYPE__ int8_t;
 #else
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #endif // WIN32
 
 typedef int8_t int8;

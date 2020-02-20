@@ -1,7 +1,7 @@
 //
 // Created by digitech on 19/02/2020.
 //
-
+#ifdef __linux__
 #include <cstdio>
 #include "Opengl.h"
 using namespace LunaLuxEngine;
@@ -61,3 +61,4 @@ void OGLRenderer::destroyRender()
     glXMakeCurrent(CWin->getWindowL(), None, NULL);
     glXDestroyContext(CWin->getWindowL(), glc);
 }
+#endif // __linux__

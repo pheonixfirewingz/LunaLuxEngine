@@ -2,7 +2,7 @@
 
 namespace LunaLuxEngine
 {
-	void Shaders::compileShader(char* file)
+	void Shaders::compileShader(LPCWSTR file)
 	{
 #ifdef WIN32
 		ID3D10Blob* VS, * PS;

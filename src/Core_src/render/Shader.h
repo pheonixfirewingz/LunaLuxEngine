@@ -34,7 +34,7 @@ namespace LunaLuxEngine
 			else 
 				NativeMode = LLEtrue
 		}
-		void compileShader(char*);
+		void compileShader(LPCWSTR);
 
 #ifdef WIN32
 		void giveInstance(ID3D11Device*,ID3D11DeviceContext*);
