@@ -5,36 +5,53 @@
 #endif
 #include "../utils/BufferUtil.h"
 #include <LLESDK\types.h>
+#include <vector>
 namespace LunaLuxEngine
 {
 	class BufferUtils
 	{
 	private:
 #ifdef WIN32
-		ID3D11Buffer* pVBuffer;
-		ID3D11Buffer* pIBuffer;
+		std::vector<ID3D11Buffer*> VBarray {};
+		std::vector <ID3D11Buffer*> IBarray {};
 		ID3D11Device* dev;
-		ID3D11DeviceContext* devcon;
+		BufferUtils()
+		{
+			VBarray.resize((sizeof(int16)));
+			IBarray.resize((sizeof(int16)));
+		}
+		~BufferUtils()
+		{
+			delete& VBarray;
+			delete& IBarray;
+			delete& dev;
+		}
 #endif
-		int64 vercount = 0;
+		int64 currentVBAsize = 0,currentIBAsize = 0;
 	public:
 		inline static BufferUtils* get()
 		{
 			static BufferUtils* util_ = new BufferUtils();
 			return util_;
 		}
-		inline void setVercount(int64 in_ver)
+#ifdef WIN32
+		inline ID3D11Buffer** getVbuff(int64 index)
 		{
-			vercount =+ in_ver;
+			return &VBarray[index];
 		}
 
-		inline int64 getVerCont()
+		inline ID3D11Buffer* getIBuff(int64 index)
 		{
-			return vercount;
+			return IBarray[index];
 		}
-		void createBuffer(VERTEX []);
+#endif
+		void createVBufAndAddToArray(VERTEX[], int64 vertexcount);
+		void createIBufAndAddToArray(int[], int64 vertexcount);
 #ifdef WIN32
-		void giveInstance(ID3D11DeviceContext*, ID3D11Device*);
+		inline void giveInstance(ID3D11Device* in_dev)
+		{
+			dev = in_dev;
+		}
 #endif
 		void releaseBuffers();
 	};

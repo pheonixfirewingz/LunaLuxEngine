@@ -2,44 +2,65 @@
 
 namespace LunaLuxEngine
 {
-	void BufferUtils::createBuffer(VERTEX vers[])
+
+	void BufferUtils::createVBufAndAddToArray(VERTEX vers[], int64 vertexcount)
 	{
 #ifdef WIN32
-		D3D11_BUFFER_DESC bd;
-		ZeroMemory(&bd, sizeof(bd));
-		bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
-		bd.ByteWidth = sizeof(VERTEX) * 4;             // size is the VERTEX struct
-		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
-		bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
+		ID3D11Buffer* pVBuffer{};
+		D3D11_BUFFER_DESC vertexBufferDesc{};
+		vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+		vertexBufferDesc.ByteWidth = sizeof(VERTEX) * vertexcount;
+		vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		vertexBufferDesc.CPUAccessFlags = 0;
+		vertexBufferDesc.MiscFlags = 0;
+		vertexBufferDesc.StructureByteStride = 0;
 
-		dev->CreateBuffer(&bd, nullptr, &pVBuffer);
+		D3D11_SUBRESOURCE_DATA vertexData{};
+		vertexData.pSysMem = vers;
+		vertexData.SysMemPitch = 0;
+		vertexData.SysMemSlicePitch = 0;
 
-		D3D11_MAPPED_SUBRESOURCE ms;
-		devcon->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-		memcpy(ms.pData, vers, sizeof(vers));
-		devcon->Unmap(pVBuffer, NULL);
-
-		UINT stride = sizeof(vers);
-		UINT offset = 0;
-		devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
+		dev->CreateBuffer(&vertexBufferDesc, &vertexData, &pVBuffer);
+		VBarray[currentVBAsize] = pVBuffer;
+		currentVBAsize++;
 #endif
-		//TODO: create buffers that actuly Fucking render grrrrrrrrr
+	}
+
+	void LunaLuxEngine::BufferUtils::createIBufAndAddToArray(int ind[], int64 indicescount)
+	{
+		ID3D11Buffer* pIBuffer{};
+		D3D11_BUFFER_DESC indexBufferDesc{};
+		indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+		indexBufferDesc.ByteWidth = sizeof(int) * indicescount;
+		indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+		indexBufferDesc.CPUAccessFlags = 0;
+		indexBufferDesc.MiscFlags = 0;
+		indexBufferDesc.StructureByteStride = 0;
+
+		D3D11_SUBRESOURCE_DATA indexData{};
+		indexData.pSysMem = ind;
+		indexData.SysMemPitch = 0;
+		indexData.SysMemSlicePitch = 0;
+
+		// Create the index buffer.
+		dev->CreateBuffer(&indexBufferDesc, &indexData, &pIBuffer);
+		IBarray[currentIBAsize] = pIBuffer;
+		currentIBAsize++;
 	}
 
 	void BufferUtils::releaseBuffers()
 	{
 #ifdef WIN32
-		if (pVBuffer != nullptr)
-			pVBuffer->Release();
-		if (pIBuffer != nullptr)
-			pIBuffer->Release();
+		for (int i = 0; i <= currentVBAsize; i++)
+		{
+			if(VBarray[i] != nullptr)
+				VBarray[i]->Release();
+		}
+		for (int i = 0; i <= currentIBAsize; i++)
+		{
+			if (IBarray[i] != nullptr)
+				IBarray[i]->Release();
+		}
 #endif
 	}
-#ifdef WIN32
-    void BufferUtils::giveInstance(ID3D11DeviceContext* in_con, ID3D11Device* in_dev)
-    {
-        dev = in_dev;
-        devcon = in_con;
-    }
-#endif
 }

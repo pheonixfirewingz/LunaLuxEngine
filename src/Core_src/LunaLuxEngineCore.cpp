@@ -40,15 +40,15 @@ namespace LunaLuxEngine
 		CWin->setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin->createWindow();
 		render->initRender(CWin);
-		BufferUtils::get()->setVercount(0);
-		BufferUtils::get()->createBuffer(OurVertices);
-		//Core_Physics_Controller->initPhysicsEngine();
+		BufferUtils::get()->createVBufAndAddToArray(OurVertices, 4);
+		BufferUtils::get()->createIBufAndAddToArray(indices, 6);
+		Core_Physics_Controller->initPhysicsEngine();
 	}
 	int8 lunaLuxEngine::updateEngine()
 	{
 		render->prepRender();
 		CWin->updateWindow();
-		//Core_Physics_Controller->updatePhysicsEngine();
+		Core_Physics_Controller->updatePhysicsEngine();
 		m_game_main->GameMain();
 		render->fireRender();
 		return EXIT_SUCCESS;

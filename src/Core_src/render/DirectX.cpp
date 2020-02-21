@@ -59,7 +59,7 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	  */
 	CWin->setResizeCallback(&WindowResizeCallback);
 	CWin->fireResizeCallback(CWin->getWindowW(), CWin->getWindowH());
-	BufferUtils::get()->giveInstance(devcon,dev);
+	BufferUtils::get()->giveInstance(dev);
 	Shaders::get()->giveInstance(dev,devcon);
 	//temp
 	Shaders::get()->compileShader(L"shader.hlsl");
@@ -88,7 +88,11 @@ void DXRenderer::fireRender()
 {
 	devcon->ClearRenderTargetView(backbuffer, color);
 	devcon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	devcon->Draw(BufferUtils::get()->getVerCont(),0);
+	UINT stride = 4;
+	UINT offset = 0;
+	devcon->IASetVertexBuffers(0, 1, BufferUtils::get()->getVbuff(0), &stride, &offset);
+	devcon->IASetIndexBuffer(BufferUtils::get()->getIBuff(0), DXGI_FORMAT_R32_UINT, offset);
+	devcon->DrawIndexed(6,0,0);
 	swapchain->Present(0, 0);
 }
 

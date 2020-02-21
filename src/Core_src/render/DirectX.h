@@ -14,10 +14,10 @@ namespace LunaLuxEngine
 	class DXRenderer : public IRender
 	{
 	private:
-		IDXGISwapChain* swapchain;             // the pointer to the swap chain interface
-		ID3D11Device* dev;                     // the pointer to our Direct3D device interface
-		ID3D11DeviceContext* devcon;           // the pointer to our Direct3D device context
-		ID3D11RenderTargetView* backbuffer;    // the pointer to our back buffer
+		IDXGISwapChain* swapchain{};             // the pointer to the swap chain interface
+		ID3D11Device* dev{};                     // the pointer to our Direct3D device interface
+		ID3D11DeviceContext* devcon{};           // the pointer to our Direct3D device context
+		ID3D11RenderTargetView* backbuffer{};    // the pointer to our back buffer
 	public:
 		void initRender(window_api::CrossWindow*) override;
 		void prepRender() override;

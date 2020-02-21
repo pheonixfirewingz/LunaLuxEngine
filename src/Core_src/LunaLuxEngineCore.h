@@ -4,6 +4,7 @@
 //#include <LunaLuxEnginePhysics.h>
 #include <LLESDK/types.h>
 #include <LLESDK/IGame.h>
+#include <LunaLuxEnginePhysics.h>
 #include "render/IRender.h"
 #include "render/DirectX.h"
 #include "render/Opengl.h"
@@ -20,7 +21,7 @@ namespace LunaLuxEngine
 		void initEngine();
 		int8 updateEngine();
 	protected:
-		//Physics::LunaLuxEnginePhysics* Core_Physics_Controller = new Physics::LunaLuxEnginePhysics();
+		Physics::LunaLuxEnginePhysics* Core_Physics_Controller = new Physics::LunaLuxEnginePhysics();
 		IRender* render{};
 	public:
 		static lunaLuxEngine* get()
