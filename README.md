@@ -2,7 +2,7 @@
 LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 
 ----------------------------------------------------------------------------------------------
-https://www.code-inspector.com/project/4310/status/svg  https://www.code-inspector.com/project/4310/score/svg
+![img](https://www.code-inspector.com/project/4310/status/svg)  ![img](https://www.code-inspector.com/project/4310/score/svg)
 
 
 ## Contribution rules
