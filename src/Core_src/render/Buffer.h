@@ -17,8 +17,8 @@ namespace LunaLuxEngine
 		ID3D11Device* dev;
 		BufferUtils()
 		{
-			VBarray.resize((sizeof(int16)));
-			IBarray.resize((sizeof(int16)));
+			VBarray.resize((sizeof(int8)));
+			IBarray.resize((sizeof(int8)));
 		}
 		~BufferUtils()
 		{
@@ -43,6 +43,11 @@ namespace LunaLuxEngine
 		inline ID3D11Buffer* getIBuff(int64 index)
 		{
 			return IBarray[index];
+		}
+
+		inline int getBufferCount()
+		{
+			return currentIBAsize;
 		}
 #endif
 		void createVBufAndAddToArray(VERTEX[], int64 vertexcount);

@@ -8,6 +8,7 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 - keep formatting the same as the rest of the project
 - focuse on speed and optamization
 - if is a class you made or patched note it at the top of the class
+- try to be memory safe (not required if works)
 
 ## Formatting
 
@@ -24,11 +25,12 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 - Create Window using cocoa for mac (waiting for OSX availability)
 - Create Metal renderer and get a 2D_box on screen (waiting for OSX availability)
 - Create Vulkan context for linux and get a 2D_box on screen
-- DirectX11 get a 2D_box on screen
-- Start work on Physics lib
+- DirectX11 get a character on screen
 
 ## WIP
 - Windows DirectX 11 renderer
+- Linux OpenGL Renderer
+- Linux Window Support
 
 -----------------------
 ## Platforms

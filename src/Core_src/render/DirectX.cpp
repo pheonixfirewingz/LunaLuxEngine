@@ -79,20 +79,27 @@ void DXRenderer::prepRender()
 	viewport.TopLeftY = 0;
 	viewport.Width = r_width;
 	viewport.Height = r_height;
+	viewport.MinDepth = 0.0f;
+	viewport.MaxDepth = 1.0f;
 
 	devcon->RSSetViewports(1, &viewport);
 }
 
 float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
+UINT offset = 0;
 void DXRenderer::fireRender()
 {
 	devcon->ClearRenderTargetView(backbuffer, color);
 	devcon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	UINT stride = 4;
-	UINT offset = 0;
-	devcon->IASetVertexBuffers(0, 1, BufferUtils::get()->getVbuff(0), &stride, &offset);
-	devcon->IASetIndexBuffer(BufferUtils::get()->getIBuff(0), DXGI_FORMAT_R32_UINT, offset);
-	devcon->DrawIndexed(6,0,0);
+	for (int i = 0; i < BufferUtils::get()->getBufferCount(); i++)
+	{
+		//TODO: need to get the current vertex count from the current vertex buffer beening drawn to make this dynamtic
+		UINT stride = 4;
+		devcon->IASetVertexBuffers(0, 1, BufferUtils::get()->getVbuff(i), &stride, &offset);
+		devcon->IASetIndexBuffer(BufferUtils::get()->getIBuff(i), DXGI_FORMAT_R32_UINT, offset);
+		//TODO: need to get the current indices count from the current indices buffer beening drawn to make this dynamtic
+		devcon->DrawIndexed(6, 0, 0);
+	}
 	swapchain->Present(0, 0);
 }
 

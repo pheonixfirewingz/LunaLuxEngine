@@ -51,16 +51,9 @@ namespace LunaLuxEngine
 	void BufferUtils::releaseBuffers()
 	{
 #ifdef WIN32
-		for (int i = 0; i <= currentVBAsize; i++)
-		{
-			if(VBarray[i] != nullptr)
-				VBarray[i]->Release();
-		}
-		for (int i = 0; i <= currentIBAsize; i++)
-		{
-			if (IBarray[i] != nullptr)
-				IBarray[i]->Release();
-		}
+		for (int i = 0; i < currentVBAsize; i++) if (IBarray[i] != nullptr) VBarray[i]->Release();
+
+		for (int i = 0; i < currentIBAsize; i++) if (IBarray[i] != nullptr) IBarray[i]->Release();
 #endif
 	}
 }
