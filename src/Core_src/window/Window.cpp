@@ -25,7 +25,7 @@ namespace LunaLuxEngine::window_api
 		{
 			case WM_CLOSE:
 				sc_temp = LLEtrue;
-			break;
+				break;
 			case WM_SIZE:
 			{
 				POINTS pt = MAKEPOINTS(lParam);
@@ -34,16 +34,17 @@ namespace LunaLuxEngine::window_api
 			}
 			case WM_MOUSEHOVER:
 				in_win = true;
+				break;
 			case WM_MOUSELEAVE:
 				in_win = false;
+				break;
 			case WM_MOUSEMOVE:
-			{
 				if (in_win)
 				{
 					CWin->M_posx = ((DWORD_PTR)(lParam)) & 0xffff;
 					CWin->M_posy = (((DWORD_PTR)(lParam)) >> 16) & 0xffff;
 				}
-			}
+				break;
 			case WM_KEYDOWN:
 				CWin->setKey(wParam,1);
 				break;
@@ -154,7 +155,6 @@ void CrossWindow::destoryWindow()
 #endif
 	void CrossWindow::fireResizeCallback(int32 in_width, int32 in_height)
 	{
-		if(resizeCallback != nullptr)
-			resizeCallback(in_width, in_height);
+		if(resizeCallback != nullptr) resizeCallback(in_width, in_height);
 	}
 }

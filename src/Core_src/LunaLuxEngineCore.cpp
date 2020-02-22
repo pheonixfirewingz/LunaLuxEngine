@@ -46,11 +46,12 @@ namespace LunaLuxEngine
 	}
 	int8 lunaLuxEngine::updateEngine()
 	{
-		render->prepRender();
 		CWin->updateWindow();
 		Core_Physics_Controller->updatePhysicsEngine();
 		m_game_main->GameMain();
+		render->prepRender();
 		render->fireRender();
+		render->postRender();
 		return EXIT_SUCCESS;
 	}
 

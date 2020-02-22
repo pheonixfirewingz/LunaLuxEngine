@@ -6,8 +6,8 @@ namespace LunaLuxEngine
 	{
 #ifdef WIN32
 		ID3D10Blob* VS, * PS;
-		memset(&VS, 0, 0);
-		memset(&PS, 0, 0);
+		ZeroMemory(&VS, sizeof(VS));
+		ZeroMemory(&PS, sizeof(PS));
 
 		if (FAILED(D3DCompileFromFile(file, 0, 0, "VMain", "vs_4_0", 0, 0, &VS, nullptr)))
 				FOURCE_STOP("failed to vertex compile shader check if is in exeacutable localtion\n")
