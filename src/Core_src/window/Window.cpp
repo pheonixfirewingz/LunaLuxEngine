@@ -27,11 +27,8 @@ namespace LunaLuxEngine::window_api
 				sc_temp = LLEtrue;
 				break;
 			case WM_SIZE:
-			{
-				POINTS pt = MAKEPOINTS(lParam);
-				CWin->fireResizeCallback(pt.x, pt.y);
+				CWin->fireResizeCallback(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
 				break;
-			}
 			case WM_MOUSEHOVER:
 				in_win = true;
 				break;
