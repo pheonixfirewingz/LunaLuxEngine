@@ -22,6 +22,7 @@ namespace LunaLuxEngine
 			delete& dev;
 		}
 #endif
+		BufferUtils(){}
 		int64 currentVBAsize = 0,currentIBAsize = 0;
 	public:
 		inline static BufferUtils* get()

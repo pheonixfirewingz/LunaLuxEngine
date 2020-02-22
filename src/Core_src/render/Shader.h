@@ -15,11 +15,11 @@ namespace LunaLuxEngine
 	private:
 		LLEbool NativeMode;
 #ifdef WIN32
-		ID3D11Device* device;                     // the pointer to our Direct3D device interface
-		ID3D11DeviceContext* devicecon;           // the pointer to our Direct3D device context
-		ID3D11InputLayout* pLayout;            // the pointer to the input layout
-		ID3D11VertexShader* pVS;               // the pointer to the vertex shader
-		ID3D11PixelShader* pPS;                // the pointer to the pixel shader
+		ID3D11Device* device = nullptr;                     // the pointer to our Direct3D device interface
+		ID3D11DeviceContext* devicecon = nullptr;           // the pointer to our Direct3D device context
+		ID3D11InputLayout* pLayout = nullptr;            // the pointer to the input layout
+		ID3D11VertexShader* pVS = nullptr;               // the pointer to the vertex shader
+		ID3D11PixelShader* pPS = nullptr;                // the pointer to the pixel shader
 		
 		Shaders() {}
 
