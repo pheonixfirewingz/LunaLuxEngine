@@ -67,14 +67,6 @@ File = Reader.h
 
 Line = 23
 
-- Violation = 
-
-Problem = 
-
-File = 
-
-Line =
-
 ## Getting started
 
 ### Minimum Start Code

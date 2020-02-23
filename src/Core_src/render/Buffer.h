@@ -14,7 +14,7 @@ namespace LunaLuxEngine
 #ifdef WIN32
 		std::vector<ID3D11Buffer*> VBarray {};
 		std::vector <ID3D11Buffer*> IBarray {};
-		ID3D11Device* dev;
+		ID3D11Device* dev {};
 		~BufferUtils()
 		{
 			delete& VBarray;
