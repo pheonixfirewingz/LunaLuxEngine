@@ -10,17 +10,17 @@
 namespace LunaLuxEngine
 {
 #ifdef __linux__
-    class OGLRenderer : public IRender
-    {
-    private:
-        GLXContext glc;
-    public:
-        void initRender(window_api::CrossWindow*) override;
-        void prepRender() override;
-        void fireRender() override;
-        void postRender() override;
-        void destroyRender() override;
-    };
+	class OGLRenderer : public IRender
+	{
+	private:
+		GLXContext glc;
+	public:
+		void initRender(window_api::CrossWindow*) override;
+		void prepRender() override;
+		void fireRender() override;
+		void postRender() override;
+		void destroyRender() override;
+	};
 #endif // !
 }
 #endif //LUNALUXENGINE_OPENGL_H

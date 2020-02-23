@@ -10,19 +10,19 @@
 using namespace LunaLuxEngine;
 int32 r_width, r_height;
 
-inline void WindowResizeCallback(int32 width,int32 height)
+inline void WindowResizeCallback(int32 width, int32 height)
 {
 	r_width = width; //takes game window current width and sets the internal renderer width
 	r_height = height; //takes game window current height and sets the internal renderer height
 }
-void DXRenderer::initRender(window_api::CrossWindow* win) 
+void DXRenderer::initRender(window_api::CrossWindow* win)
 {
 	/*
 	  * =====================================================
 	  * 				 GRAPHICS SETUP INSTANCE
 	  * =====================================================
 	  */
-	// create a struct to hold information about the swap chain
+	  // create a struct to hold information about the swap chain
 	DXGI_SWAP_CHAIN_DESC scd;
 	// clear out the struct for use
 	ZeroMemory(&scd, sizeof(DXGI_SWAP_CHAIN_DESC));
@@ -38,8 +38,8 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	scd.Windowed = true;                                    // windowed/full-screen mode
 	scd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;     // allow full-screen switching
 	// create a device, device context and swap chain using the information in the scd struct
-	D3D11CreateDeviceAndSwapChain(nullptr,D3D_DRIVER_TYPE_HARDWARE,nullptr,
-		NULL,nullptr,NULL,D3D11_SDK_VERSION,&scd,&swapchain,&dev,nullptr,&devcon);
+	D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr,
+		NULL, nullptr, NULL, D3D11_SDK_VERSION, &scd, &swapchain, &dev, nullptr, &devcon);
 	// get the address of the back buffer
 	ID3D11Texture2D* pBackBuffer;
 	swapchain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
@@ -60,7 +60,7 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	CWin->setResizeCallback(&WindowResizeCallback);
 	CWin->fireResizeCallback(CWin->getWindowW(), CWin->getWindowH());
 	BufferUtils::get()->giveInstance(dev);
-	Shaders::get()->giveInstance(dev,devcon);
+	Shaders::get()->giveInstance(dev, devcon);
 	//temp
 	Shaders::get()->compileShader(L"shader.hlsl");
 	/*
@@ -105,7 +105,7 @@ void DXRenderer::fireRender()
 
 void DXRenderer::postRender()
 {
-	
+
 }
 
 void DXRenderer::destroyRender()

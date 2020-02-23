@@ -20,7 +20,7 @@ namespace LunaLuxEngine
 		ID3D11InputLayout* pLayout = nullptr;            // the pointer to the input layout
 		ID3D11VertexShader* pVS = nullptr;               // the pointer to the vertex shader
 		ID3D11PixelShader* pPS = nullptr;                // the pointer to the pixel shader
-		
+
 		Shaders() {}
 
 		~Shaders()
@@ -40,15 +40,15 @@ namespace LunaLuxEngine
 		}
 		inline void toggleNativeCompiler()
 		{
-			if (NativeMode) 
+			if (NativeMode)
 				NativeMode = LLEfalse
-			else 
+			else
 				NativeMode = LLEtrue
 		}
 		void compileShader(LPCWSTR);
 
 #ifdef WIN32
-		void giveInstance(ID3D11Device*,ID3D11DeviceContext*);
+		void giveInstance(ID3D11Device*, ID3D11DeviceContext*);
 #endif
 
 		inline void clearShaders()

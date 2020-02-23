@@ -22,18 +22,18 @@ namespace LunaLuxEngine
 	void lunaLuxEngine::initEngine()
 	{
 
-		CHECK_P(m_game_main , "no game class given")
-		m_game_main->preBoot();
-		CHECK_P(m_game_main->getGameName(),"game name null")
-		CHECK_N2(m_game_main->getWindowWidth(),"game Window Width not set")
-		CHECK_N2(m_game_main->getWindowHeight(),"game Window Height not set")
+		CHECK_P(m_game_main, "no game class given")
+			m_game_main->preBoot();
+		CHECK_P(m_game_main->getGameName(), "game name null")
+			CHECK_N2(m_game_main->getWindowWidth(), "game Window Width not set")
+			CHECK_N2(m_game_main->getWindowHeight(), "game Window Height not set")
 
-	#ifdef WIN32
-		if (m_game_main->getShouldUsNativeRenderer()) render = new DXRenderer();
-    #endif
-    #ifdef __linux__
+#ifdef WIN32
+			if (m_game_main->getShouldUsNativeRenderer()) render = new DXRenderer();
+#endif
+#ifdef __linux__
 		render = new OGLRenderer();
-    #endif
+#endif
 		render->toggleDebug();
 		CWin->setTitle(m_game_main->getGameName());
 		CWin->setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());

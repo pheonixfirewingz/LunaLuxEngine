@@ -10,11 +10,11 @@ namespace LunaLuxEngine
 		ZeroMemory(&PS, sizeof(PS));
 
 		if (FAILED(D3DCompileFromFile(file, 0, 0, "VMain", "vs_4_0", 0, 0, &VS, nullptr)))
-				FOURCE_STOP("failed to vertex compile shader check if is in exeacutable localtion\n")
-		if (FAILED(D3DCompileFromFile(file, 0, 0, "PMain", "ps_4_0", 0, 0, &PS, nullptr)))
+			FOURCE_STOP("failed to vertex compile shader check if is in exeacutable localtion\n")
+			if (FAILED(D3DCompileFromFile(file, 0, 0, "PMain", "ps_4_0", 0, 0, &PS, nullptr)))
 				FOURCE_STOP("failed to pixel compile shader check if is in exeacutable localtion\n")
 
-		device->CreateVertexShader(VS->GetBufferPointer(), VS->GetBufferSize(), NULL, &pVS);
+				device->CreateVertexShader(VS->GetBufferPointer(), VS->GetBufferSize(), NULL, &pVS);
 		device->CreatePixelShader(PS->GetBufferPointer(), PS->GetBufferSize(), NULL, &pPS);
 
 		D3D11_INPUT_ELEMENT_DESC ied[] =

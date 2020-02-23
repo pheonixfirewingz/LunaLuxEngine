@@ -274,122 +274,235 @@ extern "C"
 
 namespace LunaLuxEngine::window_api
 {
-class CrossWindow
-{
-private:
-	LLEbool keys[256] = {};
-	LLEbool M_buttons[3] = {};
+	class CrossWindow
+	{
+	private:
+		LLEbool keys[256] = {};
+
+		LLEbool M_buttons[3] = {};
 #ifdef WIN32
-    private:
-        HWND hwnd{};
-        HINSTANCE Inst{};
-        public:
-        inline HWND getWindow()
-        {
-            return hwnd;
-        };
-        LPCSTR class_name = (LPCSTR)"LunaLuxEngine_WindowClass";
+	private:
+		HWND hwnd{};
+
+		HINSTANCE Inst{};
+
+	public:
+		inline HWND getWindow()
+		{
+			return hwnd;
+		};
+
+		LPCSTR class_name = (LPCSTR)"LunaLuxEngine_WindowClass";
+
+		bool in_win = true;
+	public:
+		inline void mouseHandler(UINT Msg, WPARAM wParam, LPARAM lParam)
+		{
+			switch (Msg)
+			{
+			case WM_MOUSEHOVER:
+				in_win = true;
+				break;
+
+			case WM_MOUSELEAVE:
+				in_win = false;
+				break;
+
+			case WM_MOUSEMOVE:
+				if (in_win)
+				{
+					CWin->M_posx = ((DWORD_PTR)(lParam)) & 0xffff;
+					CWin->M_posy = (((DWORD_PTR)(lParam)) >> 16) & 0xffff;
+				}
+				break;
+
+			case WM_RBUTTONDOWN:
+				CWin->setButton(0, 1);
+				break;
+
+			case WM_RBUTTONUP:
+				CWin->setButton(0, 0);
+				break;
+
+			case WM_LBUTTONDOWN:
+				CWin->setButton(1, 1);
+				break;
+
+			case WM_LBUTTONUP:
+				CWin->setButton(1, 0);
+				break;
+
+			case WM_MBUTTONDOWN:
+				CWin->setButton(2, 1);
+				break;
+
+			case WM_MBUTTONUP:
+				CWin->setButton(2, 0);
+				break;
+
+			default:
+				break;
+			}
+		};
+
+		inline void keyboardHandler(UINT Msg, WPARAM wParam, LPARAM lParam)
+		{
+			switch (Msg)
+			{
+			case WM_KEYDOWN:
+				CWin->setKey(wParam, 1);
+				break;
+
+			case WM_KEYUP:
+				CWin->setKey(wParam, 0);
+				break;
+
+			default:
+				break;
+			}
+		};
+
+		inline void commonHandler(UINT Msg, WPARAM wParam, LPARAM lParam)
+		{
+			switch (Msg)
+			{
+			case WM_CLOSE:
+				WIN_SHOULD_CLOSE = LLEtrue;
+				break;
+
+			case WM_SIZE:
+				CWin->fireResizeCallback(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
+				break;
+
+			default:
+				break;
+			}
+		};
+
 #endif
 #ifdef  __linux__
-private:
-    int                     att[5] = { 4, 12, 24, 5, 0L };
-    Display                *dpy{};
-    Window                  root{};
-    Window                  win{};
-    XSetWindowAttributes    swa{};
-    Colormap                cmap{};
-    XVisualInfo            *vi{};
-    XEvent                  xev{};
-public:
-    inline Display* getWindowL()
-    {
-        return dpy;
-    };
+	private:
+		int                     att[5] = { 4, 12, 24, 5, 0L };
 
-    inline Window getWindowL_()
-    {
-        return win;
-    }
+		Display* dpy{};
 
-    inline XVisualInfo* getWindowV()
-    {
-        return vi;
-    }
+		Window                  root{};
+
+		Window                  win{};
+
+		XSetWindowAttributes    swa{};
+
+		Colormap                cmap{};
+
+		XVisualInfo* vi{};
+
+		XEvent                  xev{};
+	public:
+		inline Display* getWindowL()
+		{
+			return dpy;
+		};
+
+		inline Window getWindowL_()
+		{
+			return win;
+		};
+
+		inline XVisualInfo* getWindowV()
+		{
+			return vi;
+		};
 #endif
-protected:
-        int8* Title = (int8*)"temp";
-        int16 width = 800,  height = 600;
-        void(*resizeCallback)(int32,int32) = nullptr;
-public:
+	protected:
+		int8* Title = (int8*)"temp";
+
+		int16 width = 800, height = 600;
+
+		void(*resizeCallback)(int32, int32) = nullptr;
+	public:
 		int16 M_posx = 0, M_posy = 0;
-        LLEbool WIN_SHOULD_CLOSE = LLEfalse;
+
+		LLEbool WIN_SHOULD_CLOSE = LLEfalse;
+
 		inline LLEbool isKeyDown(int code)
 		{
 			if (keys[code] != 0) return LLEtrue
 			else return LLEfalse
-		}
+		};
 
 		inline LLEbool isMouseButtonDown(int buttons)
 		{
 			if (M_buttons[buttons] != 0) return LLEtrue
 			else return LLEfalse
-		}
+		};
+
 		inline int16 getPosX()
 		{
 			return M_posx;
-		}
+		};
+
 		inline int16 getPosY()
 		{
 			return M_posy;
-		}
+		};
+
 		inline void setKey(int32 code, LLEbool state)
 		{
 			keys[code] = state;
-		}
+		};
+
 		inline void setButton(int32 code, LLEbool state)
 		{
 			M_buttons[code] = state;
-		}
-        void createWindow();
-        inline void setTitle(int8* in_title)
-        {
-            Title = in_title;
-        };
-        inline void setSize(int16 in_width,int in_height)
-        {
-            width = in_width;
-            height = in_height;
-            //fireResizeCallback(in_width, in_height);
-        };
-        inline int8* getTitle()
-        {
-            return Title;
-        };
-        inline LLEbool shouldClose()
-        {
-            return  WIN_SHOULD_CLOSE;
-        };
-        void updateWindow();
-        void destoryWindow();
+		};
+
+		void createWindow();
+
+		inline void setTitle(int8* in_title)
+		{
+			Title = in_title;
+		};
+		inline void setSize(int16 in_width, int in_height)
+		{
+			width = in_width;
+			height = in_height;
+			fireResizeCallback(in_width, in_height);
+		};
+		inline int8* getTitle()
+		{
+			return Title;
+		};
+		inline LLEbool shouldClose()
+		{
+			return  WIN_SHOULD_CLOSE;
+		};
+		void updateWindow();
+		void destoryWindow();
 
 		inline float getWindowW()
-        {
-            return width;
-        };
+		{
+			return width;
+		};
 		inline float getWindowH()
 		{
 			return height;
 		};
-        inline void setResizeCallback(void(*callback)(int32, int32))
-        {
-            resizeCallback = callback;
-        }
-        void fireResizeCallback(int32, int32);
+
+		inline void CrossWindow::fireResizeCallback(int32 in_width, int32 in_height)
+		{
+			if (resizeCallback != nullptr) resizeCallback(in_width, in_height);
+		};
+
+		inline void setResizeCallback(void(*callback)(int32, int32))
+		{
+			resizeCallback = callback;
+		};
+		void fireResizeCallback(int32, int32);
 
 		inline static CrossWindow* get()
 		{
 			static auto* window_ = new CrossWindow();
 			return window_;
-		}
+		};
 	};
 }

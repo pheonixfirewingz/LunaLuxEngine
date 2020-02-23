@@ -8,7 +8,7 @@
 
 class TestGame : public Game
 {
-    void preBoot() override;
+	void preBoot() override;
 	void GameBoot() override;
 	void GameMain() override;
 };

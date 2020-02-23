@@ -24,7 +24,6 @@ namespace LunaLuxEngine::FileSystem
 			file.close();
 
 			return buffer;
-
 		}
 	};
 }

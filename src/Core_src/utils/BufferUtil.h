@@ -46,7 +46,7 @@ struct VERTEX
 	VECTOR3 vec;
 	COLOUR color;
 
-	VERTEX(){}
+	VERTEX() {}
 
 	VERTEX(VECTOR3 in_vec, COLOUR in_colour)
 	{

@@ -66,7 +66,6 @@ Problem = Check buffer boundaries if used in a loop including recursive loops
 File = Reader.h
 
 Line = 23
-
 ## Getting started
 
 ### Minimum Start Code

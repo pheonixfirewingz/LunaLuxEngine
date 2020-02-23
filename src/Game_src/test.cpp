@@ -5,6 +5,6 @@
 #include "Game.h"
 int main()
 {
-	auto * eng = LLE;
+	auto* eng = LLE;
 	eng->runEngine(new TestGame());
 }
