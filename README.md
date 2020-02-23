@@ -67,13 +67,13 @@ File = Reader.h
 
 Line = 23
 
-- Violation = Minor/best practice
+- Violation = 
 
-Problem = The class 'BufferUtils' does not have a constructor although it has private member variables.
+Problem = 
 
-File = Buffer.h
+File = 
 
-Line = 11
+Line =
 
 ## Getting started
 
