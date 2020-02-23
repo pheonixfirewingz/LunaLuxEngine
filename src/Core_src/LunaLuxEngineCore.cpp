@@ -1,7 +1,6 @@
 #include "LunaLuxEngineCore.h"
 #include <cstdio>
 #include <thread>
-#include <GL/glew.h>
 #include "render/Buffer.h"
 #include "utils/BufferUtil.h"
 namespace LunaLuxEngine
@@ -42,12 +41,10 @@ namespace LunaLuxEngine
 		render->initRender(CWin);
 		BufferUtils::get()->createVBufAndAddToArray(OurVertices, 4);
 		BufferUtils::get()->createIBufAndAddToArray(indices, 6);
-		Core_Physics_Controller->initPhysicsEngine();
 	}
 	int8 lunaLuxEngine::updateEngine()
 	{
 		CWin->updateWindow();
-		Core_Physics_Controller->updatePhysicsEngine();
 		m_game_main->GameMain();
 		render->prepRender();
 		render->fireRender();
