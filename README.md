@@ -59,16 +59,21 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 ## Known issues
 
 ## Code Quality Issues
------------------------------------------------------------------------------------------------
 - Violation = Important/security (CWE-120, CWE-20)
-- Problem = Check buffer boundaries if used in a loop including recursive loops 
-- File = Reader.h
-- Line = 23
------------------------------------------------------------------------------------------------
+
+Problem = Check buffer boundaries if used in a loop including recursive loops 
+
+File = Reader.h
+
+Line = 23
+
 - Violation = Minor/best practice
-- Problem = The class 'BufferUtils' does not have a constructor although it has private member variables.
-- File = Buffer.h
-- Line = 11
+
+Problem = The class 'BufferUtils' does not have a constructor although it has private member variables.
+
+File = Buffer.h
+
+Line = 11
 
 ## Getting started
 
