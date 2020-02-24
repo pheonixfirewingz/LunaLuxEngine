@@ -60,13 +60,29 @@ LunaLuxEngine is a 3D graphical engine.
 - DirectX 11 depth buffer dose not clean properly
 
 ## Code Quality Issues
-- Violation = Important/security (CWE-120, CWE-20)
+- Violation = Minor/security
 
-Problem = Check buffer boundaries if used in a loop including recursive loops 
+Problem = Class 'Renderer' is unsafe, 'Renderer::render' can leak by wrong usage.
 
-File = Reader.h
+File = Renderer.h
 
-Line = 23
+Line = 20
+
+- Violation = Important/best practice
+
+Problem = Class 'Renderer' does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).
+
+File = Renderer.h
+
+Line = 24
+
+- Violation = Important/best practice
+
+Problem = Class 'Renderer' does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s).
+
+File = Renderer.h
+
+Line = 24
 ## Getting started
 
 ### Minimum Start Code
