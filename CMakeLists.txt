@@ -29,7 +29,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     link_directories(${OPENGL_LIBRARIES})
 endif()
 
-add_library(LunaLuxEngineCoreLib src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/IRender.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/render/DirectX.cpp src/Core_src/render/DirectX.h src/Core_src/fs/Reader.h src/Core_src/render/Shader.h src/Core_src/render/Shader.cpp src/Core_src/render/Buffer.h src/Core_src/render/Buffer.cpp src/Core_src/render/Opengl.h src/Core_src/render/Opengl.cpp)
+add_library(LunaLuxEngineCoreLib src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Common/IRender.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/render/DirectX/DirectX.cpp src/Core_src/render/DirectX/DirectX.h src/Core_src/fs/Reader.h src/Core_src/render/Shader.h src/Core_src/render/Shader.cpp src/Core_src/render/Buffer.h src/Core_src/render/Buffer.cpp src/Core_src/render/OpenGL/Opengl.h src/Core_src/render/OpenGL/Opengl.cpp src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp)
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(LunaLuxEngineCoreLib ${Vulkan_LIBRARY})
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")

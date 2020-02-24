@@ -4,7 +4,7 @@
 
 #ifndef LUNALUXENGINE_OPENGL_H
 #define LUNALUXENGINE_OPENGL_H
-#include "IRender.h"
+#include "../Common/IRender.h"
 #include <LLESDK/types.h>
 #include "window/Opengl_h.h"
 namespace LunaLuxEngine

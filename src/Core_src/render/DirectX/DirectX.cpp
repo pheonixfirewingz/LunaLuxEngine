@@ -1,12 +1,12 @@
 //
 // Created by luket on 23/01/2020.
 //
-#include "IRender.h"
+#include "../Common/IRender.h"
 #ifdef WIN32
 #include "DirectX.h"
-#include "Shader.h"
-#include "Buffer.h"
-#include "../utils/BufferUtil.h"
+#include "../Shader.h"
+#include "../Buffer.h"
+#include "../../utils/BufferUtil.h"
 using namespace LunaLuxEngine;
 int32 r_width, r_height;
 
@@ -17,6 +17,8 @@ inline void WindowResizeCallback(int32 width, int32 height)
 }
 void DXRenderer::initRender(window_api::CrossWindow* win)
 {
+	CWin->setResizeCallback(&WindowResizeCallback);
+	CWin->fireResizeCallback(CWin->getWindowW(), CWin->getWindowH());
 	/*
 	  * =====================================================
 	  * 				 GRAPHICS SETUP INSTANCE
@@ -46,8 +48,25 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	// use the back buffer address to create the render target
 	dev->CreateRenderTargetView(pBackBuffer, nullptr, &backbuffer);
 	pBackBuffer->Release();
+
+	D3D11_TEXTURE2D_DESC depthStencilDesc;
+	depthStencilDesc.Width = CWin->getWindowW();
+	depthStencilDesc.Height = CWin->getWindowH();
+	depthStencilDesc.MipLevels = 1;
+	depthStencilDesc.ArraySize = 1;
+	depthStencilDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	depthStencilDesc.SampleDesc.Count = 1;
+	depthStencilDesc.SampleDesc.Quality = 0;
+	depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
+	depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+	depthStencilDesc.CPUAccessFlags = 0;
+	depthStencilDesc.MiscFlags = 0;
+
+	dev->CreateTexture2D(&depthStencilDesc, NULL, &depthStencilBuffer);
+	dev->CreateDepthStencilView(depthStencilBuffer, NULL, &depthStencilView);
+
 	// set the render target as the back buffer
-	devcon->OMSetRenderTargets(1, &backbuffer, nullptr);
+	devcon->OMSetRenderTargets(1, &backbuffer, depthStencilView);
 	/*
 	  * =====================================================
 	  * 				 GRAPHICS SETUP INSTANCE END
@@ -57,8 +76,6 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	  *					SET UP RENDER DATA
 	  *=======================================================
 	  */
-	CWin->setResizeCallback(&WindowResizeCallback);
-	CWin->fireResizeCallback(CWin->getWindowW(), CWin->getWindowH());
 	BufferUtils::get()->giveInstance(dev);
 	Shaders::get()->giveInstance(dev, devcon);
 	//temp
@@ -90,6 +107,7 @@ UINT offset = 0;
 void DXRenderer::fireRender()
 {
 	devcon->ClearRenderTargetView(backbuffer, color);
+	devcon->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 	devcon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	for (int i = 0; i < BufferUtils::get()->getBufferCount(); i++)
 	{
@@ -98,7 +116,7 @@ void DXRenderer::fireRender()
 		devcon->IASetVertexBuffers(0, 1, BufferUtils::get()->getVbuff(i), &stride, &offset);
 		devcon->IASetIndexBuffer(BufferUtils::get()->getIBuff(i), DXGI_FORMAT_R32_UINT, offset);
 		//TODO: need to get the current indices count from the current indices buffer beening drawn to make this dynamtic
-		devcon->DrawIndexed(6, 0, 0);
+		devcon->DrawIndexed(BufferUtils::get()->getGlobalIndicesCount(), 0, 0);
 	}
 	swapchain->Present(0, 0);
 }
@@ -110,8 +128,11 @@ void DXRenderer::postRender()
 
 void DXRenderer::destroyRender()
 {
-	swapchain->SetFullscreenState(FALSE, NULL);    // switch to windowed mode
-	// close and release all existing COM objects
+	/*TODO: there nullptrs idk wky?
+	 *depthStencilView->Release();
+	 *depthStencilBuffer->Release();
+	 */
+	swapchain->SetFullscreenState(FALSE, NULL);
 	Shaders::get()->clearShaders();
 	BufferUtils::get()->releaseBuffers();
 	swapchain->Release();

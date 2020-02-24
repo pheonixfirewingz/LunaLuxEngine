@@ -1,6 +1,6 @@
 ![img](https://www.code-inspector.com/project/4310/status/svg)  ![img](https://www.code-inspector.com/project/4310/score/svg)
-# LunaLuxEngine V0.0.2
-LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
+# LunaLuxEngine V0.0.25
+LunaLuxEngine is a 3D graphical engine.
 
 ----------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
 - Create Window using cocoa for mac (waiting for OSX availability)
 - Create Metal renderer and get a 2D_box on screen (waiting for OSX availability)
 - Create Vulkan context for linux and get a 2D_box on screen
-- DirectX11 get a character on screen
+- DirectX11 get a 3D_box on screen
 
 ## WIP
 - Windows DirectX 11 renderer
@@ -57,6 +57,7 @@ LunaLuxEngine is a 2D graphical engine.(Plan to add 3D after 2D)
  - PlayStation 4 and up
 
 ## Known issues
+- DirectX 11 depth buffer dose not clean properly
 
 ## Code Quality Issues
 - Violation = Important/security (CWE-120, CWE-20)
@@ -72,11 +73,14 @@ Line = 23
 -----------------------
 Extend Game class in "#include <LLESDK/IGame.h>".
 The pre boot is used to configure required variables in the game class.
+
 - preBoot();
 the game class is called by the engine as for the main game loop and inatalization faze this is done through
 (engine logs will tell you if missing a config in the preBoot Stage)
+
 - BootGame();
 this is used to load external game fetures not part of the engine.
+
 - GameMain();
 this is used to allows custom game logic not handled by the engine to run in the engine's run loop
 

@@ -3,6 +3,7 @@
 #include <thread>
 #include "render/Buffer.h"
 #include "utils/BufferUtil.h"
+#include "render/Renderer.h"
 namespace LunaLuxEngine
 {
 	VERTEX OurVertices[] =
@@ -22,33 +23,26 @@ namespace LunaLuxEngine
 	void lunaLuxEngine::initEngine()
 	{
 
-		CHECK_P(m_game_main, "no game class given")
-			m_game_main->preBoot();
-		CHECK_P(m_game_main->getGameName(), "game name null")
-			CHECK_N2(m_game_main->getWindowWidth(), "game Window Width not set")
-			CHECK_N2(m_game_main->getWindowHeight(), "game Window Height not set")
+		CHECK_P(m_game_main, "no game class given");
+		m_game_main->preBoot();
+		CHECK_P(m_game_main->getGameName(), "game name null");
+		CHECK_N2(m_game_main->getWindowWidth(), "game Window Width not set");
+		CHECK_N2(m_game_main->getWindowHeight(), "game Window Height not set");
 
-#ifdef WIN32
-			if (m_game_main->getShouldUsNativeRenderer()) render = new DXRenderer();
-#endif
-#ifdef __linux__
-		render = new OGLRenderer();
-#endif
-		render->toggleDebug();
+		Renderer::get()->toggleDebug();
 		CWin->setTitle(m_game_main->getGameName());
 		CWin->setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin->createWindow();
-		render->initRender(CWin);
+		Renderer::get()->initRender(CWin);
 		BufferUtils::get()->createVBufAndAddToArray(OurVertices, 4);
 		BufferUtils::get()->createIBufAndAddToArray(indices, 6);
+
 	}
 	int8 lunaLuxEngine::updateEngine()
 	{
 		CWin->updateWindow();
 		m_game_main->GameMain();
-		render->prepRender();
-		render->fireRender();
-		render->postRender();
+		Renderer::get()->Render();
 		return EXIT_SUCCESS;
 	}
 
@@ -58,8 +52,8 @@ namespace LunaLuxEngine
 		initEngine();
 		m_game_main->GameBoot();
 		while (!CWin->shouldClose()) if (updateEngine() != EXIT_SUCCESS) exit(EXIT_FAILURE);
-		render->destroyRender();
 		CWin->destoryWindow();
+		Renderer::get()->destroyRenderer();
 		exit(EXIT_SUCCESS);
 	}
 }

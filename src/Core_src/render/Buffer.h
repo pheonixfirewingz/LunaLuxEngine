@@ -22,13 +22,23 @@ namespace LunaLuxEngine
 			delete& dev;
 		}
 #endif
-		int64 currentVBAsize = 0, currentIBAsize = 0;
+		int64 currentVBAsize = 0, currentIBAsize = 0, global_indices_count = 0;
 		BufferUtils() {}
+
+		inline void addIndicesToGlobalIndices(int indices_count)
+		{
+			global_indices_count = +indices_count;
+		}
 	public:
 		inline static BufferUtils* get()
 		{
 			static BufferUtils* util_ = new BufferUtils();
 			return util_;
+		}
+
+		inline int64 getGlobalIndicesCount()
+		{
+			return  global_indices_count;
 		}
 #ifdef WIN32
 		inline ID3D11Buffer** getVbuff(int64 index)
@@ -47,7 +57,7 @@ namespace LunaLuxEngine
 		}
 #endif
 		void createVBufAndAddToArray(VERTEX[], int64 vertexcount);
-		void createIBufAndAddToArray(int[], int64 vertexcount);
+		void createIBufAndAddToArray(int[], int64 indicescount);
 #ifdef WIN32
 		inline void giveInstance(ID3D11Device* in_dev)
 		{

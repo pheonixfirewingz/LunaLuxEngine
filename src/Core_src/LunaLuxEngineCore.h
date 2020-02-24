@@ -4,10 +4,6 @@
 //#include <LunaLuxEnginePhysics.h>
 #include <LLESDK/types.h>
 #include <LLESDK/IGame.h>
-#include "render/IRender.h"
-#include "render/DirectX.h"
-#include "render/Opengl.h"
-#include "window/Window.h"
 #define LLE LunaLuxEngine::lunaLuxEngine::get();
 
 namespace LunaLuxEngine
@@ -19,8 +15,6 @@ namespace LunaLuxEngine
 	private:
 		void initEngine();
 		int8 updateEngine();
-	protected:
-		IRender* render{};
 	public:
 		static lunaLuxEngine* get()
 		{

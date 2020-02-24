@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LUNALUXENGINE_CROSSWINDOW_H
+#define LUNALUXENGINE_CROSSWINDOW_H
 #include <LLESDK/types.h>
 #ifdef WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -497,7 +498,6 @@ namespace LunaLuxEngine::window_api
 		{
 			resizeCallback = callback;
 		};
-		void fireResizeCallback(int32, int32);
 
 		inline static CrossWindow* get()
 		{
@@ -506,3 +506,4 @@ namespace LunaLuxEngine::window_api
 		};
 	};
 }
+#endif // !LUNALUXENGINE_CROSSWINDOW_H

@@ -28,6 +28,7 @@ namespace LunaLuxEngine
 
 	void LunaLuxEngine::BufferUtils::createIBufAndAddToArray(int ind[], int64 indicescount)
 	{
+		addIndicesToGlobalIndices(indicescount);
 		ID3D11Buffer* pIBuffer{};
 		D3D11_BUFFER_DESC indexBufferDesc{};
 		indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
