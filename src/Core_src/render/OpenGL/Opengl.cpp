@@ -1,11 +1,10 @@
 //
 // Created by digitech on 19/02/2020.
 //
-#ifdef __linux__
-#include <cstdio>
 #include "Opengl.h"
 using namespace LunaLuxEngine;
-
+#ifdef __linux__
+#include <cstdio>
 inline void WindowResizeCallback(int32 width, int32 height)
 {
 	glViewport(0, 0, width, height);
@@ -60,5 +59,25 @@ void OGLRenderer::destroyRender()
 {
 	glXMakeCurrent(CWin->getWindowL(), None, NULL);
 	glXDestroyContext(CWin->getWindowL(), glc);
+}
+#else
+void OGLRenderer::initRender(window_api::CrossWindow* win)
+{
+}
+
+void OGLRenderer::prepRender()
+{
+}
+
+void OGLRenderer::fireRender()
+{
+}
+
+void OGLRenderer::postRender()
+{
+}
+
+void OGLRenderer::destroyRender()
+{
 }
 #endif // __linux__

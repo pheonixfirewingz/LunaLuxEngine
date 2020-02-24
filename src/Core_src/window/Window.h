@@ -3,7 +3,6 @@
 #include <LLESDK/types.h>
 #ifdef WIN32
 #define WIN32_LEAN_AND_MEAN
-#define STRICT
 #include <windows.h>
 #include <windowsx.h>
 #endif
@@ -456,6 +455,10 @@ namespace LunaLuxEngine::window_api
 		{
 			M_buttons[code] = state;
 		};
+		inline void setShouldClose(LLEbool close)
+		{
+			WIN_SHOULD_CLOSE = close;
+		}
 
 		void createWindow();
 

@@ -16,41 +16,18 @@ namespace LunaLuxEngine
 
 	class Renderer
 	{
-	private:
+	protected:
 		IRender* render{};
-
-		Renderer()
-		{
-			render = new DXRenderer();
-		};
 	public:
-		static Renderer* get()
+		inline static Renderer* get()
 		{
 			static Renderer* rend = new Renderer();
 			return rend;
 		};
-
-		void toggleDebug()
-		{
-			render->toggleDebug();
-		}
-
-		void initRender(window_api::CrossWindow* window)
-		{
-			render->initRender(window);
-		};
-
-		void Render()
-		{
-			render->prepRender();
-			render->fireRender();
-			render->postRender();
-		};
-
-		void destroyRenderer()
-		{
-			render->destroyRender();
-		};
+		void preInitRenderer(GRAPHICS_API_TYPE);
+		void initRender(window_api::CrossWindow* window);
+		void Render();
+		void destroyRenderer();
 	};
 }
 #endif

@@ -28,11 +28,10 @@ namespace LunaLuxEngine
 		CHECK_P(m_game_main->getGameName(), "game name null");
 		CHECK_N2(m_game_main->getWindowWidth(), "game Window Width not set");
 		CHECK_N2(m_game_main->getWindowHeight(), "game Window Height not set");
-
-		Renderer::get()->toggleDebug();
 		CWin->setTitle(m_game_main->getGameName());
 		CWin->setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin->createWindow();
+		Renderer::get()->preInitRenderer(DIRECT_X_ELEVEN);
 		Renderer::get()->initRender(CWin);
 		BufferUtils::get()->createVBufAndAddToArray(OurVertices, 4);
 		BufferUtils::get()->createIBufAndAddToArray(indices, 6);
@@ -40,6 +39,9 @@ namespace LunaLuxEngine
 	}
 	int8 lunaLuxEngine::updateEngine()
 	{
+		//temp for debug----
+		if (CWin->isKeyDown(LLE_KEY_C) && CWin->isKeyDown(LLE_KEY_L) && CWin->isKeyDown(LLE_KEY_O)) CWin->setShouldClose(true);
+		//-----------------------
 		CWin->updateWindow();
 		m_game_main->GameMain();
 		Renderer::get()->Render();

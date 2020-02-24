@@ -58,6 +58,10 @@ LunaLuxEngine is a 3D graphical engine.
 
 ## Known issues
 - DirectX 11 depth buffer dose not clean properly
+- CAUSE UNKNOWN: Exception thrown at 0x00007FFA94CAA839 in TestGame.exe: 
+Microsoft C++ exception: _com_error at memory location 0x000000FF22EFF0D0.
+- CAUSE UNKNOWN: Exception thrown at 0x00007FFA94CAA839 in TestGame.exe: 
+Microsoft C++ exception: _com_error at memory location 0x000000FF22EFF270.
 
 ## Code Quality Issues
 - Violation = Minor/security
