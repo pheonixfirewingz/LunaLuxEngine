@@ -26,7 +26,9 @@ namespace LunaLuxEngine
 		};
 		void preInitRenderer(GRAPHICS_API_TYPE);
 		void initRender(window_api::CrossWindow* window);
+		void preRender();
 		void Render();
+		void postRender();
 		void destroyRenderer();
 	};
 }

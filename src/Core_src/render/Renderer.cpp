@@ -18,10 +18,19 @@ void Renderer::initRender(window_api::CrossWindow* window)
 	render->initRender(window);
 };
 
-void Renderer::Render()
+void LunaLuxEngine::Renderer::preRender()
 {
 	render->prepRender();
+};
+
+void Renderer::Render()
+{
 	render->fireRender();
+
+};
+
+void LunaLuxEngine::Renderer::postRender()
+{
 	render->postRender();
 };
 

@@ -71,22 +71,6 @@ Problem = Class 'Renderer' is unsafe, 'Renderer::render' can leak by wrong usage
 File = Renderer.h
 
 Line = 20
-
-- Violation = Important/best practice
-
-Problem = Class 'Renderer' does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).
-
-File = Renderer.h
-
-Line = 24
-
-- Violation = Important/best practice
-
-Problem = Class 'Renderer' does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s).
-
-File = Renderer.h
-
-Line = 24
 ## Getting started
 
 ### Minimum Start Code

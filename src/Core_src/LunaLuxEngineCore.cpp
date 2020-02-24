@@ -44,7 +44,9 @@ namespace LunaLuxEngine
 		//-----------------------
 		CWin->updateWindow();
 		m_game_main->GameMain();
+		Renderer::get()->preRender();
 		Renderer::get()->Render();
+		Renderer::get()->postRender();
 		return EXIT_SUCCESS;
 	}
 
