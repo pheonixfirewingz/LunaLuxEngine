@@ -49,7 +49,7 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	dev->CreateRenderTargetView(pBackBuffer, nullptr, &backbuffer);
 	pBackBuffer->Release();
 
-	D3D11_TEXTURE2D_DESC depthStencilDesc;
+	/*D3D11_TEXTURE2D_DESC depthStencilDesc;
 	depthStencilDesc.Width = CWin->getWindowW();
 	depthStencilDesc.Height = CWin->getWindowH();
 	depthStencilDesc.MipLevels = 1;
@@ -60,13 +60,17 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
 	depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	depthStencilDesc.CPUAccessFlags = 0;
-	depthStencilDesc.MiscFlags = 0;
+	depthStencilDesc.MiscFlags = 0;*/
 
-	dev->CreateTexture2D(&depthStencilDesc, NULL, &depthStencilBuffer);
-	dev->CreateDepthStencilView(depthStencilBuffer, NULL, &depthStencilView);
-
-	// set the render target as the back buffer
-	devcon->OMSetRenderTargets(1, &backbuffer, depthStencilView);
+	/*memory leaks happens here for some reason
+	  *-----------------------------------------------------------------------------------------------
+	  *dev->CreateTexture2D(&depthStencilDesc, NULL, &depthStencilBuffer);
+	  *dev->CreateDepthStencilView(depthStencilBuffer, NULL, &depthStencilView);
+	  *devcon->OMSetRenderTargets(1, &backbuffer, depthStencilView);
+	  *------------------------------------------------------------------------------------------------
+	  */
+	  //temp until mem leak fixed
+	devcon->OMSetRenderTargets(1, &backbuffer, nullptr);
 	/*
 	  * =====================================================
 	  * 				 GRAPHICS SETUP INSTANCE END
