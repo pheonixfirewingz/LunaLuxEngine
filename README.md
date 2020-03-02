@@ -1,4 +1,4 @@
-![img](https://www.code-inspector.com/project/4310/status/svg)  ![img](https://www.code-inspector.com/project/4310/score/svg)
+![img](https://www.code-inspector.com/project/4310/status/svg)  ![img](https://www.code-inspector.com/project/4310/score/svg) [![Build status](https://ci.appveyor.com/api/projects/status/e8audhok07m4650g/branch/master?svg=true)](https://ci.appveyor.com/project/pheonixfirewingz/lunaluxengine/branch/master)
 # LunaLuxEngine V0.0.25
 LunaLuxEngine is a 3D graphical engine.
 
