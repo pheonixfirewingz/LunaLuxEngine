@@ -1,7 +1,6 @@
 //
 // Created by luket on 23/01/2020.
 //
-#include "../Common/IRender.h"
 #ifdef WIN32
 #include "DirectX.h"
 #include "../Shader.h"
@@ -15,8 +14,9 @@ inline void WindowResizeCallback(int32 width, int32 height)
 	r_width = width; //takes game window current width and sets the internal renderer width
 	r_height = height; //takes game window current height and sets the internal renderer height
 }
-void DXRenderer::initRender(window_api::CrossWindow* win)
+void DXRenderer::initRender(window_api::CrossWindow* win, GPUInstance* inst_in)
 {
+	inst = inst_in;
 	CWin->setResizeCallback(&WindowResizeCallback);
 	CWin->fireResizeCallback(CWin->getWindowW(), CWin->getWindowH());
 	/*
@@ -25,6 +25,8 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	  * =====================================================
 	  */
 	  // create a struct to hold information about the swap chain
+	ID3D11Device* dev{};                     // the pointer to our Direct3D device interface
+	ID3D11DeviceContext* devcon{};           // the pointer to our Direct3D device context
 	DXGI_SWAP_CHAIN_DESC scd;
 	// clear out the struct for use
 	ZeroMemory(&scd, sizeof(DXGI_SWAP_CHAIN_DESC));
@@ -42,11 +44,12 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	// create a device, device context and swap chain using the information in the scd struct
 	D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr,
 		NULL, nullptr, NULL, D3D11_SDK_VERSION, &scd, &swapchain, &dev, nullptr, &devcon);
+	inst->createDX11GPUInstance(dev, devcon);
 	// get the address of the back buffer
 	ID3D11Texture2D* pBackBuffer;
 	swapchain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
 	// use the back buffer address to create the render target
-	dev->CreateRenderTargetView(pBackBuffer, nullptr, &backbuffer);
+	inst->getGPUDevice()->CreateRenderTargetView(pBackBuffer, nullptr, &backbuffer);
 	pBackBuffer->Release();
 
 	/*D3D11_TEXTURE2D_DESC depthStencilDesc;
@@ -70,24 +73,11 @@ void DXRenderer::initRender(window_api::CrossWindow* win)
 	  *------------------------------------------------------------------------------------------------
 	  */
 	  //temp until mem leak fixed
-	devcon->OMSetRenderTargets(1, &backbuffer, nullptr);
+	inst->getGPUDeviceContext()->OMSetRenderTargets(1, &backbuffer, nullptr);
 	/*
 	  * =====================================================
 	  * 				 GRAPHICS SETUP INSTANCE END
 	  * =====================================================
-	  *
-	  *=======================================================
-	  *					SET UP RENDER DATA
-	  *=======================================================
-	  */
-	BufferUtils::get()->giveInstance(dev);
-	Shaders::get()->giveInstance(dev, devcon);
-	//temp
-	Shaders::get()->compileShader(L"shader.hlsl");
-	/*
-	  *=======================================================
-	  *					END SET UP RENDER DATA
-	  *=======================================================
 	  */
 }
 
@@ -103,24 +93,24 @@ void DXRenderer::prepRender()
 	viewport.MinDepth = 0.0f;
 	viewport.MaxDepth = 1.0f;
 
-	devcon->RSSetViewports(1, &viewport);
+	inst->getGPUDeviceContext()->RSSetViewports(1, &viewport);
 }
 
 float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
 UINT offset = 0;
 void DXRenderer::fireRender()
 {
-	devcon->ClearRenderTargetView(backbuffer, color);
-	devcon->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
-	devcon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	inst->getGPUDeviceContext()->ClearRenderTargetView(backbuffer, color);
+	inst->getGPUDeviceContext()->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+	inst->getGPUDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	for (int i = 0; i < BufferUtils::get()->getBufferCount(); i++)
 	{
 		//TODO: need to get the current vertex count from the current vertex buffer beening drawn to make this dynamtic
 		UINT stride = 4;
-		devcon->IASetVertexBuffers(0, 1, BufferUtils::get()->getVbuff(i), &stride, &offset);
-		devcon->IASetIndexBuffer(BufferUtils::get()->getIBuff(i), DXGI_FORMAT_R32_UINT, offset);
+		inst->getGPUDeviceContext()->IASetVertexBuffers(0, 1, BufferUtils::get()->getVbuff(i), &stride, &offset);
+		inst->getGPUDeviceContext()->IASetIndexBuffer(BufferUtils::get()->getIBuff(i), DXGI_FORMAT_R32_UINT, offset);
 		//TODO: need to get the current indices count from the current indices buffer beening drawn to make this dynamtic
-		devcon->DrawIndexed(BufferUtils::get()->getGlobalIndicesCount(), 0, 0);
+		inst->getGPUDeviceContext()->DrawIndexed(BufferUtils::get()->getGlobalIndicesCount(), 0, 0);
 	}
 	swapchain->Present(0, 0);
 }
@@ -141,7 +131,6 @@ void DXRenderer::destroyRender()
 	BufferUtils::get()->releaseBuffers();
 	swapchain->Release();
 	backbuffer->Release();
-	dev->Release();
-	devcon->Release();
+	inst->Release();
 }
 #endif

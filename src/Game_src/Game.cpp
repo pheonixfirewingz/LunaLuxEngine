@@ -3,6 +3,22 @@
 //
 #include <cstdio>
 #include "Game.h"
+#include <utils\BufferUtil.h>
+
+VERTEX OurVertices[] =
+{
+	VERTEX(VECTOR3(-0.5f, -0.5f, 0.5f), COLOUR(1.0f, 0.0f, 0.0f, 1.0f)),
+	VERTEX(VECTOR3(-0.5f, 0.5f, 0.5f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
+	VERTEX(VECTOR3(0.5f, 0.5f, 0.5f), COLOUR(0.0f, 0.0f, 1.0f, 1.0f)),
+	VERTEX(VECTOR3(0.5f, -0.5f, 0.5f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f))
+};
+
+int indices[] =
+{
+	0, 1, 2,
+	0, 2, 3
+};
+
 void TestGame::preBoot()
 {
 	TestGame::setGameName((int8*)"testGame");

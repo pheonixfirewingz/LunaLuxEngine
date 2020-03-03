@@ -1,8 +1,8 @@
 #ifndef LUNALUXENGINE_RENDERER_H
 #define LUNALUXENGINE_RENDERER_H
 #include "Common/IRender.h"
-#include "DirectX/DirectX.h"
-#include "OpenGL/Opengl.h"
+#include "Common/GPUInstance.h"
+#include "../oldrender/DirectX/DirectX.h"
 #include "../window/Window.h"
 
 namespace LunaLuxEngine
@@ -18,14 +18,16 @@ namespace LunaLuxEngine
 	{
 	protected:
 		IRender* render{};
+		GPUInstance* instance = new GPUInstance();
 	public:
 		inline static Renderer* get()
 		{
 			static Renderer* rend = new Renderer();
 			return rend;
 		};
+
 		void preInitRenderer(GRAPHICS_API_TYPE);
-		void initRender(window_api::CrossWindow* window);
+		void initRender(window_api::CrossWindow*);
 		void preRender();
 		void Render();
 		void postRender();

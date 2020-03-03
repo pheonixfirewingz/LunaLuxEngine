@@ -1,4 +1,6 @@
 #include "Renderer.h"
+#include "../oldrender/Buffer.h"
+#include "../oldrender/Shader.h"
 using namespace LunaLuxEngine;
 
 void Renderer::preInitRenderer(GRAPHICS_API_TYPE type)
@@ -8,14 +10,17 @@ void Renderer::preInitRenderer(GRAPHICS_API_TYPE type)
 	case DIRECT_X_ELEVEN:
 		render = new DXRenderer();
 		break;
-	case OPEN_GRAPHICS_LOADER:
-		render = new OGLRenderer();
+		/*case OPEN_GRAPHICS_LOADER:
+			render = new OGLRenderer();*/
 	}
 };
 
 void Renderer::initRender(window_api::CrossWindow* window)
 {
-	render->initRender(window);
+	render->initRender(window, instance);
+	BufferUtils::get()->giveInstance(instance->getGPUDevice());
+	Shaders::get()->giveInstance(instance->getGPUDevice(), instance->getGPUDeviceContext());
+	Shaders::get()->compileShader(L"shader.hlsl");
 };
 
 void LunaLuxEngine::Renderer::preRender()

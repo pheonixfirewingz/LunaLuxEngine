@@ -10,7 +10,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/Includes STATIC IMPORTED)
-include_directories(${PROJECT_SOURCE_DIR}/src/Physics_src STATIC)
 include_directories(${PROJECT_SOURCE_DIR}/src/Core_src STATIC)
 include_directories(${PROJECT_SOURCE_DIR}/src/Libc_src STATIC)
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
@@ -29,9 +28,12 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     link_directories(${OPENGL_LIBRARIES})
 endif()
 
-add_library(LunaLuxEngineCoreLib src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Common/IRender.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/render/DirectX/DirectX.cpp src/Core_src/render/DirectX/DirectX.h src/Core_src/fs/Reader.h src/Core_src/render/Shader.h src/Core_src/render/Shader.cpp src/Core_src/render/Buffer.h src/Core_src/render/Buffer.cpp src/Core_src/render/OpenGL/Opengl.h src/Core_src/render/OpenGL/Opengl.cpp src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp)
+add_library(LunaLuxEngineCoreLib src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp src/Core_src/fs/Reader.h src/Core_src/render/Common/IRender.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/render/DirectX11/DirectX11Buffer.h)
+# this is the stuff being rewriten and will be depricated
+add_library(LunaLuxEngineCoreLib_old src/Core_src/oldrender/DirectX/DirectX.cpp src/Core_src/oldrender/DirectX/DirectX.h  src/Core_src/oldrender/Shader.h src/Core_src/oldrender/Shader.cpp src/Core_src/oldrender/Buffer.h src/Core_src/oldrender/Buffer.cpp)
+
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    target_link_libraries(LunaLuxEngineCoreLib ${Vulkan_LIBRARY})
+    target_link_libraries(LunaLuxEngineCoreLib ${Vulkan_LIBRARY} LunaLuxEngineCoreLib_old)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(LunaLuxEngineCoreLib ${X11_LIBRARIES} ${Vulkan_LIBRARY} ${GLEW_LIBRARIES} ${OPENGL_LIBRARIES})
 endif()
