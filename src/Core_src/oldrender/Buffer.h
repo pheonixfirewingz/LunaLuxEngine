@@ -14,16 +14,20 @@ namespace LunaLuxEngine
 #ifdef WIN32
 		std::vector<ID3D11Buffer*> VBarray{};
 		std::vector <ID3D11Buffer*> IBarray{};
-		ID3D11Device* dev{};
+
+		BufferUtils()
+		{
+			VBarray.resize((sizeof(int8)));
+			IBarray.resize((sizeof(int8)));
+		}
+
 		~BufferUtils()
 		{
 			delete& VBarray;
 			delete& IBarray;
-			delete& dev;
 		}
 #endif
 		int64 currentVBAsize = 0, currentIBAsize = 0, global_indices_count = 0;
-		BufferUtils() {}
 
 		inline void addIndicesToGlobalIndices(int indices_count)
 		{
@@ -58,14 +62,6 @@ namespace LunaLuxEngine
 #endif
 		void createVBufAndAddToArray(VERTEX[], int64 vertexcount);
 		void createIBufAndAddToArray(int[], int64 indicescount);
-#ifdef WIN32
-		inline void giveInstance(ID3D11Device* in_dev)
-		{
-			dev = in_dev;
-			VBarray.resize((sizeof(int8)));
-			IBarray.resize((sizeof(int8)));
-		}
-#endif
 		void releaseBuffers();
 	};
 }

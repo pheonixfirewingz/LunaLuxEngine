@@ -15,16 +15,9 @@ namespace LunaLuxEngine
 	{
 	private:
 		IDXGISwapChain* swapchain{};             // the pointer to the swap chain interface
-
-		ID3D11RenderTargetView* backbuffer{};    // the pointer to our back buffer
-		GPUInstance* inst{};
-		ID3D11DepthStencilView* depthStencilView{};
-		ID3D11Texture2D* depthStencilBuffer{};
 	public:
-		void initRender(window_api::CrossWindow*, GPUInstance* inst_in) override;
-		void prepRender() override;
+		void initRender(GPUInstance* inst_in) override;
 		void fireRender() override;
-		void postRender() override;
 		void destroyRender() override;
 	};
 }

@@ -28,9 +28,9 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     link_directories(${OPENGL_LIBRARIES})
 endif()
 
-add_library(LunaLuxEngineCoreLib src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp src/Core_src/fs/Reader.h src/Core_src/render/Common/IRender.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/render/DirectX11/DirectX11Buffer.h)
+add_library(LunaLuxEngineCoreLib src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp src/Core_src/fs/Reader.h src/Core_src/render/Common/IRender.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/render/DirectX11/DirectX11Buffer.h src/Core_src/render/Common/GPUInstance.cpp src/Core_src/render/DirectX11/DirectX11Renderer.h src/Core_src/render/DirectX11/DirectX11Renderer.cpp)
 # this is the stuff being rewriten and will be depricated
-add_library(LunaLuxEngineCoreLib_old src/Core_src/oldrender/DirectX/DirectX.cpp src/Core_src/oldrender/DirectX/DirectX.h  src/Core_src/oldrender/Shader.h src/Core_src/oldrender/Shader.cpp src/Core_src/oldrender/Buffer.h src/Core_src/oldrender/Buffer.cpp)
+add_library(LunaLuxEngineCoreLib_old src/Core_src/oldrender/Shader.h src/Core_src/oldrender/Shader.cpp src/Core_src/oldrender/Buffer.h src/Core_src/oldrender/Buffer.cpp)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(LunaLuxEngineCoreLib ${Vulkan_LIBRARY} LunaLuxEngineCoreLib_old)

@@ -13,10 +13,7 @@ namespace LunaLuxEngine
 	class Shaders
 	{
 	private:
-		LLEbool NativeMode;
 #ifdef WIN32
-		ID3D11Device* device = nullptr;                     // the pointer to our Direct3D device interface
-		ID3D11DeviceContext* devicecon = nullptr;           // the pointer to our Direct3D device context
 		ID3D11InputLayout* pLayout = nullptr;            // the pointer to the input layout
 		ID3D11VertexShader* pVS = nullptr;               // the pointer to the vertex shader
 		ID3D11PixelShader* pPS = nullptr;                // the pointer to the pixel shader
@@ -25,8 +22,6 @@ namespace LunaLuxEngine
 
 		~Shaders()
 		{
-			delete& device;
-			delete& devicecon;
 			delete& pLayout;
 			delete& pVS;
 			delete& pPS;
@@ -38,18 +33,7 @@ namespace LunaLuxEngine
 			static Shaders* shaders = new Shaders();
 			return shaders;
 		}
-		inline void toggleNativeCompiler()
-		{
-			if (NativeMode)
-				NativeMode = LLEfalse
-			else
-				NativeMode = LLEtrue
-		}
 		void compileShader(LPCWSTR);
-
-#ifdef WIN32
-		void giveInstance(ID3D11Device*, ID3D11DeviceContext*);
-#endif
 
 		inline void clearShaders()
 		{

@@ -3,28 +3,25 @@
 #include "../oldrender/Shader.h"
 using namespace LunaLuxEngine;
 
-void Renderer::preInitRenderer(GRAPHICS_API_TYPE type)
+void Renderer::preInitRenderer(int8 type)
 {
 	switch (type)
 	{
 	case DIRECT_X_ELEVEN:
 		render = new DXRenderer();
 		break;
-		/*case OPEN_GRAPHICS_LOADER:
-			render = new OGLRenderer();*/
 	}
 };
 
-void Renderer::initRender(window_api::CrossWindow* window)
+void Renderer::initRender()
 {
-	render->initRender(window, instance);
-	BufferUtils::get()->giveInstance(instance->getGPUDevice());
-	Shaders::get()->giveInstance(instance->getGPUDevice(), instance->getGPUDeviceContext());
-	Shaders::get()->compileShader(L"shader.hlsl");
+	render->initRender(instance);
 };
 
+float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
 void LunaLuxEngine::Renderer::preRender()
 {
+	instance->cleanScreen(color);
 	render->prepRender();
 };
 
@@ -42,4 +39,7 @@ void LunaLuxEngine::Renderer::postRender()
 void Renderer::destroyRenderer()
 {
 	render->destroyRender();
+	Shaders::get()->clearShaders();
+	BufferUtils::get()->releaseBuffers();
+	instance->Release();
 };

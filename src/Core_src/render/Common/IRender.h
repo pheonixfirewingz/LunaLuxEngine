@@ -6,8 +6,10 @@ namespace LunaLuxEngine
 {
 	class IRender
 	{
+	protected:
+		GPUInstance* inst{};
 	public:
-		virtual void initRender(window_api::CrossWindow*, GPUInstance* inst_in) {};
+		virtual void initRender(GPUInstance* inst_in) {};
 
 		virtual void prepRender() {};
 

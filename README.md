@@ -57,20 +57,9 @@ LunaLuxEngine is a 3D graphical engine.
  - PlayStation 4 and up
 
 ## Known issues
-- DirectX 11 depth buffer dose not clean properly
-- On Creation Of Depth Buffer DirectX 11: Exception thrown at 0x00007FFA94CAA839 in TestGame.exe: 
-Microsoft C++ exception: _com_error at memory location 0x000000FF22EFF0D0.
-- On Creation Of Depth Buffer DirectX 11: Exception thrown at 0x00007FFA94CAA839 in TestGame.exe: 
-Microsoft C++ exception: _com_error at memory location 0x000000FF22EFF270.
 
 ## Code Quality Issues
-- Violation = Minor/security
 
-Problem = Class 'Renderer' is unsafe, 'Renderer::render' can leak by wrong usage.
-
-File = Renderer.h
-
-Line = 20
 ## Getting started
 
 ### Minimum Start Code
