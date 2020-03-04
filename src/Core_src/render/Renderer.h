@@ -15,7 +15,7 @@ namespace LunaLuxEngine
 
 	class Renderer
 	{
-	protected:
+	private:
 		IRender* render{};
 		GPUInstance* instance = new GPUInstance();
 	public:
