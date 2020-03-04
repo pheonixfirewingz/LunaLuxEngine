@@ -59,6 +59,10 @@ LunaLuxEngine is a 3D graphical engine.
 ## Known issues
 
 ## Code Quality Issues
+ Violation = Important/security (CWE-120, CWE-20)
+- Problem = Check buffer boundaries if used in a loop including recursive loops 
+- File = Reader.h
+- Line = 23
 
 ## Getting started
 
