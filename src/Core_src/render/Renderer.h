@@ -2,7 +2,6 @@
 #define LUNALUXENGINE_RENDERER_H
 #include "Common/IRender.h"
 #include "Common/GPUInstance.h"
-#include "DirectX11/DirectX11Renderer.h"
 
 namespace LunaLuxEngine
 {
@@ -17,23 +16,20 @@ namespace LunaLuxEngine
 	{
 	private:
 		IRender* render{};
-		GPUInstance* instance = new GPUInstance();
 	public:
+		GPUInstance& instance = GPUInstance::getInstance();
 		inline static Renderer* get()
 		{
 			static Renderer* rend = new Renderer();
 			return rend;
 		};
-		GPUInstance* getInst()
-		{
-			return instance;
-		}
+
 		void preInitRenderer(int8);
 		void initRender();
 		void preRender();
 		void Render();
 		void postRender();
-		void destroyRenderer();
+		void Release();
 	};
 }
 #endif

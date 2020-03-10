@@ -19,7 +19,7 @@ namespace LunaLuxEngine
 		ID3D11PixelShader* pPS = nullptr;                // the pointer to the pixel shader
 
 		Shaders() {}
-
+	public:
 		~Shaders()
 		{
 			delete& pLayout;
@@ -27,7 +27,6 @@ namespace LunaLuxEngine
 			delete& pPS;
 		}
 #endif
-	public:
 		static inline Shaders* get()
 		{
 			static Shaders* shaders = new Shaders();

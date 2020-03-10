@@ -44,7 +44,7 @@
 #include <X11/Xlib.h>
 #include "Opengl_h.h"
 #endif
-#define CWin LunaLuxEngine::window_api::CrossWindow::get()
+#define CWin window_api::CrossWindow::get()
 
 extern "C"
 {
@@ -343,33 +343,33 @@ namespace LunaLuxEngine::window_api
 			case WM_MOUSEMOVE:
 				if (in_win)
 				{
-					CWin->M_posx = ((DWORD_PTR)(lParam)) & 0xffff;
-					CWin->M_posy = (((DWORD_PTR)(lParam)) >> 16) & 0xffff;
+					M_posx = ((DWORD_PTR)(lParam)) & 0xffff;
+					M_posy = (((DWORD_PTR)(lParam)) >> 16) & 0xffff;
 				}
 				break;
 
 			case WM_RBUTTONDOWN:
-				CWin->setButton(0, 1);
+				setButton(0, 1);
 				break;
 
 			case WM_RBUTTONUP:
-				CWin->setButton(0, 0);
+				setButton(0, 0);
 				break;
 
 			case WM_LBUTTONDOWN:
-				CWin->setButton(1, 1);
+				setButton(1, 1);
 				break;
 
 			case WM_LBUTTONUP:
-				CWin->setButton(1, 0);
+				setButton(1, 0);
 				break;
 
 			case WM_MBUTTONDOWN:
-				CWin->setButton(2, 1);
+				setButton(2, 1);
 				break;
 
 			case WM_MBUTTONUP:
-				CWin->setButton(2, 0);
+				setButton(2, 0);
 				break;
 
 			default:
@@ -382,11 +382,11 @@ namespace LunaLuxEngine::window_api
 			switch (Msg)
 			{
 			case WM_KEYDOWN:
-				CWin->setKey(wParam, 1);
+				setKey(wParam, 1);
 				break;
 
 			case WM_KEYUP:
-				CWin->setKey(wParam, 0);
+				setKey(wParam, 0);
 				break;
 
 			default:
@@ -403,7 +403,7 @@ namespace LunaLuxEngine::window_api
 				break;
 
 			case WM_SIZE:
-				CWin->fireResizeCallback(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
+				fireResizeCallback(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
 				break;
 
 			default:
@@ -452,6 +452,8 @@ namespace LunaLuxEngine::window_api
 
 		void(*resizeCallback)(int32, int32) = nullptr;
 	public:
+		CrossWindow(CrossWindow const&) = delete;
+		void operator=(CrossWindow const&) = delete;
 		int16 M_posx = 0, M_posy = 0;
 
 		LLEbool WIN_SHOULD_CLOSE = LLEfalse;
@@ -529,14 +531,22 @@ namespace LunaLuxEngine::window_api
 			if (resizeCallback != nullptr) resizeCallback(in_width, in_height);
 		};
 
+		inline void CrossWindow::fireResizeCallback()
+		{
+			if (resizeCallback != nullptr) resizeCallback(width, height);
+		};
+
 		inline void setResizeCallback(void(*callback)(int32, int32))
 		{
 			resizeCallback = callback;
 		};
 
-		inline static CrossWindow* get()
+		CrossWindow() {};
+		~CrossWindow() {};
+
+		inline static CrossWindow& get()
 		{
-			static auto* window_ = new CrossWindow();
+			static CrossWindow window_;
 			return window_;
 		};
 	};

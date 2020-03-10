@@ -9,9 +9,9 @@ namespace LunaLuxEngine::window_api
 	// Only funtion extenal from window that window requies to run (windows)
 	inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	{
-		CWin->mouseHandler(Msg, wParam, lParam);
-		CWin->keyboardHandler(Msg, wParam, lParam);
-		CWin->commonHandler(Msg, wParam, lParam);
+		CWin.mouseHandler(Msg, wParam, lParam);
+		CWin.keyboardHandler(Msg, wParam, lParam);
+		CWin.commonHandler(Msg, wParam, lParam);
 		return DefWindowProc(hWnd, Msg, wParam, lParam);
 	}
 

@@ -20,12 +20,13 @@ namespace LunaLuxEngine
 			VBarray.resize((sizeof(int8)));
 			IBarray.resize((sizeof(int8)));
 		}
-
+	public:
 		~BufferUtils()
 		{
 			delete& VBarray;
 			delete& IBarray;
 		}
+	private:
 #endif
 		int64 currentVBAsize = 0, currentIBAsize = 0, global_indices_count = 0;
 
@@ -62,7 +63,7 @@ namespace LunaLuxEngine
 #endif
 		void createVBufAndAddToArray(VERTEX[], int64 vertexcount);
 		void createIBufAndAddToArray(int[], int64 indicescount);
-		void releaseBuffers();
+		void Release();
 	};
 }
 #endif

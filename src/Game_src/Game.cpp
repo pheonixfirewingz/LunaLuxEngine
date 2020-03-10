@@ -4,8 +4,6 @@
 #include <cstdio>
 #include "Game.h"
 #include <utils/BufferUtil.h>
-#include <oldrender/Buffer.h>
-#include <oldrender\Shader.h>
 
 VERTEX OurVertices[] =
 {
@@ -31,9 +29,6 @@ void TestGame::preBoot()
 void TestGame::GameBoot()
 {
 	LOG("loaded game");
-	LunaLuxEngine::BufferUtils::get()->createVBufAndAddToArray(OurVertices, 4);
-	LunaLuxEngine::BufferUtils::get()->createIBufAndAddToArray(indices, 6);
-	LunaLuxEngine::Shaders::get()->compileShader(L"shader.hlsl");
 }
 
 void TestGame::GameMain()

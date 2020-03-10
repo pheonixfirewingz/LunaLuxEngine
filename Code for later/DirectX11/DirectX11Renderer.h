@@ -4,10 +4,12 @@
 
 #ifndef LUNALUXENGINE_DIRECTX_H
 #define LUNALUXENGINE_DIRECTX_H
-#ifdef WIN32
+#include <LLESDK/types.h>
+#include "../Renderer.h"
+#include "../../render/Common/IRender.h"
+#ifdef UWP
 #include <D3D11.h>
 #pragma comment ( lib, "D3d11.lib" )
-#include "../../render/Common/IRender.h"
 
 namespace LunaLuxEngine
 {
@@ -16,7 +18,9 @@ namespace LunaLuxEngine
 	private:
 		IDXGISwapChain* swapchain{};             // the pointer to the swap chain interface
 	public:
-		void initRender(GPUInstance* inst_in) override;
+		void prepRender() override {};
+		void initRender() override;
+		void postRender() override {};
 		void fireRender() override;
 		void destroyRender() override;
 	};

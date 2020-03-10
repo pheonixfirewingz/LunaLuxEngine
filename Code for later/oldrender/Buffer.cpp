@@ -20,7 +20,7 @@ namespace LunaLuxEngine
 		vertexData.SysMemPitch = 0;
 		vertexData.SysMemSlicePitch = 0;
 
-		Renderer::get()->getInst()->getGPUDevice()->dx11_device->CreateBuffer(&vertexBufferDesc, &vertexData, &pVBuffer);
+		Renderer::get()->instance.getGPUDevice()->dx11_device->CreateBuffer(&vertexBufferDesc, &vertexData, &pVBuffer);
 		VBarray[currentVBAsize] = pVBuffer;
 		currentVBAsize++;
 #endif
@@ -44,12 +44,12 @@ namespace LunaLuxEngine
 		indexData.SysMemSlicePitch = 0;
 
 		// Create the index buffer.
-		Renderer::get()->getInst()->getGPUDevice()->dx11_device->CreateBuffer(&indexBufferDesc, &indexData, &pIBuffer);
+		Renderer::get()->instance.getGPUDevice()->dx11_device->CreateBuffer(&indexBufferDesc, &indexData, &pIBuffer);
 		IBarray[currentIBAsize] = pIBuffer;
 		currentIBAsize++;
 	}
 
-	void BufferUtils::releaseBuffers()
+	void BufferUtils::Release()
 	{
 #ifdef UWP
 		for (int i = 0; i < currentVBAsize; i++) if (IBarray[i] != nullptr) VBarray[i]->Release();

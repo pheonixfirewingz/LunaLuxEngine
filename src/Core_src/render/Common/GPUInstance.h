@@ -1,50 +1,48 @@
 #ifndef LUNALUXENGINE_GPUINSTANCE_H
 #define LUNALUXENGINE_GPUINSTANCE_H
 #include <LLESDK/types.h>
-#include "../../window/Window.h"
+#include "../../window/Window.h" 
 #ifdef UWP
-#include <d3d11.h>
+#pragma comment(lib,"opengl32.lib")
 #endif
 #include <vulkan/vulkan.h>
+#include <glad\glad.h>
 
 namespace LunaLuxEngine
 {
 	class GPUInstance
 	{
 	private:
+		GPUInstance() {};
+		~GPUInstance() {};
+	public:
+		static GPUInstance& getInstance()
+		{
+			static GPUInstance inst;
+			return inst;
+		}
+		GPUInstance(GPUInstance const&) = delete;
+		void operator=(GPUInstance const&) = delete;
+	private:
 		struct GPUDEVICECONTEXT
 		{
-#ifdef UWP
-			ID3D11DeviceContext* dx11_deviceContext;
-#endif
 			VkPhysicalDevice* vk_deviceContext;
 		};
 
 		struct GPUDEVICE
 		{
 #ifdef UWP
-			ID3D11Device* dx11_device;
+			HDC dc;
+			HGLRC rc;
 #endif
 			VkInstance vk_instance;
 			VkDevice* vk_device;
-
-			void Dx11Release(GPUDEVICECONTEXT* context);
 		};
 		GPUDEVICE* device = new GPUDEVICE();
 		GPUDEVICECONTEXT* deviceContext = new GPUDEVICECONTEXT();
-#ifdef UWP
-		ID3D11RenderTargetView* backbuffer{};    // the pointer to our back buffer
-		ID3D11DepthStencilView* depthStencilView{};
 
-		void dx11Clenup();
-		void dx11ClearScreen(float color[4]);
 	public:
-		IDXGISwapChain* createDX11GPUInstance();
-#else
-		void dx11Clenup() {}
-		void dx11ClearScreen(float color[4]) {}
-#endif
-	public:
+		void createOGLGPUInstance();
 		inline GPUDEVICE* getGPUDevice()
 		{
 			return device;
@@ -59,8 +57,8 @@ namespace LunaLuxEngine
 
 		inline void cleanScreen(float colour[4])
 		{
-			if (device->dx11_device != nullptr)
-				dx11ClearScreen(colour);
+			glClearColor(colour[0], colour[1], colour[2], colour[3]);
+			glClear(GL_COLOR_BUFFER_BIT);
 		}
 	};
 }
