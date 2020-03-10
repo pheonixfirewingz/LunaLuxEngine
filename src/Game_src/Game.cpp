@@ -33,5 +33,4 @@ void TestGame::GameBoot()
 
 void TestGame::GameMain()
 {
-
 }

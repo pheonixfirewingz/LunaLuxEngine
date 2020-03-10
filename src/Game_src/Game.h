@@ -1,7 +1,6 @@
 //
 // Created by luket on 23/01/2020.
 //
-
 #ifndef LUNALUXENGINE_GAME_H
 #define LUNALUXENGINE_GAME_H
 #include <LLESDK/IGame.h>
