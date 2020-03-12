@@ -1,7 +1,7 @@
 #ifndef LUNALUXENGINE_RENDERER_H
 #define LUNALUXENGINE_RENDERER_H
 #include "Common/IRender.h"
-#include "Common/GPUInstance.h"
+#include "Common/IContext.h"
 
 namespace LunaLuxEngine
 {
@@ -16,8 +16,8 @@ namespace LunaLuxEngine
 	{
 	private:
 		IRender* render{};
+		IContext* context{};
 	public:
-		GPUInstance& instance = GPUInstance::getInstance();
 		inline static Renderer* get()
 		{
 			static Renderer* rend = new Renderer();

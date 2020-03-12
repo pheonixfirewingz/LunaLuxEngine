@@ -23,8 +23,7 @@ static const GLfloat g_vertex_buffer_data[] = {
 
 void OGLRenderer::initRender()
 {
-	CWin.setResizeCallback(&OGLWindowResizeCallback);
-	Renderer::get()->instance.createOGLGPUInstance();
+	CWin.getNativeWindow()->setResizeCallback(&OGLWindowResizeCallback);
 	gladLoadGL();
 	//temp
 	glGenVertexArrays(1, &VertexArrayID);
@@ -46,7 +45,7 @@ void OGLRenderer::fireRender()
 	// Draw the triangle !
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDisableVertexAttribArray(0);
-	SwapBuffers(Renderer::get()->instance.getGPUDevice()->dc);
+
 }
 
 void OGLRenderer::destroyRender()

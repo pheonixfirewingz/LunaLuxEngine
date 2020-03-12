@@ -4,58 +4,20 @@
 #include <exception>
 namespace LunaLuxEngine::window_api
 {
-#ifdef WIN32
-
-	// Only funtion extenal from window that window requies to run (windows)
-	inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
+	void CrossWindow::setWindowType(WindowType type)
 	{
-		CWin.mouseHandler(Msg, wParam, lParam);
-		CWin.keyboardHandler(Msg, wParam, lParam);
-		CWin.commonHandler(Msg, wParam, lParam);
-		return DefWindowProc(hWnd, Msg, wParam, lParam);
+		if (type == WindowType::Win32Window) window = new Win32Window();
 	}
-
+#ifdef WIN32
 	void CrossWindow::updateWindow()
 	{
-		if (!WIN_SHOULD_CLOSE)
+		if (!window->shouldClose())
 		{
 			MSG msg;
 			GetMessage(&msg, nullptr, 0, 0);
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-	}
-
-	void CrossWindow::createWindow()
-	{
-		WIN_SHOULD_CLOSE = LLEfalse
-			Inst = GetModuleHandle(nullptr);
-
-		WNDCLASSEX wc;
-
-		ZeroMemory(&wc, sizeof(WNDCLASSEX));
-
-		wc.cbSize = sizeof(WNDCLASSEX);
-		wc.style = CS_HREDRAW | CS_VREDRAW;
-		wc.lpfnWndProc = WndProc;
-		wc.hInstance = Inst;
-		wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
-		wc.lpszClassName = class_name;
-
-		RegisterClassEx(&wc);
-
-		RECT wr = { 0, 0, width, height };
-		AdjustWindowRect(&wr, WS_OVERLAPPEDWINDOW, FALSE);
-
-		hwnd = CreateWindowEx(NULL, class_name, reinterpret_cast<LPCSTR>(Title), WS_OVERLAPPEDWINDOW, 0, 0, wr.right - wr.left, wr.bottom - wr.top, nullptr, nullptr, Inst, nullptr);
-
-		ShowWindow(hwnd, SW_SHOWDEFAULT);
-	}
-
-	void CrossWindow::destoryWindow()
-	{
-		DestroyWindow(hwnd);
-		UnregisterClassW((LPWSTR)class_name, Inst);
 	}
 #endif
 #ifdef __linux__

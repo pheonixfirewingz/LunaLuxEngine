@@ -1,7 +1,6 @@
 #ifndef LUNALLUXENGINE
 #define LUNALLUXENGINE
 
-//#include <LunaLuxEnginePhysics.h>
 #include <LLESDK/types.h>
 #include <LLESDK/IGame.h>
 #define LLE LunaLuxEngine::lunaLuxEngine::get();

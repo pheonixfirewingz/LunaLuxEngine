@@ -4,3 +4,11 @@
 /CMakeFiles
 /.vs
 /out
+.vcxproj
+.vcxproj.filters
+.sln
+/CMakeFiles
+/x64
+/Debug
+/LunaLuxEngineCoreLib.dir
+/TestGame.dir
