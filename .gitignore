@@ -4,9 +4,11 @@
 /CMakeFiles
 /.vs
 /out
-.vcxproj
-.vcxproj.filters
-.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.cmake
 /CMakeFiles
 /x64
 /Debug
