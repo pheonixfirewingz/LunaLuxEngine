@@ -7,8 +7,9 @@ namespace LunaLuxEngine
 	{
 	public:
 		virtual void initRender() = 0;
+		virtual void clearscreen(float colour[4]) = 0;
 		virtual void prepRender() = 0;
-		virtual void fireRender() = 0;
+		virtual void fireRender(int) = 0;
 		virtual void postRender() = 0;
 		virtual void destroyRender() = 0;
 	};

@@ -2,21 +2,19 @@
 #define LUNALUXENGINE_RENDERER_H
 #include "Common/IRender.h"
 #include "Common/IContext.h"
+#include "Buffer.h"
+#include "Shader.h"
 
 namespace LunaLuxEngine
 {
-	enum GRAPHICS_API_TYPE
-	{
-		OPEN_GRAPHICS_LOADER = 0,
-		VULKAN_ONE_DOT_ONE = 1,
-		DIRECT_X_ELEVEN = 2
-	};
-
 	class Renderer
 	{
 	private:
 		IRender* render{};
 		IContext* context{};
+		VertexBuffer* rbuffer;
+		IndexBuffer* ibuffer;
+		Shader* shader;
 	public:
 		inline static Renderer* get()
 		{
@@ -24,7 +22,8 @@ namespace LunaLuxEngine
 			return rend;
 		};
 
-		void preInitRenderer(int8);
+		void pushDataToRenderer(VertexBuffer* buffertorender, IndexBuffer* buffertorender1, Shader* shadertouse);
+		void preInitRenderer(int);
 		void initRender();
 		void preRender();
 		void Render();

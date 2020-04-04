@@ -1,16 +1,18 @@
 #ifndef LUNALUXENGINE_BUFFER_H
 #define LUNALUXENGINE_BUFFER_H
 #include "Common/IBuffer.h"
+#include "OpenGL/OpenGLBuffer.h"
 #include <LLESDK/types.h>
+#include "../LunaLuxEngineCore.h"
+
 namespace LunaLuxEngine
 {
 	class VertexBuffer
 	{
+	private:
 		IVertexBuffer* buffer;
-		unsigned int vertCount;
 	public:
-		void create(int8);
-		void pushData(float[]);
+		void create(float*, int32);
 		void bind();
 		void unBind();
 		void destory();
@@ -18,11 +20,11 @@ namespace LunaLuxEngine
 
 	class IndexBuffer
 	{
+	private:
 		IIndexBuffer* buffer;
-		unsigned int indCont;
 	public:
-		void create(int8);
-		void pushData(int[]);
+		void create(int*, int32);
+		int getIndexCount();
 		void bind();
 		void unBind();
 		void destory();

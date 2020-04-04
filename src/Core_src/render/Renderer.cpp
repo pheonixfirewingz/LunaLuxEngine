@@ -4,10 +4,21 @@
 #include "../window/Window.h"
 using namespace LunaLuxEngine;
 
-void Renderer::preInitRenderer(int8 type)
+void LunaLuxEngine::Renderer::pushDataToRenderer(VertexBuffer* buffertorender, IndexBuffer* buffertorender1, Shader* shadertouse)
 {
-	context = new OpenGLContext();
-	render = new OGLRenderer();
+	rbuffer = buffertorender;
+	ibuffer = buffertorender1;
+	shader = shadertouse;
+}
+
+void Renderer::preInitRenderer(int type)
+{
+	if (type == 0)
+	{
+		context = new OpenGLContext();
+		render = new OGLRenderer();
+		LOG("current renderer api set to openGL");
+	};
 }
 
 void Renderer::initRender()
@@ -17,22 +28,20 @@ void Renderer::initRender()
 	CWin.getNativeWindow()->fireResizeCallback();
 };
 
-inline void cleanScreen(float colour[4])
-{
-	glClearColor(colour[0], colour[1], colour[2], colour[3]);
-	glClear(GL_COLOR_BUFFER_BIT);
-}
-
 float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 void LunaLuxEngine::Renderer::preRender()
 {
-	cleanScreen(color);
+	render->clearscreen(color);
 	render->prepRender();
 };
 
 void Renderer::Render()
 {
-	render->fireRender();
+	rbuffer->bind();
+	ibuffer->bind();
+	render->fireRender(ibuffer->getIndexCount());
+	rbuffer->unBind();
+	ibuffer->unBind();
 	context->swapBuffers();
 };
 
@@ -43,6 +52,8 @@ void LunaLuxEngine::Renderer::postRender()
 
 void Renderer::Release()
 {
+	ibuffer->destory();
+	rbuffer->destory();
 	context->destroy();
 	context = nullptr;
 	render->destroyRender();

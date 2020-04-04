@@ -6,6 +6,8 @@
 #define LUNALUXENGINE_OPENGL_H
 #include <LLESDK/types.h>
 #include "../Renderer.h"
+#include "../Buffer.h"
+#include "../Shader.h"
 #include "../../render/Common/IRender.h"
 #include <glad/glad.h>
 
@@ -14,10 +16,11 @@ namespace LunaLuxEngine
 	class OGLRenderer : public IRender
 	{
 	public:
+		void clearscreen(float[4]) override;
 		void prepRender() override {};
 		void initRender() override;
 		void postRender() override {};
-		void fireRender() override;
+		void fireRender(int) override;
 		void destroyRender() override;
 	};
 }
