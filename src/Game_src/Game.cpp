@@ -3,14 +3,14 @@
 //
 #include <cstdio>
 #include "Game.h"
-#include <utils/BufferUtil.h>
+#include <glad/glad.h>
 
-VERTEX OurVertices[] =
+static float vertex[] =
 {
-	VERTEX(VECTOR3(-0.5f, -0.5f, 0.5f), COLOUR(1.0f, 0.0f, 0.0f, 1.0f)),
-	VERTEX(VECTOR3(-0.5f, 0.5f, 0.5f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f)),
-	VERTEX(VECTOR3(0.5f, 0.5f, 0.5f), COLOUR(0.0f, 0.0f, 1.0f, 1.0f)),
-	VERTEX(VECTOR3(0.5f, -0.5f, 0.5f), COLOUR(0.0f, 1.0f, 0.0f, 1.0f))
+   -0.5f, -0.5f, 0.5f,
+   -0.5f, 0.5f, 0.5f,
+	0.5f, 0.5f, 0.5f,
+	0.5f, -0.5f, 0.5f,
 };
 
 int indices[] =
@@ -28,7 +28,22 @@ void TestGame::preBoot()
 
 void TestGame::GameBoot()
 {
-	LOG("loaded game");
+	vbuffer->create(vertex, sizeof(vertex));
+	ibuffer->create(indices, sizeof(indices));
+	vbuffer->bind();
+	//----------this is part of the layout abstract to be removed when complete--------------------
+	glBindAttribLocation(1, 0, "position");
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	//---------------------------------------------------------------------------------------------------------s
+	vbuffer->unBind();
+	char* data, * data1;
+	std::string temp, temp1;
+	READFILE(temp, data, "Debug/vertex.glsl");
+	READFILE(temp1, data1, "Debug/fragment.glsl");
+	shader->create();
+	shader->compile(data, data1);
+	shader->link();
+	PUSHTOENGINE(vbuffer, ibuffer, shader);
 }
 
 void TestGame::GameMain()

@@ -1,13 +1,17 @@
 #include "Buffer.h"
-#include "OpenGL/OpenGLBuffer.h"
-void LunaLuxEngine::VertexBuffer::create(int8 type)
-{
-	buffer = new OpenGLVertexBuffer();
-}
+#include "../common/EnginePanic.h"
 
-void LunaLuxEngine::VertexBuffer::pushData(float ind[])
+void LunaLuxEngine::VertexBuffer::create(float* vert, int32 vertcount)
 {
-	buffer->create(ind);
+	if (lunaLuxEngine::get()->currentAPItype == 0)
+	{
+		buffer = new OpenGLVertexBuffer();
+	}
+	else
+	{
+		EnginePanic::get()->panic("could not create vertexBuffer");
+	}
+	buffer->create(vert, vertcount);
 }
 
 void LunaLuxEngine::VertexBuffer::bind()
@@ -23,16 +27,25 @@ void LunaLuxEngine::VertexBuffer::unBind()
 void LunaLuxEngine::VertexBuffer::destory()
 {
 	buffer->destory();
+	buffer = nullptr;
 }
 
-void LunaLuxEngine::IndexBuffer::create(int8  type)
+void LunaLuxEngine::IndexBuffer::create(int* ind, int32 vertcount)
 {
-	buffer = new OpenGLIndexBuffer();
+	if (lunaLuxEngine::get()->currentAPItype == 0)
+	{
+		buffer = new OpenGLIndexBuffer();
+	}
+	else
+	{
+		EnginePanic::get()->panic("could not create vertexBuffer");
+	}
+	buffer->create(ind, vertcount);
 }
 
-void LunaLuxEngine::IndexBuffer::pushData(int vert[])
+int LunaLuxEngine::IndexBuffer::getIndexCount()
 {
-	buffer->create(vert);
+	return buffer->getIndexCount();
 }
 
 void LunaLuxEngine::IndexBuffer::bind()
@@ -48,4 +61,5 @@ void LunaLuxEngine::IndexBuffer::unBind()
 void LunaLuxEngine::IndexBuffer::destory()
 {
 	buffer->destory();
+	buffer = nullptr;
 }

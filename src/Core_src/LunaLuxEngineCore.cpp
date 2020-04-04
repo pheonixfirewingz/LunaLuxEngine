@@ -1,13 +1,15 @@
 #include "LunaLuxEngineCore.h"
 #include "render/RenderEngine.h"
 #include "window/WindowAPI.h"
+#include "common/EnginePanic.h"
 namespace LunaLuxEngine
 {
 	void lunaLuxEngine::initEngine()
 	{
+		LOG("Start Logging Engine");
 		//-----------------------------used to set apis-----------------------------------
 		CWin.setWindowType(window_api::WindowType::Win32Window);
-		Renderer::get()->preInitRenderer(0);
+		Renderer::get()->preInitRenderer(currentAPItype);
 		//----------------------------------------------------------------------------------
 		CHECK_P(m_game_main, "no game class given");
 		m_game_main->preBoot();
@@ -17,7 +19,13 @@ namespace LunaLuxEngine
 		CWin.setTitle(m_game_main->getGameName());
 		CWin.setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin.createWindow();
+		LOG("created window");
 		Renderer::get()->initRender();
+		LOG("Initalized Renderer");
+		LOG("Finished Loading Engine");
+		LOG("Loading Game");
+		m_game_main->GameBoot();
+		LOG("Finished Loading Game");
 	}
 	int8 lunaLuxEngine::updateEngine()
 	{
@@ -36,9 +44,10 @@ namespace LunaLuxEngine
 	{
 		m_game_main = game;
 		initEngine();
-		m_game_main->GameBoot();
-		while (!CWin.shouldClose()) if (updateEngine() != EXIT_SUCCESS) exit(EXIT_FAILURE);
+		while (!CWin.shouldClose()) if (updateEngine() != EXIT_SUCCESS) EnginePanic::get()->panic("Engine Could Not Complete Update");
+		LOG("Shutting Down Engine");
 		Renderer::get()->Release();
 		free(m_game_main);
+		LOG("Stop Logging Engine");
 	}
 }

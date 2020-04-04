@@ -3,6 +3,7 @@
 
 #include <LLESDK/types.h>
 #include <LLESDK/IGame.h>
+#include <vector>
 #define LLE LunaLuxEngine::lunaLuxEngine::get();
 
 namespace LunaLuxEngine
@@ -11,10 +12,10 @@ namespace LunaLuxEngine
 	{
 	private:
 		Game* m_game_main = nullptr;
-	private:
 		void initEngine();
 		int8 updateEngine();
 	public:
+		int currentAPItype = 0;
 		static lunaLuxEngine* get()
 		{
 			static auto* engine = new lunaLuxEngine();
