@@ -1,25 +1,14 @@
 #ifdef WIN32
+
+#include <Windows.h>
 #include "Win32Window.h"
 #include "Window.h"
 
-
 bool in_win = true;
-inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
+inline void MH(UINT Msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (Msg)
 	{
-	case WM_CLOSE:
-		CWin.setShouldClose(1);
-		break;
-	case WM_SIZE:
-		CWin.getNativeWindow()->fireResizeCallback(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
-		break;
-	case WM_KEYDOWN:
-		CWin.getNativeWindow()->getInputController()->setKey(wParam, 1);
-		break;
-	case WM_KEYUP:
-		CWin.getNativeWindow()->getInputController()->setKey(wParam, 0);
-		break;
 	case WM_MOUSEHOVER:
 		in_win = true;
 		break;
@@ -60,6 +49,27 @@ inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lPara
 	default:
 		break;
 	}
+}
+inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (Msg)
+	{
+	case WM_CLOSE:
+		CWin.setShouldClose(1);
+		break;
+	case WM_SIZE:
+		CWin.getNativeWindow()->fireResizeCallback(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
+		break;
+	case WM_KEYDOWN:
+		CWin.getNativeWindow()->getInputController()->setKey(wParam, 1);
+		break;
+	case WM_KEYUP:
+		CWin.getNativeWindow()->getInputController()->setKey(wParam, 0);
+		break;
+	default:
+		break;
+	}
+	MH(Msg, wParam, lParam);
 	return DefWindowProc(hWnd, Msg, wParam, lParam);
 }
 
@@ -94,4 +104,10 @@ void LunaLuxEngine::window_api::Win32Window::destoryWindow()
 	DestroyWindow(hwnd);
 	UnregisterClassW((LPWSTR)class_name, Inst);
 }
+
+void LunaLuxEngine::window_api::Win32Window::updateTitle(int8 * in)
+{
+    SetWindowTextA(hwnd,reinterpret_cast<LPCSTR>(in));
+}
+
 #endif

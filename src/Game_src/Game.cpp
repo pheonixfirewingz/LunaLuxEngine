@@ -1,7 +1,27 @@
 //
 // Created by luket on 23/01/2020.
 //
-#include <cstdio>
+#ifdef WIN32
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrentDir getcwd
+#endif
+
+#define CLION
+
+#include<iostream>
+using namespace std;
+
+std::string get_current_dir()
+{
+    char buff[FILENAME_MAX]; //create string buffer to hold path
+    GetCurrentDir( buff, FILENAME_MAX );
+    string current_working_dir(buff);
+    return "Working Directory: " + current_working_dir + "\n\n";
+}
+
 #include "Game.h"
 #include <glad/glad.h>
 
@@ -11,22 +31,31 @@ static float vertex[] =
    -0.5f, 0.5f, 0.5f,
 	0.5f, 0.5f, 0.5f,
 	0.5f, -0.5f, 0.5f,
+
+	-1.0f, -1.0f, 1.0f,
+   -1.0f, 1.0f, 1.0f,
+	1.0f, 1.0f, 1.0f,
+	1.0f, -1.0f, 1.0f,
 };
 
 int indices[] =
 {
 	0, 1, 2,
-	0, 2, 3
+	0, 2, 3,
+
+	4, 5, 6,
+	4, 6, 7
 };
 
-void TestGame::preBoot()
+void PublicGame::preBoot()
 {
-	TestGame::setGameName((int8*)"testGame");
-	TestGame::setWindowSize(1280, 720);
-	TestGame::setNativeMode(true);
+    PublicGame::setGameName((int8*) "TestGame");
+    printf(get_current_dir().c_str());
+    PublicGame::setWindowSize(1280, 720);
+    PublicGame::setNativeMode(true);
 }
 
-void TestGame::GameBoot()
+void PublicGame::GameBoot()
 {
 	vbuffer->create(vertex, sizeof(vertex));
 	ibuffer->create(indices, sizeof(indices));
@@ -38,14 +67,19 @@ void TestGame::GameBoot()
 	vbuffer->unBind();
 	char* data, * data1;
 	std::string temp, temp1;
-	READFILE(temp, data, "Debug/vertex.glsl");
-	READFILE(temp1, data1, "Debug/fragment.glsl");
+#ifdef CLION
+        READFILE(temp, data, "../vertex.glsl");
+        READFILE(temp1, data1, "../fragment.glsl");
+#else
+        READFILE(temp, data, "../../../vertex.glsl");
+        READFILE(temp1, data1, "../../../fragment.glsl");
+#endif
 	shader->create();
 	shader->compile(data, data1);
 	shader->link();
-	PUSHTOENGINE(vbuffer, ibuffer, shader);
 }
 
-void TestGame::GameMain()
+void PublicGame::GameMain()
 {
+	PUSHTOENGINE(*vbuffer, *ibuffer, *shader);
 }

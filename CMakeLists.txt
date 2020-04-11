@@ -5,26 +5,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(${PROJECT_SOURCE_DIR}/Includes STATIC IMPORTED)
 include_directories(${PROJECT_SOURCE_DIR}/src/Core_src STATIC)
+include_directories(${PROJECT_SOURCE_DIR}/src/Game_src STATIC)
 
-find_package(Vulkan REQUIRED)
 find_package(OpenGL REQUIRED)
-link_directories(${Vulkan_LIBRARY})
 link_directories(${OPENGL_LIBRARIES})
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    include_directories(C:/VulkanSDK/1.2.131.2/Include STATIC)
-elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(X11 REQUIRED)
     link_directories(${X11_LIBRARIES})
-endif()
+endif ()
 
-add_library(LunaLuxEngineCoreLib src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp src/Core_src/fs/Reader.h src/Core_src/render/Common/IRender.H src/Core_src/render/Common/GPUInstance.cpp src/Core_src/render/OpenGL/OpenGLRenderer.h src/Core_src/render/OpenGL/OpenGLRenderer.cpp src/Glad/glad.c src/Core_src/window/IWindow.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/window/Win32Window.h src/Core_src/window/Win32Window.cpp)
+add_library(TestGame src/Game_src/Game.cpp)
 
-target_link_libraries(LunaLuxEngineCoreLib ${Vulkan_LIBRARY} ${OPENGL_LIBRARIES})
+add_executable(LunaLuxEngineCore src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp src/Core_src/fs/Reader.h src/Core_src/render/Common/IRender.H src/Core_src/render/OpenGL/OpenGLRenderer.h src/Core_src/render/OpenGL/OpenGLRenderer.cpp src/Glad/glad.c src/Core_src/window/IWindow.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/window/Win32Window.h src/Core_src/window/Win32Window.cpp src/Core_src/main.cpp src/Core_src/render/Buffer.h src/Core_src/render/Buffer.cpp src/Core_src/render/Shader.h src/Core_src/render/Shader.cpp src/Core_src/render/Common/IBuffer.h src/Core_src/render/Common/IRender.h src/Core_src/render/Common/IContext.h src/Core_src/render/Common/IShader.h src/Core_src/render/OpenGL/OpenGLBuffer.h src/Core_src/render/OpenGL/OpenGLBuffer.cpp src/Core_src/render/OpenGL/OpenGLContext.h src/Core_src/render/OpenGL/OpenGLContext.cpp src/Core_src/render/OpenGL/OpenGLShader.h src/Core_src/render/OpenGL/OpenGLShader.cpp src/Core_src/common/EnginePanic.h src/Core_src/common/EnginePanic.cpp src/Core_src/common/Event.h src/Core_src/render/Common/ICamera.h src/Core_src/render/Common/IShaderLayout.h)
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_link_libraries(LunaLuxEngineCoreLib ${X11_LIBRARIES})
-endif()
+target_link_libraries(LunaLuxEngineCore TestGame ${OPENGL_LIBRARIES})
 
-add_executable(TestGame src/Game_src/test.cpp src/Game_src/Game.cpp src/Game_src/Game.h)
-target_link_libraries(TestGame LunaLuxEngineCoreLib)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    target_link_libraries(LunaLuxEngineCore ${X11_LIBRARIES})
+endif ()
+

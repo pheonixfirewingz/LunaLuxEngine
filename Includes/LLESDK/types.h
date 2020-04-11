@@ -57,27 +57,6 @@ typedef i8 LLEbool;
 #define LOG(logtext)                                \
 printf("%s%s\n\n","Engine and Game Log:",logtext);
 
-#define CHECK_N(result,cause)                       \
-if(result != 0)                                     \
-{                                                   \
-    printf("%s%s\n\n","LunaLuxEngine internal number type 1 validation check failed:",cause);  \
-    exit(EXIT_FAILURE);                             \
-};
-
-#define CHECK_N2(result,cause)                       \
-if(result == 0)                                     \
-{                                                   \
-    printf("%s%s\n\n","LunaLuxEngine internal number type 2 validation check failed:",cause);  \
-    exit(EXIT_FAILURE);                             \
-};
-
-#define CHECK_B(result,cause)                       \
-if(result != true)                                  \
-{                                                   \
-    printf("%s%s\n\n","LunaLuxEngine internal LLEbool validation check failed:",cause);  \
-    exit(EXIT_FAILURE);                             \
-};
-
 #define CHECK_P(result,cause)                       \
 if(result == nullptr)                               \
 {                                                   \

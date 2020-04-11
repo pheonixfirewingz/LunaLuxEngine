@@ -49,6 +49,7 @@ namespace LunaLuxEngine::window_api
 		HWND hwnd{};
 	public:
 		void createWindow() override;
+		void updateTitle(int8*) override;
 		void destoryWindow() override;
 	};
 #else

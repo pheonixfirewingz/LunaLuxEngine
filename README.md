@@ -26,18 +26,17 @@ LunaLuxEngine is a 3D graphical engine.
 - Create Window using cocoa for mac (waiting for OSX availability)
 - Create Metal renderer and get a 2D_box on screen (waiting for OSX availability)
 - Create Vulkan context for linux and get a 2D_box on screen
-- DirectX11 get a 3D_box on screen
+- OpenGL get a 3D_box on screen with working camera
 
 ## WIP
+- Crossplatform OpenGL FallBack Rendering
 - Windows DirectX 11 renderer
-- Linux OpenGL Renderer
+- Linux Vulkan Renderer
 - Linux Window Support
 
 -----------------------
 ## Platforms
-
-### Supported Platforms
-- WINDOW (window adding as needed. working on DX11 renderer)
+- WINDOW 23BIT
 
 ### Planned Platforms (Stage 1)
 -----------------------------------------------------------------------------------------------
@@ -57,35 +56,16 @@ LunaLuxEngine is a 3D graphical engine.
  - PlayStation 4 and up
 
 ## Known issues
+- Very Slow Memory Leak: needs tracking down
 
 ## Code Quality Issues
- Violation = Important/security (CWE-120, CWE-20)
-- Problem = Check buffer boundaries if used in a loop including recursive loops 
-- File = Reader.h
-- Line = 23
+- https://frontend.code-inspector.com/public/project/4310/LunaLuxEngine/dashboard
 
 ## Getting started
 
 ### Minimum Start Code
------------------------
-Extend Game class in "#include <LLESDK/IGame.h>".
-The pre boot is used to configure required variables in the game class.
 
-- preBoot();
-the game class is called by the engine as for the main game loop and inatalization faze this is done through
-(engine logs will tell you if missing a config in the preBoot Stage)
-
-- BootGame();
-this is used to load external game fetures not part of the engine.
-
-- GameMain();
-this is used to allows custom game logic not handled by the engine to run in the engine's run loop
-
-add to main class.
-#include <LunaLuxEngineCore.h>
-
-auto* eng = LLE;
-eng->runEngine(new YourGameClass());
+####Under Going Reworking
 
 -----------------------
 

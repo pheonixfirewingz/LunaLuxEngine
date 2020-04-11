@@ -13,6 +13,7 @@ namespace LunaLuxEngine::window_api
 		LLEbool WIN_SHOULD_CLOSE = LLEfalse;
 	public:
 		virtual void createWindow() = 0;
+		virtual void updateTitle(int8*) = 0;
 		virtual void destoryWindow() = 0;
 		inline int32 getWindowW()
 		{

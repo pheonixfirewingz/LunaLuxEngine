@@ -6,7 +6,7 @@
 #include <LLESDK/IGame.h>
 #include <LLESDK/Engine.h>
 
-class TestGame : public Game
+class PublicGame : public Game
 {
 	LunaLuxEngine::VertexBuffer* vbuffer = new LunaLuxEngine::VertexBuffer();
 	LunaLuxEngine::IndexBuffer* ibuffer = new LunaLuxEngine::IndexBuffer();

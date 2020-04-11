@@ -67,6 +67,7 @@ namespace LunaLuxEngine::window_api
 		~CrossWindow() {};
 		void setWindowType(WindowType type);
 		void createWindow() { window->createWindow(); };
+		void updateTitle(int8* title_) {window->updateTitle(title_);};
 		void updateWindow();
 		void destoryWindow() { window->destoryWindow(); };
 		void setShouldClose(LLEbool close) { window->setShouldClose(close); };

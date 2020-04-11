@@ -4,13 +4,10 @@
 void LunaLuxEngine::VertexBuffer::create(float* vert, int32 vertcount)
 {
 	if (lunaLuxEngine::get()->currentAPItype == 0)
-	{
 		buffer = new OpenGLVertexBuffer();
-	}
 	else
-	{
 		EnginePanic::get()->panic("could not create vertexBuffer");
-	}
+
 	buffer->create(vert, vertcount);
 }
 
@@ -33,13 +30,10 @@ void LunaLuxEngine::VertexBuffer::destory()
 void LunaLuxEngine::IndexBuffer::create(int* ind, int32 vertcount)
 {
 	if (lunaLuxEngine::get()->currentAPItype == 0)
-	{
 		buffer = new OpenGLIndexBuffer();
-	}
 	else
-	{
 		EnginePanic::get()->panic("could not create vertexBuffer");
-	}
+
 	buffer->create(ind, vertcount);
 }
 

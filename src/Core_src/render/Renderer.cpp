@@ -4,11 +4,16 @@
 #include "../window/Window.h"
 using namespace LunaLuxEngine;
 
-void LunaLuxEngine::Renderer::pushDataToRenderer(VertexBuffer* buffertorender, IndexBuffer* buffertorender1, Shader* shadertouse)
+LunaLuxEngine::Renderer::Renderer()
 {
-	rbuffer = buffertorender;
-	ibuffer = buffertorender1;
-	shader = shadertouse;
+
+}
+
+void LunaLuxEngine::Renderer::pushDataToRenderer(VertexBuffer& vertexbuffer, IndexBuffer& indexbuffer, Shader& shader_)
+{
+	rbuffer = vertexbuffer;
+	ibuffer = indexbuffer;
+	shader = shader_;
 }
 
 void Renderer::preInitRenderer(int type)
@@ -37,11 +42,11 @@ void LunaLuxEngine::Renderer::preRender()
 
 void Renderer::Render()
 {
-	rbuffer->bind();
-	ibuffer->bind();
-	render->fireRender(ibuffer->getIndexCount());
-	rbuffer->unBind();
-	ibuffer->unBind();
+	rbuffer.bind();
+	ibuffer.bind();
+	render->fireRender(ibuffer.getIndexCount());
+	rbuffer.unBind();
+	ibuffer.unBind();
 	context->swapBuffers();
 };
 
@@ -52,11 +57,16 @@ void LunaLuxEngine::Renderer::postRender()
 
 void Renderer::Release()
 {
-	ibuffer->destory();
-	rbuffer->destory();
+	ibuffer.destory();
+	rbuffer.destory();
 	context->destroy();
 	context = nullptr;
 	render->destroyRender();
 	render = nullptr;
 	CWin.destoryWindow();
 }
+
+/*void Renderer::setCamera(ICamera& cam)
+{
+    camera = cam;
+}*/

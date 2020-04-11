@@ -3,6 +3,7 @@
 #include<fstream>
 #include<sstream>
 #include<string>
+#include "../common/EnginePanic.h"
 
 #define READFILE(tempstring,charpointer,filename) \
 LunaLuxEngine::FileSystem::FileReader::get()->readFile(filename, tempstring);\
@@ -22,8 +23,8 @@ namespace LunaLuxEngine::FileSystem
 		inline void readFile(char* filename, std::string& buffer)
 		{
 			std::ifstream file(filename, std::ios::ate | std::ios::binary);
-			if (!file.is_open())  throw std::runtime_error("failed to open file!");
-			size_t fileSize = (size_t)file.tellg();
+
+			if (!file.is_open() || !file) LunaLuxEngine::EnginePanic::get()->panic("could not open File");
 			file.seekg(0);
 			std::ostringstream ss;
 			ss << file.rdbuf();
