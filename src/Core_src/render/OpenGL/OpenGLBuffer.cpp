@@ -1,4 +1,9 @@
 #include "OpenGLBuffer.h"
+#ifdef __linux__
+#include <GL/glew.h>
+#else
+#include <glad/glad.h>
+#endif
 #include <iostream>
 
 void LunaLuxEngine::OpenGLVertexBuffer::create(float* vert, int32 vertcount)

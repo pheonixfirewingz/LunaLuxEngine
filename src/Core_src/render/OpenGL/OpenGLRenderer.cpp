@@ -2,7 +2,11 @@
 // Created by luket on 23/01/2020.
 //
 #include "OpenGLRenderer.h"
-#include "../Buffer.h"
+#ifdef __linux__
+#include <GL/glew.h>
+#else
+#include <glad/glad.h>
+#endif
 
 inline void OGLWindowResizeCallback(int32 width, int32 height)
 {
@@ -19,7 +23,11 @@ GLuint VertexArrayID;
 void LunaLuxEngine::OGLRenderer::initRender()
 {
 	CWin.getNativeWindow()->setResizeCallback(&OGLWindowResizeCallback);
-	gladLoadGL();
+#ifdef __linux__
+	glewInit();
+#else
+    gladLoadGL();
+#endif
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
 }

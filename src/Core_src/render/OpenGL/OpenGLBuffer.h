@@ -1,7 +1,6 @@
 #ifndef LUNALUXENGINE_OPENGLBUFFER_H
 #define LUNALUXENGINE_OPENGLBUFFER_H
 #include "../Common/IBuffer.h"
-#include <glad/glad.h>
 #include <algorithm>
 #include <vector>
 namespace LunaLuxEngine
@@ -9,7 +8,7 @@ namespace LunaLuxEngine
 	class OpenGLVertexBuffer : public IVertexBuffer
 	{
 	private:
-		GLuint vertexbuffer;
+		unsigned int vertexbuffer;
 	public:
 		void create(float* vert, int32 vertcount) override;
 		void bind() override;
@@ -19,7 +18,7 @@ namespace LunaLuxEngine
 
 	class OpenGLIndexBuffer : public IIndexBuffer
 	{
-		GLuint indexbuffer;
+        unsigned int indexbuffer;
 	public:
 		void create(int* index, int32 indexcount) override;
 		void bind() override;

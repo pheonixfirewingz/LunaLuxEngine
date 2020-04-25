@@ -1,7 +1,6 @@
 #ifndef LUNALUXENGINE_OPENGLCONTEXT_H
 #define LUNALUXENGINE_OPENGLCONTEXT_H
 #include <LLESDK/types.h>
-#include <glad\glad.h>
 #include "../../window/Window.h" 
 #include "../Common/IContext.h"
 #ifdef WIN32

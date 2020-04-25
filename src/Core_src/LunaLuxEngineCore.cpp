@@ -10,7 +10,7 @@ namespace LunaLuxEngine
         else LOG("DEBUG: DE-ACTIVED")
 	    if(debug) LOG("Start Logging Engine")
 		//-----------------------------used to set apis-----------------------------------
-		CWin.setWindowType(window_api::WindowType::Win32Window);
+		CWin.setWindowType(window_api::WindowType::X11Window);
 		Renderer::get().preInitRenderer(currentAPItype);
 		//----------------------------------------------------------------------------------
 		CHECK_P(m_game_main, "no game class given")
