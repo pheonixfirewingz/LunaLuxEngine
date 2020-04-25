@@ -1,7 +1,5 @@
-#include "Renderer.h"
 #include "OpenGL/OpenGLRenderer.h"
 #include "OpenGL/OpenGLContext.h"
-#include "../window/Window.h"
 using namespace LunaLuxEngine;
 
 LunaLuxEngine::Renderer::Renderer()

@@ -1,7 +1,11 @@
 #include "OpenGLShader.h"
 #include "../../common/EnginePanic.h"
 #include <vector>
+#ifdef __linux__
+#include <GL/glew.h>
+#else
 #include <glad/glad.h>
+#endif
 void LunaLuxEngine::OpenGLShader::create(char* filedata, int type)
 {
 	if (type == 0)

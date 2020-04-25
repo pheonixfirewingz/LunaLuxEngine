@@ -1,5 +1,9 @@
 #include "Shader.h"
+#ifdef __linux__
+#include <GL/glew.h>
+#else
 #include <glad/glad.h>
+#endif
 
 void LunaLuxEngine::Shader::create()
 {

@@ -23,7 +23,11 @@ std::string get_current_dir()
 }
 
 #include "Game.h"
+#ifdef __linux__
+#include <GL/glew.h>
+#else
 #include <glad/glad.h>
+#endif
 
 static float vertex[] =
 {
@@ -50,7 +54,7 @@ int indices[] =
 void PublicGame::preBoot()
 {
     PublicGame::setGameName((int8*) "TestGame");
-    printf(get_current_dir().c_str());
+    printf("%s",get_current_dir().c_str());
     PublicGame::setWindowSize(1280, 720);
     PublicGame::setNativeMode(true);
 }
@@ -68,8 +72,13 @@ void PublicGame::GameBoot()
 	char* data, * data1;
 	std::string temp, temp1;
 #ifdef CLION
+    #ifdef __linux__
+	    READFILE(temp, data, "vertex.glsl");
+        READFILE(temp1, data1, "fragment.glsl");
+    #else
         READFILE(temp, data, "../vertex.glsl");
         READFILE(temp1, data1, "../fragment.glsl");
+    #endif
 #else
         READFILE(temp, data, "../../../vertex.glsl");
         READFILE(temp1, data1, "../../../fragment.glsl");

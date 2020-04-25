@@ -9,7 +9,6 @@
 #include "../Buffer.h"
 #include "../Shader.h"
 #include "../../render/Common/IRender.h"
-#include <glad/glad.h>
 
 namespace LunaLuxEngine
 {

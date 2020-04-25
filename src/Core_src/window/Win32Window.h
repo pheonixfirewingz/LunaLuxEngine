@@ -58,6 +58,7 @@ namespace LunaLuxEngine::window_api
 	{
 	public:
 		void createWindow() override {};
+        void updateWindow() override {};
 		void updateTitle(int8*) override {};
 		void destoryWindow() override {};
 	};
