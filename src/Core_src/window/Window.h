@@ -3,11 +3,7 @@
 #include <LLESDK/types.h>
 #include "IWindow.h"
 #include "Win32Window.h"
-#ifdef __linux__
-#include <cstring>
-#include <X11/X.h>
-#include <X11/Xlib.h>
-#endif
+#include "X11Window.h"
 #define CWin LunaLuxEngine::window_api::CrossWindow::get()
 
 namespace LunaLuxEngine::window_api
@@ -15,35 +11,16 @@ namespace LunaLuxEngine::window_api
 	enum class WindowType
 	{
 		Win32Window = 0,
+		X11Window = 1,
 	};
 	class CrossWindow
 	{
-		IWindow* window;
-#ifdef UWP
+        IWindow *window;
 #ifdef WIN32
-	private:
-
 	public:
 		HWND getWin32Window() { return FindWindowA((LPCSTR)"LunaLuxEngine_WindowClass", (LPCSTR)window->getTitle()); };
 #endif
-#endif
-#ifdef  __linux__
-	private:
-		int                     att[5] = { 4, 12, 24, 5, 0L };
-
-		Display* dpy{};
-
-		Window                  root{};
-
-		Window                  win{};
-
-		XSetWindowAttributes    swa{};
-
-		Colormap                cmap{};
-
-		XVisualInfo* vi{};
-
-		XEvent                  xev{};
+#ifdef  temp
 	public:
 		inline Display* getWindowL()
 		{
@@ -68,7 +45,7 @@ namespace LunaLuxEngine::window_api
 		void setWindowType(WindowType type);
 		void createWindow() { window->createWindow(); };
 		void updateTitle(int8* title_) {window->updateTitle(title_);};
-		void updateWindow();
+		void updateWindow() {window->updateWindow();};
 		void destoryWindow() { window->destoryWindow(); };
 		void setShouldClose(LLEbool close) { window->setShouldClose(close); };
 		void setTitle(int8* title) { window->setTitle(title); };

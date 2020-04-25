@@ -1,6 +1,5 @@
 #ifdef WIN32
 
-#include <Windows.h>
 #include "Win32Window.h"
 #include "Window.h"
 
@@ -108,6 +107,17 @@ void LunaLuxEngine::window_api::Win32Window::destoryWindow()
 void LunaLuxEngine::window_api::Win32Window::updateTitle(int8 * in)
 {
     SetWindowTextA(hwnd,reinterpret_cast<LPCSTR>(in));
+}
+
+void LunaLuxEngine::window_api::Win32Window::updateWindow()
+{
+    if (!shouldClose())
+    {
+        MSG msg;
+        GetMessage(&msg, nullptr, 0, 0);
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
 }
 
 #endif

@@ -4,27 +4,32 @@
 #include "common/EnginePanic.h"
 namespace LunaLuxEngine
 {
-	void lunaLuxEngine::initEngine()
+	void lunaLuxEngine::initEngine(bool &debug)
 	{
-		LOG("Start Logging Engine");
+        if(debug) LOG("DEBUG: ACTIVE")
+        else LOG("DEBUG: DE-ACTIVED")
+	    if(debug) LOG("Start Logging Engine")
 		//-----------------------------used to set apis-----------------------------------
 		CWin.setWindowType(window_api::WindowType::Win32Window);
 		Renderer::get().preInitRenderer(currentAPItype);
 		//----------------------------------------------------------------------------------
-		CHECK_P(m_game_main, "no game class given");
+		CHECK_P(m_game_main, "no game class given")
 		m_game_main->preBoot();
 		CWin.setTitle(m_game_main->getGameName());
 		CWin.setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin.createWindow();
-		LOG("created window");
+        if(debug) LOG("created window")
 		Renderer::get().initRender();
-		LOG("Initalized Renderer");
-		LOG("Finished Loading Engine");
-		LOG("Loading Game");
+        if(debug)
+        {
+            LOG("Initalized Renderer");
+            LOG("Finished Loading Engine")
+            LOG("Loading Game")
+        }
 		m_game_main->GameBoot();
-		LOG("Finished Loading Game");
+        if(debug) LOG("Finished Loading Game")
 	}
-	int8 lunaLuxEngine::updateEngine()
+	int8 lunaLuxEngine::updateEngine(bool &debug)
 	{
 		//temp for debug----
 		if (CWin.getNativeWindow()->getInputController()->isKeyDown(window_api::LLE_KEY_C) && CWin.getNativeWindow()->getInputController()->isMouseButtonDown(window_api::LLE_BUTTON_MIDDLE)) CWin.setShouldClose(true);
@@ -37,14 +42,14 @@ namespace LunaLuxEngine
 		return EXIT_SUCCESS;
 	}
 
-	void lunaLuxEngine::runEngine(Game* game)
+	void lunaLuxEngine::runEngine(Game* game,bool debug)
 	{
 		m_game_main = game;
-		initEngine();
-		while (!CWin.shouldClose()) if (updateEngine() != EXIT_SUCCESS) EnginePanic::get()->panic("Engine Could Not Complete Update");
-		LOG("Shutting Down Engine");
+		initEngine(debug);
+		while (!CWin.shouldClose()) if (updateEngine(debug) != EXIT_SUCCESS) EnginePanic::get()->panic("Engine Could Not Complete Update");
+        if(debug) LOG("Shutting Down Engine")
 		Renderer::get().Release();
 		free(m_game_main);
-		LOG("Stop Logging Engine");
+        if(debug) LOG("Stop Logging Engine")
 	}
 }

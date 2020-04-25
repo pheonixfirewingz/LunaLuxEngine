@@ -12,8 +12,8 @@ namespace LunaLuxEngine
 	{
 	private:
 		Game* m_game_main = nullptr;
-		void initEngine();
-		int8 updateEngine();
+		void initEngine(bool&);
+		int8 updateEngine(bool&);
 	public:
 		int currentAPItype = 0;
 		static lunaLuxEngine* get()
@@ -22,7 +22,7 @@ namespace LunaLuxEngine
 			return  engine;
 		}
 		~lunaLuxEngine() { m_game_main = nullptr; };
-		void runEngine(Game*);
+		void runEngine(Game*,bool);
 	};
 }
 #endif

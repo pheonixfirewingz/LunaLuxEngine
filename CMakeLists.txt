@@ -15,13 +15,15 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     link_directories(${X11_LIBRARIES})
 endif ()
 
-add_library(TestGame src/Game_src/Game.cpp)
+add_library(LunaLuxEngineCore src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp src/Core_src/fs/Reader.h src/Core_src/render/Common/IRender.H src/Core_src/render/OpenGL/OpenGLRenderer.h src/Core_src/render/OpenGL/OpenGLRenderer.cpp src/Glad/glad.c src/Core_src/window/IWindow.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/window/Win32Window.h src/Core_src/window/Win32Window.cpp src/Core_src/render/Buffer.h src/Core_src/render/Buffer.cpp src/Core_src/render/Shader.h src/Core_src/render/Shader.cpp src/Core_src/render/Common/IBuffer.h src/Core_src/render/Common/IRender.h src/Core_src/render/Common/IContext.h src/Core_src/render/Common/IShader.h src/Core_src/render/OpenGL/OpenGLBuffer.h src/Core_src/render/OpenGL/OpenGLBuffer.cpp src/Core_src/render/OpenGL/OpenGLContext.h src/Core_src/render/OpenGL/OpenGLContext.cpp src/Core_src/render/OpenGL/OpenGLShader.h src/Core_src/render/OpenGL/OpenGLShader.cpp src/Core_src/common/EnginePanic.h src/Core_src/common/EnginePanic.cpp src/Core_src/common/Event.h src/Core_src/render/Common/ICamera.h src/Core_src/render/Common/IShaderLayout.h src/Core_src/window/X11Window.cpp src/Core_src/window/X11Window.h)
 
-add_executable(LunaLuxEngineCore src/Core_src/LunaLuxEngineCore.cpp src/Core_src/LunaLuxEngineCore.h src/Core_src/render/Renderer.h src/Core_src/render/Renderer.cpp src/Core_src/fs/Reader.h src/Core_src/render/Common/IRender.H src/Core_src/render/OpenGL/OpenGLRenderer.h src/Core_src/render/OpenGL/OpenGLRenderer.cpp src/Glad/glad.c src/Core_src/window/IWindow.h src/Core_src/window/Window.h src/Core_src/window/Window.cpp src/Core_src/window/Win32Window.h src/Core_src/window/Win32Window.cpp src/Core_src/main.cpp src/Core_src/render/Buffer.h src/Core_src/render/Buffer.cpp src/Core_src/render/Shader.h src/Core_src/render/Shader.cpp src/Core_src/render/Common/IBuffer.h src/Core_src/render/Common/IRender.h src/Core_src/render/Common/IContext.h src/Core_src/render/Common/IShader.h src/Core_src/render/OpenGL/OpenGLBuffer.h src/Core_src/render/OpenGL/OpenGLBuffer.cpp src/Core_src/render/OpenGL/OpenGLContext.h src/Core_src/render/OpenGL/OpenGLContext.cpp src/Core_src/render/OpenGL/OpenGLShader.h src/Core_src/render/OpenGL/OpenGLShader.cpp src/Core_src/common/EnginePanic.h src/Core_src/common/EnginePanic.cpp src/Core_src/common/Event.h src/Core_src/render/Common/ICamera.h src/Core_src/render/Common/IShaderLayout.h)
+add_executable(TestGame src/Game_src/Game.cpp src/Game_src/main.cpp)
 
-target_link_libraries(LunaLuxEngineCore TestGame ${OPENGL_LIBRARIES})
+target_link_libraries(LunaLuxEngineCore ${OPENGL_LIBRARIES})
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(LunaLuxEngineCore ${X11_LIBRARIES})
 endif ()
+
+target_link_libraries(TestGame LunaLuxEngineCore)
 
