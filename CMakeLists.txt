@@ -28,7 +28,7 @@ target_link_libraries(LunaLuxEngineCore ${OPENGL_LIBRARIES})
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(LunaLuxEngineCore ${GLEW_LIBRARIES} ${X11_LIBRARIES})
 else()
-    target_link_libraries(LunaLuxEngineCore glad)
+    target_link_libraries(LunaLuxEngineCore Glad)
 endif ()
 
 target_link_libraries(TestGame LunaLuxEngineCore)

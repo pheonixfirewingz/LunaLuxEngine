@@ -1,6 +1,5 @@
 #include "LunaLuxEngineCore.h"
 #include "render/RenderEngine.h"
-#include "window/WindowAPI.h"
 #include "common/EnginePanic.h"
 namespace LunaLuxEngine
 {
@@ -10,7 +9,11 @@ namespace LunaLuxEngine
         else LOG("DEBUG: DE-ACTIVED")
 	    if(debug) LOG("Start Logging Engine")
 		//-----------------------------used to set apis-----------------------------------
+#ifdef __linux__
 		CWin.setWindowType(window_api::WindowType::X11Window);
+#elif WIN32
+        CWin.setWindowType(window_api::WindowType::Win32Window);
+#endif
 		Renderer::get().preInitRenderer(currentAPItype);
 		//----------------------------------------------------------------------------------
 		CHECK_P(m_game_main, "no game class given")

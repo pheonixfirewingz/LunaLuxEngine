@@ -4,27 +4,33 @@
 
 #ifndef LUNALUXENGINE_ISHADERLAYOUT_H
 #define LUNALUXENGINE_ISHADERLAYOUT_H
-#include <stdint.h>
+#include <GLM/glm.hpp>
 
-struct ShaderLayout
+enum class Data_Type
+{
+    FLOAT_TYPE = 0,
+    DOUBLE_TYPE = 1,
+    INT_TYPE = 2,
+    UINT_TYPE = 3,
+};
+
+struct Shader_Layout
 {
 
 };
 
 class IShaderLayout
 {
-private:
+protected:
     virtual int getUninform(char* name) = 0;
     //uniform
-    virtual void setUniform(size_t,int,float,float,float,float) = 0;
-    virtual void setUniform(size_t,int,int,int,int,int) = 0;
-    virtual void setUniform(size_t,int,unsigned int,unsigned int,unsigned int,unsigned int) = 0;
+    virtual void setUniform4(size_t,int,glm::vec4,Data_Type) = 0; 
+    virtual void setUniform3(size_t,int,glm::vec3,Data_Type) = 0; 
+    virtual void setUniform2(size_t,int,glm::vec2,Data_Type) = 0;
     //uniform_v
-    virtual void setUniformv(size_t,int,float,float,float,float) = 0;
-    virtual void setUniformv(size_t,int,int,int,int,int) = 0;
-    virtual void setUniformv(size_t,int,unsigned int,unsigned int,unsigned int,unsigned int) = 0;
+    virtual void setUniformv4(size_t,int,glm::vec4,Data_Type) = 0;
 public:
-    void createShaderLayout(ShaderLayout&);
+    void createShaderLayout(Shader_Layout&);
 };
 
 #endif //LUNALUXENGINE_ISHADERLAYOUT_H
