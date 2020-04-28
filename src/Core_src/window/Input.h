@@ -1,5 +1,14 @@
 #ifndef LUNALUXENGINE_INPUT_H
 #define LUNALUXENGINE_INPUT_H
+/* INPUT CLASS
+ *-----------------------------------------------------------------
+ * this is used for handling input this is unre refinded
+ * current support:
+ *
+ * LINUX X11 api = 40%
+ * WIN32 api = 80%
+ *-----------------------------------------------------------------
+ */
 namespace LunaLuxEngine::window_api
 {
 #ifdef WIN32

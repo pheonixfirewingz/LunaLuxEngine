@@ -26,10 +26,11 @@ void LunaLuxEngine::OGLRenderer::initRender()
 #ifdef __linux__
 	glewInit();
 #else
-    gladLoadGL();
+	gladLoadGL();
 #endif
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
+	glEnable(GL_CULL_FACE);
 }
 
 void LunaLuxEngine::OGLRenderer::fireRender(int indexcount)
