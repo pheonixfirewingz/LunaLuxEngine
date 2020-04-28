@@ -6,9 +6,17 @@ LunaLuxEngine::Renderer::Renderer()
 {
 
 }
-
+int boot = 0;
 void LunaLuxEngine::Renderer::pushDataToRenderer(VertexBuffer& vertexbuffer, IndexBuffer& indexbuffer, Shader& shader_)
 {
+	if (boot == 1)
+	{
+		rbuffer.destory();
+		ibuffer.destory();
+		shader.destory();
+	}
+	else boot++;
+
 	rbuffer = vertexbuffer;
 	ibuffer = indexbuffer;
 	shader = shader_;
@@ -66,5 +74,5 @@ void Renderer::Release()
 
 /*void Renderer::setCamera(ICamera& cam)
 {
-    camera = cam;
+	camera = cam;
 }*/

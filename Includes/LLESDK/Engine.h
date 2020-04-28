@@ -4,7 +4,6 @@
 #include <render/Buffer.h>
 #include <render/Shader.h>
 #include <render/Renderer.h>
+#include <window/WindowAPI.h>
 #include <fs/Reader.h>
-#define PUSHTOENGINE(vertexbuffer,indexbuffer,shader)\
-LunaLuxEngine::Renderer::get().pushDataToRenderer(vertexbuffer, indexbuffer, shader);
 #endif

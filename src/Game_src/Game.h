@@ -10,6 +10,8 @@ class PublicGame : public Game
 {
 	LunaLuxEngine::VertexBuffer* vbuffer = new LunaLuxEngine::VertexBuffer();
 	LunaLuxEngine::IndexBuffer* ibuffer = new LunaLuxEngine::IndexBuffer();
+	LunaLuxEngine::VertexBuffer* vbufferx = new LunaLuxEngine::VertexBuffer();
+	LunaLuxEngine::IndexBuffer* ibufferx = new LunaLuxEngine::IndexBuffer();
 	LunaLuxEngine::Shader* shader = new LunaLuxEngine::Shader();
 	void preBoot() override;
 	void GameBoot() override;

@@ -30,7 +30,6 @@ void LunaLuxEngine::OGLRenderer::initRender()
 #endif
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
-	glEnable(GL_CULL_FACE);
 }
 
 void LunaLuxEngine::OGLRenderer::fireRender(int indexcount)
