@@ -8,7 +8,7 @@ namespace LunaLuxEngine
 	{
 	private:
         Renderer();
-        bool nullContext = false;
+        ~Renderer();
 	public:
         inline static Renderer& get()
 		{
@@ -16,15 +16,9 @@ namespace LunaLuxEngine
 			return *rend;
 		}
 
-		inline bool isNullContext()
-        {
-            return nullContext;
-        }
-		void initRender();
 		void preRender();
 		void Render();
 		void postRender();
-		void Release();
 	};
 }
 #endif

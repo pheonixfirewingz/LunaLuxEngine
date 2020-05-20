@@ -1,0 +1,8 @@
+//
+// Created by luket on 20/05/2020.
+//
+
+#ifndef LUNALUXENGINE_PLATFORM_H
+#define LUNALUXENGINE_PLATFORM_H
+
+#endif //LUNALUXENGINE_PLATFORM_H

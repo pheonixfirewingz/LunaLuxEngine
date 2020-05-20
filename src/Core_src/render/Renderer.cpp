@@ -1,34 +1,28 @@
 #include "Renderer.h"
+#include "../common/EnginePanic.h"
 #include <CrossWindow/WindowAPI.h>
+#include <GAA/GAA.h>
 
 LunaLuxEngine::Renderer::Renderer()
 {
-
+    if(GAA::GAAInit(*CWin.getNativeWindow()) != GAA::GAAReturnType::GAA_OK) EnginePanic::get()->panic("could not create GAA Context");
+    CWin.getNativeWindow()->fireResizeCallback();
 }
-
-void LunaLuxEngine::Renderer::initRender()
-{
-    if(nullContext) return;
-	CWin.getNativeWindow()->fireResizeCallback();
-};
 
 float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 void LunaLuxEngine::Renderer::preRender()
 {
-    if(nullContext) return;
 };
 
 void LunaLuxEngine::Renderer::Render()
 {
-    if(nullContext) return;
 };
 
 void LunaLuxEngine::Renderer::postRender()
 {
-    if(nullContext) return;
-};
-
-void LunaLuxEngine::Renderer::Release()
-{
-	CWin.destoryWindow();
 }
+
+LunaLuxEngine::Renderer::~Renderer()
+{
+    GAA::GAATerminate();
+};

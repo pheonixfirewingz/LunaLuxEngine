@@ -1,5 +1,6 @@
 #ifndef LUNALUXENGINE_INPUT_H
 #define LUNALUXENGINE_INPUT_H
+#include <LLESDK/Types.h>
 /* INPUT CLASS
  *-----------------------------------------------------------------
  * this is used for handling input this is unre refinded

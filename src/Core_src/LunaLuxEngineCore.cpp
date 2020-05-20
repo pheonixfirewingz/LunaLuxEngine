@@ -21,13 +21,11 @@ namespace LunaLuxEngine
 		CWin.setTitle(m_game_main->getGameName());
 		CWin.setSize(m_game_main->getWindowWidth(), m_game_main->getWindowHeight());
 		CWin.createWindow();
-		if (debug) LOG("created window")
-			Renderer::get().initRender();
 		if (debug)
 		{
-			LOG("Initalized Renderer");
+            LOG("created window")
 			LOG("Finished Loading Engine")
-				LOG("Loading Game")
+			LOG("Loading Game")
 		}
 		m_game_main->GameBoot();
 		if (debug) LOG("Finished Loading Game")
@@ -51,7 +49,7 @@ namespace LunaLuxEngine
 		initEngine(debug);
 		while (!CWin.shouldClose()) if (updateEngine(debug) != EXIT_SUCCESS) EnginePanic::get()->panic("Engine Could Not Complete Update");
 		if (debug) LOG("Shutting Down Engine")
-		Renderer::get().Release();
+        CWin.destoryWindow();
 		free(m_game_main);
         m_game_main = nullptr;
 		if (debug) LOG("Stop Logging Engine")
