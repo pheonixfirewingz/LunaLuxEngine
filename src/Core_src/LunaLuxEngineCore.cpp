@@ -1,9 +1,7 @@
 #include "LunaLuxEngineCore.h"
-#include "render/RenderEngine.h"
+#include <CrossWindow/WindowAPI.h>
+#include "render/Renderer.h"
 #include "common/EnginePanic.h"
-#include <iostream>
-#include <chrono>
-#include <thread>
 namespace LunaLuxEngine
 {
 	void lunaLuxEngine::initEngine(bool& debug)
@@ -17,7 +15,6 @@ namespace LunaLuxEngine
 #elif WIN32
 				CWin.setWindowType(window_api::WindowType::Win32Window);
 #endif
-		Renderer::get().preInitRenderer(currentAPItype);
 		//----------------------------------------------------------------------------------
 		CHECK_P(m_game_main, "no game class given")
 			m_game_main->preBoot();
@@ -45,19 +42,18 @@ namespace LunaLuxEngine
 		Renderer::get().preRender();
 		Renderer::get().Render();
 		Renderer::get().postRender();
-		using namespace std::chrono_literals;
-		std::this_thread::sleep_for(0.1s);
 		return EXIT_SUCCESS;
 	}
 
-	void lunaLuxEngine::runEngine(Game* game, bool debug)
+	void lunaLuxEngine::runEngine(Game* game, bool debug,char* data)
 	{
 		m_game_main = game;
 		initEngine(debug);
 		while (!CWin.shouldClose()) if (updateEngine(debug) != EXIT_SUCCESS) EnginePanic::get()->panic("Engine Could Not Complete Update");
 		if (debug) LOG("Shutting Down Engine")
-			Renderer::get().Release();
+		Renderer::get().Release();
 		free(m_game_main);
+        m_game_main = nullptr;
 		if (debug) LOG("Stop Logging Engine")
 	}
 }

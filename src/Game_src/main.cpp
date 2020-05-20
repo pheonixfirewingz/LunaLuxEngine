@@ -7,6 +7,6 @@
 int main()
 {
     auto* eng = LLE;
-    eng->runEngine(new PublicGame(),true);
+    eng->runEngine(new PublicGame(),true,(char*)"-FallBackMode");
     free(eng);
 }
