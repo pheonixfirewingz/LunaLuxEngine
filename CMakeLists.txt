@@ -13,10 +13,10 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     link_directories(${GLEW_LIBRARIES} ${VULKAN_LIBRARIES} ${OPENGL_LIBRARIES})
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     find_package(OpenGL REQUIRED)
-    find_package(VULKAN REQUIRED)
-    link_directories(${VULKAN_LIBRARIES} ${OPENGL_LIBRARIES})
+    link_directories(${OPENGL_LIBRARIES})
     include_directories("C:/VulkanSDK/1.2.131.2/Include/vulkan")
     link_directories("C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/libs/x64")
+    link_directories("C:/VulkanSDK/1.2.131.2/Lib")
 else()
     #this dose not support mac yet
 endif ()
@@ -28,7 +28,14 @@ add_library(LunaLuxEngineCore src/Core_src/LunaLuxEngineCore.cpp src/Core_src/Lu
 link_directories(${PROJECT_SOURCE_DIR}/../LunaLuxEngine_GAA_Lib/cmake-build-debug)
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 
-target_link_libraries(LunaLuxEngineCore LunaLuxEngine_GAA_Lib Glad CrossWindow)
+target_link_libraries(LunaLuxEngineCore LunaLuxEngine_GAA_Lib CrossWindow)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    target_link_libraries(LunaLuxEngineCore ${GLEW_LIBRARIES})
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_link_libraries(LunaLuxEngineCore Glad d3d11 d3dx11 dxguid)
+else()
+    target_link_libraries(LunaLuxEngineCore Glad)
+endif ()
 
 add_executable(TestGame src/Game_src/Game.cpp src/Game_src/main.cpp)
 

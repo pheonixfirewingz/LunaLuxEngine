@@ -28,6 +28,7 @@ namespace LunaLuxEngine::window_api
 	public:
 		// this is to help create the win32 OpenGL Context
 		HWND getWin32Window() { return FindWindowA((LPCSTR)"LunaLuxEngine_WindowClass", (LPCSTR)window->getTitle()); };
+		HINSTANCE getWin32WindowInst() { return GetModuleHandle((LPCSTR)"LunaLuxEngine_WindowClass"); };
 #endif
 #ifdef  temp
 	public:
