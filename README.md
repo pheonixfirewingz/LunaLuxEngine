@@ -1,12 +1,9 @@
 ![img](https://www.code-inspector.com/project/4310/status/svg)  ![img](https://www.code-inspector.com/project/4310/score/svg) [![Build status](https://ci.appveyor.com/api/projects/status/e8audhok07m4650g/branch/master?svg=true)](https://ci.appveyor.com/project/pheonixfirewingz/lunaluxengine/branch/master)
-# LunaLuxEngine V0.0.25
-LunaLuxEngine is a 3D graphical engine.
-
-----------------------------------------------------------------------------------------------
+# LunaLuxEngine V0.0.29
 
 ## Contribution rules
 
-- keep formatting the same as the rest of the project
+- keep formatting the same as the rest of the project's
 - focuse on speed and optamization
 - if is a class you made or patched note it at the top of the class
 - try to be memory safe (not required if works)
@@ -23,40 +20,34 @@ LunaLuxEngine is a 3D graphical engine.
 - if code will be changed basic notes must be added for other devs to understand
 
 ## TODO
-- Create Window using cocoa for mac (waiting for OSX availability)
-- Create Metal renderer and get a 2D_box on screen (waiting for OSX availability)
-- Create Vulkan context for linux and get a 2D_box on screen
-- OpenGL get a 3D_box on screen with working camera
+- (CrossWindow_LIB) Create Window using cocoa for mac (waiting for OSX availability)
+- (GAA_LIB) Create Metal renderer and get a 2D_box on screen (waiting for OSX availability)
+- (GAA_LIB) Create Vulkan context for linux and get a 2D_box on screen
+- (GAA_LIB) OpenGL get a 3D_box on screen with working camera
 
 ## WIP
-- Crossplatform OpenGL FallBack Rendering
-- Windows DirectX 11 renderer
-- Linux Vulkan Renderer
-- Linux Window Support
+- (GAA_LIB) Crossplatform OpenGL FallBack Rendering
+- (GAA_LIB) Windows DirectX 11 renderer
+- (GAA_LIB) Linux Vulkan Renderer
+- (GAA_LIB) Mac Metal Renderer
+- (CrossWindow_LIB) full Linux Window Support
 
------------------------
-## Platforms
-- WINDOW 23BIT
+## Platforms being worked on
+- ##### windows 10
+- Ubuntu 18.04
 
-### Planned Platforms (Stage 1)
------------------------------------------------------------------------------------------------
+## Planned Platforms (Stage 1)
  - Windows 10
  - Linux ubuntu 18.04 STL (x11 window Manager)(no for Support wayland Window Manager)
- - OSX high mountain
+ - OSX Catilia
 
-### Planned Platforms (Stage 2)
------------------------------------------------------------------------------------------------
+## Planned Platforms (Stage 2)
  - IOS 13 and up
  - Android api 20 and up
- - Switch (versions unknown)
 
-### Planned Platforms (Stage 3)
------------------------------------------------------------------------------------------------
- - Xbox One and up
- - PlayStation 4 and up
 
 ## Known issues
-- Very Slow Memory Leak: needs tracking down
+### N/A
 
 ## Code Quality Issues
 - https://frontend.code-inspector.com/public/project/4310/LunaLuxEngine/dashboard
@@ -65,9 +56,7 @@ LunaLuxEngine is a 3D graphical engine.
 
 ### Minimum Start Code
 
-####Under Going Reworking
-
------------------------
+#### !!!Under Going Reworking!!!!
 
 # The legal stuff
 
@@ -75,6 +64,8 @@ LunaLuxEngine is a 3D graphical engine.
 Copyright 2020 Luke Shore
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, not including limitations to the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+- You, the user, may not rebrand or sell this project under a diffrent name.
 
 - You, the user, use this software without royalties if you have made yourself known to the project, plan to contribute and the developer, Luke Shore, has agreed.
 

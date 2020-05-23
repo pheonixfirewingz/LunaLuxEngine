@@ -1,70 +1,33 @@
-#include "OpenGL/OpenGLRenderer.h"
-#include "OpenGL/OpenGLContext.h"
-using namespace LunaLuxEngine;
+#include "Renderer.h"
+#include "../common/EnginePanic.h"
+#include <CrossWindow/WindowAPI.h>
+#include <GAA/GAA.h>
 
 LunaLuxEngine::Renderer::Renderer()
 {
-
+    LOG("Loading Graphics API Abstraction Layer")
+    if(GAA::GAAInit(CWin,false) != GAA::GAAReturnType::GAA_OK) EnginePanic::get()->panic("could not create GAA Context");
+    CWin.getNativeWindow()->fireResizeCallback();
 }
-
-void LunaLuxEngine::Renderer::pushDataToRenderer(VertexBuffer& vertexbuffer, IndexBuffer& indexbuffer, Shader& shader_)
-{
-	rbuffer = vertexbuffer;
-	ibuffer = indexbuffer;
-	shader = shader_;
-}
-
-void Renderer::preInitRenderer(int type)
-{
-	if (type == 0)
-	{
-		context = new OpenGLContext();
-		render = new OGLRenderer();
-		LOG("current renderer api set to openGL");
-	};
-}
-
-void Renderer::initRender()
-{
-	context->create();
-	render->initRender();
-	CWin.getNativeWindow()->fireResizeCallback();
-};
 
 float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 void LunaLuxEngine::Renderer::preRender()
 {
-	render->clearscreen(color);
-	render->prepRender();
-};
+    if(GAA::GAA_pre_render() != GAA::GAAReturnType::GAA_OK) EnginePanic::get()->panic("GAA failed");
+}
 
-void Renderer::Render()
+void LunaLuxEngine::Renderer::Render()
 {
-	rbuffer.bind();
-	ibuffer.bind();
-	render->fireRender(ibuffer.getIndexCount());
-	rbuffer.unBind();
-	ibuffer.unBind();
-	context->swapBuffers();
-};
+    if(GAA::GAAUpdate(CWin) != GAA::GAAReturnType::GAA_OK) EnginePanic::get()->panic("GAA failed");
+    if(GAA::GAA_render() != GAA::GAAReturnType::GAA_OK) EnginePanic::get()->panic("GAA failed");
+}
 
 void LunaLuxEngine::Renderer::postRender()
 {
-	render->postRender();
-};
-
-void Renderer::Release()
-{
-	ibuffer.destory();
-	rbuffer.destory();
-	context->destroy();
-	context = nullptr;
-	render->destroyRender();
-	render = nullptr;
-	CWin.destoryWindow();
+    if(GAA::GAA_post_render() != GAA::GAAReturnType::GAA_OK) EnginePanic::get()->panic("GAA failed");
 }
 
-/*void Renderer::setCamera(ICamera& cam)
+LunaLuxEngine::Renderer::~Renderer()
 {
-    camera = cam;
-}*/
+    GAA::GAATerminate(CWin);
+};
