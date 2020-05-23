@@ -15,14 +15,12 @@ namespace LunaLuxEngine
 		void initEngine(bool&);
 		int8 updateEngine(bool&);
 	public:
-		int currentAPItype = 0;
 		static lunaLuxEngine* get()
 		{
 			static auto* engine = new lunaLuxEngine();
 			return  engine;
 		}
-		~lunaLuxEngine() { m_game_main = nullptr; };
-		void runEngine(Game*,bool);
+		void runEngine(Game*,bool,char*);
 	};
 }
 #endif
