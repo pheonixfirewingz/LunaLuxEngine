@@ -7,6 +7,7 @@ namespace LunaLuxEngine::window_api
 	//this is the function defininition for setting the window type.
 	void CrossWindow::setWindowType(WindowType type)
 	{
+	    windowType = type;
 		if (type == WindowType::Win32Window) window = new Win32Window();
 		else if (type == WindowType::X11Window)
 		{

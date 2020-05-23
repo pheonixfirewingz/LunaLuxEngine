@@ -18,12 +18,15 @@ namespace LunaLuxEngine::window_api
 	{
 		Win32Window = 0,
 		X11Window = 1,
+		CocoaWindow = 2,
 	};
 	class CrossWindow
 	{
 		// IWindow class
 		// this is the main window class it is extended by Win32Window and X11Window
 		IWindow* window;
+		WindowType windowType;
+		bool RequestNativeAPI;
 #ifdef WIN32
 	public:
 		// this is to help create the win32 OpenGL Context
@@ -76,6 +79,12 @@ namespace LunaLuxEngine::window_api
 		void setSize(int32 width, int32 height) { window->setSize(width, height); };
 		//this is used to ask the operating system if the window of the game has closed
 		LLEbool shouldClose() { return window->shouldClose(); };
+		//this is used to ask the window what windowing api type is set
+		WindowType& getWindowType() { return windowType; };
+        //for people to check of window wants a OS native api
+		bool isRequestNativeAPI() { return RequestNativeAPI; };
+		//for people to ask window for native rendering
+		void requestNative(bool request) { RequestNativeAPI = request; };
 		// this gets the non extended version of the window this is used for the cross platforms functions
 		inline IWindow* getNativeWindow()
 		{
