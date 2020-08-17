@@ -44,7 +44,7 @@ void LunaLuxEngine::OpenGLShader::link(int programid)
 	glUseProgram(programid);
 }
 
-void LunaLuxEngine::OpenGLShader::destory()
+LunaLuxEngine::OpenGLShader::~OpenGLShader()
 {
-	glDeleteShader(shaderid);
+    glDeleteShader(shaderid);
 }

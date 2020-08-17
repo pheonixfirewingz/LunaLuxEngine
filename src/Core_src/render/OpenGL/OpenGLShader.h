@@ -10,11 +10,11 @@ namespace LunaLuxEngine
 	private:
 		int shaderid;
 	public:
+	    ~OpenGLShader();
 		void create(char*, int) override;
 		void bind(int) override;
 		void unBind(int) override;
 		void link(int) override;
-		void destory() override;
 	};
 }
 

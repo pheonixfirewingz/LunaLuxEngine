@@ -3,6 +3,7 @@
 #include "Common/IRender.h"
 #include "Buffer.h"
 #include "Shader.h"
+#include "OpenGL/OpenGLTexture.h"
 
 namespace LunaLuxEngine
 {
@@ -10,12 +11,11 @@ namespace LunaLuxEngine
 	{
 	private:
         Renderer();
-        ~Renderer();
-		//ICamera& camera;
 		IRender* render;
-		VertexBuffer& vbuffer = *new VertexBuffer();
-		IndexBuffer& ibuffer = *new IndexBuffer();
-		Shader& shader  = *new Shader();
+		VertexBuffer* vbuffer;
+		IndexBuffer* ibuffer;
+		Shader* shader;
+		OpenGLTexture* texture;
 	public:
         inline static Renderer& get()
 		{

@@ -19,6 +19,12 @@ int indices[] =
 LunaLuxEngine::Renderer::Renderer()
 {
     render = new OGLRenderer();
+    vbuffer = new VertexBuffer();
+    ibuffer = new IndexBuffer();
+    shader  = new Shader();
+    texture = new OpenGLTexture("/home/digitech/Desktop/LunaLuxEngine/Disco-Dingo.jpg");
+    glEnable(GL_TEXTURE_2D);
+    glActiveTexture(GL_TEXTURE0);
 }
 
 void LunaLuxEngine::Renderer::beginLevel()
@@ -34,43 +40,59 @@ void LunaLuxEngine::Renderer::endLevel()
 
 void LunaLuxEngine::Renderer::initRender()
 {
+
     LOG("Renderer::initRender() is deprecated");
 	CWin.getNativeWindow()->fireResizeCallback();
 
-    vbuffer.create(vertex, sizeof(vertex));
-    ibuffer.create(indices, sizeof(indices));
-    vbuffer.bind();
+    vbuffer->create(vertex, sizeof(vertex));
+    ibuffer->create(indices, sizeof(indices));
+    vbuffer->bind();
     //----------this is part of the layout abstract to be removed when complete--------------------
-    glBindAttribLocation(1, 0, "position");
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
     //---------------------------------------------------------------------------------------------------------s
-    vbuffer.unBind();
+    vbuffer->unBind();
 
     char* data = "#version 330 core\n"
-                 "layout (location = 0) in vec3 position;\n"
+                 "layout (location = 0) in vec3 aPos;\n"
+                 "layout (location = 1) in vec3 aColor;\n"
+                 "layout (location = 2) in vec2 aTexCoord;\n"
                  "\n"
-                 "out vec4 vertexColor;\n"
-                 "float shift_factor = 0.0;\n"
+                 "out vec3 ourColor;\n"
+                 "out vec2 TexCoord;\n"
                  "\n"
                  "void main()\n"
                  "{\n"
-                 "    gl_Position = vec4(position, 1.0);\n"
-                 "    vertexColor = vec4(position.x + shift_factor, position.y + shift_factor,0.0, 1.0);\n"
+                 "    gl_Position = vec4(aPos, 1.0);\n"
+                 "    ourColor = aColor;\n"
+                 "    TexCoord = aTexCoord;\n"
                  "}";
     char* data1 = "#version 330 core\n"
                   "out vec4 FragColor;\n"
+                  "  \n"
+                  "in vec3 ourColor;\n"
+                  "in vec2 TexCoord;\n"
                   "\n"
-                  "in vec4 vertexColor;\n"
+                  "uniform sampler2D ourTexture;\n"
                   "\n"
                   "void main()\n"
                   "{\n"
-                  "    FragColor = vertexColor;\n"
+                  "    FragColor = texture(ourTexture, TexCoord);\n"
                   "}";
+    shader->compile(data, data1);
 
-    shader.create();
-    shader.compile(data, data1);
-    shader.link();
-};
+    /*shader->bind();
+    glUniform1i(glGetUniformLocation(shader->getOGLSID(), "texture1"), 0);
+    shader->UnBind();*/
+}
 
 float color[4] = { 0.3f, 0.3f, 0.9f, 1.0f };
 void LunaLuxEngine::Renderer::preRender()
@@ -81,18 +103,13 @@ void LunaLuxEngine::Renderer::preRender()
 
 void LunaLuxEngine::Renderer::Render()
 {
-	vbuffer.bind();
-	ibuffer.bind();
-	render->fireRender(ibuffer.getIndexCount());
-	vbuffer.unBind();
-	ibuffer.unBind();
+    // bind textures on corresponding texture units
+    vbuffer->bind();
+	ibuffer->bind();
+    glActiveTexture(GL_TEXTURE0);
+    texture->bind();
+	render->fireRender(ibuffer->getIndexCount());
+	texture->unbind();
+	vbuffer->unBind();
+	ibuffer->unBind();
 };
-
-LunaLuxEngine::Renderer::~Renderer()
-{
-    ibuffer.destory();
-    vbuffer.destory();
-    render = nullptr;
-}
-
-

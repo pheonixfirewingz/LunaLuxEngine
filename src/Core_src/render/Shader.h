@@ -13,12 +13,15 @@ namespace LunaLuxEngine
 		IShader* Vshader;
 		IShader* Fshader;
 	public:
-		void create();
+	    Shader();
+	    ~Shader();
 		void compile(char* filedata, char* filedata1);
 		void bind();
 		void UnBind();
-		void link();
-		void destory();
+		unsigned int getOGLSID()
+        {
+            return openGLshaderprogramid;
+        }
 	};
 }
 #endif

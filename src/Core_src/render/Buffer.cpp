@@ -17,12 +17,6 @@ void LunaLuxEngine::VertexBuffer::unBind()
 	buffer->unBind();
 }
 
-void LunaLuxEngine::VertexBuffer::destory()
-{
-	buffer->destory();
-	buffer = nullptr;
-}
-
 void LunaLuxEngine::IndexBuffer::create(int* ind, int32 vertcount)
 {
 		buffer = new OpenGLIndexBuffer();
@@ -44,8 +38,3 @@ void LunaLuxEngine::IndexBuffer::unBind()
 	buffer->unBind();
 }
 
-void LunaLuxEngine::IndexBuffer::destory()
-{
-	buffer->destory();
-	buffer = nullptr;
-}

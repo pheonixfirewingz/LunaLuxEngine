@@ -13,7 +13,6 @@ namespace LunaLuxEngine
 		virtual void create(float* verts, int32 vertcount) = 0;
 		virtual void bind() = 0;
 		virtual void unBind() = 0;
-		virtual void destory() = 0;
 	};
 
 	class IIndexBuffer
@@ -25,7 +24,6 @@ namespace LunaLuxEngine
 		virtual void create(int* index, int32 indexcount) = 0;
 		virtual void bind() = 0;
 		virtual void unBind() = 0;
-		virtual void destory() = 0;
 	};
 }
 #endif

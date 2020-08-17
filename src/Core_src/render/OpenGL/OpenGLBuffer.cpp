@@ -20,9 +20,9 @@ void LunaLuxEngine::OpenGLVertexBuffer::unBind()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void LunaLuxEngine::OpenGLVertexBuffer::destory()
+LunaLuxEngine::OpenGLVertexBuffer::~OpenGLVertexBuffer()
 {
-	glDeleteBuffers(1, &vertexbuffer);
+    glDeleteBuffers(1, &vertexbuffer);
 }
 
 void LunaLuxEngine::OpenGLIndexBuffer::create(int* index, int32 indexcount)
@@ -44,7 +44,7 @@ void LunaLuxEngine::OpenGLIndexBuffer::unBind()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void LunaLuxEngine::OpenGLIndexBuffer::destory()
+LunaLuxEngine::OpenGLIndexBuffer::~OpenGLIndexBuffer()
 {
-	glDeleteBuffers(1, &indexbuffer);
+    glDeleteBuffers(1, &indexbuffer);
 }

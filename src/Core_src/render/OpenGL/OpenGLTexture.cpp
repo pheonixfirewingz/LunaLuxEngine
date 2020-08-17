@@ -3,6 +3,7 @@
 //
 
 #include "OpenGLTexture.h"
+#include "../Common/stb_image.h"
 
 OpenGLTexture::OpenGLTexture(std::string path)
 {
@@ -62,5 +63,7 @@ unsigned int OpenGLTexture::load(std::string path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, m_width, m_height, 0, dataFormat, GL_UNSIGNED_BYTE, data);
     glBindTexture(GL_TEXTURE_2D, 0);
+    stbi_image_free(data);
     return result;
 }
+

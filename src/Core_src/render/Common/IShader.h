@@ -11,7 +11,6 @@ namespace LunaLuxEngine
 		virtual void bind(int) = 0;
 		virtual void unBind(int) = 0;
 		virtual void link(int) = 0;
-		virtual void destory() = 0;
 	};
 }
 

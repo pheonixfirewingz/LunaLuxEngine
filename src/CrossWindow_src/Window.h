@@ -19,10 +19,13 @@ namespace LunaLuxEngine::window_api
 
 	class CrossWindow
 	{
+	private:
 		// IWindow class
 		// this is the main window class it is extended by Win32Window and X11Window
 		IWindow* window;
 		bool OpenGLMode{false};
+        //this calls the the window creation from the extended class.
+        void createWindow() { window->createWindow(OpenGLMode); };
 	public:
 		//this is to make the class as a singleton
 		CrossWindow(CrossWindow const&) = delete;
@@ -31,11 +34,8 @@ namespace LunaLuxEngine::window_api
 		CrossWindow() {};
 		// empty destructor
 		~CrossWindow() {};
-
         //this sets up the window to be win32, x11, wayland(to be added) and cocoa(to be added)
-		void giveWindowInfo(WindowInfo& windowInfo);
-		//this calls the the window creation from the extended class.
-		void createWindow() { window->createWindow(OpenGLMode); };
+		void initWindow(WindowInfo& windowInfo);
 		//this calls the window title change
 		void updateTitle(int8* title_) { window->updateTitle(title_); };
 		//this calls the extended classes update virtual function
@@ -46,8 +46,6 @@ namespace LunaLuxEngine::window_api
 		void setShouldClose(LLEbool close) { window->setShouldClose(close); };
 		//this is used to ask the operating system if the window of the game has closed
 		LLEbool shouldClose() { return window->shouldClose(); };
-		//get's window info
-		WindowInfo& getWindowInfo() { return window->info; }
 		// this gets the non extended version of the window this is used for the cross platforms functions
 		inline IWindow* getNativeWindow() { return window; };
 		//this is used to get the window of the api

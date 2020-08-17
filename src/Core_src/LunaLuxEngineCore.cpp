@@ -6,7 +6,7 @@
 
 namespace LunaLuxEngine
 {
-    bool opengl{false};
+    bool opengl{true};
     void lunaLuxEngine::initEngine(bool &debug)
     {
         window_api::WindowInfo *info = new window_api::WindowInfo();
@@ -25,8 +25,7 @@ namespace LunaLuxEngine
         info->height = m_game_main->getWindowHeight();
         info->width = m_game_main->getWindowWidth();
         info->HaveWindowCreateOpenGLContext = opengl;
-        CWin.giveWindowInfo(*info);
-        CWin.createWindow();
+        CWin.initWindow(*info);
         if(opengl) Renderer::get().initRender();
         m_game_main->GameBoot();
     }
@@ -53,11 +52,9 @@ namespace LunaLuxEngine
         m_game_main = game;
         initEngine(debug);
 
-        while (!CWin.shouldClose()) if (updateEngine(debug) != EXIT_SUCCESS)
-            EnginePanic::get()->panic("Engine Could Not Complete Update");
+        while (!CWin.shouldClose()) if(updateEngine(debug)!= EXIT_SUCCESS) EnginePanic::get()->panic("Engine Failed Update");
 
         CWin.destoryWindow();
         free(m_game_main);
-        m_game_main = nullptr;
     }
 }

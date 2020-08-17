@@ -1,17 +1,13 @@
 #include "Shader.h"
 #include "OpenGL/glad.h"
 
-void LunaLuxEngine::Shader::create()
-{
-		Vshader = new OpenGLShader();
-		Fshader = new OpenGLShader();
-		openGLshaderprogramid = glCreateProgram();
-}
-
 void LunaLuxEngine::Shader::compile(char* filedata, char* filedata1)
 {
 	Vshader->create(filedata, 0);
 	Fshader->create(filedata1, 1);
+    bind();
+    Vshader->link(openGLshaderprogramid);
+    UnBind();
 }
 
 void LunaLuxEngine::Shader::bind()
@@ -26,19 +22,15 @@ void LunaLuxEngine::Shader::UnBind()
 	Fshader->unBind(openGLshaderprogramid);
 }
 
-void LunaLuxEngine::Shader::link()
+LunaLuxEngine::Shader::Shader()
 {
-	bind();
-	Vshader->link(openGLshaderprogramid);
-	UnBind();
+    Vshader = new OpenGLShader();
+    Fshader = new OpenGLShader();
+    openGLshaderprogramid = glCreateProgram();
 }
 
-void LunaLuxEngine::Shader::destory()
+LunaLuxEngine::Shader::~Shader()
 {
     glDeleteProgram(openGLshaderprogramid);
     openGLshaderprogramid = 0;
-	Vshader->destory();
-	Vshader = nullptr;
-	Fshader->destory();
-	Fshader = nullptr;
 }

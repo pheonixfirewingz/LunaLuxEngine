@@ -15,7 +15,6 @@ namespace LunaLuxEngine
 		void create(float*, int32);
 		void bind();
 		void unBind();
-		void destory();
 	};
 
 	class IndexBuffer
@@ -27,7 +26,6 @@ namespace LunaLuxEngine
 		int getIndexCount();
 		void bind();
 		void unBind();
-		void destory();
 	};
 }
 #endif

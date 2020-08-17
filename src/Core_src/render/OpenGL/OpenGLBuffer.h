@@ -11,20 +11,20 @@ namespace LunaLuxEngine
 	private:
 		GLuint vertexbuffer;
 	public:
+	    ~OpenGLVertexBuffer();
 		void create(float* vert, int32 vertcount) override;
 		void bind() override;
 		void unBind() override;
-		void destory() override;
 	};
 
 	class OpenGLIndexBuffer : public IIndexBuffer
 	{
 		GLuint indexbuffer;
 	public:
+	    ~OpenGLIndexBuffer();
 		void create(int* index, int32 indexcount) override;
 		void bind() override;
 		void unBind() override;
-		void destory() override;
 	};
 }
 #endif
