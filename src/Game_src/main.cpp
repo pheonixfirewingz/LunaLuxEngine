@@ -6,7 +6,5 @@
 
 int main()
 {
-    auto* eng = LLE;
-    eng->runEngine(new PublicGame(),true,(char*)"-FallBackMode");
-    free(eng);
+    LunaLuxEngine::lunaLuxEngine::get()->runEngine(new PublicGame(),true);
 }

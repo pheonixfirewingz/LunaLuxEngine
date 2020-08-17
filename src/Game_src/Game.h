@@ -10,6 +10,7 @@ class PublicGame : public Game
 {
 	void preBoot() override;
 	void GameBoot() override;
-	void GameMain() override;
+	void GameUpdate() override;
+	void GameLevel() override;
 };
 #endif //LUNALUXENGINE_GAME_H

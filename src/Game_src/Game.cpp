@@ -1,12 +1,12 @@
 //
 // Created by luket on 23/01/2020.
 //
+#include <CrossWindow/WindowAPI.h>
 
-#include<iostream>
-using namespace std;
-
+using namespace LunaLuxEngine::window_api;
 #include "Game.h"
 
+/*
 static float vertex[] =
 {
    -0.5f, -0.5f, 0.5f,
@@ -33,18 +33,26 @@ int indices2[] =
 {
 	0, 1, 2,
 	0, 2, 3,
-};
+};*/
 
 void PublicGame::preBoot()
 {
 	PublicGame::setGameName((int8*)"TestGame");
 	PublicGame::setWindowSize(1280, 720);
-	PublicGame::setNativeMode(true);
 }
 
 void PublicGame::GameBoot()
 {
+
 }
-void PublicGame::GameMain()
+void PublicGame::GameUpdate()
 {
+    //temp for debug----
+    if (CWin.getNativeWindow()->getInputController()->isKeyDown(LLE_KEY_1)) CWin.setShouldClose(true);
+    //-----------------------
+}
+
+void PublicGame::GameLevel()
+{
+
 }

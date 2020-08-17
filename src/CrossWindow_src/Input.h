@@ -1,19 +1,38 @@
 #ifndef LUNALUXENGINE_INPUT_H
 #define LUNALUXENGINE_INPUT_H
-#include <LLESDK/Types.h>
+#include <LLESDK/types.h>
+#ifdef LLE_XBOX
+#define _AMD64_
+#include <Xinput.h>
+#pragma comment(lib, "XInput.lib")
+#endif
 /* INPUT CLASS
  *-----------------------------------------------------------------
- * this is used for handling input this is unre refinded
+ * this is used for handling input this is unrefined
  * current support:
  *
- * LINUX X11 api = 40%
+ * LINUX X11 api = 45% broken
  * WIN32 api = 80%
  *-----------------------------------------------------------------
  */
 namespace LunaLuxEngine::window_api
 {
-#ifdef WIN32
-	//KeyCodes with the value 0x00 are unknown keycodes
+#ifdef LLE_WINDOWS
+#ifdef LLE_XBOX
+    class Controller {
+    private:
+        XINPUT_STATE _controllerState;
+        int _controllerNum;
+    public:
+        Controller(int num);
+        ~Controller();
+        XINPUT_STATE getState();
+        bool isConnected();
+        void vibrate(int left = 0, int right = 0);
+    };
+#endif
+
+    //KeyCodes with the value 0x00 are unknown keycodes
 	enum KeyCodes
 	{
 		LLE_KEY_0 = 0x30,
@@ -275,6 +294,9 @@ namespace LunaLuxEngine::window_api
 		LLEbool M_buttons[3] = {};
 		int16 M_posx = 0, M_posy = 0;
 	public:
+#ifdef LLE_XBOX
+        Controller* xbox_controller = new Controller(1);
+#endif
 		inline void setMousePos(int16 x, int16 y)
 		{
 			M_posx = x;
@@ -282,6 +304,7 @@ namespace LunaLuxEngine::window_api
 		};
 		inline LLEbool isKeyDown(int code)
 		{
+
 			if (keys[code] != 0) return LLEtrue
 			else return LLEfalse
 		};
@@ -311,7 +334,6 @@ namespace LunaLuxEngine::window_api
 		{
 			M_buttons[code] = state;
 		};
-
-	};
+    };
 }
 #endif

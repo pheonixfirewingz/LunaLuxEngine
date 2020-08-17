@@ -44,23 +44,24 @@ namespace LunaLuxEngine::window_api
 	class Win32Window : public IWindow
 	{
 	private:
+        HGLRC rc;
 		LPCSTR class_name = (LPCSTR)"LunaLuxEngine_WindowClass";
 		HINSTANCE Inst{};
 		HWND hwnd{};
 	public:
-		void createWindow() override;
-		void updateWindow() override;
+		void createWindow(bool) override;
+		void updateWindow(bool) override;
 		void updateTitle(int8*) override;
-		void destoryWindow() override;
+		void destoryWindow(bool) override;
 	};
 #else
 	class Win32Window : public IWindow
 	{
 	public:
-		void createWindow() override {};
-        void updateWindow() override {};
+		void createWindow(bool) override {};
+        void updateWindow(bool) override {};
 		void updateTitle(int8*) override {};
-		void destoryWindow() override {};
+		void destoryWindow(bool) override {};
 	};
 #endif
 }
