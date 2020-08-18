@@ -22,6 +22,11 @@ void LunaLuxEngine::Shader::UnBind()
 	Fshader->unBind(openGLshaderprogramid);
 }
 
+void LunaLuxEngine::Shader::use()
+{
+    Vshader->use(openGLshaderprogramid);
+}
+
 LunaLuxEngine::Shader::Shader()
 {
     Vshader = new OpenGLShader();

@@ -16,6 +16,7 @@ namespace LunaLuxEngine
 	    Shader();
 	    ~Shader();
 		void compile(char* filedata, char* filedata1);
+		void use();
 		void bind();
 		void UnBind();
 		unsigned int getOGLSID()

@@ -1,6 +1,6 @@
 #include "LunaLuxEngineCore.h"
-#include <LLESDK/types.h>
 #include <CrossWindow/WindowAPI.h>
+#include <iostream>
 #include "render/Renderer.h"
 #include "common/EnginePanic.h"
 
@@ -42,8 +42,9 @@ namespace LunaLuxEngine
         Renderer::get().endLevel();
         Renderer::get().Render();
         loop:
-        auto frameEnd = std::chrono::high_resolution_clock::now();
-        m_frameTime = frameEnd - frameStart;
+        std::chrono::duration< double > fs = frameStart - std::chrono::high_resolution_clock::now();
+        m_frameTime = fs;
+
         return EXIT_SUCCESS;
     }
 
@@ -51,9 +52,7 @@ namespace LunaLuxEngine
     {
         m_game_main = game;
         initEngine(debug);
-
         while (!CWin.shouldClose()) if(updateEngine(debug)!= EXIT_SUCCESS) EnginePanic::get()->panic("Engine Failed Update");
-
         CWin.destoryWindow();
         free(m_game_main);
     }

@@ -22,6 +22,7 @@ namespace LunaLuxEngine
 	public:
 		int32 getIndexCount() { return indexcount_; };
 		virtual void create(int* index, int32 indexcount) = 0;
+        virtual void create(unsigned int* index, int32 indexcount) = 0;
 		virtual void bind() = 0;
 		virtual void unBind() = 0;
 	};

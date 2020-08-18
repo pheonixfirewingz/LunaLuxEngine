@@ -118,7 +118,7 @@ void LunaLuxEngine::window_api::Win32Window::destoryWindow(bool openGL)
 {
     if(openGL)
     {
-        ReleaseDC(CWin.getWin32Window(), GetDC(CWin.getWin32Window()));
+        ReleaseDC(hwnd, GetDC(hwnd));
         wglDeleteContext(rc);
     }
 	DestroyWindow(hwnd);

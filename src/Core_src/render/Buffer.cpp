@@ -23,6 +23,12 @@ void LunaLuxEngine::IndexBuffer::create(int* ind, int32 vertcount)
 		buffer->create(ind, vertcount);
 }
 
+void LunaLuxEngine::IndexBuffer::create(unsigned int* ind, int32 vertcount)
+{
+    buffer = new OpenGLIndexBuffer();
+    buffer->create(ind, vertcount);
+}
+
 int LunaLuxEngine::IndexBuffer::getIndexCount()
 {
 	return buffer->getIndexCount();

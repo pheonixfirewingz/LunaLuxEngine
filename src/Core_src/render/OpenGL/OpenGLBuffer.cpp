@@ -34,6 +34,15 @@ void LunaLuxEngine::OpenGLIndexBuffer::create(int* index, int32 indexcount)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
+void LunaLuxEngine::OpenGLIndexBuffer::create(unsigned int* index, int32 indexcount)
+{
+    indexcount_ = indexcount;
+    glGenBuffers(1, &indexbuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexcount, index, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+}
+
 void LunaLuxEngine::OpenGLIndexBuffer::bind()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);

@@ -23,6 +23,7 @@ namespace LunaLuxEngine
 	public:
 	    ~OpenGLIndexBuffer();
 		void create(int* index, int32 indexcount) override;
+        void create(unsigned int* index, int32 indexcount) override;
 		void bind() override;
 		void unBind() override;
 	};

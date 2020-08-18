@@ -23,6 +23,7 @@ namespace LunaLuxEngine
 		IIndexBuffer* buffer;
 	public:
 		void create(int*, int32);
+        void create(unsigned int*, int32);
 		int getIndexCount();
 		void bind();
 		void unBind();

@@ -23,10 +23,14 @@ void LunaLuxEngine::OGLRenderer::fireRender(int indexcount)
 	glBindVertexArray(VertexArrayID);
 	//----------this is part of the layout abstract to be removed when complete--------------------
 	glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
 	//---------------------------------------------------------------------------------------------------------
 	glDrawElements(GL_TRIANGLES, indexcount, GL_UNSIGNED_INT, nullptr);
 	//----------this is part of the layout abstract to be removed when complete--------------------
-	glDisableVertexAttribArray(0);
+	glDisableVertexAttribArray(2);
+    glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(0);
 	//---------------------------------------------------------------------------------------------------------
 	glBindVertexArray(0);
 }

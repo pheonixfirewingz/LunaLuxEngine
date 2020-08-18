@@ -10,31 +10,36 @@ endif ()
 find_package(OpenGL REQUIRED)
 include(${CMAKE_CURRENT_SOURCE_DIR}/src/CrossWindow_src/BuildCrosswindowLib.cmake)
 #main engine
-add_library(LunaLuxEngineCore src/Core_src/render/Common/stb_image.h
-                                src/Core_src/LunaLuxEngineCore.cpp
-                                src/Core_src/LunaLuxEngineCore.h
-                                src/Core_src/render/Renderer.h
-                                src/Core_src/render/Renderer.cpp
-                                src/Core_src/render/Common/IRender.h
-                                src/Core_src/render/OpenGL/OpenGLRenderer.h
-                                src/Core_src/render/OpenGL/OpenGLRenderer.cpp
-                                src/Core_src/render/OpenGL/glad.c
-                                src/Core_src/render/Buffer.h
-                                src/Core_src/render/Buffer.cpp
-                                src/Core_src/render/Shader.h
-                                src/Core_src/render/Shader.cpp
-                                src/Core_src/render/Common/IBuffer.h
-                                src/Core_src/render/Common/IRender.h
-                                src/Core_src/render/Common/IShader.h
-                                src/Core_src/render/OpenGL/OpenGLBuffer.h
-                                src/Core_src/render/OpenGL/OpenGLBuffer.cpp
-                                src/Core_src/render/OpenGL/OpenGLShader.h
-                                src/Core_src/render/OpenGL/OpenGLShader.cpp
-                                src/Core_src/render/OpenGL/OpenGLTexture.h
-                                src/Core_src/render/OpenGL/OpenGLTexture.cpp
-                                src/Core_src/common/EnginePanic.h
-                                src/Core_src/common/EnginePanic.cpp
-                                src/Core_src/render/Common/IShaderLayout.h src/Core_src/render/Common/stb_image.cpp)
+add_library(LunaLuxEngineCore
+        src/Core_src/render/Common/stb_image.h
+        src/Core_src/LunaLuxEngineCore.cpp
+        src/Core_src/LunaLuxEngineCore.h
+        src/Core_src/render/Renderer.h
+        src/Core_src/render/Renderer.cpp
+        src/Core_src/render/Common/IRender.h
+        src/Core_src/render/OpenGL/OpenGLRenderer.h
+        src/Core_src/render/OpenGL/OpenGLRenderer.cpp
+        src/Core_src/render/OpenGL/glad.c
+        src/Core_src/render/Buffer.h
+        src/Core_src/render/Buffer.cpp
+        src/Core_src/render/Shader.h
+        src/Core_src/render/Shader.cpp
+        src/Core_src/render/Common/IBuffer.h
+        src/Core_src/render/Common/IRender.h
+        src/Core_src/render/Common/IShader.h
+        src/Core_src/render/OpenGL/OpenGLBuffer.h
+        src/Core_src/render/OpenGL/OpenGLBuffer.cpp
+        src/Core_src/render/OpenGL/OpenGLShader.h
+        src/Core_src/render/OpenGL/OpenGLShader.cpp
+        src/Core_src/render/OpenGL/OpenGLTexture.h
+        src/Core_src/render/OpenGL/OpenGLTexture.cpp
+        src/Core_src/common/EnginePanic.h
+        src/Core_src/common/EnginePanic.cpp
+        src/Core_src/render/Common/IShaderLayout.h
+        src/Core_src/render/Common/stb_image.cpp
+        src/Core_src/render/OpenGL/OpenGLUtils.cpp
+        src/Core_src/render/OpenGL/OpenGLUtils.h
+        )
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")

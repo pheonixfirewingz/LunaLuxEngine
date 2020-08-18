@@ -15,6 +15,7 @@ namespace LunaLuxEngine
 		void bind(int) override;
 		void unBind(int) override;
 		void link(int) override;
+		void use(int) override;
 	};
 }
 
