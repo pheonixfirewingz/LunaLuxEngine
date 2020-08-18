@@ -38,6 +38,9 @@ LunaLuxEngine::OGLRenderer::OGLRenderer()
 {
     CWin.getNativeWindow()->setResizeCallback(&OGLWindowResizeCallback);
     gladLoadGL();
+    printf("RENDERER API INFO VENDOR: %s VERSION: opengl %s GLSL_VERSION: glsl %s\n",
+           glGetString(GL_VENDOR),glGetString(GL_VERSION),glGetString(GL_SHADING_LANGUAGE_VERSION));
+
     glGenVertexArrays(1, &VertexArrayID);
     glBindVertexArray(VertexArrayID);
 }
