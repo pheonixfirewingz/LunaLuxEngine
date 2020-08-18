@@ -12,7 +12,11 @@ LunaLuxEngine::Renderer::Renderer()
     vbuffer = new VertexBuffer();
     ibuffer = new IndexBuffer();
     shader  = new Shader();
+#ifdef LLE_WINDOWS
     texture = new OpenGLTexture("C:/Users/luket/Desktop/LunaLuxEngine/resources/Disco-Dingo.jpg");
+#elif defined(LLE_LINUX)
+    texture = new OpenGLTexture("/home/digitech/Desktop/LunaLuxEngine/resources/Disco-Dingo.jpg");
+#endif
     glEnable(GL_TEXTURE_2D);
 }
 
