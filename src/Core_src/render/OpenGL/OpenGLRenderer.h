@@ -4,6 +4,7 @@
 
 #ifndef LUNALUXENGINE_OPENGL_H
 #define LUNALUXENGINE_OPENGL_H
+
 #include <LLESDK/types.h>
 #include "../Renderer.h"
 #include "../Buffer.h"
@@ -13,16 +14,21 @@
 
 namespace LunaLuxEngine
 {
-	class OGLRenderer : public IRender
-	{
+    class OGLRenderer : public IRender
+    {
     private:
         GLuint VertexArrayID;
-	public:
-	    OGLRenderer();
-	    ~OGLRenderer();
-		void clearscreen(float[4]) override;
-		void prepRender() override {};
-		void fireRender(int) override;
-	};
+    public:
+        OGLRenderer();
+
+        ~OGLRenderer();
+
+        void clearscreen(float[4]) override;
+
+        void prepRender() override
+        {};
+
+        void fireRender(int) override;
+    };
 }
 #endif

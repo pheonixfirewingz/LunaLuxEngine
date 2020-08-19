@@ -4,6 +4,7 @@
 
 #ifndef LUNALUXENGINE_WINDOWSFILEMANAGER_H
 #define LUNALUXENGINE_WINDOWSFILEMANAGER_H
+
 #include <LLESDK/types.h>
 #include <filesystem>
 #include <iostream>
@@ -16,7 +17,9 @@ private:
     std::string current_binery_location = std::filesystem::current_path().string();
 public:
 #ifdef LLE_WINDOWS
+
     std::string readfile(std::string string) override;
+
     void writefile(std::string string) override;
 
     std::string getAbsolutePath(std::string string) override;

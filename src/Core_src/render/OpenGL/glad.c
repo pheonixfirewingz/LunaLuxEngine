@@ -30,10 +30,13 @@ static void *get_proc(const char *namez);
 #ifndef _WINDOWS_
 #undef APIENTRY
 #endif
+
 #include <Windows.h>
+
 static HMODULE libGL;
 
-typedef void* (APIENTRYP PFNWGLGETPROCADDRESSPROC_PRIVATE)(const char*);
+typedef void *(APIENTRYP PFNWGLGETPROCADDRESSPROC_PRIVATE)(const char *);
+
 static PFNWGLGETPROCADDRESSPROC_PRIVATE gladGetProcAddressPtr;
 
 #ifdef _MSC_VER
@@ -47,19 +50,23 @@ static PFNWGLGETPROCADDRESSPROC_PRIVATE gladGetProcAddressPtr;
 #endif
 
 #ifdef HAVE_WINAPIFAMILY
+
 #include <winapifamily.h>
+
 #if !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) && WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 #define IS_UWP 1
 #endif
 #endif
 
 static
-int open_gl(void) {
+int open_gl(void)
+{
 #ifndef IS_UWP
     libGL = LoadLibraryW(L"opengl32.dll");
-    if(libGL != NULL) {
-        void (* tmp)(void);
-        tmp = (void(*)(void)) GetProcAddress(libGL, "wglGetProcAddress");
+    if (libGL != NULL)
+    {
+        void (*tmp)(void);
+        tmp = (void (*)(void)) GetProcAddress(libGL, "wglGetProcAddress");
         gladGetProcAddressPtr = (PFNWGLGETPROCADDRESSPROC_PRIVATE) tmp;
         return gladGetProcAddressPtr != NULL;
     }
@@ -69,12 +76,15 @@ int open_gl(void) {
 }
 
 static
-void close_gl(void) {
-    if(libGL != NULL) {
+void close_gl(void)
+{
+    if (libGL != NULL)
+    {
         FreeLibrary((HMODULE) libGL);
         libGL = NULL;
     }
 }
+
 #else
 
 #include <dlfcn.h>
@@ -150,7 +160,7 @@ void *get_proc(const char *namez)
     if (result == NULL)
     {
 #if defined(_WIN32) || defined(__CYGWIN__)
-        result = (void*)GetProcAddress((HMODULE) libGL, namez);
+        result = (void *) GetProcAddress((HMODULE) libGL, namez);
 #else
         result = dlsym(libGL, namez);
 #endif

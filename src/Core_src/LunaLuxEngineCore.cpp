@@ -1,15 +1,16 @@
 #include "LunaLuxEngineCore.h"
 #include <CrossWindow/WindowAPI.h>
-#include <iostream>
 #include "render/Renderer.h"
 #include "common/EnginePanic.h"
+#include "fs/FileManager.h"
 
 namespace LunaLuxEngine
 {
     bool opengl{true};
+
     void lunaLuxEngine::initEngine(bool &debug)
     {
-        window_api::WindowInfo *info = new window_api::WindowInfo();
+        auto *info = new window_api::WindowInfo();
         //-----------------------------used to set apis-----------------------------------
 #ifdef LLE_WINDOWS
         info->windowType = window_api::WindowType::Win32Window;
@@ -26,7 +27,13 @@ namespace LunaLuxEngine
         info->width = m_game_main->getWindowWidth();
         info->HaveWindowCreateOpenGLContext = opengl;
         CWin.initWindow(*info);
-        if(opengl) Renderer::get().initRender();
+
+        if (opengl)
+        {
+            Renderer::get().splash("resources/Disco-Dingo.jpg");
+            for (int x = 0; x <= 500; x++) FileManager::get()->loadObj("resources/cube.obj");
+            Renderer::get().initRender();
+        }
         m_game_main->GameBoot();
     }
 
@@ -35,14 +42,13 @@ namespace LunaLuxEngine
         auto frameStart = std::chrono::high_resolution_clock::now();
         CWin.updateWindow();
         m_game_main->GameUpdate();
-        if(!opengl) goto loop;
+        if (!opengl)
+        { goto loop; }
         Renderer::get().preRender();
-        Renderer::get().beginLevel();
         m_game_main->GameLevel();
-        Renderer::get().endLevel();
         Renderer::get().Render();
         loop:
-        std::chrono::duration< double > fs = frameStart - std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> fs = frameStart - std::chrono::high_resolution_clock::now();
         m_frameTime = fs;
 
         return EXIT_SUCCESS;
@@ -52,7 +58,13 @@ namespace LunaLuxEngine
     {
         m_game_main = game;
         initEngine(debug);
-        while (!CWin.shouldClose()) if(updateEngine(debug)!= EXIT_SUCCESS) EnginePanic::get()->panic("Engine Failed Update");
+        while (!CWin.shouldClose())
+        {
+            if (updateEngine(debug) != EXIT_SUCCESS)
+            {
+                EnginePanic::get()->panic("Engine Failed Update");
+            }
+        }
         CWin.destoryWindow();
         free(m_game_main);
     }
