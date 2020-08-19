@@ -1,24 +1,37 @@
 #ifndef LUNALUXENGINE_RENDERER_H
 #define LUNALUXENGINE_RENDERER_H
-#include "Common/ICamera.h"
+
+#include "Common/IRender.h"
+#include "Buffer.h"
+#include "Shader.h"
+#include "OpenGL/OpenGLTexture.h"
 
 namespace LunaLuxEngine
 {
-	class Renderer
-	{
-	private:
+    class Renderer
+    {
+    private:
         Renderer();
-        ~Renderer();
-	public:
-        inline static Renderer& get()
-		{
-			static Renderer* rend = new Renderer();
-			return *rend;
-		}
 
-		void preRender();
-		void Render();
-		void postRender();
-	};
+        IRender *render;
+        VertexBuffer *vbuffer;
+        IndexBuffer *ibuffer;
+        Shader *shader;
+        OpenGLTexture *texture;
+    public:
+        inline static Renderer &get()
+        {
+            static Renderer *rend = new Renderer();
+            return *rend;
+        }
+
+        void splash(std::string splash_image);
+
+        void initRender();
+
+        void preRender();
+
+        void Render();
+    };
 }
 #endif

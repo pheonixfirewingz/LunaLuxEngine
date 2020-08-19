@@ -1,9 +1,12 @@
 #ifndef LUNALUXENGINE_CROSSWINDOW_H
 #define LUNALUXENGINE_CROSSWINDOW_H
 #include <LLESDK/types.h>
+#include <cstdlib>
 #include "IWindow.h"
 #include "Win32Window.h"
 #include "X11Window.h"
+#include "WindowPanic.h"
+
 #define CWin LunaLuxEngine::window_api::CrossWindow::get()
 /* MAIN WINDOW CLASS
  *-----------------------------------------------
@@ -13,44 +16,16 @@
  */
 namespace LunaLuxEngine::window_api
 {
-	//this is used to set the window api type.
-	enum class WindowType
-	{
-		Win32Window = 0,
-		X11Window = 1,
-		CocoaWindow = 2,
-	};
+
 	class CrossWindow
 	{
+	private:
 		// IWindow class
 		// this is the main window class it is extended by Win32Window and X11Window
 		IWindow* window;
-		WindowType windowType;
-		bool RequestNativeAPI;
-#ifdef WIN32
-	public:
-		// this is to help create the win32 OpenGL Context
-		HWND getWin32Window() { return FindWindowA((LPCSTR)"LunaLuxEngine_WindowClass", (LPCSTR)window->getTitle()); };
-		HINSTANCE getWin32WindowInst() { return GetModuleHandle((LPCSTR)"LunaLuxEngine_WindowClass"); };
-#endif
-#ifdef  temp
-	public:
-		/* this is broken
-		inline Display* getWindowL()
-		{
-			return dpy;
-		};
-
-		inline Window getWindowL_()
-		{
-			return win;
-		};
-
-		inline XVisualInfo* getWindowV()
-		{
-			return vi;
-		};*/
-#endif
+		bool OpenGLMode{false};
+        //this calls the the window creation from the extended class.
+        void createWindow() { window->createWindow(OpenGLMode); };
 	public:
 		//this is to make the class as a singleton
 		CrossWindow(CrossWindow const&) = delete;
@@ -59,37 +34,20 @@ namespace LunaLuxEngine::window_api
 		CrossWindow() {};
 		// empty destructor
 		~CrossWindow() {};
-		//this is the only method of the window api that is not platform dependant
-		void setWindowType(WindowType type);
-		//this calls the the window creation from the extended class.
-		void createWindow() { window->createWindow(); };
-		//TODO: this only works on windows this needs adding to linux X11 extended class
+        //this sets up the window to be win32, x11, wayland(to be added) and cocoa(to be added)
+		void initWindow(WindowInfo& windowInfo);
 		//this calls the window title change
 		void updateTitle(int8* title_) { window->updateTitle(title_); };
 		//this calls the extended classes update virtual function
-		void updateWindow() { window->updateWindow(); };
+		void updateWindow() { window->updateWindow(OpenGLMode); };
 		//this is used to destroy the platforms window
-		void destoryWindow() { window->destoryWindow(); };
+		void destoryWindow() { window->destoryWindow(OpenGLMode); };
 		//this is used to override the operating system call if is only really needed for shutdown
 		void setShouldClose(LLEbool close) { window->setShouldClose(close); };
-		//-------------------------------------------------------------------------------------
-		//this is to set the window title before booting the window
-		void setTitle(int8* title) { window->setTitle(title); };
-		//this is to set the window size before window boot
-		void setSize(int32 width, int32 height) { window->setSize(width, height); };
 		//this is used to ask the operating system if the window of the game has closed
 		LLEbool shouldClose() { return window->shouldClose(); };
-		//this is used to ask the window what windowing api type is set
-		WindowType& getWindowType() { return windowType; };
-        //for people to check of window wants a OS native api
-		bool isRequestNativeAPI() { return RequestNativeAPI; };
-		//for people to ask window for native rendering
-		void requestNative(bool request) { RequestNativeAPI = request; };
 		// this gets the non extended version of the window this is used for the cross platforms functions
-		inline IWindow* getNativeWindow()
-		{
-			return window;
-		};
+		inline IWindow* getNativeWindow() { return window; };
 		//this is used to get the window of the api
 		inline static CrossWindow& get()
 		{

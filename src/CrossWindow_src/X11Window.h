@@ -4,9 +4,10 @@
 #ifndef LUNALUXENGINE_X11WINDOW_H
 #define LUNALUXENGINE_X11WINDOW_H
 #include "IWindow.h"
-#ifdef __linux__
+#ifdef LLE_LINUX
 #include<X11/X.h>
 #include<X11/Xlib.h>
+#include <X11/Xutil.h>
 #endif
 namespace LunaLuxEngine::window_api
 {
@@ -16,29 +17,34 @@ namespace LunaLuxEngine::window_api
     private:
         int                     att[5] = { 4, 12, 24, 5, 0L };
         Display*                dpy{};
-        Window                  root{};
         Window                  win{};
         XSetWindowAttributes    swa{};
-        Colormap                cmap{};
         XEvent                  xev{};
+
+
     public:
-        void createWindow() override;
-        void updateWindow() override;
+        void createWindow(bool) override;
+        void updateWindow(bool) override;
         void updateTitle(int8*) override;
-        void destoryWindow() override;
+        void destoryWindow(bool) override;
         Display* getDis()
         {
             return dpy;
+        }
+
+        Window getWin()
+        {
+            return win;
         }
     };
 #else
     class X11Window : public IWindow
 	{
 	public:
-		void createWindow() override {};
-		void updateWindow() override {};
+		void createWindow(bool) override {};
+		void updateWindow(bool) override {};
 		void updateTitle(int8*) override {};
-		void destoryWindow() override {};
+		void destoryWindow(bool) override {};
 	};
 #endif
 }

@@ -5,21 +5,38 @@
 // BASE CLASS FOR THE CROSS PLATFORM API
 namespace LunaLuxEngine::window_api
 {
+    //this is used to set the window api type.
+    enum class WindowType
+    {
+        Win32Window = 0,
+        X11Window = 1,
+        CocoaWindow = 2,
+    };
+
+    struct WindowInfo
+    {
+        WindowType windowType;
+        bool HaveWindowCreateOpenGLContext;
+        int8* title;
+        int16 width,height;
+    };
+
 	// Base window class 
 	class IWindow
 	{
 	protected:
-		//this is the varables for storing window data
 		int32 width = 800, height = 600;
 		int8* Title = (int8*)"temp";
 		void(*resizeCallback)(int32, int32) = nullptr;
 		LLEbool WIN_SHOULD_CLOSE = LLEfalse;
 	public:
+        //this is the varables for storing window data
+        WindowInfo info;
 		//they are overriden by the extended classes for the operating system APIS. 
-		virtual void createWindow() = 0;
-		virtual void updateWindow() = 0;
+		virtual void createWindow(bool) = 0;
+		virtual void updateWindow(bool) = 0;
 		virtual void updateTitle(int8*) = 0;
-		virtual void destoryWindow() = 0;
+		virtual void destoryWindow(bool) = 0;
 		//this gets the window width
 		inline int32 getWindowW()
 		{

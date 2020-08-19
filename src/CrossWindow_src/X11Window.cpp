@@ -4,29 +4,47 @@
 #ifdef  __linux__
 #include "X11Window.h"
 #include<GL/glx.h>
-XVisualInfo             *vi{};
+#include <memory.h>
 GLXContext              glc{};
-void LunaLuxEngine::window_api::X11Window::createWindow()
+void LunaLuxEngine::window_api::X11Window::createWindow(bool openGL)
 {
-    XInitThreads();
     dpy = XOpenDisplay(nullptr);
     CHECK_P(dpy, "cannot connect to X server")
-    root = DefaultRootWindow(dpy);
-    vi = glXChooseVisual(dpy, 0, att);
 
-    cmap = XCreateColormap(dpy, root, vi->visual, AllocNone);
-    swa.colormap = cmap;
-    swa.event_mask = ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask;
-    win = XCreateWindow(dpy, root, 0, 0, width, height, 0, vi->depth, InputOutput, vi->visual, CWColormap | CWEventMask, &swa);
-    XMapWindow(dpy, win);
-    XStoreName(dpy, win, reinterpret_cast<const char*>(Title));
-    glc = glXCreateContext(dpy, vi, NULL, GL_TRUE);
-    glXMakeCurrent(dpy, win, glc);
+    if(openGL)
+    {
+        XVisualInfo             *vi{};
+        Colormap                cmap{};
+
+        vi = glXChooseVisual(dpy, 0, att);
+
+        cmap = XCreateColormap(dpy, DefaultRootWindow(dpy), vi->visual, AllocNone);
+        swa.colormap = cmap;
+        swa.event_mask = ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask;
+
+        win = XCreateWindow(dpy, DefaultRootWindow(dpy), 0, 0, width, height, 0,vi->depth,InputOutput,vi->visual,
+                            CWColormap | CWEventMask, &swa);
+
+        XMapWindow(dpy, win);
+        XStoreName(dpy, win, reinterpret_cast<const char*>(Title));
+
+        glc = glXCreateContext(dpy, vi, NULL, GL_TRUE);
+        glXMakeCurrent(dpy, win, glc);
+    }
+    else
+    {
+        win = XCreateWindow(dpy, DefaultRootWindow(dpy), 0, 0, width, height, 0, 0,InputOutput,nullptr,
+                            ExposureMask | KeyPressMask | ButtonPressMask | StructureNotifyMask |CWEventMask, &swa);
+
+        XMapWindow(dpy, win);
+        XStoreName(dpy, win, reinterpret_cast<const char*>(Title));
+    }
 }
 
-void LunaLuxEngine::window_api::X11Window::updateWindow()
+void LunaLuxEngine::window_api::X11Window::updateWindow(bool openGL)
 {
-    glXSwapBuffers(dpy, win);
+    if(openGL) glXSwapBuffers(dpy, win);
+
     XNextEvent(dpy, &xev);
 
 		switch (xev.type)
@@ -49,10 +67,29 @@ void LunaLuxEngine::window_api::X11Window::updateWindow()
 
 void LunaLuxEngine::window_api::X11Window::updateTitle(int8 * title)
 {
+    XTextProperty tp;
+    char *props[1];
 
+    props[0] = strdup (reinterpret_cast<const char *>(title));
+    if (0 == props[0])
+    {
+        return;
+    }
+
+    if (!XStringListToTextProperty (props, 1, &tp))
+    {
+        LOG("Failed to convert text property");
+    }
+    else
+    {
+        XSetWMName (dpy, win, &tp);
+        XFree (tp.value);
+    }
+
+    free (props[0]);
 }
 
-void LunaLuxEngine::window_api::X11Window::destoryWindow()
+void LunaLuxEngine::window_api::X11Window::destoryWindow(bool openGL)
 {
     XDestroyWindow(dpy, win);
     XSync(dpy, false);

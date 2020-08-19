@@ -1,12 +1,12 @@
 ![img](https://www.code-inspector.com/project/4310/status/svg)  ![img](https://www.code-inspector.com/project/4310/score/svg) [![Build status](https://ci.appveyor.com/api/projects/status/e8audhok07m4650g/branch/master?svg=true)](https://ci.appveyor.com/project/pheonixfirewingz/lunaluxengine/branch/master)
-# LunaLuxEngine V0.0.29
+# LunaLuxEngine V0.0.30
 
 ## Contribution rules
 
 - keep formatting the same as the rest of the project's
 - focuse on speed and optamization
 - if is a class you made or patched note it at the top of the class
-- try to be memory safe (not required if works)
+- try to be memory safe (not required as a temp fix)
 
 ## Formatting
 
@@ -21,28 +21,25 @@
 
 ## TODO
 - (CrossWindow_LIB) Create Window using cocoa for mac (waiting for OSX availability)
-- (GAA_LIB) Create Metal renderer and get a 2D_box on screen (waiting for OSX availability)
-- (GAA_LIB) Create Vulkan context for linux and get a 2D_box on screen
-- (GAA_LIB) OpenGL get a 3D_box on screen with working camera
+- (LLE_CORE) working on renderer
 
 ## WIP
-- (GAA_LIB) Crossplatform OpenGL FallBack Rendering
-- (GAA_LIB) Windows DirectX 11 renderer
-- (GAA_LIB) Linux Vulkan Renderer
-- (GAA_LIB) Mac Metal Renderer
-- (CrossWindow_LIB) full Linux Window Support
+- (LLE_CORE) Windows DirectX 11 renderer
+- (LLE_CORE) Linux Vulkan Renderer
+- (LLE_CORE) Mac Metal Renderer
+- (CrossWindow_LIB) full Linux wayland Window Support
 
 ## Platforms being worked on
 - ##### windows 10
-- Ubuntu 18.04
+- ##### Ubuntu 20.04
 
 ## Planned Platforms (Stage 1)
  - Windows 10
- - Linux ubuntu 18.04 STL (x11 window Manager)(no for Support wayland Window Manager)
- - OSX Catilia
+ - Linux ubuntu 20.04 STL (x11 window Manager)(no for Support wayland Window Manager)
+ - OSX big sur
 
 ## Planned Platforms (Stage 2)
- - IOS 13 and up
+ - IOS 14 and up
  - Android api 20 and up
 
 
@@ -61,16 +58,5 @@
 # The legal stuff
 
 ## LICENCE
-Copyright 2020 Luke Shore
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, not including limitations to the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-- You, the user, may not rebrand or sell this project under a diffrent name.
-
-- You, the user, use this software without royalties if you have made yourself known to the project, plan to contribute and the developer, Luke Shore, has agreed.
-
-- You, the user, understand that you *must* provide clear evidence that you have utilised our project in your non/commercial project.
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright 2020 Luke Shore 
+##### (will stay closed source until v2.0.0)
