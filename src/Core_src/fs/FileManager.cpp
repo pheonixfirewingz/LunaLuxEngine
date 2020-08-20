@@ -4,6 +4,7 @@
 
 #include "FileManager.h"
 #include "Windows/WindowsFileManager.h"
+#include "common/ShaderParce.h"
 #include <string>
 #include <sstream>
 #include <iterator>
@@ -137,4 +138,10 @@ std::vector<std::string> FileManager::split(const std::string &s, char delimiter
         tokens.push_back(token);
     }
     return tokens;
+}
+
+std::string FileManager::readShaderFile(std::string path,bool vertex)
+{
+    LunaLuxEngine::LLEShaderLanguage* language = new LunaLuxEngine::LLEShaderLanguage();
+    return language->parceFileToShader(path,true,vertex);
 }

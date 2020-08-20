@@ -38,6 +38,8 @@ namespace LunaLuxEngine::window_api
 		void initWindow(WindowInfo& windowInfo);
 		//this calls the window title change
 		void updateTitle(int8* title_) { window->updateTitle(title_); };
+		//gets the aspect ratio
+		float getAspectRatio();
 		//this calls the extended classes update virtual function
 		void updateWindow() { window->updateWindow(OpenGLMode); };
 		//this is used to destroy the platforms window

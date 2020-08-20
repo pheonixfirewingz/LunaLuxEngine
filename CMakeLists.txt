@@ -42,9 +42,15 @@ add_library(LunaLuxEngineCore
         src/Core_src/fs/FileManager.cpp
         src/Core_src/fs/FileManager.h
         src/Core_src/fs/common/IFileManager.h
+        src/Core_src/fs/common/SeconderyTokenizer.cpp
+        src/Core_src/fs/common/PrimaryTokenizer.cpp
+        src/Core_src/fs/common/ShaderParce.cpp
+        src/Core_src/fs/common/GLSLConverter.cpp
+        src/Core_src/fs/common/ShaderParce.h
         src/Core_src/fs/Windows/WindowsFileManager.cpp
         src/Core_src/fs/Windows/WindowsFileManager.h
-        src/Core_src/render/Splash.cpp)
+        src/Core_src/render/Splash.cpp
+        )
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")

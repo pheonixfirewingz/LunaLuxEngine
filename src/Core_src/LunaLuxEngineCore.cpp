@@ -31,7 +31,6 @@ namespace LunaLuxEngine
         if (opengl)
         {
             Renderer::get().splash("resources/Disco-Dingo.jpg");
-            for (int x = 0; x <= 500; x++) FileManager::get()->loadObj("resources/cube.obj");
             Renderer::get().initRender();
         }
         m_game_main->GameBoot();

@@ -22,8 +22,6 @@ struct obj_data
 class FileManager
 {
 private:
-
-
     IFileManager *fileManager;
 public:
     FileManager();
@@ -31,6 +29,8 @@ public:
     static std::vector<std::string> split(const std::string &, char);
 
     std::string readFile(std::string);
+
+    std::string readShaderFile(std::string,bool);
 
     std::string getAbsolutePath(std::string);
 

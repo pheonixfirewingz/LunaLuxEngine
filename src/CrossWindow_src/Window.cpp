@@ -16,3 +16,8 @@ void LunaLuxEngine::window_api::CrossWindow::initWindow(WindowInfo& windowInfo)
     }
     this->createWindow();
 }
+
+float LunaLuxEngine::window_api::CrossWindow::getAspectRatio()
+{
+    return window->getWindowW() / window->getWindowH();
+}
