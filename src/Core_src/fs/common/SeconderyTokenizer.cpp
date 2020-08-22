@@ -203,5 +203,3 @@ bool LunaLuxEngine::LLEShaderLanguage::parceVariablesTokentoTockens(std::string 
             return false;
         }
 }
-
-

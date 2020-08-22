@@ -155,7 +155,14 @@ void LunaLuxEngine::window_api::Win32Window::updateWindow(bool openGL)
         }
         else LOG("Controller not found")
 #endif
+        RECT rect;
+        GetWindowRect(hwnd, &rect);
+        int width = rect.right - rect.left;
+        int height = rect.bottom - rect.top;
+        setSize(width,height);
+
         if(openGL) SwapBuffers(GetDC(hwnd));
+
         MSG msg;
         GetMessage(&msg, nullptr, 0, 0);
         TranslateMessage(&msg);

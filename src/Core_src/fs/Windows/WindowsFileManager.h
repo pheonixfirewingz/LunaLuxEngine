@@ -6,32 +6,34 @@
 #define LUNALUXENGINE_WINDOWSFILEMANAGER_H
 
 #include <LLESDK/types.h>
-#include <filesystem>
-#include <iostream>
-#include <fstream>
 #include "../common/IFileManager.h"
 
-class WindowsFileManager : public IFileManager
+namespace LunaLuxEngine
 {
-private:
-    std::string current_binery_location = std::filesystem::current_path().string();
-public:
+
+    class WindowsFileManager : public IFileManager
+    {
+    private:
+        std::string current_binery_location;
+    public:
 #ifdef LLE_WINDOWS
 
-    std::string readfile(std::string string) override;
+        WindowsFileManager();
 
-    void writefile(std::string string) override;
+        std::string readfile(std::string string) override;
 
-    std::string getAbsolutePath(std::string string) override;
+        void writefile(std::string,std::string,bool) override;
+
+        std::string getAbsolutePath(std::string string) override;
 
 #else
-    WindowsFileManager() {};
-    ~WindowsFileManager() {};
-    std::string readfile(std::string string) override {};
-    void writefile(std::string string) override {};
-    std::string getAbsolutePath(std::string string) override {};
+        WindowsFileManager() {};
+        ~WindowsFileManager() {};
+        std::string readfile(std::string string) override {return std::string("ERROR: OS IS NOT WINDOWS");};
+        void writefile(std::string string) override { return std::string("ERROR: OS IS NOT WINDOWS");};
+        std::string getAbsolutePath(std::string string) override {return std::string("ERROR: OS IS NOT WINDOWS");};
 #endif
-};
+    };
 
-
+}
 #endif //LUNALUXENGINE_WINDOWSFILEMANAGER_H

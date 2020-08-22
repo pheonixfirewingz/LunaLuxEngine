@@ -35,7 +35,6 @@ add_library(LunaLuxEngineCore
         src/Core_src/render/OpenGL/OpenGLTexture.cpp
         src/Core_src/common/EnginePanic.h
         src/Core_src/common/EnginePanic.cpp
-        src/Core_src/render/Common/IShaderLayout.h
         src/Core_src/render/Common/stb_image.cpp
         src/Core_src/render/OpenGL/OpenGLUtils.cpp
         src/Core_src/render/OpenGL/OpenGLUtils.h
@@ -48,9 +47,7 @@ add_library(LunaLuxEngineCore
         src/Core_src/fs/common/GLSLConverter.cpp
         src/Core_src/fs/common/ShaderParce.h
         src/Core_src/fs/Windows/WindowsFileManager.cpp
-        src/Core_src/fs/Windows/WindowsFileManager.h
-        src/Core_src/render/Splash.cpp
-        )
+        src/Core_src/fs/Windows/WindowsFileManager.h)
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")

@@ -25,8 +25,6 @@ namespace LunaLuxEngine
             return *rend;
         }
 
-        void splash(std::string splash_image);
-
         void initRender();
 
         void preRender();

@@ -10,7 +10,7 @@
 #include <iterator>
 #include <utility>
 
-FileManager::FileManager()
+LunaLuxEngine::FileManager::FileManager()
 {
 #ifdef LLE_WINDOWS
     fileManager = new WindowsFileManager();
@@ -18,17 +18,23 @@ FileManager::FileManager()
     //"TODO: finish writing files in file manager"
 }
 
-std::string FileManager::readFile(std::string path)
+std::string LunaLuxEngine::FileManager::readFile(std::string path)
 {
     return fileManager->readfile(std::move(path));
 }
 
-std::string FileManager::getAbsolutePath(std::string path)
+std::string LunaLuxEngine::FileManager::getAbsolutePath(std::string path)
 {
     return fileManager->getAbsolutePath(std::move(path));
 }
 
-obj_data FileManager::loadObj(std::string path)
+
+void LunaLuxEngine::FileManager::writeFile(std::string path, std::string data_to_write,bool override)
+{
+    fileManager->writefile(path,data_to_write,override);
+}
+
+LunaLuxEngine::obj_data LunaLuxEngine::FileManager::loadObj(std::string path)
 {
     auto *mesh = new obj_data();
     {
@@ -128,7 +134,7 @@ obj_data FileManager::loadObj(std::string path)
     return *mesh;
 }
 
-std::vector<std::string> FileManager::split(const std::string &s, char delimiter)
+std::vector<std::string> LunaLuxEngine::FileManager::split(const std::string &s, char delimiter)
 {
     std::vector<std::string> tokens;
     std::string token;
@@ -140,8 +146,105 @@ std::vector<std::string> FileManager::split(const std::string &s, char delimiter
     return tokens;
 }
 
-std::string FileManager::readShaderFile(std::string path,bool vertex)
+std::string LunaLuxEngine::FileManager::readShaderFile(std::string path,bool vertex)
 {
     LunaLuxEngine::LLEShaderLanguage* language = new LunaLuxEngine::LLEShaderLanguage();
     return language->parceFileToShader(path,true,vertex);
+}
+
+bool LunaLuxEngine::FileManager::validTextCharatersForEngine(char letter)
+{
+    switch (letter)
+    {
+        case 'a':
+        case 'b':
+        case 'c':
+        case 'd':
+        case 'e':
+        case 'f':
+        case 'g':
+        case 'h':
+        case 'i':
+        case 'j':
+        case 'k':
+        case 'l':
+        case 'm':
+        case 'n':
+        case 'o':
+        case 'p':
+        case 'q':
+        case 'r':
+        case 's':
+        case 't':
+        case 'u':
+        case 'v':
+        case 'w':
+        case 'x':
+        case 'y':
+        case 'z':
+        case 'A':
+        case 'B':
+        case 'C':
+        case 'D':
+        case 'E':
+        case 'F':
+        case 'G':
+        case 'H':
+        case 'I':
+        case 'J':
+        case 'K':
+        case 'L':
+        case 'M':
+        case 'N':
+        case 'O':
+        case 'P':
+        case 'Q':
+        case 'R':
+        case 'S':
+        case 'T':
+        case 'U':
+        case 'V':
+        case 'W':
+        case 'X':
+        case 'Y':
+        case 'Z':
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '+':
+        case '=':
+        case '-':
+        case '*':
+        case '/':
+        case '\\':
+        case ' ':
+        case '\n':
+        case '\t':
+        case '\r':
+        case '_':
+        case '#':
+        case '&':
+        case '{':
+        case '}':
+        case '(':
+        case ')':
+        case '[':
+        case ']':
+        case '>':
+        case '<':
+        case '!':
+        case ':':
+        case ';':
+        case ',':
+        case '.':
+            return true;
+    }
+    return false;
 }

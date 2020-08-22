@@ -30,7 +30,6 @@ namespace LunaLuxEngine
 
         if (opengl)
         {
-            Renderer::get().splash("resources/Disco-Dingo.jpg");
             Renderer::get().initRender();
         }
         m_game_main->GameBoot();

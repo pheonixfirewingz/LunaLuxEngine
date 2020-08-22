@@ -25,7 +25,6 @@ std::vector<LunaLuxEngine::LLEShaderLanguage::TOCKEN> LunaLuxEngine::LLEShaderLa
             {
                 file_tockens.push_back(temp_data[y]);
             }
-
         }
     }
     for(int x = 0; x <= file_tockens.size() - 1; x++)
@@ -90,7 +89,6 @@ std::vector<LunaLuxEngine::LLEShaderLanguage::TOCKEN> LunaLuxEngine::LLEShaderLa
                 printf("shader file broken: %s","you missed a function close syntax");
                 printf("shader file broken: %s",ex.what());
             }
-
         }
         if(!tocken_d.compare("fni"))
         {
@@ -112,7 +110,6 @@ std::vector<LunaLuxEngine::LLEShaderLanguage::TOCKEN> LunaLuxEngine::LLEShaderLa
                 printf("shader file broken: %s","you missed a function close syntax");
                 printf("shader file broken: %s",ex.what());
             }
-
         }
         if(!tocken_d.compare("fnf"))
         {
@@ -134,7 +131,6 @@ std::vector<LunaLuxEngine::LLEShaderLanguage::TOCKEN> LunaLuxEngine::LLEShaderLa
                 printf("shader file broken: %s","you missed a function close syntax");
                 printf("shader file broken: %s",ex.what());
             }
-
         }
         if(!tocken_d.compare("fnd"))
         {
@@ -156,7 +152,6 @@ std::vector<LunaLuxEngine::LLEShaderLanguage::TOCKEN> LunaLuxEngine::LLEShaderLa
                 printf("shader file broken: %s","you missed a function close syntax");
                 printf("shader file broken: %s",ex.what());
             }
-
         }
     }
     return tockens;
@@ -214,6 +209,3 @@ void LunaLuxEngine::LLEShaderLanguage::parceVariablestoTockens(std::string& valu
     }
     else return;
 }
-
-
-

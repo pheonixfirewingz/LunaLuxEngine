@@ -4,7 +4,6 @@
 #include "../fs/FileManager.h"
 #include <CrossWindow/WindowAPI.h>
 #include <GLM/gtc/matrix_transform.hpp>
-#include <GLM/gtc/type_ptr.hpp>
 
 LunaLuxEngine::Renderer::Renderer()
 {
