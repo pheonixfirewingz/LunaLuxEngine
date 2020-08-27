@@ -2,7 +2,6 @@
 #include <CrossWindow/WindowAPI.h>
 #include "render/Renderer.h"
 #include "common/EnginePanic.h"
-#include "fs/FileManager.h"
 
 namespace LunaLuxEngine
 {
@@ -27,17 +26,12 @@ namespace LunaLuxEngine
         info->width = m_game_main->getWindowWidth();
         info->HaveWindowCreateOpenGLContext = opengl;
         CWin.initWindow(*info);
-
-        if (opengl)
-        {
-            Renderer::get().initRender();
-        }
+        Renderer::get();
         m_game_main->GameBoot();
     }
 
     int8 lunaLuxEngine::updateEngine(bool &debug)
     {
-        auto frameStart = std::chrono::high_resolution_clock::now();
         CWin.updateWindow();
         m_game_main->GameUpdate();
         if (!opengl)
@@ -46,8 +40,6 @@ namespace LunaLuxEngine
         m_game_main->GameLevel();
         Renderer::get().Render();
         loop:
-        std::chrono::duration<double> fs = frameStart - std::chrono::high_resolution_clock::now();
-        m_frameTime = fs;
 
         return EXIT_SUCCESS;
     }

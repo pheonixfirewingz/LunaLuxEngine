@@ -4,22 +4,25 @@
 #include "Common/IRender.h"
 #include "Buffer.h"
 #include "Shader.h"
-#include "OpenGL/OpenGLTexture.h"
 #include "ShaderLayout.h"
+#include "Texture.h"
 
 namespace LunaLuxEngine
 {
     class Renderer
     {
     private:
-        Renderer();
-
         IRender *render;
-        VertexBuffer *vbuffer;
-        IndexBuffer *ibuffer;
-        Shader *shader;
-        ShaderLayout *layout;
-        OpenGLTexture *texture;
+        float color[4] = {0.0f, 1.0f, 0.0f, 1.0f};
+        Renderer();
+    private:
+        //         to be changed
+        //------------------------------------------
+        Buffer* buffer;
+        Shader* shader;
+        ShaderLayout* layout;
+        Texture* texture;
+        //----------------------------------------
     public:
         inline static Renderer &get()
         {
@@ -27,7 +30,21 @@ namespace LunaLuxEngine
             return *rend;
         }
 
-        void initRender();
+        inline void setClearColour(float r,float g,float b,float a)
+        {
+            color[0] = r;
+            color[1] = g;
+            color[2] = b;
+            color[3] = a;
+        }
+
+        void submit(Buffer* in_buffer,Shader* in_shader,std::vector<SHADERLAYOUTTYPE> in_types,Texture* in_texture)
+        {
+            buffer = in_buffer;
+            shader = in_shader;
+            layout = new ShaderLayout(in_types,in_buffer);
+            texture = in_texture;
+        }
 
         void preRender();
 

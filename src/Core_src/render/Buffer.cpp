@@ -44,3 +44,29 @@ void LunaLuxEngine::IndexBuffer::unBind()
     buffer->unBind();
 }
 
+void LunaLuxEngine::Buffer::bind()
+{
+    vertexBuffer->bind();
+    indexBuffer->bind();
+}
+
+void LunaLuxEngine::Buffer::unBind()
+{
+    indexBuffer->unBind();
+    vertexBuffer->unBind();
+}
+
+int LunaLuxEngine::Buffer::getIndexCount()
+{
+    return indexBuffer->getIndexCount();
+}
+
+void LunaLuxEngine::Buffer::bindV()
+{
+    vertexBuffer->bind();
+}
+
+void LunaLuxEngine::Buffer::unBindV()
+{
+    vertexBuffer->unBind();
+}

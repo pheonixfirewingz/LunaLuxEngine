@@ -10,13 +10,11 @@ namespace LunaLuxEngine
     class lunaLuxEngine
     {
     private:
-        std::chrono::duration<double, std::milli> m_frameTime;
         Game *m_game_main = nullptr;
 
         void initEngine(bool &);
 
         int8 updateEngine(bool &);
-
     public:
         static lunaLuxEngine *get()
         {

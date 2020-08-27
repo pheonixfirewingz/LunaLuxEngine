@@ -5,40 +5,27 @@
 #include "OpenGLTexture.h"
 #include "../Common/stb_image.h"
 
-OpenGLTexture::OpenGLTexture(std::string path,int id)
+void LunaLuxEngine::OpenGLTexture::create(std::string path, int id)
 {
     m_id = load(path);
     m_id_NOG = id;
 }
 
-unsigned int OpenGLTexture::getWidth()
-{
-    return m_width;
-}
-
-
-unsigned int OpenGLTexture::getHeight()
-{
-    return m_height;
-}
-
-void OpenGLTexture::bind()
+void LunaLuxEngine::OpenGLTexture::bind()
 {
     glBindTexture(GL_TEXTURE_2D, m_id);
 }
 
-void OpenGLTexture::unbind()
+void LunaLuxEngine::OpenGLTexture::unbind()
 {
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-unsigned int OpenGLTexture::load(std::string path)
+unsigned int LunaLuxEngine::OpenGLTexture::load(std::string path)
 {
     int width, height, channels;
     stbi_set_flip_vertically_on_load(1);
     stbi_uc *data = stbi_load(path.c_str(), &width, &height, &channels, 0);
-    m_width = width;
-    m_height = height;
 
     GLenum internalFormat = 0, dataFormat = 0;
     if (channels == 4)
@@ -119,9 +106,8 @@ unsigned int OpenGLTexture::load(std::string path)
     glBindTexture(GL_TEXTURE_2D, result);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, m_width, m_height, 0, dataFormat, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, dataFormat, GL_UNSIGNED_BYTE, data);
     glBindTexture(GL_TEXTURE_2D, 0);
     stbi_image_free(data);
     return result;
 }
-

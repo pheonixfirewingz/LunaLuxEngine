@@ -16,7 +16,6 @@
  */
 namespace LunaLuxEngine::window_api
 {
-
 	class CrossWindow
 	{
 	private:
