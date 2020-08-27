@@ -11,9 +11,9 @@ LunaLuxEngine::Renderer::Renderer()
     vbuffer = new VertexBuffer();
     ibuffer = new IndexBuffer();
     shader = new Shader();
-    texture = new OpenGLTexture(FileManager::get()->getAbsolutePath("resources/Disco-Dingo.jpg"));
+    layout = new ShaderLayout();
+    texture = new OpenGLTexture(FileManager::get()->getAbsolutePath("resources/Disco-Dingo.jpg"),0);
     glEnable(GL_TEXTURE_2D);
-    CWin.getNativeWindow()->fireResizeCallback();
 }
 
 float vertices[] =
@@ -36,23 +36,23 @@ void LunaLuxEngine::Renderer::initRender()
 {
     obj_data data = FileManager::get()->loadObj("resources/cube.obj");
     LOG("Renderer::initRender() is deprecated")
-    CWin.getNativeWindow()->fireResizeCallback();
 
     vbuffer->create(vertices, sizeof(vertices));
     ibuffer->create(indices, sizeof(indices));
+
+    std::vector<SHADERLAYOUTTYPE> types;
+
+    types.push_back(SHADERLAYOUTTYPE::FLOAT3);
+    types.push_back(SHADERLAYOUTTYPE::FLOAT2);
+
+
     vbuffer->bind();
-    //----------this is part of the layout abstract to be removed when complete--------------------
-    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) nullptr);
-    glEnableVertexAttribArray(0);
-    // texture coord attribute
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) (3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-    //---------------------------------------------------------------------------------------------------------
+    layout->setupShaderLayout(types);
     vbuffer->unBind();
 
     shader->compile(FileManager::get()->readShaderFile("resources/shader",true).data(),
                     FileManager::get()->readShaderFile("resources/shader", false).data());
+
     OpenGLUtils::setInt(shader->getOGLSID(), "texture1", 0);
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
     projection = glm::perspective(glm::radians(45.0f),CWin.getAspectRatio(),0.1f, 100.0f);
@@ -75,11 +75,12 @@ void LunaLuxEngine::Renderer::Render()
     OpenGLUtils::setMat4(shader->getOGLSID(), "model", model);
     OpenGLUtils::setMat4(shader->getOGLSID(), "view", view);
     OpenGLUtils::setMat4(shader->getOGLSID(), "projection", projection);
-    glActiveTexture(GL_TEXTURE0);
     texture->bind();
     vbuffer->bind();
     ibuffer->bind();
+    layout->bindLayoutToRenderer();
     render->fireRender(ibuffer->getIndexCount());
+    layout->unbindLayoutToRenderer();
     texture->unbind();
     vbuffer->unBind();
     ibuffer->unBind();

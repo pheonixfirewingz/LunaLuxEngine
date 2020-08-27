@@ -47,7 +47,7 @@ add_library(LunaLuxEngineCore
         src/Core_src/fs/common/GLSLConverter.cpp
         src/Core_src/fs/common/ShaderParce.h
         src/Core_src/fs/Windows/WindowsFileManager.cpp
-        src/Core_src/fs/Windows/WindowsFileManager.h)
+        src/Core_src/fs/Windows/WindowsFileManager.h src/Core_src/math/LLE_Vector.h src/Core_src/math/LLE_Vector.cpp src/Core_src/math/LLE_VectorMath.cpp src/Core_src/math/LLE_VectorMath.h src/Core_src/math/LLE_Matrix.cpp src/Core_src/math/LLE_Matrix.h src/Core_src/math/LLE_MatrixMath.cpp src/Core_src/math/LLE_MatrixMath.h src/Core_src/render/Common/IShaderLayout.h src/Core_src/render/ShaderLayout.cpp src/Core_src/render/ShaderLayout.h src/Core_src/render/OpenGL/OpenGLShaderLayout.cpp src/Core_src/render/OpenGL/OpenGLShaderLayout.h)
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")

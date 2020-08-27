@@ -15,29 +15,17 @@ void LunaLuxEngine::OGLRenderer::clearscreen(float colour[4])
     glClearColor(colour[0], colour[1], colour[2], colour[3]);
 }
 
-
 void LunaLuxEngine::OGLRenderer::fireRender(int indexcount)
 {
     glBindVertexArray(VertexArrayID);
-    //----------this is part of the layout abstract to be removed when complete--------------------
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-    //---------------------------------------------------------------------------------------------------------
     glDrawElements(GL_TRIANGLES, indexcount, GL_UNSIGNED_INT, nullptr);
-    //----------this is part of the layout abstract to be removed when complete--------------------
-    glDisableVertexAttribArray(2);
-    glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(0);
-    //---------------------------------------------------------------------------------------------------------
-    glBindVertexArray(0);
 }
 
 LunaLuxEngine::OGLRenderer::OGLRenderer()
 {
     CWin.getNativeWindow()->setResizeCallback(&OGLWindowResizeCallback);
     gladLoadGL();
-    printf("RENDERER API INFO VENDOR: %s VERSION: opengl %s\n", glGetString(GL_VENDOR), glGetString(GL_VERSION));
+    printf("Engine and Game Log: RENDERER API VERSION: opengl %s\n", glGetString(GL_VERSION));
     glGenVertexArrays(1, &VertexArrayID);
     glBindVertexArray(VertexArrayID);
     CWin.getNativeWindow()->fireResizeCallback();
@@ -47,5 +35,3 @@ LunaLuxEngine::OGLRenderer::~OGLRenderer()
 {
     glDeleteVertexArrays(1, &VertexArrayID);
 }
-
-

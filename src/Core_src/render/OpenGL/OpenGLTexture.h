@@ -12,15 +12,13 @@ class OpenGLTexture
 {
 public:
 
-    unsigned int m_id, m_height, m_width;
+    unsigned int m_id, m_id_NOG, m_height, m_width;
 
-    OpenGLTexture(std::string path);
+    OpenGLTexture(std::string path,int id);
 
     unsigned int getWidth();
 
     unsigned int getHeight();
-
-    unsigned int getId();
 
     void bind();
 

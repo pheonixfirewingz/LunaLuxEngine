@@ -5,6 +5,7 @@
 #include "Buffer.h"
 #include "Shader.h"
 #include "OpenGL/OpenGLTexture.h"
+#include "ShaderLayout.h"
 
 namespace LunaLuxEngine
 {
@@ -17,6 +18,7 @@ namespace LunaLuxEngine
         VertexBuffer *vbuffer;
         IndexBuffer *ibuffer;
         Shader *shader;
+        ShaderLayout *layout;
         OpenGLTexture *texture;
     public:
         inline static Renderer &get()
