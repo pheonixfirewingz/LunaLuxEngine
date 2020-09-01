@@ -6,6 +6,7 @@
 #define LUNALUXENGINE_OPENGLUTILS_H
 
 #include <GLM/glm.hpp>
+#include "../../math/LLE_Vector.h"
 #include "glad.h"
 #include <string>
 
@@ -21,11 +22,25 @@ namespace LunaLuxEngine
 
         [[maybe_unused]] static void setFloat(unsigned int shaderid, const std::string &name, float value);
 
+        [[maybe_unused]] static void setDouble(unsigned int shaderid, const std::string &name, double value);
+
         [[maybe_unused]] static void setVec2(unsigned int shaderid, const std::string &name, float x, float y);
 
         [[maybe_unused]] static void setVec3(unsigned int shaderid, const std::string &name, float x, float y, float z);
 
         [[maybe_unused]] static void setVec4(unsigned int shaderid, const std::string &name, float x, float y, float z, float w);
+
+        [[maybe_unused]] static void setVec2(unsigned int shaderid, const std::string &name, vec2f);
+
+        [[maybe_unused]] static void setVec3(unsigned int shaderid, const std::string &name, vec3f);
+
+        [[maybe_unused]] static void setVec4(unsigned int shaderid, const std::string &name, vec4f);
+
+        [[maybe_unused]] static void setVec2(unsigned int shaderid, const std::string &name, vec2d);
+
+        [[maybe_unused]] static void setVec3(unsigned int shaderid, const std::string &name, vec3d);
+
+        [[maybe_unused]] static void setVec4(unsigned int shaderid, const std::string &name, vec4d);
 
         [[maybe_unused]] static void setMat2(unsigned int shaderid, const std::string &name, const glm::mat2 &mat);
 

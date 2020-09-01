@@ -59,7 +59,7 @@ inline LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lPara
 		CWin.setShouldClose(1);
 		break;
 	case WM_SIZE:
-		CWin.getNativeWindow()->fireResizeCallback(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
+		CWin.getNativeWindow()->setSize(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
 		break;
 	case WM_KEYDOWN:
 		CWin.getNativeWindow()->getInputController()->setKey(wParam, 1);

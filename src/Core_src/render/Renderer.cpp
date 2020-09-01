@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "OpenGL/OpenGLRenderer.h"
+#include "OpenGL/OpenGLUtils.h"
 
 LunaLuxEngine::Renderer::Renderer()
 {
@@ -22,4 +23,14 @@ void LunaLuxEngine::Renderer::Render()
     layout->unbindLayoutToRenderer();
     texture->unbind();
     buffer->unBind();
+}
+
+void LunaLuxEngine::Renderer::beginLevel(LunaLuxEngine::Camera & camera)
+{
+    LunaLuxEngine::OpenGLUtils::setMat4(shader->getOGLSID(), "projection", camera.getProjectionMatrix());
+}
+
+void LunaLuxEngine::Renderer::endLevel()
+{
+
 }

@@ -1,5 +1,7 @@
 #include "Shader.h"
 #include "OpenGL/glad.h"
+#include "OpenGL/OpenGLShader.h"
+
 
 void LunaLuxEngine::Shader::compile(char *filedata, char *filedata1)
 {

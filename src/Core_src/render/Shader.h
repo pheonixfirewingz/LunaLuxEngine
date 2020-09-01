@@ -2,7 +2,6 @@
 #define LUNALUXENGINE_SHADER_H
 
 #include "Common/IShader.h"
-#include "OpenGL/OpenGLShader.h"
 #include "../LunaLuxEngineCore.h"
 
 namespace LunaLuxEngine

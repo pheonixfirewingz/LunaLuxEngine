@@ -1,5 +1,4 @@
 #include "OpenGLBuffer.h"
-#include <iostream>
 
 void LunaLuxEngine::OpenGLVertexBuffer::create(float *vert, int32 vertcount)
 {

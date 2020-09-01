@@ -9,7 +9,16 @@ using namespace LunaLuxEngine::window_api;
 #include "../Core_src/fs/FileManager.h"
 #include <GLM/gtc/matrix_transform.hpp>
 
-glm::mat4 model = glm::mat4(1.0f), view = glm::mat4(1.0f), projection = glm::mat4(1.0f);
+using namespace LunaLuxEngine;
+
+glm::mat4 model = glm::mat4(1.0f), view = glm::mat4(1.0f);
+
+float vertices[] = {0.5f,0.5f,0.0f,1.0f,1.0f,0.5f,-0.5f,0.0f,1.0f,0.0f,-0.5f,-0.5f,0.0f,0.0f,0.0f,-0.5f,0.5f,0.0f,0.0f,1.0f};
+unsigned int indices[] = {0,1,2,0,2,3};
+Shader* shader;
+Buffer* buffer;
+Texture* texture;
+Camera* camera = new Camera();
 
 void PublicGame::preBoot()
 {
@@ -17,41 +26,43 @@ void PublicGame::preBoot()
 	PublicGame::setWindowSize(1280, 720);
 }
 
-float vertices[] = {0.5f,0.5f,0.0f,1.0f,1.0f,0.5f,-0.5f,0.0f,1.0f,0.0f,-0.5f,-0.5f,0.0f,0.0f,0.0f,-0.5f,0.5f,0.0f,0.0f,1.0f};
-unsigned int indices[] = {0,1,2,0,2,3};
-LunaLuxEngine::Shader* shader;
-LunaLuxEngine::Buffer* buffer;
-LunaLuxEngine::Texture* texture;
-
 void PublicGame::GameBoot()
 {
-    std::vector<LunaLuxEngine::SHADERLAYOUTTYPE> types;
-    types.push_back(LunaLuxEngine::SHADERLAYOUTTYPE::FLOAT3);
-    types.push_back(LunaLuxEngine::SHADERLAYOUTTYPE::FLOAT2);
+    camera->setFieldForView();
+    std::vector<SHADERLAYOUTTYPE> types;
+    types.push_back(SHADERLAYOUTTYPE::FLOAT3);
+    //types.push_back(SHADERLAYOUTTYPE::FLOAT2);
 
-    buffer = new LunaLuxEngine::Buffer(vertices, sizeof(vertices),indices, sizeof(indices));
+    obj_data objData = FileManager::get()->loadObj("resources/cube");
 
-    shader = new LunaLuxEngine::Shader(LunaLuxEngine::FileManager::get()->readShaderFile("resources/shader",true).data(),
-                                      LunaLuxEngine::FileManager::get()->readShaderFile("resources/shader",false).data());
 
-    texture = new LunaLuxEngine::Texture(LunaLuxEngine::FileManager::get()->getAbsolutePath("resources/Disco-Dingo.jpg"),0);
-    LunaLuxEngine::OpenGLUtils::setInt(shader->getOGLSID(),"texture1",0);
+    buffer = new Buffer(vertices, sizeof(vertices),indices, sizeof(indices));
 
-    LunaLuxEngine::Renderer::get().setClearColour(0.3f, 0.3f, 0.9f, 1.0f);
-    LunaLuxEngine::Renderer::get().submit(buffer,shader,types,texture);
+    shader = new Shader(FileManager::get()->readShaderFile("resources/shader",true).data(),
+                               FileManager::get()->readShaderFile("resources/shader",false).data());
+
+    texture = new Texture(FileManager::get()->getAbsolutePath("resources/Disco-Dingo.jpg"),0);
+    OpenGLUtils::setInt(shader->getOGLSID(),"texture1",0);
+
+    Renderer::get().submit(buffer,shader,types,texture);
 
     model = glm::translate(model,glm::vec3(0.0f,0.0f,-2.0f));
-    projection = glm::perspective(glm::radians(45.0f),CWin.getAspectRatio(),0.1f,100.0f);
 }
 
 void PublicGame::GameUpdate()
 {
-    //temp for debug----
-    if (CWin.getNativeWindow()->getInputController()->isKeyDown(LLE_KEY_1)) CWin.setShouldClose(true);
-    //-----------------------
-    LunaLuxEngine::OpenGLUtils::setMat4(shader->getOGLSID(), "model", model);
-    LunaLuxEngine::OpenGLUtils::setMat4(shader->getOGLSID(), "view", view);
-    LunaLuxEngine::OpenGLUtils::setMat4(shader->getOGLSID(), "projection", projection);
+    Renderer::get().beginLevel(*camera);
+    OpenGLUtils::setMat4(shader->getOGLSID(), "model", model);
+    OpenGLUtils::setMat4(shader->getOGLSID(), "view", view);
+    Renderer::get().endLevel();
 }
 
-void PublicGame::GameLevel() {}
+void PublicGame::GameLevel()
+{
+
+}
+
+int main()
+{
+    lunaLuxEngine::get()->runEngine(new PublicGame(),true);
+}

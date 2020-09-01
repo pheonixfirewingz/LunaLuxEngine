@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "ShaderLayout.h"
 #include "Texture.h"
+#include "../common/entity/Camera.h"
 
 namespace LunaLuxEngine
 {
@@ -13,7 +14,7 @@ namespace LunaLuxEngine
     {
     private:
         IRender *render;
-        float color[4] = {0.0f, 1.0f, 0.0f, 1.0f};
+        float color[4] = {0.3f, 0.3f, 0.9f, 1.0f};
         Renderer();
     private:
         //         to be changed
@@ -37,6 +38,9 @@ namespace LunaLuxEngine
             color[2] = b;
             color[3] = a;
         }
+
+        void beginLevel(Camera&);
+        void endLevel();
 
         void submit(Buffer* in_buffer,Shader* in_shader,std::vector<SHADERLAYOUTTYPE> in_types,Texture* in_texture)
         {

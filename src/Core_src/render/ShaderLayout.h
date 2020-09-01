@@ -5,7 +5,6 @@
 #ifndef LUNALUXENGINE_SHADERLAYOUT_H
 #define LUNALUXENGINE_SHADERLAYOUT_H
 #include "Common/IShaderLayout.h"
-#include "OpenGL/OpenGLShaderLayout.h"
 #include "Buffer.h"
 
 namespace LunaLuxEngine
@@ -16,24 +15,15 @@ namespace LunaLuxEngine
     private:
         IShaderLayout* shaderLayout;
     public:
-        ShaderLayout()
-        {
-            shaderLayout = new OpenGLShaderLayout();
-        }
+        ShaderLayout();
 
-        ShaderLayout(std::vector<SHADERLAYOUTTYPE> types,Buffer* buffer)
-        {
-            shaderLayout = new OpenGLShaderLayout();
-            buffer->bindV();
-            setupShaderLayout(types);
-            buffer->unBindV();
-        }
+        ShaderLayout(std::vector<SHADERLAYOUTTYPE> types,Buffer* buffer);
 
         void setupShaderLayout(std::vector<SHADERLAYOUTTYPE>);
 
-        virtual void bindLayoutToRenderer();
+        void bindLayoutToRenderer();
 
-        virtual void unbindLayoutToRenderer();
+        void unbindLayoutToRenderer();
     };
 
 }

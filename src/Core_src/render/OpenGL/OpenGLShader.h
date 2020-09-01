@@ -1,7 +1,6 @@
 #ifndef LUNALUXENGINE_OPENGLSHADER_H
 #define LUNALUXENGINE_OPENGLSHADER_H
 
-#include <LLESDK/types.h>
 #include "../Common/IShader.h"
 
 namespace LunaLuxEngine

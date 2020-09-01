@@ -29,6 +29,17 @@ namespace LunaLuxEngine::window_api
 		int8* Title = (int8*)"temp";
 		void(*resizeCallback)(int32, int32) = nullptr;
 		LLEbool WIN_SHOULD_CLOSE = LLEfalse;
+        //this is used to help resize the graphics apis render buffer size
+        //this fires the window resize callback with custom width and height
+        inline void fireResizeCallback(int32 in_width, int32 in_height)
+        {
+            if (resizeCallback != nullptr) resizeCallback(in_width, in_height);
+        };
+        //this fires the window resize callback
+        inline void fireResizeCallback()
+        {
+            if (resizeCallback != nullptr) resizeCallback(width, height);
+        };
 	public:
         //this is the varables for storing window data
         WindowInfo info;
@@ -73,17 +84,6 @@ namespace LunaLuxEngine::window_api
 		inline LLEbool shouldClose()
 		{
 			return  WIN_SHOULD_CLOSE;
-		};
-		//this is used to help resize the graphics apis render buffer size
-		//this fires the window resize callback with custom width and height
-		inline void fireResizeCallback(int32 in_width, int32 in_height)
-		{
-			if (resizeCallback != nullptr) resizeCallback(in_width, in_height);
-		};
-		//this fires the window resize callback 
-		inline void fireResizeCallback()
-		{
-			if (resizeCallback != nullptr) resizeCallback(width, height);
 		};
 		//this is used to set the callback
 		inline void setResizeCallback(void(*callback)(int32, int32))

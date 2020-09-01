@@ -60,7 +60,7 @@ LunaLuxEngine::obj_data LunaLuxEngine::FileManager::loadObj(std::string path)
                 std::vector<std::string> t_lines;
                 std::vector<std::string> f_lines;
                 {
-                    std::vector<std::string> line = split(fileManager->readfile(std::move(path)), '\n');
+                    std::vector<std::string> line = split(fileManager->readfile(std::move(path + ".obj")), '\n');
                     for (int x = 0; x <= line.size() - 1; x++)
                     {
                         std::string data = line[x];

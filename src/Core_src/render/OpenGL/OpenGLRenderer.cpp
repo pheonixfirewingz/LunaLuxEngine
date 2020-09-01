@@ -28,7 +28,6 @@ LunaLuxEngine::OGLRenderer::OGLRenderer()
     printf("Engine and Game Log: RENDERER API VERSION: opengl %s\n", glGetString(GL_VERSION));
     glGenVertexArrays(1, &VertexArrayID);
     glBindVertexArray(VertexArrayID);
-    CWin.getNativeWindow()->fireResizeCallback();
 }
 
 LunaLuxEngine::OGLRenderer::~OGLRenderer()

@@ -63,7 +63,17 @@ add_library(LunaLuxEngineCore
         src/Core_src/render/OpenGL/OpenGLShaderLayout.h
         src/Core_src/render/Common/ITexture.h
         src/Core_src/render/Texture.cpp
+<<<<<<< refs/remotes/origin/Dev_Branch
         src/Core_src/render/Texture.h src/Core_src/fs/linux/LinuxFileManager.cpp src/Core_src/fs/linux/LinuxFileManager.h)
+=======
+        src/Core_src/render/Texture.h
+        src/Core_src/render/DirectX/V11/DirectX11Renderer.cpp
+        src/Core_src/render/DirectX/V11/DirectX11Renderer.h
+        src/Core_src/common/entity/IEntity.h
+        src/Core_src/common/entity/Camera.cpp
+        src/Core_src/common/entity/Camera.h
+        src/Core_src/common/entity/WorldEntity.h)
+>>>>>>> clean up
 
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 
@@ -73,6 +83,6 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(LunaLuxEngineCore CrossWindow ${X11_LIBRARIES} ${OPENGL_LIBRARIES} ${DL_LIBRARY})
 endif ()
 
-add_executable(TestGame src/Game_src/Game.cpp src/Game_src/main.cpp)
+add_executable(TestGame src/Game_src/Game.cpp)
 
 target_link_libraries(TestGame LunaLuxEngineCore)
