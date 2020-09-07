@@ -3,17 +3,22 @@
 //
 
 #include "FileManager.h"
+#ifdef LLE_WINDOWS
 #include "Windows/WindowsFileManager.h"
+#elif defined(LLE_LINUX)
+#include "linux/LinuxFileManager.h"
+#endif
 #include "common/ShaderParce.h"
 #include <string>
 #include <sstream>
-#include <iterator>
 #include <utility>
 
 LunaLuxEngine::FileManager::FileManager()
 {
 #ifdef LLE_WINDOWS
     fileManager = new WindowsFileManager();
+#elif defined(LLE_LINUX)
+    fileManager = new LinuxFileManager();
 #endif
     //"TODO: finish writing files in file manager"
 }
@@ -148,7 +153,7 @@ std::vector<std::string> LunaLuxEngine::FileManager::split(const std::string &s,
 
 std::string LunaLuxEngine::FileManager::readShaderFile(std::string path,bool vertex)
 {
-    LunaLuxEngine::LLEShaderLanguage* language = new LunaLuxEngine::LLEShaderLanguage();
+    auto* language = new LunaLuxEngine::LLEShaderLanguage();
     return language->parceFileToShader(path,true,vertex);
 }
 
@@ -245,6 +250,7 @@ bool LunaLuxEngine::FileManager::validTextCharatersForEngine(char letter)
         case ',':
         case '.':
             return true;
+        default:
+            return false;
     }
-    return false;
 }

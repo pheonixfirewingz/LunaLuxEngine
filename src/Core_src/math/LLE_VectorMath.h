@@ -8,6 +8,7 @@
 
 namespace LunaLuxEngine
 {
+#ifdef LLE_WINDOWS
     [[maybe_unused]] vec2d v_add(vec2d,vec2d);
 
     [[maybe_unused]] vec3d v_add(vec3d,vec3d);
@@ -32,7 +33,7 @@ namespace LunaLuxEngine
 
     [[maybe_unused]] vec4d v_mul(vec4d,vec4d);
 
-    [[maybe_unused]] vec2f v_add(vec2f,vec2f);
+    /*[[maybe_unused]] vec2f v_add(vec2f,vec2f);
 
     [[maybe_unused]] vec3f v_add(vec3f,vec3f);
 
@@ -54,6 +55,7 @@ namespace LunaLuxEngine
 
     [[maybe_unused]] vec3f v_mul(vec3f,vec3f);
 
-    [[maybe_unused]] vec4f v_mul(vec4f,vec4f);
+    [[maybe_unused]] vec4f v_mul(vec4f,vec4f);*/
+#endif
 }
 #endif //LUNALUXENGINE_LLE_VECTORMATH_H

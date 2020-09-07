@@ -27,10 +27,10 @@ namespace LunaLuxEngine
         std::string getAbsolutePath(std::string string) override;
 
 #else
-        WindowsFileManager() {};
-        ~WindowsFileManager() {};
+        WindowsFileManager() = default;
+        ~WindowsFileManager() = default;
         std::string readfile(std::string string) override {return std::string("ERROR: OS IS NOT WINDOWS");};
-        void writefile(std::string string) override { return std::string("ERROR: OS IS NOT WINDOWS");};
+        void writefile(std::string,std::string,bool) override {};
         std::string getAbsolutePath(std::string string) override {return std::string("ERROR: OS IS NOT WINDOWS");};
 #endif
     };

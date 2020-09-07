@@ -48,17 +48,17 @@ double LunaLuxEngine::vector4d::getW()
     return vec[3];
 }
 
-double *LunaLuxEngine::vector2d::getData()
+[[maybe_unused]] double *LunaLuxEngine::vector2d::getData()
 {
     return vec;
 }
 
-double *LunaLuxEngine::vector3d::getData()
+[[maybe_unused]] double *LunaLuxEngine::vector3d::getData()
 {
     return vec;
 }
 
-double *LunaLuxEngine::vector4d::getData()
+[[maybe_unused]] double *LunaLuxEngine::vector4d::getData()
 {
     return vec;
 }
@@ -68,7 +68,7 @@ float LunaLuxEngine::vector2f::getX()
     return vec[0];
 }
 
-float LunaLuxEngine::vector2f::getY()
+[[maybe_unused]] float LunaLuxEngine::vector2f::getY()
 {
     return vec[1];
 }
@@ -78,12 +78,12 @@ float LunaLuxEngine::vector3f::getX()
     return vec[0];
 }
 
-float LunaLuxEngine::vector3f::getY()
+[[maybe_unused]] float LunaLuxEngine::vector3f::getY()
 {
     return vec[1];
 }
 
-float LunaLuxEngine::vector3f::getZ()
+[[maybe_unused]] float LunaLuxEngine::vector3f::getZ()
 {
     return vec[2];
 }
@@ -93,12 +93,12 @@ float LunaLuxEngine::vector4f::getX()
     return vec[0];
 }
 
-float LunaLuxEngine::vector4f::getY()
+[[maybe_unused]] float LunaLuxEngine::vector4f::getY()
 {
     return vec[1];
 }
 
-float LunaLuxEngine::vector4f::getZ()
+[[maybe_unused]] float LunaLuxEngine::vector4f::getZ()
 {
     return vec[2];
 }
@@ -108,17 +108,17 @@ float LunaLuxEngine::vector4f::getW()
     return vec[3];
 }
 
-float *LunaLuxEngine::vector2f::getData()
+[[maybe_unused]] float *LunaLuxEngine::vector2f::getData()
 {
     return vec;
 }
 
-float *LunaLuxEngine::vector3f::getData()
+[[maybe_unused]] float *LunaLuxEngine::vector3f::getData()
 {
     return vec;
 }
 
-float *LunaLuxEngine::vector4f::getData()
+[[maybe_unused]] float *LunaLuxEngine::vector4f::getData()
 {
     return vec;
 }

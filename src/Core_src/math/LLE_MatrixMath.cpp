@@ -3,6 +3,7 @@
 //
 
 #include "LLE_MatrixMath.h"
+#ifdef LLE_WINDOWS
 #include <intrin.h>
 
 [[maybe_unused]] LunaLuxEngine::mat4d LunaLuxEngine::m_add(LunaLuxEngine::mat4d in_0, LunaLuxEngine::mat4d in_1)
@@ -196,3 +197,4 @@
     return LunaLuxEngine::mat4d(temp[0],temp[1],temp[2],temp[3],temp[4],temp[5],temp[6],temp[7],
                                 temp[8],temp[9],temp[10],temp[11],temp[12],temp[13],temp[14],temp[15]);
 }
+#endif
