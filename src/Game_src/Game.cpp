@@ -31,10 +31,7 @@ void PublicGame::GameBoot()
     camera->setFieldForView();
     std::vector<SHADERLAYOUTTYPE> types;
     types.push_back(SHADERLAYOUTTYPE::FLOAT3);
-    //types.push_back(SHADERLAYOUTTYPE::FLOAT2);
-
-    obj_data objData = FileManager::get()->loadObj("resources/cube");
-
+    types.push_back(SHADERLAYOUTTYPE::FLOAT2);
 
     buffer = new Buffer(vertices, sizeof(vertices),indices, sizeof(indices));
 

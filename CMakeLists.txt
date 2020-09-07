@@ -63,9 +63,9 @@ add_library(LunaLuxEngineCore
         src/Core_src/render/OpenGL/OpenGLShaderLayout.h
         src/Core_src/render/Common/ITexture.h
         src/Core_src/render/Texture.cpp
-<<<<<<< refs/remotes/origin/Dev_Branch
-        src/Core_src/render/Texture.h src/Core_src/fs/linux/LinuxFileManager.cpp src/Core_src/fs/linux/LinuxFileManager.h)
-=======
+        src/Core_src/render/Texture.h
+        src/Core_src/fs/linux/LinuxFileManager.cpp
+        src/Core_src/fs/linux/LinuxFileManager.h
         src/Core_src/render/Texture.h
         src/Core_src/render/DirectX/V11/DirectX11Renderer.cpp
         src/Core_src/render/DirectX/V11/DirectX11Renderer.h
@@ -73,7 +73,6 @@ add_library(LunaLuxEngineCore
         src/Core_src/common/entity/Camera.cpp
         src/Core_src/common/entity/Camera.h
         src/Core_src/common/entity/WorldEntity.h)
->>>>>>> clean up
 
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 

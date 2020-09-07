@@ -2,10 +2,10 @@
 #define LUNALUXENGINE_CROSSWINDOW_H
 #include <LLESDK/types.h>
 #include <cstdlib>
-#include "IWindow.h"
-#include "Win32Window.h"
-#include "X11Window.h"
-#include "WindowPanic.h"
+#include "window/IWindow.h"
+#include "window/Win32Window.h"
+#include "window/X11Window.h"
+#include "window/WindowPanic.h"
 
 #define CWin LunaLuxEngine::window_api::CrossWindow::get()
 /* MAIN WINDOW CLASS

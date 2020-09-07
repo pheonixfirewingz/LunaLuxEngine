@@ -25,6 +25,7 @@ namespace LunaLuxEngine
         info->height = m_game_main->getWindowHeight();
         info->width = m_game_main->getWindowWidth();
         info->HaveWindowCreateOpenGLContext = opengl;
+        info->debug = true;
         CWin.initWindow(*info);
         Renderer::get();
         m_game_main->GameBoot();

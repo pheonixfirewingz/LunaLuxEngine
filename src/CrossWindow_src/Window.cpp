@@ -1,7 +1,15 @@
 #include "Window.h"
+#include "Thread.h"
 
 void LunaLuxEngine::window_api::CrossWindow::initWindow(WindowInfo& windowInfo)
 {
+    {
+        if(windowInfo.debug)
+        {
+            Thread *thread = new Thread();
+            thread->outputThreadInfo();
+        }
+    }
     if (windowInfo.windowType == WindowType::Win32Window) window = new Win32Window();
     else if (windowInfo.windowType == WindowType::X11Window) window = new X11Window();
     else WindowPanic::get()->panic("could not set window type");
