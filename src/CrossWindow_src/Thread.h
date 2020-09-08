@@ -5,9 +5,11 @@
 #ifndef LUNALUXENGINE_THREAD_H
 #define LUNALUXENGINE_THREAD_H
 
-
+#include <LLESDK/types.h>
 #include "threads/common/IThread.h"
+#ifdef LLE_WINDOWS
 #include "threads/windows/Win32Thread.h"
+#endif
 
 class Thread
 {
@@ -16,7 +18,9 @@ private:
 public:
     Thread()
     {
+#ifdef LLE_WINDOWS
         thread = new Win32Thread();
+#endif
     }
 
     ~Thread()
@@ -25,9 +29,11 @@ public:
     }
 
     void outputThreadInfo();
-    void create(void*);
+    void create(void*,void*);
     void start();
-    void* join();
+    void pause();
+    void sleep(int);
+    void join();
 };
 
 

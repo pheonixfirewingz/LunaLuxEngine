@@ -8,9 +8,9 @@ void Thread::outputThreadInfo()
     thread->outputThreadInfo();
 }
 
-void Thread::create(void * ptr)
+void Thread::create(void * ptr,void * pram)
 {
-    thread->create(ptr);
+    thread->create(ptr,pram);
 }
 
 void Thread::start()
@@ -18,7 +18,17 @@ void Thread::start()
     thread->start();
 }
 
-void *Thread::join()
+void Thread::join()
 {
-    return thread->join();
+    thread->join();
+}
+
+void Thread::pause()
+{
+    thread->pause();
+}
+
+void Thread::sleep(int one)
+{
+    thread->sleep(one);
 }

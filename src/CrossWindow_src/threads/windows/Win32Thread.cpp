@@ -4,65 +4,55 @@
 
 #include "Win32Thread.h"
 #ifdef LLE_WINDOWS
-#include <windows.h>
-void Win32Thread::create(void *pVoid)
+void Win32Thread::create(void *pVoid,void* pParameter)
 {
-
+    thread = CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(pVoid), pParameter, 0, nullptr);
 }
 
 void Win32Thread::start()
 {
-
+    ResumeThread(thread);
 }
 
-void *Win32Thread::join()
+void Win32Thread::pause()
 {
-    return nullptr;
+    SuspendThread(thread);
+}
+
+void Win32Thread::join()
+{
+    WaitForSingleObject(thread, INFINITE);
 }
 
 typedef BOOL (WINAPI *LPFN_GLPI)(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION,PDWORD);
 
 DWORD CountSetBits(ULONG_PTR bitMask)
 {
-    DWORD LSHIFT = sizeof(ULONG_PTR)*8 - 1;
-    DWORD bitSetCount = 0;
+    DWORD LSHIFT = sizeof(ULONG_PTR)*8 - 1, bitSetCount = 0;
     ULONG_PTR bitTest = (ULONG_PTR)1 << LSHIFT;
-    DWORD i;
-
-    for (i = 0; i <= LSHIFT; ++i)
+    for (int i = 0; i <= LSHIFT; ++i)
     {
         bitSetCount += ((bitMask & bitTest)?1:0);
         bitTest/=2;
     }
-
     return bitSetCount;
 }
 
 void Win32Thread::outputThreadInfo()
 {
-    LPFN_GLPI glpi;
-    BOOL done = FALSE;
-    PSYSTEM_LOGICAL_PROCESSOR_INFORMATION buffer {};
-    PSYSTEM_LOGICAL_PROCESSOR_INFORMATION ptr;
-    DWORD returnLength = 0;
-    DWORD logicalProcessorCount = 0;
-    DWORD numaNodeCount = 0;
-    DWORD processorCoreCount = 0;
-    DWORD processorL1CacheCount = 0;
-    DWORD processorL2CacheCount = 0;
-    DWORD processorL3CacheCount = 0;
-    DWORD processorPackageCount = 0;
-    DWORD byteOffset = 0;
+    auto glpi = (LPFN_GLPI) GetProcAddress(GetModuleHandle("kernel32"),"GetLogicalProcessorInformation");
+    BOOL done = false;
     PCACHE_DESCRIPTOR Cache;
+    PSYSTEM_LOGICAL_PROCESSOR_INFORMATION buffer {}, ptr;
+    DWORD returnLength = 0,logicalProcessorCount = 0,numaNodeCount = 0,processorCoreCount = 0,processorL1CacheCount = 0,
+          processorL2CacheCount = 0,processorL3CacheCount = 0,processorPackageCount = 0,byteOffset = 0;
 
-    glpi = (LPFN_GLPI) GetProcAddress(GetModuleHandle("kernel32"),"GetLogicalProcessorInformation");
     if (nullptr == glpi) printf("\nGetLogicalProcessorInformation is not supported.\n");
 
     while (!done)
     {
         DWORD rc = glpi(buffer, &returnLength);
         if (false == rc)
-        {
             if (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
             {
                 if (buffer) free(buffer);
@@ -70,7 +60,6 @@ void Win32Thread::outputThreadInfo()
                 if (nullptr == buffer) printf("\nError: Allocation failure\n");
             }
             else printf("\nError %lu\n", GetLastError());
-        }
         else done = true;
     }
 
@@ -94,7 +83,6 @@ void Win32Thread::outputThreadInfo()
                 else if (Cache->Level == 3) processorL3CacheCount++;
                 break;
             case RelationProcessorPackage:
-                // Logical processors share a physical package.
                 processorPackageCount++;
                 break;
             default:
@@ -112,5 +100,16 @@ void Win32Thread::outputThreadInfo()
     printf("Number of logical processors: %lu\n",logicalProcessorCount);
     printf("Number of processor:\n L1 Count: %lu\n L2 Count: %lu\n L3 Count: %lu\n",processorL1CacheCount,processorL2CacheCount,processorL3CacheCount);
     free(buffer);
+}
+
+void Win32Thread::sleep(int i)
+{
+    Sleep(i);
+}
+
+Win32Thread::~Win32Thread()
+{
+    TerminateThread(thread,0);
+    CloseHandle(thread);
 }
 #endif

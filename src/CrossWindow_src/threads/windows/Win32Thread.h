@@ -5,31 +5,28 @@
 #ifndef LUNALUXENGINE_WIN32THREAD_H
 #define LUNALUXENGINE_WIN32THREAD_H
 #include "../common/IThread.h"
+#ifdef LLE_WINDOWS
+#include <windows.h>
+#include <synchapi.h>
 
 class Win32Thread : public IThread
 {
-#ifdef LLE_WINDOWS
 private:
-
+    HANDLE thread;
 public:
     void outputThreadInfo() override;
 
-    void create(void *pVoid) override;
+    void create(void*,void*) override;
 
     void start() override;
 
-    void *join() override;
-#else
-public:
-    void outputThreadInfo() override { LOG("thread api that your trying to use is not supported on this OS")};
+    void pause() override;
 
-    void create(void *pVoid) override {};
+    void sleep(int) override;
 
-    void start() override {};
+    void join() override;
 
-    void *join() override { return nullptr; };
-#endif
+    ~Win32Thread();
 };
-
-
+#endif
 #endif //LUNALUXENGINE_WIN32THREAD_H
