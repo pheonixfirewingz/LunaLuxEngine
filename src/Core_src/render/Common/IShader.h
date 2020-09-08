@@ -2,7 +2,6 @@
 #define LUNALUXENGINE_ISHADER_H
 
 #include <LLESDK/types.h>
-#include <string>
 
 namespace LunaLuxEngine
 {

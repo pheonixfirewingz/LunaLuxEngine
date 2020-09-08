@@ -3,20 +3,23 @@
 
 #include <LLESDK/types.h>
 #include <LLESDK/IGame.h>
-#include <chrono>
 
 namespace LunaLuxEngine
 {
+    enum class RENDERER_API
+    {
+        OPENGL,
+        DIRECTX11
+    };
+
     class lunaLuxEngine
     {
     private:
-        std::chrono::duration<double, std::milli> m_frameTime;
         Game *m_game_main = nullptr;
 
         void initEngine(bool &);
 
         int8 updateEngine(bool &);
-
     public:
         static lunaLuxEngine *get()
         {

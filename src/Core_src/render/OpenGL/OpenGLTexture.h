@@ -6,29 +6,29 @@
 #define LUNALUXENGINE_OPENGLTEXTURE_H
 
 #include <string>
+#include "../Common/ITexture.h"
 #include "glad.h"
 
-class OpenGLTexture
+namespace LunaLuxEngine
 {
-public:
+    class OpenGLTexture : public ITexture
+    {
+    private:
+        unsigned int m_id;
 
-    unsigned int m_id, m_height, m_width;
+        unsigned int load(std::string path);
 
-    OpenGLTexture(std::string path);
+    public:
+        OpenGLTexture()
+        {
+            glEnable(GL_TEXTURE_2D);
+        }
 
-    unsigned int getWidth();
+        void create(std::string path, int id) override;
 
-    unsigned int getHeight();
+        void bind() override;
 
-    unsigned int getId();
-
-    void bind();
-
-    void unbind();
-
-private:
-    unsigned int load(std::string path);
-};
-
-
+        void unbind() override;
+    };
+}
 #endif //LUNALUXENGINE_OPENGLTEXTURE_H

@@ -2,7 +2,6 @@
 #define LUNALUXENGINE_SHADER_H
 
 #include "Common/IShader.h"
-#include "OpenGL/OpenGLShader.h"
 #include "../LunaLuxEngineCore.h"
 
 namespace LunaLuxEngine
@@ -13,12 +12,22 @@ namespace LunaLuxEngine
     private:
         IShader *Vshader;
         IShader *Fshader;
+        void setup();
     public:
-        Shader();
+        Shader()
+        {
+            setup();
+        }
+
+        Shader(char *filedata, char *filedata1)
+        {
+            setup();
+            compile(filedata,filedata1);
+        }
 
         ~Shader();
 
-        void compile(char *filedata, char *filedata1);
+        void compile(char*,char*);
 
         void use();
 

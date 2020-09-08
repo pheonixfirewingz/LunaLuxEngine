@@ -12,7 +12,7 @@ class IFileManager
 public:
     virtual std::string readfile(std::string) = 0;
 
-    virtual void writefile(std::string) = 0;
+    virtual void writefile(std::string,std::string,bool) = 0;
 
     virtual std::string getAbsolutePath(std::string) = 0;
 };

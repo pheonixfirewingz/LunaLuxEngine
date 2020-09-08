@@ -5,35 +5,20 @@
 
 using namespace LunaLuxEngine::window_api;
 #include "Game.h"
+#include "../Core_src/render/OpenGL/OpenGLUtils.h"
+#include "../Core_src/fs/FileManager.h"
+#include <GLM/gtc/matrix_transform.hpp>
 
-/*
-static float vertex[] =
-{
-   -0.5f, -0.5f, 0.5f,
-   -0.5f, 0.5f, 0.5f,
-	0.5f, 0.5f, 0.5f,
-	0.5f, -0.5f, 0.5f,
-};
+using namespace LunaLuxEngine;
 
-static float vertex2[] =
-{
-	-1.0f, -1.0f, 1.0f,
-	-1.0f, 1.0f, 1.0f,
-	 1.0f, 1.0f, 1.0f,
-	1.0f, -1.0f, 1.0f,
-};
+glm::mat4 model = glm::mat4(1.0f), view = glm::mat4(1.0f);
 
-int indices[] =
-{
-	0, 1, 2,
-	0, 2, 3,
-};
-
-int indices2[] =
-{
-	0, 1, 2,
-	0, 2, 3,
-};*/
+float vertices[] = {0.5f,0.5f,0.0f,1.0f,1.0f,0.5f,-0.5f,0.0f,1.0f,0.0f,-0.5f,-0.5f,0.0f,0.0f,0.0f,-0.5f,0.5f,0.0f,0.0f,1.0f};
+unsigned int indices[] = {0,1,2,0,2,3};
+Shader* shader;
+Buffer* buffer;
+Texture* texture;
+Camera* camera = new Camera();
 
 void PublicGame::preBoot()
 {
@@ -43,16 +28,38 @@ void PublicGame::preBoot()
 
 void PublicGame::GameBoot()
 {
+    camera->setFieldForView();
+    std::vector<SHADERLAYOUTTYPE> types;
+    types.push_back(SHADERLAYOUTTYPE::FLOAT3);
+    types.push_back(SHADERLAYOUTTYPE::FLOAT2);
 
+    buffer = new Buffer(vertices, sizeof(vertices),indices, sizeof(indices));
+
+    shader = new Shader(FileManager::get()->readShaderFile("resources/shader",true).data(),
+                               FileManager::get()->readShaderFile("resources/shader",false).data());
+
+    texture = new Texture(FileManager::get()->getAbsolutePath("resources/Disco-Dingo.jpg"),0);
+    OpenGLUtils::setInt(shader->getOGLSID(),"texture1",0);
+
+    Renderer::get().submit(buffer,shader,types,texture);
+
+    model = glm::translate(model,glm::vec3(0.0f,0.0f,-2.0f));
 }
+
 void PublicGame::GameUpdate()
 {
-    //temp for debug----
-    if (CWin.getNativeWindow()->getInputController()->isKeyDown(LLE_KEY_1)) CWin.setShouldClose(true);
-    //-----------------------
+    Renderer::get().beginLevel(*camera);
+    OpenGLUtils::setMat4(shader->getOGLSID(), "model", model);
+    OpenGLUtils::setMat4(shader->getOGLSID(), "view", view);
+    Renderer::get().endLevel();
 }
 
 void PublicGame::GameLevel()
 {
 
+}
+
+int main()
+{
+    lunaLuxEngine::get()->runEngine(new PublicGame(),true);
 }

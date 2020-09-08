@@ -35,16 +35,45 @@ add_library(LunaLuxEngineCore
         src/Core_src/render/OpenGL/OpenGLTexture.cpp
         src/Core_src/common/EnginePanic.h
         src/Core_src/common/EnginePanic.cpp
-        src/Core_src/render/Common/IShaderLayout.h
         src/Core_src/render/Common/stb_image.cpp
         src/Core_src/render/OpenGL/OpenGLUtils.cpp
         src/Core_src/render/OpenGL/OpenGLUtils.h
         src/Core_src/fs/FileManager.cpp
         src/Core_src/fs/FileManager.h
         src/Core_src/fs/common/IFileManager.h
+        src/Core_src/fs/common/SeconderyTokenizer.cpp
+        src/Core_src/fs/common/PrimaryTokenizer.cpp
+        src/Core_src/fs/common/ShaderParce.cpp
+        src/Core_src/fs/common/GLSLConverter.cpp
+        src/Core_src/fs/common/ShaderParce.h
         src/Core_src/fs/Windows/WindowsFileManager.cpp
         src/Core_src/fs/Windows/WindowsFileManager.h
-        src/Core_src/render/Splash.cpp)
+        src/Core_src/math/LLE_Vector.h
+        src/Core_src/math/LLE_Vector.cpp
+        src/Core_src/math/LLE_VectorMath.cpp
+        src/Core_src/math/LLE_VectorMath.h
+        src/Core_src/math/LLE_Matrix.cpp
+        src/Core_src/math/LLE_Matrix.h
+        src/Core_src/math/LLE_MatrixMath.cpp
+        src/Core_src/math/LLE_MatrixMath.h
+        src/Core_src/render/Common/IShaderLayout.h
+        src/Core_src/render/ShaderLayout.cpp
+        src/Core_src/render/ShaderLayout.h
+        src/Core_src/render/OpenGL/OpenGLShaderLayout.cpp
+        src/Core_src/render/OpenGL/OpenGLShaderLayout.h
+        src/Core_src/render/Common/ITexture.h
+        src/Core_src/render/Texture.cpp
+        src/Core_src/render/Texture.h
+        src/Core_src/fs/linux/LinuxFileManager.cpp
+        src/Core_src/fs/linux/LinuxFileManager.h
+        src/Core_src/render/Texture.h
+        src/Core_src/render/DirectX/V11/DirectX11Renderer.cpp
+        src/Core_src/render/DirectX/V11/DirectX11Renderer.h
+        src/Core_src/common/entity/IEntity.h
+        src/Core_src/common/entity/Camera.cpp
+        src/Core_src/common/entity/Camera.h
+        src/Core_src/common/entity/WorldEntity.h)
+
 link_directories(${PROJECT_SOURCE_DIR}/Libs)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
@@ -53,6 +82,6 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(LunaLuxEngineCore CrossWindow ${X11_LIBRARIES} ${OPENGL_LIBRARIES} ${DL_LIBRARY})
 endif ()
 
-add_executable(TestGame src/Game_src/Game.cpp src/Game_src/main.cpp)
+add_executable(TestGame src/Game_src/Game.cpp)
 
 target_link_libraries(TestGame LunaLuxEngineCore)

@@ -5,7 +5,6 @@
 #ifndef LUNALUXENGINE_OPENGL_H
 #define LUNALUXENGINE_OPENGL_H
 
-#include <LLESDK/types.h>
 #include "../Renderer.h"
 #include "../Buffer.h"
 #include "../Shader.h"

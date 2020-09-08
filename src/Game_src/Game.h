@@ -3,8 +3,8 @@
 //
 #ifndef LUNALUXENGINE_GAME_H
 #define LUNALUXENGINE_GAME_H
-#include <LLESDK/IGame.h>
 #include <LLESDK/Engine.h>
+#include <LLESDK/IGame.h>
 
 class PublicGame : public Game
 {

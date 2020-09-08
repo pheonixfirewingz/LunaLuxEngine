@@ -1,5 +1,7 @@
 #include "Shader.h"
 #include "OpenGL/glad.h"
+#include "OpenGL/OpenGLShader.h"
+
 
 void LunaLuxEngine::Shader::compile(char *filedata, char *filedata1)
 {
@@ -27,15 +29,15 @@ void LunaLuxEngine::Shader::use()
     Vshader->use(openGLshaderprogramid);
 }
 
-LunaLuxEngine::Shader::Shader()
-{
-    Vshader = new OpenGLShader();
-    Fshader = new OpenGLShader();
-    openGLshaderprogramid = glCreateProgram();
-}
-
 LunaLuxEngine::Shader::~Shader()
 {
     glDeleteProgram(openGLshaderprogramid);
     openGLshaderprogramid = 0;
+}
+
+void LunaLuxEngine::Shader::setup()
+{
+    Vshader = new OpenGLShader();
+    Fshader = new OpenGLShader();
+    openGLshaderprogramid = glCreateProgram();
 }

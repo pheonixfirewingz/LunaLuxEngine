@@ -2,10 +2,10 @@
 #define LUNALUXENGINE_CROSSWINDOW_H
 #include <LLESDK/types.h>
 #include <cstdlib>
-#include "IWindow.h"
-#include "Win32Window.h"
-#include "X11Window.h"
-#include "WindowPanic.h"
+#include "window/IWindow.h"
+#include "window/Win32Window.h"
+#include "window/X11Window.h"
+#include "window/WindowPanic.h"
 
 #define CWin LunaLuxEngine::window_api::CrossWindow::get()
 /* MAIN WINDOW CLASS
@@ -16,7 +16,6 @@
  */
 namespace LunaLuxEngine::window_api
 {
-
 	class CrossWindow
 	{
 	private:
@@ -38,6 +37,8 @@ namespace LunaLuxEngine::window_api
 		void initWindow(WindowInfo& windowInfo);
 		//this calls the window title change
 		void updateTitle(int8* title_) { window->updateTitle(title_); };
+		//gets the aspect ratio
+		float getAspectRatio();
 		//this calls the extended classes update virtual function
 		void updateWindow() { window->updateWindow(OpenGLMode); };
 		//this is used to destroy the platforms window

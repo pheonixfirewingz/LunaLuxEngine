@@ -16,3 +16,5 @@
 /TestGame.dir
 /CodeForLater
 *.user
+
+src/Core_src/render/Splash.cpp

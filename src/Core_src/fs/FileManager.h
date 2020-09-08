@@ -10,38 +10,44 @@
 #include <GLM/glm.hpp>
 #include "common/IFileManager.h"
 
-
-struct obj_data
+namespace LunaLuxEngine
 {
-    std::vector<glm::vec3> vertices;
-    std::vector<glm::vec3> normals;
-     std::vector<glm::vec2> texcoords;
-    std::vector<int> v_indices;
-};
 
-class FileManager
-{
-private:
-
-
-    IFileManager *fileManager;
-public:
-    FileManager();
-
-    static std::vector<std::string> split(const std::string &, char);
-
-    std::string readFile(std::string);
-
-    std::string getAbsolutePath(std::string);
-
-    obj_data loadObj(std::string);
-
-    static FileManager *get()
+    struct obj_data
     {
-        FileManager *manager = new FileManager();
-        return manager;
-    }
-};
+        std::vector<glm::vec3> vertices;
+        std::vector<glm::vec3> normals;
+        std::vector<glm::vec2> texcoords;
+        std::vector<int> v_indices;
+    };
 
+    class FileManager
+    {
+    private:
+        IFileManager *fileManager;
+    public:
+        FileManager();
 
+        static std::vector<std::string> split(const std::string &, char);
+
+        std::string readFile(std::string);
+
+        void        writeFile(std::string,std::string,bool);
+
+        std::string readShaderFile(std::string, bool);
+
+        std::string getAbsolutePath(std::string);
+
+        obj_data loadObj(std::string);
+
+        static bool validTextCharatersForEngine(char letter);
+
+        static FileManager *get()
+        {
+            FileManager *manager = new FileManager();
+            return manager;
+        }
+    };
+
+}
 #endif //LUNALUXENGINE_FILEMANAGER_H
