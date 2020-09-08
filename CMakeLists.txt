@@ -2,13 +2,15 @@ cmake_minimum_required(VERSION 3.15)
 project(LunaLuxEngine C CXX)
 set(CMAKE_CXX_STANDARD 20)
 #includes for the projects
+link_directories(${PROJECT_SOURCE_DIR}/../Crosswindow/cmake-build-debug/)
 include_directories(${PROJECT_SOURCE_DIR}/Includes STATIC)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(X11 REQUIRED)
+    link_directories(${X11_LIBRARIES})
     find_library( DL_LIBRARY libdl.so)
 endif ()
 find_package(OpenGL REQUIRED)
-include(${CMAKE_CURRENT_SOURCE_DIR}/src/CrossWindow_src/BuildCrosswindowLib.cmake)
+
 #main engine
 add_library(LunaLuxEngineCore
         src/Core_src/render/Common/stb_image.h
@@ -38,16 +40,6 @@ add_library(LunaLuxEngineCore
         src/Core_src/render/Common/stb_image.cpp
         src/Core_src/render/OpenGL/OpenGLUtils.cpp
         src/Core_src/render/OpenGL/OpenGLUtils.h
-        src/Core_src/fs/FileManager.cpp
-        src/Core_src/fs/FileManager.h
-        src/Core_src/fs/common/IFileManager.h
-        src/Core_src/fs/common/SeconderyTokenizer.cpp
-        src/Core_src/fs/common/PrimaryTokenizer.cpp
-        src/Core_src/fs/common/ShaderParce.cpp
-        src/Core_src/fs/common/GLSLConverter.cpp
-        src/Core_src/fs/common/ShaderParce.h
-        src/Core_src/fs/Windows/WindowsFileManager.cpp
-        src/Core_src/fs/Windows/WindowsFileManager.h
         src/Core_src/math/LLE_Vector.h
         src/Core_src/math/LLE_Vector.cpp
         src/Core_src/math/LLE_VectorMath.cpp
@@ -64,8 +56,6 @@ add_library(LunaLuxEngineCore
         src/Core_src/render/Common/ITexture.h
         src/Core_src/render/Texture.cpp
         src/Core_src/render/Texture.h
-        src/Core_src/fs/linux/LinuxFileManager.cpp
-        src/Core_src/fs/linux/LinuxFileManager.h
         src/Core_src/render/Texture.h
         src/Core_src/render/DirectX/V11/DirectX11Renderer.cpp
         src/Core_src/render/DirectX/V11/DirectX11Renderer.h

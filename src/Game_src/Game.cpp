@@ -6,7 +6,6 @@
 using namespace LunaLuxEngine::window_api;
 #include "Game.h"
 #include "../Core_src/render/OpenGL/OpenGLUtils.h"
-#include "../Core_src/fs/FileManager.h"
 #include <GLM/gtc/matrix_transform.hpp>
 
 using namespace LunaLuxEngine;
