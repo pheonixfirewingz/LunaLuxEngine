@@ -1,5 +1,5 @@
 ﻿#include "EnginePanic.h"
-#include "../../CrossWindow_src/Window.h"
+#include <CrossWindow/WindowAPI.h>
 
 void LunaLuxEngine::EnginePanic::panic(std::string msg)
 {
