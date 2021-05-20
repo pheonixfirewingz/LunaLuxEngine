@@ -55,23 +55,22 @@ short tabulation_index; // Goofy.
 ###### Right:
 
 ```cpp
-class String {
+class String 
+{
+    int m_length { 0 };
 public:
     ...
-
-private:
-    int m_length { 0 };
 };
 ```
 
 ###### Wrong:
 
 ```cpp
-class String {
+class String 
+{
 public:
-    ...
-
     int length { 0 };
+    ...
 };
 ```
 
@@ -81,14 +80,14 @@ public:
 
 ```cpp
 void set_count(int); // Sets m_count.
-int count() const; // Returns m_count.
+int  count() const; // Returns m_count.
 ```
 
 ###### Wrong:
 
 ```cpp
 void set_count(int); // Sets m_the_count.
-int get_count() const; // Returns m_the_count.
+int  get_count() const; // Returns m_the_count.
 ```
 
 [](#names-out-argument) Precede getters that return values through out arguments with the word "get".
@@ -200,7 +199,8 @@ set_resizable(NotResizable);
 ###### Right:
 
 ```cpp
-class MyClass {
+class MyClass 
+{
     ...
     Document* m_document { nullptr };
     int m_my_member { 0 };
@@ -279,7 +279,9 @@ void MyClass::do_something(OutArgumentType* out_argument) const
 {
     do_the_thing();
     if (out_argument)
+    {
         *out_argument = m_value;
+    }
 }
 ```
 
@@ -301,8 +303,8 @@ void MyClass::get_some_value(OutArgumentType* outArgument) const
 ```cpp
 // AK/Vector.h
 
-namespace AK {
-
+namespace AK 
+{
 } // namespace AK
 
 using AK::Vector;
@@ -313,8 +315,8 @@ using AK::Vector;
 ```cpp
 // AK/Vector.h
 
-namespace AK {
-
+namespace AK 
+{
 } // namespace AK
 
 using namespace AK;
@@ -325,8 +327,8 @@ using namespace AK;
 ```cpp
 // runtime/Object.h
 
-namespace AK {
-
+namespace AK 
+{
 } // namespace AK
 
 using AK::SomethingOrOther;
@@ -363,21 +365,19 @@ swap(a, b);
 
 ### Types
 
-[](#types-unsigned) Omit "int" when using "unsigned" modifier. Do not use "signed" modifier. Use "int" by itself instead.
-
+[](#types-unsigned) For `short`, `int` and `long int` signed and unsigned use the `<stdint.h>` definitions
 ###### Right:
 
 ```cpp
-unsigned a;
-int b;
+uint32_t a;
+int32_t b;
 ```
 
 ###### Wrong:
 
 ```cpp
-unsigned int a; // Doesn't omit "int".
-signed b; // Uses "signed" instead of "int".
-signed int c; // Doesn't omit "signed".
+unsigned int a;
+int b;
 ```
 
 ### Classes
@@ -390,12 +390,14 @@ signed int c; // Doesn't omit "signed".
 ###### Right:
 
 ```cpp
-struct Thingy {
+struct Thingy 
+{
     String name;
     int frob_count { 0 };
 };
 
-class Doohickey {
+class Doohickey 
+{
 public:
     const String& name() const { return m_name; }
     int frob_count() const { return m_frob_count; }
@@ -411,23 +413,23 @@ private:
 ###### Wrong:
 
 ```cpp
-struct Thingy {
+struct Thingy 
+{
+    int m_frob_count { 0 };
 public:
     String m_name;
     int frob_count() const { return m_frob_count; }
-
-private:
-    int m_frob_count { 0 };
 }
 
-class Doohickey {
+class Doohickey 
+{
 public:
+    String name;
+    int frob_count { 0 };
+    
     const String& name() const { return this->name; }
 
     void jam();
-
-    String name;
-    int frob_count { 0 };
 };
 ```
 
@@ -436,12 +438,14 @@ public:
 ###### Right:
 
 ```cpp
-class LargeInt {
+class LargeInt 
+{
 public:
     LargeInt(int);
 ...
 
-class Vector {
+class Vector 
+{
 public:
     explicit Vector(int size); // Not a type conversion.
     Vector create(Array); // Costly conversion.
@@ -452,7 +456,8 @@ public:
 ###### Wrong:
 
 ```cpp
-class Task {
+class Task 
+{
 public:
     Task(ExecutionContext&); // Not a type conversion.
     explicit Task(); // No arguments.
@@ -467,7 +472,8 @@ public:
 ###### Right:
 
 ```cpp
-class UniqueObject {
+class UniqueObject 
+{
 public:
     static UniqueObject& the();
 ...
@@ -476,7 +482,8 @@ public:
 ###### Wrong:
 
 ```cpp
-class UniqueObject {
+class UniqueObject 
+{
 public:
     static UniqueObject& shared();
 ...
@@ -485,7 +492,8 @@ public:
 ###### Wrong:
 
 ```cpp
-class UniqueObject {
+class UniqueObject
+{
 ...
 };
 
@@ -521,12 +529,14 @@ draw_jpg(); // TODO: Make this code handle jpg in addition to the png support.
 ###### Right:
 
 ```cpp
-class Person {
+class Person 
+{
 public:
     virtual String description() { ... };
 }
 
-class Student : public Person {
+class Student : public Person 
+{
 public:
     virtual String description() override { ... }; // This is correct because it only contains the "override" keyword to indicate that the method is overridden.
 }
@@ -534,12 +544,14 @@ public:
 ```
 
 ```cpp
-class Person {
+class Person 
+{
 public:
     virtual String description() { ... };
 }
 
-class Student : public Person {
+class Student : public Person 
+{
 public:
     virtual String description() final { ... }; // This is correct because it only contains the "final" keyword to indicate that the method is overridden and that no subclasses of "Student" can override "description".
 }
@@ -549,36 +561,42 @@ public:
 ###### Wrong:
 
 ```cpp
-class Person {
+class Person 
+{
 public:
     virtual String description() { ... };
 }
 
-class Student : public Person {
+class Student : public Person 
+{
 public:
     String description() override { ... }; // This is incorrect because it uses only the "override" keywords to indicate that the method is virtual. Instead, it should use both the "virtual" and "override" keywords.
 }
 ```
 
 ```cpp
-class Person {
+class Person 
+{
 public:
     virtual String description() { ... };
 }
 
-class Student : public Person {
+class Student : public Person 
+{
 public:
     String description() final { ... }; // This is incorrect because it uses only the "final" keywords to indicate that the method is virtual and final. Instead, it should use both the "virtual" and "final" keywords.
 }
 ```
 
 ```cpp
-class Person {
+class Person 
+{
 public:
     virtual String description() { ... };
 }
 
-class Student : public Person {
+class Student : public Person 
+{
 public:
     virtual String description() { ... }; // This is incorrect because it uses the "virtual" keyword to indicate that the method is overridden.
 }
