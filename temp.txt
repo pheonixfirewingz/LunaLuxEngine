@@ -1,0 +1,26 @@
+
+        /*
+         * ============================================================
+         *  this need to be updated to be multithreadable it is a singlethread solution
+         * ============================================================
+         */
+        void LimitFrameRate(const double fps)  noexcept
+        {
+            LARGE_INTEGER EndFrameTime;
+            if(fps <= 5)
+            {
+                printf("[LunaLuxWindow Error] you can not set the fps below 5 fps due to it will cause the window to be unresponsive");
+                std::exit(-1);
+            }
+
+            QueryPerformanceCounter(&EndFrameTime);
+            const double frame_limit = 1.0f / fps;
+            const double seconds_in_frame = static_cast<double>((EndFrameTime.QuadPart - StartFrameTime.QuadPart))/ static_cast<double>(Frequency.QuadPart);
+
+
+            if(seconds_in_frame < frame_limit)
+            {
+                Sleep((1000 * (frame_limit - seconds_in_frame)));
+            }
+            StartFrameTime = EndFrameTime;
+        }

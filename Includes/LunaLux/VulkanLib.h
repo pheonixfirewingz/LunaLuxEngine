@@ -1,46 +1,45 @@
 #pragma once
+//
+// Created by luket on 05/04/2021.
+//
+
+// GNU Lesser General Public License Version 2.1
+//
+// Copyright Luke Shore (c) 2020, 2021
+#if __has_include(<windows.h>)
 #ifndef LIB_APP
-#ifndef STATIC_LIB
-#define LLVL_EXPORT __declspec(dllexport)
+#    define LLVL_EXPORT __declspec(dllexport)
 #else
-#define LLVL_EXPORT
-#endif
-#else
-#ifndef STATIC_LIB
-#define LLVL_EXPORT __declspec(dllimport)
-#else
-#define LLVL_EXPORT
+#    define LLVL_EXPORT __declspec(dllimport)
 #endif
 #endif
 #include <tuple>
-#include <vulkan/vulkan_core.h>
 #include <vector>
-//
-// Created by luket on 28/04/2021.
-// Copyright luket (c) 2021 All rights reserved.
+#include <vulkan/vulkan_core.h>
+//TODO: write documentation
 namespace LunaLux
 {
-    //common functions
-    LLVL_EXPORT void vulkanInit(void* native_handle,const std::tuple<int,int>& size,bool debug);
-    LLVL_EXPORT void vulkanResizeSwapChain(const std::tuple<int,int>& size);
-    LLVL_EXPORT void vulkanRe_establishSurface(void* native_handle);
-    LLVL_EXPORT void vulkanCleanUp();
+// common functions
+LLVL_EXPORT void vulkanInit(void *native_handle, const std::tuple<int, int> &size);
+LLVL_EXPORT void vulkanResizeSwapChain(const std::tuple<int, int> &size);
+LLVL_EXPORT void vulkanRe_establishSurface(void *native_handle);
+LLVL_EXPORT void vulkanCleanUp() noexcept;
 
-    //functions to access the surface data
-    LLVL_EXPORT VkQueue vulkanGetGraphicsQueue();
-    LLVL_EXPORT VkQueue vulkanGetPresentQueue();
-    [[maybe_unused]] LLVL_EXPORT uint32_t vulkanGetPresentFamilyIndex();
-    LLVL_EXPORT VkSurfaceFormatKHR vulkanGetSurfaceFormat();
+// functions to access the surface data
+LLVL_EXPORT VkQueue vulkanGetGraphicsQueue() noexcept;
+LLVL_EXPORT VkQueue vulkanGetPresentQueue() noexcept;
+[[maybe_unused]] LLVL_EXPORT uint32_t vulkanGetPresentFamilyIndex() noexcept;
+LLVL_EXPORT VkSurfaceFormatKHR vulkanGetSurfaceFormat() noexcept;
 
-    //functions to access the swapChain data
-    LLVL_EXPORT VkSwapchainKHR vulkanGetSwapChain();
-    LLVL_EXPORT uint32_t vulkanGetSwapChainImageCount();
-    LLVL_EXPORT std::vector<VkImageView> vulkanGetSwapChainImageViews();
-    LLVL_EXPORT std::vector<VkImage> vulkanGetSwapChainImages();
+// functions to access the swapChain data
+LLVL_EXPORT VkSwapchainKHR vulkanGetSwapChain();
+LLVL_EXPORT uint32_t vulkanGetSwapChainImageCount() noexcept;
+LLVL_EXPORT std::vector<VkImageView> vulkanGetSwapChainImageViews() noexcept;
+LLVL_EXPORT std::vector<VkImage> vulkanGetSwapChainImages() noexcept;
 
-    //functions to access the Device data
-    LLVL_EXPORT VkDevice vulkanGetDevice();
-    LLVL_EXPORT unsigned int vulkanFindGpuMemoryType(unsigned int typeFilter, VkMemoryPropertyFlags flags);
-    LLVL_EXPORT VkFormatProperties vulkanGetDeviceFormatProperties();
-    LLVL_EXPORT uint32_t vulkanGetGraphicsFamilyIndex();
-}
+// functions to access the Device data
+LLVL_EXPORT VkDevice vulkanGetDevice();
+LLVL_EXPORT unsigned int vulkanFindGpuMemoryType(unsigned int typeFilter, VkMemoryPropertyFlags flags);
+LLVL_EXPORT VkFormatProperties vulkanGetDeviceFormatProperties() noexcept;
+LLVL_EXPORT uint32_t vulkanGetGraphicsFamilyIndex() noexcept;
+} // namespace LunaLux

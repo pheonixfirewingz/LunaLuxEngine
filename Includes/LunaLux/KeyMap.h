@@ -1,5 +1,11 @@
 #pragma once
-// Created by luket on 07/12/2020.
+//
+// Created by luket on 08/06/2021.
+//
+// GNU Lesser General Public License Version 2.1
+//
+// Copyright Luke Shore (c) 2020, 2021
+//
 /*
  * this is used to provide the Window.h with the current operating systems keyboard key map so the user can ask the
  * library for if a key is down. it will also provide the mouse button map as well.
