@@ -1,0 +1,16 @@
+#pragma once
+//
+// Created by luket on 21/05/2021.
+//
+
+// GNU Lesser General Public License Version 2.1
+//
+// Copyright Luke Shore (c) 2020, 2021
+
+#ifndef ENABLE_SPEC_VALIDATION
+#cmakedefine01 ENABLE_SPEC_VALIDATION
+#endif
+
+#ifndef ENABLE_VULKAN_FUNCTION_ERROR_CHECK
+#cmakedefine01 ENABLE_VULKAN_FUNCTION_ERROR_CHECK
+#endif

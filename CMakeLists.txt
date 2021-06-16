@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.17)
-project(LunaLuxEngine CXX)
+project(LunaLuxEngine)
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(BUILD_SHARED_LIBS TRUE)
 #includes for the projects
 include_directories(${PROJECT_SOURCE_DIR}/Includes STATIC)
 include_directories(${PROJECT_SOURCE_DIR}/src STATIC)
-include_directories(C:\\VulkanSDK\\1.2.176.1\\Include STATIC)
-
+find_package(Vulkan REQUIRED FATAL_ERROR)
+include_directories(${Vulkan_INCLUDE_DIRS})
+configure_file(src/Debug.h.in ../src/Debug.h @ONLY)
+add_subdirectory(Libs)
 #main engine
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined,implicit-integer-truncation,implicit-integer-arithmetic-value-change,implicit-conversion,integer,nullability")
+
 add_executable(LunaLuxEngine    src/Test.cpp
                                 src/EngineError.cpp
                                 src/LunaLuxEngine.cpp
@@ -14,10 +20,8 @@ add_executable(LunaLuxEngine    src/Test.cpp
                                 src/Renderer/RenderManager.cpp
                                 src/utils/StringUtils.cpp)
 
-target_link_libraries(LunaLuxEngine ${PROJECT_SOURCE_DIR}/Libs/LunaLuxWindowLib.lib
-                                    ${PROJECT_SOURCE_DIR}/Libs/LunaLuxVulkanLib.lib
-                                    ${PROJECT_SOURCE_DIR}/Libs/LunaLuxVulkanUtilLib.lib)
+target_link_libraries(LunaLuxEngine LunaLuxWindowLib LunaLuxVulkanLib LunaLuxVulkanUtilLib)
 
-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_link_libraries(LunaLuxEngine ${X11_LIBRARIES})
-endif ()
+#if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+#    target_link_libraries(LunaLuxEngine ${X11_LIBRARIES})
+#endif ()
