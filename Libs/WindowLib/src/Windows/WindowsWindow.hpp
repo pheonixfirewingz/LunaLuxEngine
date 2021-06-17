@@ -30,12 +30,12 @@ class WindowsWindow
     HWND window_handler{nullptr};
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
     LARGE_INTEGER StartFrameTime{0}, Frequency{0};
-    static void cleanUp();
+
+    static std::unique_ptr<LunaLux::IO> getIO();
 
   public:
     static void size(int width, int height) noexcept;
 
-    static std::unique_ptr<LunaLux::IO> getIO();
 
     WindowsWindow(const char *title, const int width, const int height) noexcept
     {
@@ -99,6 +99,7 @@ class WindowsWindow
             (void)(_wassert(_CRT_WIDE("normal system clock not available"), _CRT_WIDE(__FILE__), (unsigned)(__LINE__)), 0);
         }
     }
+
     void Update() noexcept
     {
         // create message to be processed
@@ -125,7 +126,7 @@ class WindowsWindow
         // this function is used to destory the class that handles the windows messages for the compositor window
         // function documentation https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-unregisterclassa
         UnregisterClassW(L"LunaLuxWindowClass", GetModuleHandle(nullptr));
-        cleanUp();
+        (void)getIO().release();
     }
 
     HWND GetNativeWindow() noexcept
@@ -137,6 +138,26 @@ class WindowsWindow
     void ChangeWindowTitle(const char *string) noexcept
     {
         SetWindowTextA(window_handler, string);
+    }
+
+    bool isKeyDown(uint8_t key)
+    {
+        return getIO()->isButtonDown(key);
+    }
+
+    bool isMouseDown(uint8_t button)
+    {
+        return getIO()->isButtonDown(button + 255);
+    }
+
+    uint64_t getWheelDelta()
+    {
+        return getIO()->getWheelDelta();
+    }
+
+    std::tuple<int64_t, int64_t> getMousePosition()
+    {
+        return getIO()->getPosition();
     }
 
     static bool ShouldClose() noexcept;

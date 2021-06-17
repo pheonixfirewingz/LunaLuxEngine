@@ -3,12 +3,13 @@
 // Created by digitech on 15/03/2021.
 //
 // TODO: add documentation.
-#include "../IO.hpp"
-#include <X11/Xutil.h>
-#include <cstring>
-#include <time.h>
-#include <tuple>
-#include <xcb/xcb.h>
+#if __has_include(<xcb/xcb.h>)
+#    include "../IO.hpp"
+#    include <X11/Xutil.h>
+#    include <cstring>
+#    include <time.h>
+#    include <tuple>
+#    include <xcb/xcb.h>
 
 namespace LunaLux
 {
@@ -20,7 +21,7 @@ struct xcbContext
 class LinuxWindow
 {
   private:
-    xcbContext* context;
+    xcbContext *context;
     xcb_screen_t *screen;
     xcb_intern_atom_reply_t *atom_wm_delete_window;
     bool shouldClose{false};
@@ -30,18 +31,19 @@ class LinuxWindow
 
     explicit LinuxWindow(const char *title, const int width, const int height)
     {
-        printf("LunaLuxWindowLib: keyboard and mouse are not available / implemented on linux the library will crash\n");
+        printf("LunaLuxWindowLib: Keyboard and mouse are not (available/implemented) the library will crash if used\n");
         context = new xcbContext();
         uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_EVENT_MASK;
         context->con = xcb_connect(NULL, NULL);
         screen = xcb_setup_roots_iterator(xcb_get_setup(context->con)).data;
         uint32_t values[2];
         values[0] = screen->white_pixel;
-        values[1] = XCB_EVENT_MASK_KEY_RELEASE | XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_EXPOSURE | XCB_EVENT_MASK_POINTER_MOTION;
+        values[1] = XCB_EVENT_MASK_KEY_RELEASE | XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_EXPOSURE |
+                    XCB_EVENT_MASK_POINTER_MOTION;
         context->win = xcb_generate_id(context->con);
-        
+
         /* Create the window */
-        xcb_create_window(context->con, XCB_COPY_FROM_PARENT, context->win, screen->root, 0, 0, width, height,0,
+        xcb_create_window(context->con, XCB_COPY_FROM_PARENT, context->win, screen->root, 0, 0, width, height, 0,
                           XCB_WINDOW_CLASS_INPUT_OUTPUT, screen->root_visual, mask, values);
 
         /* Magic code that will send notification when window is destroyed */
@@ -51,12 +53,12 @@ class LinuxWindow
         xcb_intern_atom_cookie_t cookie2 = xcb_intern_atom(context->con, 0, 16, "WM_DELETE_WINDOW");
         atom_wm_delete_window = xcb_intern_atom_reply(context->con, cookie2, 0);
 
-        xcb_change_property(context->con, XCB_PROP_MODE_REPLACE, context->win,
-                            (*reply).atom, 4, 32, 1,&(*atom_wm_delete_window).atom);
+        xcb_change_property(context->con, XCB_PROP_MODE_REPLACE, context->win, (*reply).atom, 4, 32, 1,
+                            &(*atom_wm_delete_window).atom);
         free(reply);
 
-        xcb_change_property(context->con,XCB_PROP_MODE_REPLACE,context->win,XCB_ATOM_WM_NAME,
-                            XCB_ATOM_STRING,8,std::strlen(title),title);
+        xcb_change_property(context->con, XCB_PROP_MODE_REPLACE, context->win, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
+                            std::strlen(title), title);
         /* Map the window on the screen */
         xcb_map_window(context->con, context->win);
 
@@ -73,8 +75,8 @@ class LinuxWindow
 
     void ChangeWindowTitle(const char *title)
     {
-        xcb_change_property(context->con,XCB_PROP_MODE_REPLACE,context->win,XCB_ATOM_WM_NAME,
-                            XCB_ATOM_STRING,8,std::strlen(title),title);
+        xcb_change_property(context->con, XCB_PROP_MODE_REPLACE, context->win, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
+                            std::strlen(title), title);
         xcb_flush(context->con);
     }
 
@@ -85,21 +87,21 @@ class LinuxWindow
 
     std::tuple<int, int> GetWindowSize()
     {
-        xcb_get_geometry_reply_t *geom = xcb_get_geometry_reply (context->con, xcb_get_geometry (context->con, context->win), NULL);
+        xcb_get_geometry_reply_t *geom =
+            xcb_get_geometry_reply(context->con, xcb_get_geometry(context->con, context->win), NULL);
         return {geom->width, geom->height};
     }
 
     void Update()
     {
         xcb_generic_event_t *event = xcb_poll_for_event(context->con);
-        if(event == nullptr)
+        if (event == nullptr)
         {
             return;
         }
         switch (event->response_type & ~0x80)
         {
-        case XCB_EXPOSE:
-        {
+        case XCB_EXPOSE: {
             xcb_expose_event_t *expose = (xcb_expose_event_t *)event;
             break;
         }
@@ -109,7 +111,8 @@ class LinuxWindow
                 shouldClose = true;
             }
             break;
-        default:break;
+        default:
+            break;
         }
         free(event);
     }
@@ -151,5 +154,5 @@ class LinuxWindow
         return (uint64_t)currTime.tv_sec * ns_in_s + (uint64_t)currTime.tv_nsec;
     }
 };
-
 } // namespace LunaLux
+#endif

@@ -11,7 +11,7 @@
  * library for if a key is down. it will also provide the mouse button map as well.
  */
 #include <cinttypes>
-#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64) || defined(_WINDOWS) || defined(__CYGWIN__) && !defined(_WIN32)
+#if __has_include(<windows.h>)
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #undef VK_NONAME
@@ -142,11 +142,8 @@ namespace LunaLux
     [[maybe_unused]] const static uint8_t LLE_KEY_MULTIPLY = VK_MULTIPLY;
     [[maybe_unused]] const static uint8_t LLE_KEY_SUBTRACT = VK_SUBTRACT;
 }
-<<<<<<< HEAD:Src/KeyMap.h
 #elif defined(LLE_LINUX)
 //todo: need to add keys
-=======
->>>>>>> Dev:Src/API/KeyMap.h
 #endif
 #if  defined(__linux__)
 #error not created map

@@ -6,17 +6,9 @@ static bool ShouldCloseBool{false};
 bool in_win{true};
 //they are to store the current window size
 static int width_store, height_store;
-
 static std::unique_ptr<LunaLux::IO> io = std::make_unique<LunaLux::IO>();
-
-void LunaLux::WindowsWindow::cleanUp()
-{
-    //this is to release the io handler after window is closed
-    (void)io.release();
-}
-
 std::unique_ptr<LunaLux::IO> LunaLux::WindowsWindow::getIO()
-{ return std::move(io); }
+{ return std::move(io); };
 
  void LunaLux::WindowsWindow::size(const int width, const int height) noexcept
 {
@@ -46,42 +38,42 @@ LRESULT CALLBACK LunaLux::WindowsWindow::WndProc(HWND hWnd, UINT Msg, WPARAM wPa
             ShouldCloseBool = true;
             break;
         case WM_DEVICECHANGE:
-            if(wParam == 0x0007) io->Reset();
+            if(wParam == 0x0007) getIO()->Reset();
             break;
         case WM_SIZE:
             WindowsWindow::size(MAKEPOINTS(lParam).x, MAKEPOINTS(lParam).y);
             break;
-        //if the message ID is WM_KEYDOWN or 0x0100 we call the Keyboard setKeyState function
+        //if the message ID is WM_KEYDOWN or 0x0100 we call the Keyboard setKeyState functgetIO()n
         case WM_KEYDOWN:
-            io->setButton(wParam,true);
+            getIO()->setButton(wParam,true);
             break;
-        //if the message ID is WM_KEYUP or 0x0101 we call the Keyboard setKeyState function
+        //if the message ID is WM_KEYUP or 0x0101 we call the Keyboard setKeyState functgetIO()n
         case WM_KEYUP:
-            io->setButton(wParam, false);
+            getIO()->setButton(wParam, false);
             break;
-            //if the message ID is WM_LBUTTONDOWN or 0x0201 we call the Mouse setMouseState function
+            //if the message ID is WM_LBUTTONDOWN or 0x0201 we call the Mouse setMouseState functgetIO()n
         case WM_LBUTTONDOWN:
-            io->setButton(257, true);
+            getIO()->setButton(257, true);
             break;
-            //if the message ID is WM_LBUTTONUP or 0x0202 we call the Mouse setMouseState function
+            //if the message ID is WM_LBUTTONUP or 0x0202 we call the Mouse setMouseState functgetIO()n
         case WM_LBUTTONUP:
-            io->setButton(257, false);
+            getIO()->setButton(257, false);
             break;
-            //if the message ID is WM_RBUTTONDOWN or 0x0204 we call the Mouse setMouseState function
+            //if the message ID is WM_RBUTTONDOWN or 0x0204 we call the Mouse setMouseState functgetIO()n
         case WM_RBUTTONDOWN:
-            io->setButton(258, true);
+            getIO()->setButton(258, true);
             break;
-            //if the message ID is WM_RBUTTONUP or 0x0205 we call the Mouse setMouseState function
+            //if the message ID is WM_RBUTTONUP or 0x0205 we call the Mouse setMouseState functgetIO()n
         case WM_RBUTTONUP:
-            io->setButton(258, false);
+            getIO()->setButton(258, false);
             break;
-            //if the message ID is WM_MBUTTONDOWN or 0x0207 we call the Mouse setMouseState function
+            //if the message ID is WM_MBUTTONDOWN or 0x0207 we call the Mouse setMouseState functgetIO()n
         case WM_MBUTTONDOWN:
-            io->setButton(259, true);
+            getIO()->setButton(259, true);
             break;
-            //if the message ID is WM_MBUTTONUP or 0x0208 we call the Mouse setMouseState function
+            //if the message ID is WM_MBUTTONUP or 0x0208 we call the Mouse setMouseState functgetIO()n
         case WM_MBUTTONUP:
-            io->setButton(259, false);
+            getIO()->setButton(259, false);
             break;
         case WM_MOUSEHOVER:
             // sets bool true if mouse is in window
@@ -93,16 +85,17 @@ LRESULT CALLBACK LunaLux::WindowsWindow::WndProc(HWND hWnd, UINT Msg, WPARAM wPa
             break;
         case WM_MOUSEWHEEL:
             // we use this to set the mouse scroll wheel
-            io->setWheelDelta((((wParam) >> 16) & 0xffff));
+            getIO()->setWheelDelta((((wParam) >> 16) & 0xffff));
             break;
 
         case WM_MOUSEMOVE:
             if (in_win)
-                io->setPosition({(lParam & 0xffff), ((lParam >> 16) & 0xffff)});
+                getIO()->setPosition({(lParam & 0xffff), ((lParam >> 16) & 0xffff)});
             break;
         default:
             break;
     }
     return DefWindowProc(hWnd, Msg, wParam, lParam);
 }
+
 #endif
