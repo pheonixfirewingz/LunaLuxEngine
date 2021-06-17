@@ -36,7 +36,13 @@ class Device
                                        VK_MAKE_VERSION(1, 0, 0),
                                        VK_API_VERSION_1_2};
             // this is used to store the extension names
+#if __has_include(<xcb/xcb.h>)
+            const char *extensions[] = {VK_KHR_SURFACE_EXTENSION_NAME, "VK_KHR_xcb_surface"};
+#endif
+#if __has_include(<windows.h>)
             const char *extensions[] = {VK_KHR_SURFACE_EXTENSION_NAME, "VK_KHR_win32_surface"};
+#endif
+
             // this is the struct used to tell the vulkan driver that we want a VkInstance and how we tell the debug
             // layers to active in our case we only will active the sdk validation layer to make sure the user compiles
             // with the vulkan specification

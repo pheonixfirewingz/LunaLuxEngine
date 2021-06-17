@@ -1,7 +1,7 @@
 #pragma once
 // Created by luket on 05/12/2020.
 
-#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64) || defined(_WINDOWS) || defined(__CYGWIN__) && !defined(_WIN32)
+#if __has_include(<windows.h>)
 #ifndef LIB_APP
 #ifndef STATIC_LIB
 #define LLWL_EXPORT __declspec(dllexport)

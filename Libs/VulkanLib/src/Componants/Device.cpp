@@ -36,7 +36,23 @@ void LunaLux::Device::findRightPhysicalDevice()
         vkGetPhysicalDeviceFeatures(p_device, &features);
         return;
     }
-    throw std::runtime_error("VULKAN_RUNTIME_FAILURE: multi gpu not supported!");
+
+    for (auto device_:devicesUsable)
+    {
+        VkPhysicalDeviceProperties l_properties;
+        vkGetPhysicalDeviceProperties(device_, &l_properties);
+        if(properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU)
+        {
+            p_device = device_;
+            vkGetPhysicalDeviceProperties(p_device, &properties);
+            vkGetPhysicalDeviceFeatures(p_device, &features);
+            return;
+        }
+    }
+
+    p_device = devicesUsable[0];
+    vkGetPhysicalDeviceProperties(p_device, &properties);
+    vkGetPhysicalDeviceFeatures(p_device, &features);
 }
 
 bool LunaLux::Device::usedPhysicalDevice(VkPhysicalDevice in_device)

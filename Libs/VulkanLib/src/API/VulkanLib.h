@@ -12,6 +12,14 @@
 #else
 #    define LLVL_EXPORT __declspec(dllimport)
 #endif
+#else
+#ifndef LIB_APP
+#ifndef STATIC_LIB
+#define LLVL_EXPORT __attribute__((visibility("default")))
+#else
+#define LLVL_EXPORT
+#endif
+#endif
 #endif
 #include <tuple>
 #include <vector>
@@ -38,7 +46,7 @@ LLVL_EXPORT std::vector<VkImageView> vulkanGetSwapChainImageViews() noexcept;
 LLVL_EXPORT std::vector<VkImage> vulkanGetSwapChainImages() noexcept;
 
 // functions to access the Device data
-LLVL_EXPORT VkDevice vulkanGetDevice();
+LLVL_EXPORT ::VkDevice vulkanGetDevice();
 LLVL_EXPORT unsigned int vulkanFindGpuMemoryType(unsigned int typeFilter, VkMemoryPropertyFlags flags);
 LLVL_EXPORT VkFormatProperties vulkanGetDeviceFormatProperties() noexcept;
 LLVL_EXPORT uint32_t vulkanGetGraphicsFamilyIndex() noexcept;

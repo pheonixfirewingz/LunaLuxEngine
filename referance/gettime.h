@@ -22,7 +22,7 @@
 #include <assert.h>
 #include <vulkan/vk_platform.h>
 
-#elif defined(__unix__) || defined(__linux) || defined(__linux__) || defined(__ANDROID__) || defined(__EPOC32__) || defined(__QNX__)
+#elif defined(__unix__) || defined(__ANDROID__) || defined(__EPOC32__) || defined(__QNX__)
 
 #include <time.h>
 
@@ -38,7 +38,7 @@ uint64_t getTimeInNanoseconds()
     const long long ns_in_ms = 1000 * ns_in_us;
     const long long ns_in_s = 1000 * ns_in_ms;
 
-#elif defined(__unix__) || defined(__linux) || defined(__linux__) || defined(__ANDROID__) || defined(__QNX__)
+#elif defined(__unix__) || defined(__ANDROID__) || defined(__QNX__)
     struct timespec currTime;
     clock_gettime(CLOCK_MONOTONIC, &currTime);
     return (uint64_t)currTime.tv_sec * ns_in_s + (uint64_t)currTime.tv_nsec;

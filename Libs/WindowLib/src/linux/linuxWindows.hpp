@@ -2,121 +2,154 @@
 //
 // Created by digitech on 15/03/2021.
 //
-//TODO: add documentation.
-#include<X11/X.h>
-#include<X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/Xutil.h>
+// TODO: add documentation.
 #include "../IO.hpp"
-#include<GL/glx.h>
-#include <cstdio>
+#include <X11/Xutil.h>
 #include <cstring>
-#include <cstdlib>
+#include <time.h>
 #include <tuple>
+#include <xcb/xcb.h>
 
 namespace LunaLux
 {
+struct xcbContext
+{
+    xcb_connection_t *con;
+    xcb_window_t win;
+};
+class LinuxWindow
+{
+  private:
+    xcbContext* context;
+    xcb_screen_t *screen;
+    xcb_intern_atom_reply_t *atom_wm_delete_window;
+    bool shouldClose{false};
 
-    struct InfoRet
+  public:
+    const std::unique_ptr<IO> io = std::make_unique<IO>();
+
+    explicit LinuxWindow(const char *title, const int width, const int height)
     {
-    public:
-        Display* dpy;Window* win;XVisualInfo* vi;
-        InfoRet(Display *pDisplay, Window* i, XVisualInfo *ptr) :dpy(pDisplay),win(i),vi(ptr) {}
-    };
+        printf("LunaLuxWindowLib: keyboard and mouse are not available / implemented on linux the library will crash\n");
+        context = new xcbContext();
+        uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_EVENT_MASK;
+        context->con = xcb_connect(NULL, NULL);
+        screen = xcb_setup_roots_iterator(xcb_get_setup(context->con)).data;
+        uint32_t values[2];
+        values[0] = screen->white_pixel;
+        values[1] = XCB_EVENT_MASK_KEY_RELEASE | XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_EXPOSURE | XCB_EVENT_MASK_POINTER_MOTION;
+        context->win = xcb_generate_id(context->con);
+        
+        /* Create the window */
+        xcb_create_window(context->con, XCB_COPY_FROM_PARENT, context->win, screen->root, 0, 0, width, height,0,
+                          XCB_WINDOW_CLASS_INPUT_OUTPUT, screen->root_visual, mask, values);
 
-    class LinuxWindow
+        /* Magic code that will send notification when window is destroyed */
+        xcb_intern_atom_cookie_t cookie = xcb_intern_atom(context->con, 1, 12, "WM_PROTOCOLS");
+        xcb_intern_atom_reply_t *reply = xcb_intern_atom_reply(context->con, cookie, 0);
+
+        xcb_intern_atom_cookie_t cookie2 = xcb_intern_atom(context->con, 0, 16, "WM_DELETE_WINDOW");
+        atom_wm_delete_window = xcb_intern_atom_reply(context->con, cookie2, 0);
+
+        xcb_change_property(context->con, XCB_PROP_MODE_REPLACE, context->win,
+                            (*reply).atom, 4, 32, 1,&(*atom_wm_delete_window).atom);
+        free(reply);
+
+        xcb_change_property(context->con,XCB_PROP_MODE_REPLACE,context->win,XCB_ATOM_WM_NAME,
+                            XCB_ATOM_STRING,8,std::strlen(title),title);
+        /* Map the window on the screen */
+        xcb_map_window(context->con, context->win);
+
+        const uint32_t coords[] = {100, 100};
+        xcb_configure_window(context->con, context->win, XCB_CONFIG_WINDOW_X | XCB_CONFIG_WINDOW_Y, coords);
+        /* Make sure commands are sent before we pause, so window is shown */
+        xcb_flush(context->con);
+    }
+
+    void *GetNativeWindow()
     {
-    private:
-        Display*                dpy{};
-        Window                  win{};
-        XVisualInfo*            vi{};
-        bool shouldClose{false};
-    public:
-        static std::unique_ptr<IO> io;
+        return context;
+    }
 
-        explicit LinuxWindow(const char *title, const int width, const int height)
+    void ChangeWindowTitle(const char *title)
+    {
+        xcb_change_property(context->con,XCB_PROP_MODE_REPLACE,context->win,XCB_ATOM_WM_NAME,
+                            XCB_ATOM_STRING,8,std::strlen(title),title);
+        xcb_flush(context->con);
+    }
+
+    [[nodiscard]] bool ShouldClose() const
+    {
+        return shouldClose;
+    }
+
+    std::tuple<int, int> GetWindowSize()
+    {
+        xcb_get_geometry_reply_t *geom = xcb_get_geometry_reply (context->con, xcb_get_geometry (context->con, context->win), NULL);
+        return {geom->width, geom->height};
+    }
+
+    void Update()
+    {
+        xcb_generic_event_t *event = xcb_poll_for_event(context->con);
+        if(event == nullptr)
         {
-            dpy = XOpenDisplay(nullptr);
-            io = std::make_unique<IO>();
-            int atr[] = { 4, 12, 24, 5, 0L };
-            vi = glXChooseVisual(dpy, 0, atr);
-            XSetWindowAttributes info;
-            info.colormap = XCreateColormap(dpy, DefaultRootWindow(dpy), vi->visual, AllocNone);
-            info.event_mask = ExposureMask | VisibilityChangeMask | StructureNotifyMask | ButtonPressMask | ButtonReleaseMask | PointerMotionMask;
-            win = XCreateWindow(dpy, DefaultRootWindow(dpy), 0, 0, width, height, 0,vi->depth,InputOutput,vi->visual,CWColormap | CWEventMask, &info);
-            XMapWindow(dpy, win);
-            XStoreName(dpy, win, reinterpret_cast<const char*>(title));
+            return;
         }
-
-        std::unique_ptr<LunaLux::IO> getIO()
-        { return std::move(io); }
-
-        InfoRet* GetNativeWindow()
+        switch (event->response_type & ~0x80)
         {
-            static auto* infoRet = new InfoRet(dpy,&win,vi);
-            return infoRet;
+        case XCB_EXPOSE:
+        {
+            xcb_expose_event_t *expose = (xcb_expose_event_t *)event;
+            break;
         }
-
-        void ChangeWindowTitle(const char *string)
-        {
-            XTextProperty tp;
-            char *props[1];
-
-            props[0] = strdup (reinterpret_cast<const char *>(string));
-
-            if (nullptr == props[0]) return;
-
-            if (!XStringListToTextProperty (props, 1, &tp))
-                printf("[LunaLuxWindowLib] ERROR:Failed to convert text property");
-            else
+        case XCB_CLIENT_MESSAGE:
+            if ((*(xcb_client_message_event_t *)event).data.data32[0] == (*atom_wm_delete_window).atom)
             {
-                XSetWMName (dpy, win, &tp);
-                XFree (tp.value);
+                shouldClose = true;
             }
-
-            free(props[0]);
+            break;
+        default:break;
         }
+        free(event);
+    }
 
-        [[nodiscard]] bool ShouldClose() const
-        {
-            return shouldClose;
-        }
+    void Close()
+    {
+        xcb_destroy_window(context->con, context->win);
+        xcb_disconnect(context->con);
+        free(atom_wm_delete_window);
+    }
 
-        std::tuple<int, int> GetWindowSize()
-        {
-            XWindowAttributes info;
-            XGetWindowAttributes(dpy,win,&info);
-            //returns the width and height from the x window info
-            return {info.width,info.height};
-        }
+    bool isKeyDown(uint8_t key)
+    {
+        return io->isButtonDown(key);
+    }
 
-        void Update()
-        {
-            XEvent xev{};
-            XNextEvent(dpy, &xev);
+    bool isMouseDown(uint8_t button)
+    {
+        return io->isButtonDown(button + 255);
+    }
 
-            switch (xev.type)
-            {
-                case Expose:
-                case ConfigureNotify: break;
-                case DestroyNotify:
-                    shouldClose = true;
-                    break;
-            }
-        }
+    uint64_t getWheelDelta()
+    {
+        return io->getWheelDelta();
+    }
 
-        void Close()
-        {
-            XDestroyWindow(dpy, win);
-            XSync(dpy, false);
-            XCloseDisplay(dpy);
-            XSync(dpy, false);
-        }
+    std::tuple<int64_t, int64_t> getMousePosition()
+    {
+        return io->getPosition();
+    }
 
-        uint64_t getTime()
-        {
-            return 0;
-        }
-    };
+    uint64_t getTime()
+    {
+        const long long ns_in_us = 1000;
+        const long long ns_in_ms = 1000 * ns_in_us;
+        const long long ns_in_s = 1000 * ns_in_ms;
+        timespec currTime;
+        clock_gettime(CLOCK_MONOTONIC, &currTime);
+        return (uint64_t)currTime.tv_sec * ns_in_s + (uint64_t)currTime.tv_nsec;
+    }
+};
 
-}
+} // namespace LunaLux

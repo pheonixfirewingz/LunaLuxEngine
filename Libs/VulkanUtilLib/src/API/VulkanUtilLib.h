@@ -7,11 +7,19 @@
 //
 // Copyright Luke Shore (c) 2020, 2021
 #if __has_include(<windows.h>)
-#    ifndef LIB_APP
-#        define LLVUL_EXPORT __declspec(dllexport)
-#    else
-#        define LLVUL_EXPORT __declspec(dllimport)
-#    endif
+#ifndef LIB_APP
+#    define LLVUL_EXPORT __declspec(dllexport)
+#else
+#    define LLVUL_EXPORT __declspec(dllimport)
+#endif
+#else
+#ifndef LIB_APP
+#ifndef STATIC_LIB
+#define LLVUL_EXPORT __attribute__((visibility("default")))
+#else
+#define LLVUL_EXPORT
+#endif
+#endif
 #endif
 // TODO: write documentation
 #include <vulkan/vulkan_core.h>

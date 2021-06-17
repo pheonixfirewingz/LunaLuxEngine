@@ -16,7 +16,6 @@ std::unique_ptr<LunaLux::LinuxWindow> window;
 #    include "Windows/WindowsWindow.hpp"
 std::unique_ptr<LunaLux::WindowsWindow> window;
 #endif
-std::unique_ptr<LunaLux::IO> io = window->getIO();
 int last_width, last_height;
 std::string last;
 namespace LunaLux
@@ -80,22 +79,22 @@ void windowClose() noexcept
 
 bool isKeyDown(uint8_t keycode)
 {
-    return io->isButtonDown(keycode);
+    return window->isKeyDown(keycode);
 }
 
 bool isMouseDown(uint8_t keycode)
 {
-    return io->isButtonDown(256 + keycode);
+    return window->isMouseDown(keycode);
 }
 
 uint64_t getWheelDelta()
 {
-    return io->getWheelDelta();
+    return window->getWheelDelta();
 }
 
 std::tuple<int64_t, int64_t> getMousePosition()
 {
-    return io->getPosition();
+    return window->getMousePosition();
 }
 
 bool hasWindowResized() noexcept

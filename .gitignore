@@ -8,7 +8,6 @@
 *.vcxproj.filters
 *.vcxproj.user
 *.sln
-*.cmake
 /CMakeFiles
 /x64
 /Debug

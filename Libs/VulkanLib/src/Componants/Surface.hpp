@@ -12,6 +12,17 @@
 #    include <Windows.h>
 #    include <vulkan/vulkan_win32.h>
 #endif
+#if __has_include(<xcb/xcb.h>)
+#    include <xcb/xcb.h>
+#    include <vulkan/vulkan_xcb.h>
+
+struct xcbContext
+{
+    xcb_connection_t *con;
+    xcb_window_t win;
+};
+
+#endif
 namespace LunaLux
 {
 // this is used as a handler for the vulkan window surface
@@ -63,6 +74,17 @@ class Surface
         surface_info.hwnd = static_cast<HWND>(native_handle);
         //we ask the windows server to give use a graphics surface to work with
         TEST(vkCreateWin32SurfaceKHR,(dev->getInst()->get(), &surface_info, nullptr, &surface));
+#endif
+#if __has_include(<xcb/xcb.h>)
+        xcbContext* context = reinterpret_cast<xcbContext*>(native_handle);
+        VkXcbSurfaceCreateInfoKHR surface_info;
+        surface_info.sType = VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR;
+        surface_info.pNext = NULL;
+        surface_info.flags = 0;
+        surface_info.connection = context->con;
+        surface_info.window = context->win;
+
+        TEST(vkCreateXcbSurfaceKHR,(dev->getInst()->get(), &surface_info, nullptr, &surface));
 #endif
         //we check if the surface create is supported for the physical device we are using
         VkBool32 support{false};
