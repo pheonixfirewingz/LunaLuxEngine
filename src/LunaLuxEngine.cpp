@@ -53,6 +53,11 @@ void LunaLuxEngine::run()
     while (!shouldCloseWindow())
     {
         update();
+        if(isKeyDown(LLE_KEY_ESCAPE))
+        {
+            cleanUp();
+            return;
+        }
     }
     cleanUp();
 }
