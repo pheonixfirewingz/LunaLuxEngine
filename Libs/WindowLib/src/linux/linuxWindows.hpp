@@ -4,10 +4,8 @@
 //
 // TODO: add documentation.
 #if __has_include(<xcb/xcb.h>)
-#    include "../IO.hpp"
-#    include <X11/Xutil.h>
 #    include <cstring>
-#    include <time.h>
+#    include <ctime>
 #    include <tuple>
 #    include <xcb/xcb.h>
 
@@ -25,21 +23,19 @@ class LinuxWindow
     xcb_screen_t *screen;
     xcb_intern_atom_reply_t *atom_wm_delete_window;
     bool shouldClose{false};
+    bool buttons[259]{};
 
   public:
-    const std::unique_ptr<IO> io = std::make_unique<IO>();
-
     explicit LinuxWindow(const char *title, const int width, const int height)
     {
         printf("LunaLuxWindowLib: Keyboard and mouse are not (available/implemented) the library will crash if used\n");
         context = new xcbContext();
         uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_EVENT_MASK;
-        context->con = xcb_connect(NULL, NULL);
+        context->con = xcb_connect(nullptr, nullptr);
         screen = xcb_setup_roots_iterator(xcb_get_setup(context->con)).data;
         uint32_t values[2];
         values[0] = screen->white_pixel;
-        values[1] = XCB_EVENT_MASK_KEY_RELEASE | XCB_EVENT_MASK_BUTTON_PRESS | XCB_EVENT_MASK_EXPOSURE |
-                    XCB_EVENT_MASK_POINTER_MOTION;
+        values[1] = XCB_EVENT_MASK_KEY_RELEASE | XCB_EVENT_MASK_KEY_PRESS;
         context->win = xcb_generate_id(context->con);
 
         /* Create the window */
@@ -48,10 +44,10 @@ class LinuxWindow
 
         /* Magic code that will send notification when window is destroyed */
         xcb_intern_atom_cookie_t cookie = xcb_intern_atom(context->con, 1, 12, "WM_PROTOCOLS");
-        xcb_intern_atom_reply_t *reply = xcb_intern_atom_reply(context->con, cookie, 0);
+        xcb_intern_atom_reply_t *reply = xcb_intern_atom_reply(context->con, cookie, nullptr);
 
         xcb_intern_atom_cookie_t cookie2 = xcb_intern_atom(context->con, 0, 16, "WM_DELETE_WINDOW");
-        atom_wm_delete_window = xcb_intern_atom_reply(context->con, cookie2, 0);
+        atom_wm_delete_window = xcb_intern_atom_reply(context->con, cookie2, nullptr);
 
         xcb_change_property(context->con, XCB_PROP_MODE_REPLACE, context->win, (*reply).atom, 4, 32, 1,
                             &(*atom_wm_delete_window).atom);
@@ -59,6 +55,7 @@ class LinuxWindow
 
         xcb_change_property(context->con, XCB_PROP_MODE_REPLACE, context->win, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
                             std::strlen(title), title);
+
         /* Map the window on the screen */
         xcb_map_window(context->con, context->win);
 
@@ -88,7 +85,7 @@ class LinuxWindow
     std::tuple<int, int> GetWindowSize()
     {
         xcb_get_geometry_reply_t *geom =
-            xcb_get_geometry_reply(context->con, xcb_get_geometry(context->con, context->win), NULL);
+            xcb_get_geometry_reply(context->con,xcb_get_geometry(context->con, context->win), nullptr);
         return {geom->width, geom->height};
     }
 
@@ -101,10 +98,16 @@ class LinuxWindow
         }
         switch (event->response_type & ~0x80)
         {
-        case XCB_EXPOSE: {
-            xcb_expose_event_t *expose = (xcb_expose_event_t *)event;
-            break;
+        case XCB_KEY_PRESS: {
+            auto key = reinterpret_cast<xcb_key_press_event_t *>(event);
+            buttons[key->detail] = true;
         }
+        break;
+        case XCB_KEY_RELEASE: {
+            auto key = reinterpret_cast<xcb_key_release_event_t *>(event);
+            buttons[key->detail] = false;
+        }
+        break;
         case XCB_CLIENT_MESSAGE:
             if ((*(xcb_client_message_event_t *)event).data.data32[0] == (*atom_wm_delete_window).atom)
             {
@@ -126,22 +129,27 @@ class LinuxWindow
 
     bool isKeyDown(uint8_t key)
     {
-        return io->isButtonDown(key);
+        if(key == 255)
+        {
+            printf("LunaLuxEngine - Linux: this key is not mapped");
+            return false;
+        }
+        return buttons[key];
     }
 
     bool isMouseDown(uint8_t button)
     {
-        return io->isButtonDown(button + 255);
+        return buttons[button + 255];
     }
 
     uint64_t getWheelDelta()
     {
-        return io->getWheelDelta();
+        return 0;
     }
 
     std::tuple<int64_t, int64_t> getMousePosition()
     {
-        return io->getPosition();
+        return {0, 0};
     }
 
     uint64_t getTime()

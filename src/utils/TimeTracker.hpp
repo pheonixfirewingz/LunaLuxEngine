@@ -23,7 +23,7 @@ class TimeTracker
 
     ~TimeTracker()
     {
-        LOG("TimeTracker{%s} - took %lli ms",name.c_str(),nsToMs((getTime() - start_time)))
+        LOG("TimeTracker{%s} - took %lli ms\n",name.c_str(),nsToMs((getTime() - start_time)))
     }
 };
 } // namespace LunaLux
