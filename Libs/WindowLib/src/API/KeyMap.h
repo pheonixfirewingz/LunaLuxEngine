@@ -14,8 +14,8 @@
 #if __has_include(<windows.h>)
 #    define WIN32_LEAN_AND_MEAN
 #    include <Windows.h>
-#    undef VK_NONAME
-#    define VK_NONAME 0xFF
+#    undef VK_NO_NAME
+#    define VK_NO_NAME 0xFF
 namespace LunaLux
 {
 [[maybe_unused]] const static uint8_t LLE_MOUSE_LEFT = 0x01;
@@ -143,12 +143,12 @@ namespace LunaLux
 [[maybe_unused]] const static uint8_t LLE_KEY_SUBTRACT = VK_SUBTRACT;
 } // namespace LunaLux
 #elif __has_include(<xcb/xcb.h>)
-#    define VK_NONAME 255
+#    define VK_NO_NAME 255
 namespace LunaLux
 {
-[[maybe_unused]] const static uint8_t LLE_MOUSE_LEFT = 0x01;
-[[maybe_unused]] const static uint8_t LLE_MOUSE_RIGHT = 0x02;
-[[maybe_unused]] const static uint8_t LLE_MOUSE_WHEEL_CLICK = 0x03;
+[[maybe_unused]] const static uint8_t LLE_MOUSE_LEFT = 1;
+[[maybe_unused]] const static uint8_t LLE_MOUSE_RIGHT = 3;
+[[maybe_unused]] const static uint8_t LLE_MOUSE_WHEEL_CLICK = 2;
 
 [[maybe_unused]] const static uint8_t LLE_KEY_1 = 10;
 [[maybe_unused]] const static uint8_t LLE_KEY_2 = 11;
@@ -196,15 +196,15 @@ namespace LunaLux
 [[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_BRACKET = 0x005d;
 [[maybe_unused]] const static uint8_t LLE_KEY_SEMICOLON = 0x003b;
 [[maybe_unused]] const static uint8_t LLE_KEY_SLASH = 0x002f;
-[[maybe_unused]] const static uint8_t LLE_KEY_WORLD_2 = VK_NONAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_WORLD_2 = VK_NO_NAME;
 [[maybe_unused]] const static uint8_t LLE_KEY_BACKSPACE = 22;
 [[maybe_unused]] const static uint8_t LLE_KEY_DELETE = 119;
 [[maybe_unused]] const static uint8_t LLE_KEY_END = 115;
 [[maybe_unused]] const static uint8_t LLE_KEY_ENTER = 36;
 [[maybe_unused]] const static uint8_t LLE_KEY_ESCAPE = 9;
 [[maybe_unused]] const static uint8_t LLE_KEY_HOME = 110;
-[[maybe_unused]] const static uint8_t LLE_KEY_INSERT = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_MENU = VK_NONAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_INSERT = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_MENU = VK_NO_NAME;
 [[maybe_unused]] const static uint8_t LLE_KEY_PAGE_DOWN = 117;
 [[maybe_unused]] const static uint8_t LLE_KEY_PAGE_UP = 112;
 [[maybe_unused]] const static uint8_t LLE_KEY_PAUSE = 127;
@@ -212,7 +212,7 @@ namespace LunaLux
 [[maybe_unused]] const static uint8_t LLE_KEY_TAB = 23;
 [[maybe_unused]] const static uint8_t LLE_KEY_CAPS_LOCK = 66;
 [[maybe_unused]] const static uint8_t LLE_KEY_NUM_LOCK = 77;
-[[maybe_unused]] const static uint8_t LLE_KEY_SCROLL_LOCK = VK_NONAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_SCROLL_LOCK = VK_NO_NAME;
 [[maybe_unused]] const static uint8_t LLE_KEY_F1 = 67;
 [[maybe_unused]] const static uint8_t LLE_KEY_F2 = 68;
 [[maybe_unused]] const static uint8_t LLE_KEY_F3 = 69;
@@ -225,29 +225,29 @@ namespace LunaLux
 [[maybe_unused]] const static uint8_t LLE_KEY_F10 = 76;
 [[maybe_unused]] const static uint8_t LLE_KEY_F11 = 95;
 [[maybe_unused]] const static uint8_t LLE_KEY_F12 = 96;
-[[maybe_unused]] const static uint8_t LLE_KEY_F13 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F14 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F15 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F16 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F17 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F18 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F19 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F20 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F21 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F22 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F23 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_F24 = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_ALT = VK_NONAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F13 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F14 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F15 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F16 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F17 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F18 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F19 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F20 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F21 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F22 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F23 = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_F24 = VK_NO_NAME;
 [[maybe_unused]] const static uint8_t LLE_KEY_LEFT_ALT = 64;
 [[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_ALT = 108;
-[[maybe_unused]] const static uint8_t LLE_KEY_CONTROL = VK_NONAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_ALT = LLE_KEY_LEFT_ALT;
 [[maybe_unused]] const static uint8_t LLE_KEY_LEFT_CONTROL = 37;
-[[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_CONTROL = VK_NONAME;
-[[maybe_unused]] const static uint8_t LLE_KEY_SHIFT = VK_NONAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_CONTROL = VK_NO_NAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_CONTROL = LLE_KEY_LEFT_CONTROL;
 [[maybe_unused]] const static uint8_t LLE_KEY_LEFT_SHIFT = 50;
 [[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_SHIFT = 62;
+[[maybe_unused]] const static uint8_t LLE_KEY_SHIFT = LLE_KEY_LEFT_SHIFT;
 [[maybe_unused]] const static uint8_t LLE_KEY_LEFT_SUPER = 133;
-[[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_SUPER = VK_NONAME;
+[[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_SUPER = LLE_KEY_LEFT_SUPER;
 [[maybe_unused]] const static uint8_t LLE_KEY_DOWN = 116;
 [[maybe_unused]] const static uint8_t LLE_KEY_LEFT = 113;
 [[maybe_unused]] const static uint8_t LLE_KEY_RIGHT = 114;

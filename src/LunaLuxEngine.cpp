@@ -53,11 +53,6 @@ void LunaLuxEngine::run()
     while (!shouldCloseWindow())
     {
         update();
-        if(isMouseDown(LLE_MOUSE_RIGHT))
-        {
-            cleanUp();
-            return;
-        }
     }
     cleanUp();
 }
