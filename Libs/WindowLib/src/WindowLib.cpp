@@ -5,6 +5,7 @@
 //
 // Copyright Luke Shore (c) 2020, 2021
 //
+//TODO: write documentation
 #include "API/WindowLib.h"
 
 #include <memory>
@@ -20,12 +21,13 @@ int last_width, last_height;
 std::string last;
 namespace LunaLux
 {
-void windowCreate(const std::string & title, int width, int height) noexcept
+//this is the create window function depending on what platform the lib is built on it will create a different native window to render to.
+void windowCreate(const std::string &title, int width, int height) noexcept
 {
     if (width != 0 || height != 0)
     {
 #if __has_include(<windows.h>)
-        window = std::make_unique<LunaLux::WindowsWindow>(title.c_str(), width, height);
+        window = std::make_unique<LunaLux::window::WindowsWindow>(title.c_str(), width, height);
 #elif __has_include(<xcb/xcb.h>)
         window = std::make_unique<LunaLux::LinuxWindow>(title.c_str(), width, height);
 #endif
@@ -34,7 +36,7 @@ void windowCreate(const std::string & title, int width, int height) noexcept
         return;
     }
 #if __has_include(<windows.h>)
-    window = std::make_unique<LunaLux::WindowsWindow>(title.c_str(), width, height);
+    window = std::make_unique<LunaLux::window::WindowsWindow>(title.c_str(), width, height);
 #elif __has_include(<xcb/xcb.h>)
     window = std::make_unique<LunaLux::LinuxWindow>(title.c_str(), 1280, 720);
 #endif
@@ -99,12 +101,11 @@ std::tuple<int64_t, int64_t> getMousePosition()
 
 bool hasWindowResized() noexcept
 {
-    int temp_width  = std::get<0>(windowGetRectSize()),
-        temp_height = std::get<0>(windowGetRectSize());
+    int temp_width = std::get<0>(windowGetRectSize()), temp_height = std::get<0>(windowGetRectSize());
 
     if (temp_width != last_width || temp_height != last_height)
     {
-        last_width  = temp_width;
+        last_width = temp_width;
         last_height = temp_height;
         return true;
     }

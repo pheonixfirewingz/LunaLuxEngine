@@ -19,7 +19,6 @@
 #    include <windows.h>
 // this is defined to stop the compiler including legacy things like tape support
 // NOTE:I don't know why it's still apart of the windows api as their not used in modern machines
-// TODO: write documentation
 namespace LunaLux
 {
 class WindowsWindow
@@ -129,6 +128,7 @@ class WindowsWindow
         // this is used to return the current native window
         return window_handler;
     }
+    // TODO: write documentation
 
     void ChangeWindowTitle(const char *string) noexcept
     {

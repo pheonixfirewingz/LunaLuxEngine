@@ -25,12 +25,13 @@ class LinuxWindow
     xcb_screen_t *screen;
     xcb_intern_atom_reply_t *atom_wm_delete_window;
     std::atomic_bool shouldClose{false}, isInWindow{false}, isRest{false}, keys[256]{}, buttons[3]{};
-    std::atomic_int64_t x = 0,y = 0;
+    std::atomic_int64_t x = 0, y = 0;
 
     bool isWindowActive()
     {
         return isInWindow;
     }
+
   public:
     explicit LinuxWindow(const char *title, const int width, const int height)
     {
@@ -81,8 +82,8 @@ class LinuxWindow
 
     void ChangeWindowTitle(const char *title)
     {
-        xcb_change_property(cxt->con, XCB_PROP_MODE_REPLACE, cxt->win, XCB_ATOM_WM_NAME,
-                            XCB_ATOM_STRING, 8,std::strlen(title), title);
+        xcb_change_property(cxt->con, XCB_PROP_MODE_REPLACE, cxt->win, XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
+                            std::strlen(title), title);
         xcb_flush(cxt->con);
     }
 
@@ -93,22 +94,26 @@ class LinuxWindow
 
     std::tuple<int, int> GetWindowSize()
     {
-        xcb_get_geometry_reply_t *geom = xcb_get_geometry_reply(cxt->con,xcb_get_geometry(cxt->con,cxt->win),nullptr);
+        xcb_get_geometry_reply_t *geom =
+            xcb_get_geometry_reply(cxt->con, xcb_get_geometry(cxt->con, cxt->win), nullptr);
         return {geom->width, geom->height};
     }
 
     void Update()
     {
         xcb_generic_event_t *event = xcb_poll_for_event(cxt->con);
-        if (event == nullptr) return;
+        if (event == nullptr)
+            return;
 
-        if(!isWindowActive())
+        if (!isWindowActive())
         {
-            if(!isRest)
+            if (!isRest)
             {
-                for(uint8_t i = 0; i < 255; i++) keys[i] = false;
+                for (uint8_t i = 0; i < 255; i++)
+                    keys[i] = false;
 
-                for(uint8_t i = 0; i < 2; i++) buttons[i] = false;
+                for (uint8_t i = 0; i < 2; i++)
+                    buttons[i] = false;
                 isRest = true;
             }
         }
@@ -116,50 +121,55 @@ class LinuxWindow
         switch (event->response_type & ~0x80)
         {
         case XCB_KEY_PRESS: {
-            if(isWindowActive())
+            if (isWindowActive())
             {
                 auto key = reinterpret_cast<xcb_key_press_event_t *>(event);
                 keys[key->detail] = true;
             }
         }
         break;
-        case XCB_KEY_RELEASE:    {
-            if(isWindowActive())
+        case XCB_KEY_RELEASE: {
+            if (isWindowActive())
             {
                 auto key = reinterpret_cast<xcb_key_release_event_t *>(event);
                 keys[key->detail] = false;
             }
         }
         break;
-        case XCB_BUTTON_PRESS:   {
-            if(isWindowActive())
+        case XCB_BUTTON_PRESS: {
+            if (isWindowActive())
             {
                 auto button = reinterpret_cast<xcb_button_press_event_t *>(event);
                 buttons[button->detail] = true;
             }
-        } break;
+        }
+        break;
         case XCB_BUTTON_RELEASE: {
-            if(isWindowActive())
+            if (isWindowActive())
             {
                 auto button = reinterpret_cast<xcb_button_release_event_t *>(event);
                 buttons[button->detail] = false;
             }
-        } break;
-        case XCB_MOTION_NOTIFY:  {
-            if(isWindowActive())
+        }
+        break;
+        case XCB_MOTION_NOTIFY: {
+            if (isWindowActive())
             {
                 auto mouse_move = reinterpret_cast<xcb_motion_notify_event_t *>(event);
                 x = mouse_move->event_x;
                 y = mouse_move->event_y;
             }
-        } break;
+        }
+        break;
         case XCB_ENTER_NOTIFY: {
             isInWindow = true;
             isRest = false;
-        } break;
+        }
+        break;
         case XCB_LEAVE_NOTIFY: {
             isInWindow = false;
-        } break;
+        }
+        break;
         case XCB_CLIENT_MESSAGE:
             if ((*(xcb_client_message_event_t *)event).data.data32[0] == (*atom_wm_delete_window).atom)
             {
@@ -181,7 +191,7 @@ class LinuxWindow
 
     bool isKeyDown(uint8_t key)
     {
-        if(key == 255)
+        if (key == 255)
         {
             printf("LunaLuxEngine - Linux: this key is not mapped\n");
             return false;
