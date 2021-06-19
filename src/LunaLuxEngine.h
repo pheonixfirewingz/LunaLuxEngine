@@ -10,11 +10,13 @@
 #include <Renderer/RenderManager.h>
 #include <memory>
 #include <utils/EngineDefines.h>
+#include <Network/NetworkManager.h>
 namespace LunaLux
 {
 class LunaLuxEngine
 {
     std::unique_ptr<RenderManager> renderManager;
+    std::unique_ptr<NetworkManager> networkManager;
     EngineResult initialise();
     EngineResult update();
     EngineResult cleanUp();

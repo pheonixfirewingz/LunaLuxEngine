@@ -22,9 +22,9 @@ add_executable(LunaLuxEngine    src/Test.cpp
                                 src/LunaLuxEngine.cpp
                                 src/Renderer/Vulkan/VulkanRenderer.cpp
                                 src/Renderer/RenderManager.cpp
-                                src/utils/StringUtils.cpp)
+                                src/utils/StringUtils.cpp src/Network/NetworkManager.cpp src/Network/NetworkManager.h)
 
-target_link_libraries(LunaLuxEngine LunaLuxWindowLib LunaLuxVulkanLib LunaLuxVulkanUtilLib)
+target_link_libraries(LunaLuxEngine LunaLuxWindowLib LunaLuxNetLib LunaLuxVulkanLib LunaLuxVulkanUtilLib)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_link_libraries(LunaLuxEngine ${X11_xcb_LIB} ${X11_LIBRARIES})

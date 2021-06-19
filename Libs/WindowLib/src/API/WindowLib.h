@@ -62,10 +62,13 @@ LLWL_EXPORT void windowClose() noexcept;
 //---------------------------------------------------------------------------------------------------------------------
 //                              this is the library keyboard and mouse controls
 //---------------------------------------------------------------------------------------------------------------------
+//this will get if a requested key is down
 LLWL_EXPORT bool isKeyDown(uint8_t);
 
+//this will get if a requested mouse button is down
 LLWL_EXPORT bool isMouseDown(uint8_t);
 
+//this will get current mouse wheel delta
 LLWL_EXPORT uint64_t getWheelDelta();
 // this will get the current position of the native windows mouse relative to size of window
 LLWL_EXPORT std::tuple<int64_t, int64_t> getMousePosition();

@@ -9,17 +9,20 @@
 #include <LunaLux/WindowLib.h>
 #include <EngineError.h>
 #include <utils/TimeTracker.hpp>
+
 // TODO: write documentation
 namespace LunaLux
 {
 EngineResult LunaLuxEngine::initialise()
 {
-    LunaLux::windowCreate("LunaLuxEngine - Dev Build",1280,720);
+    windowCreate("LunaLuxEngine - Dev Build",1280,720);
     TimeTracker tracker("main initialise");
 
     renderManager = std::make_unique<RenderManager>();
     CHECK(renderManager->initialise(RenderManager::API::VULKAN),"failed to load renderer")
 
+    networkManager = std::make_unique<NetworkManager>();
+    CHECK(networkManager->)
 
     return EngineResult::SUCSESS;
 }
