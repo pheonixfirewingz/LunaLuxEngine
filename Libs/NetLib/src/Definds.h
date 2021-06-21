@@ -7,8 +7,5 @@
 // Copyright Luke Shore (c) 2020, 2021
 namespace LunaLux::net
 {
-enum class Result
-{
-    SUCSESS
-};
+enum class NetResult;
 }

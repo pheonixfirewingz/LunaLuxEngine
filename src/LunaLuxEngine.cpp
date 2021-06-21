@@ -22,7 +22,7 @@ EngineResult LunaLuxEngine::initialise()
     CHECK(renderManager->initialise(RenderManager::API::VULKAN),"failed to load renderer")
 
     networkManager = std::make_unique<NetworkManager>();
-    CHECK(networkManager->)
+    CHECK(networkManager->initialise(),"failed to load network manager")
 
     return EngineResult::SUCSESS;
 }

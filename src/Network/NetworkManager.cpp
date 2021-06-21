@@ -11,7 +11,7 @@ namespace LunaLux
 {
 EngineResult NetworkManager::initialise()
 {
-    if(net::netInit() != net::NetResult::SUCSESS)
+    if(net::netInit() != LunaLux::net::NetResult::SUCSESS)
     {
         return EngineResult::ENGINE_ERROR;
     }

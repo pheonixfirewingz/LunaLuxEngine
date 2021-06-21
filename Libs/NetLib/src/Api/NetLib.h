@@ -24,23 +24,32 @@
 //TODO: write documentation
 namespace LunaLux::net
 {
+//this is used to tell the library user if the network function failed with out using exceptions
 enum class NetResult
 {
     SUCSESS = 0,
+    ERROR = 1
 };
 
+//this is the library connection states
 enum class NetworkType
 {
     CLIENT = 0,
     SERVER = 1,
 };
-
+//this is the common network functions
+//this is called to set up the internal network manager to handle operating system pacific network apis
 LLNL_EXPORT NetResult netInit() noexcept;
+//this is used to set the library internal state to tell the lib to work as ether a client or server
 LLNL_EXPORT void setNetworkType(NetworkType type) noexcept;
+//=====================================================================================================================
+//                                  names explain what they do
 LLNL_EXPORT NetResult connect(const std::string& ip) noexcept;
-LLNL_EXPORT void* receive();
-LLNL_EXPORT NetResult send(void* data,size_t byte_size) noexcept;
+LLNL_EXPORT NetResult receive(void** data,size_t byte_size);
+LLNL_EXPORT NetResult send(const void *data, size_t byte_size) noexcept;
 LLNL_EXPORT NetResult disconnect() noexcept;
+//=====================================================================================================================
 LLNL_EXPORT void terminate() noexcept;
-
+//this is unique server pacific function
+LLNL_EXPORT NetResult waitForClientConnection() noexcept;
 } // namespace LunaLux
