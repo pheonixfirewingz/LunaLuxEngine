@@ -14,6 +14,7 @@ std::unique_ptr<LunaLux::net::LinuxNetManager> manager;
 namespace LunaLux::net
 {
 NetworkType current_type_state {NetworkType::SERVER};
+Protocol current_protocol_state {Protocol::TCP};
 std::atomic_bool is_conection_open{false};
 
 NetResult netInit() noexcept
@@ -26,19 +27,26 @@ NetResult netInit() noexcept
 
 void setNetworkType(NetworkType type) noexcept
 {
-    if(current_type_state == type)
-    {
-        return;
-    }
-    if(is_conection_open)
-    {
-        disconnect();
-    }
+    if(current_type_state == type) return;
+
+    if(is_conection_open) disconnect();
+
     current_type_state = type;
+}
+
+void setProtocol(Protocol protocol) noexcept
+{
+    if(protocol == current_protocol_state) return;
+
+    if(is_conection_open) disconnect();
+
+    current_protocol_state = protocol;
 }
 
 NetResult connect(const std::string &ip) noexcept
 {
+    if(is_conection_open) return NetResult::SUCSESS;
+
     is_conection_open = true;
     switch (current_type_state)
     {
@@ -51,10 +59,7 @@ NetResult connect(const std::string &ip) noexcept
 
 NetResult receive(void** data,size_t byte_size)
 {
-    if(!is_conection_open)
-    {
-        throw std::runtime_error("LunaLuxNetLib: tried to read data from a non existent connection");
-    }
+    if(!is_conection_open) throw std::runtime_error("LunaLuxNetLib: tried to read data from a non existent connection");
 
     return manager->receive(data,byte_size);
 }
@@ -66,29 +71,31 @@ NetResult send(const void *data, size_t byte_size) noexcept
 
 NetResult disconnect() noexcept
 {
+    if(!is_conection_open) return NetResult::SUCSESS;
+
     is_conection_open = false;
-    switch (current_type_state)
-    {
-    case NetworkType::CLIENT:
-        return manager->DestroyClientConnection();
-    case NetworkType::SERVER:
-        return manager->DestroyServerConnection();
-    }
+    return manager->destroyConnection();
 }
 
 
 NetResult waitForClientConnection() noexcept
 {
+    if(current_protocol_state == Protocol::UDP) return NetResult::SUCSESS;
+
     if(current_type_state == NetworkType::CLIENT || !is_conection_open)
     {
         printf("LunaLuxNetLib: you tried to use waitForClientConnection in client mode or connection is not open");
         return NetResult::ERROR;
     }
-        return manager->waitForClientConnection();
+
+    if (manager->waitForClientConnection() != NetResult::SUCSESS) return NetResult::ERROR;
+
+    return manager->accept();
 }
 
 void terminate() noexcept
 {
+    disconnect();
     (void)manager.release();
 }
 }

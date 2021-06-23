@@ -14,62 +14,85 @@ namespace LunaLux::net
 {
 class LinuxNetManager
 {
-    int32_t m_socket, new_socket;
+    int32_t m_socket;
+    sockaddr_in m_address;
 
-
-    NetResult createSocket()
+    NetResult createSocket() noexcept
     {
         if ((m_socket = socket(AF_INET, SOCK_STREAM, 0)) == 0) return NetResult::ERROR;
         return NetResult::SUCSESS;
     }
   public:
-    NetResult createClientConnection(const std::string& ip)
+    [[nodiscard]] NetResult createClientConnection(const std::string& ip) noexcept
     {
         auto splits = split(ip,':');
         std::string ip_address = splits[0],port = splits[1];
 
         if(createSocket() == NetResult::ERROR) return NetResult::ERROR;
 
+        m_address.sin_family = AF_INET;
+        m_address.sin_port = htons(std::stoi(port));
+
+        if(inet_pton(AF_INET, "127.0.0.1", &m_address.sin_addr)<=0) return  NetResult::ERROR;
+
+        if (connect(m_socket, reinterpret_cast<sockaddr*>(&m_address), sizeof(m_address)) < 0) return NetResult::ERROR;
+
         return NetResult::SUCSESS;
     }
 
-    NetResult createServerConnection(const std::string& ip)
+    [[nodiscard]] NetResult createServerConnection(const std::string& ip) noexcept
     {
+        auto splits = split(ip,':');
+        std::string port = splits[1];
+
         if(createSocket() == NetResult::ERROR) return NetResult::ERROR;
 
+        m_address.sin_family = AF_INET;
+        m_address.sin_port = htons(std::stoi(port));
+        m_address.sin_addr.s_addr = htonl(INADDR_ANY);
+
+        if(bind(m_socket,reinterpret_cast<sockaddr*>(&m_address), sizeof(m_address)) < 0)
+        {
+            printf("LunaLuxNetLib: SERVER - port not available\n");
+            return NetResult::ERROR;
+        }
+
         return NetResult::SUCSESS;
     }
 
-    NetResult receive(void** data,size_t byte_size)
+    [[nodiscard]] NetResult receive(void** data,size_t byte_size) const
     {
         *data = malloc(byte_size);
-        if (::recv(m_socket,*data,byte_size,0) != 0)
+        if (::recv(m_socket,*data,byte_size,0) < 0)
         {
-            free(data);
+            free(*data);
             return NetResult::ERROR;
         }
         return NetResult::SUCSESS;
     }
-    NetResult sendPackage(const void* data,size_t byte_size)
+    [[nodiscard]] NetResult sendPackage(const void* data,size_t byte_size) const noexcept
     {
-        if(::send(m_socket,data,byte_size,0) == 0) return NetResult::ERROR;
+        if(::send(m_socket,data,byte_size,0) < 0) return NetResult::ERROR;
         return NetResult::SUCSESS;
     }
 
-    NetResult waitForClientConnection()
+    [[nodiscard]] NetResult waitForClientConnection() const noexcept
     {
-        if (listen(m_socket,3) < 0)
-            return NetResult::ERROR;
+        if (listen(m_socket,3) < 0) return NetResult::ERROR;
+
         return NetResult::SUCSESS;
     }
 
-    NetResult DestroyClientConnection()
+    [[nodiscard]] NetResult accept() const noexcept
     {
+        if(::accept(m_socket, (sockaddr*)&m_address, reinterpret_cast<socklen_t *>(sizeof(m_address))) < 0)  return NetResult::ERROR;
         return NetResult::SUCSESS;
     }
 
-    NetResult DestroyServerConnection()
+    [[nodiscard]] NetResult destroyConnection() const noexcept
     {
+        if(::close(m_socket) < 0) return NetResult::ERROR;
+
         return NetResult::SUCSESS;
     }
 };
