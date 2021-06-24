@@ -14,9 +14,9 @@ namespace LunaLux::net
 {
 class LinuxNetManager
 {
-    int32_t m_socket;
-    sockaddr_in m_address;
-
+    int32_t m_socket = 0,m_client_socket = 0;
+    sockaddr_in m_address{};
+    bool client{false};
     NetResult createSocket() noexcept
     {
         if ((m_socket = socket(AF_INET, SOCK_STREAM, 0)) == 0) return NetResult::ERROR;
@@ -25,6 +25,7 @@ class LinuxNetManager
   public:
     [[nodiscard]] NetResult createClientConnection(const std::string& ip) noexcept
     {
+        client = true;
         auto splits = split(ip,':');
         std::string ip_address = splits[0],port = splits[1];
 
@@ -42,6 +43,7 @@ class LinuxNetManager
 
     [[nodiscard]] NetResult createServerConnection(const std::string& ip) noexcept
     {
+        client = false;
         auto splits = split(ip,':');
         std::string port = splits[1];
 
@@ -63,35 +65,67 @@ class LinuxNetManager
     [[nodiscard]] NetResult receive(void** data,size_t byte_size) const
     {
         *data = malloc(byte_size);
-        if (::recv(m_socket,*data,byte_size,0) < 0)
+        if(client)
         {
-            free(*data);
-            return NetResult::ERROR;
+            size_t error = 0;
+            if ((error = recv(m_socket, *data, byte_size, 0)) < 0)
+            {
+                printf("LunaLuxNetLib: error - &ul",error);
+                free(*data);
+                return NetResult::ERROR;
+            }
+        }
+        else
+        {
+            size_t error = 0;
+            if ((error = recv(m_client_socket, *data, byte_size, 0)) < 0)
+            {
+                printf("LunaLuxNetLib: error - &ul",error);
+                free(*data);
+                return NetResult::ERROR;
+            }
         }
         return NetResult::SUCSESS;
     }
-    [[nodiscard]] NetResult sendPackage(const void* data,size_t byte_size) const noexcept
+
+    [[nodiscard]] NetResult sendPackage(void* data,size_t byte_size) const noexcept
     {
-        if(::send(m_socket,data,byte_size,0) < 0) return NetResult::ERROR;
+        if(client)
+        {
+            size_t error = 0;
+            if ((error = ::send(m_socket, data, byte_size, 0)) < 0)
+            {
+                printf("LunaLuxNetLib: error - &ul",error);
+                return NetResult::ERROR;
+            }
+        }
+        else
+        {
+            size_t error = 0;
+            if((error = ::send(m_client_socket, data, byte_size, 0)) < 0)
+            {
+                printf("LunaLuxNetLib: error - &ul",error);
+                return NetResult::ERROR;
+            }
+        }
         return NetResult::SUCSESS;
     }
 
     [[nodiscard]] NetResult waitForClientConnection() const noexcept
     {
         if (listen(m_socket,3) < 0) return NetResult::ERROR;
-
         return NetResult::SUCSESS;
     }
 
-    [[nodiscard]] NetResult accept() const noexcept
+    [[nodiscard]] NetResult accept_client() noexcept
     {
-        if(::accept(m_socket, (sockaddr*)&m_address, reinterpret_cast<socklen_t *>(sizeof(m_address))) < 0)  return NetResult::ERROR;
+        if((m_client_socket = accept(m_socket, (sockaddr*)&m_address, reinterpret_cast<socklen_t *>(sizeof(m_address)))) < 0)  return NetResult::ERROR;
         return NetResult::SUCSESS;
     }
 
     [[nodiscard]] NetResult destroyConnection() const noexcept
     {
-        if(::close(m_socket) < 0) return NetResult::ERROR;
+        if(close(m_socket) < 0) return NetResult::ERROR;
 
         return NetResult::SUCSESS;
     }

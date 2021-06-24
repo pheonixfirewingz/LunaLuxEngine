@@ -54,6 +54,8 @@ NetResult connect(const std::string &ip) noexcept
         return manager->createClientConnection(ip);
     case NetworkType::SERVER:
         return manager->createServerConnection(ip);
+    default:
+        return NetResult::ERROR;
     }
 }
 
@@ -64,7 +66,7 @@ NetResult receive(void** data,size_t byte_size)
     return manager->receive(data,byte_size);
 }
 
-NetResult send(const void *data, size_t byte_size) noexcept
+NetResult send(void *data, size_t byte_size) noexcept
 {
     return manager->sendPackage(data,byte_size);
 }
@@ -90,7 +92,7 @@ NetResult waitForClientConnection() noexcept
 
     if (manager->waitForClientConnection() != NetResult::SUCSESS) return NetResult::ERROR;
 
-    return manager->accept();
+    return manager->accept_client();
 }
 
 void terminate() noexcept
