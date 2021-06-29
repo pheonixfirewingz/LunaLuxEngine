@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 include_directories(STATIC src)
 
-add_library(LunaLuxNetLib SHARED src/NetLib.cpp src/linux/LinuxNetManager.hpp src/StringUtil.cpp src/StringUtil.h)
+add_library(LunaLuxNetLib SHARED src/NetLib.cpp src/StringUtil.cpp)
 
 add_executable(LunaLuxNetLibClientTest ClientTest.cpp)
 

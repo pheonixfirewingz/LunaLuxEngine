@@ -48,12 +48,15 @@ Nobody is perfect, and sometimes we mess things up. That said, here are some goo
 - (LunaLuxVulkanLib) Vulkan Rendering
 - (LunaLuxWindowLib) full Linux wayland Window Support
 
+## legacy Platform
+- Windows 10
+
 ## Platforms being worked on
-- ##### windows 10
+- ##### windows 11
 - ##### Ubuntu 19.04 - 21.04
 
 ## Planned Platforms
- - Windows 10
+ - Windows 11
  - Linux ubuntu base
  - Mac OS Big Sur & up
 

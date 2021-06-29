@@ -58,17 +58,17 @@ namespace LunaLux
 [[maybe_unused]] const static uint8_t LLE_KEY_X = 0x58;
 [[maybe_unused]] const static uint8_t LLE_KEY_Y = 0x59;
 [[maybe_unused]] const static uint8_t LLE_KEY_Z = 0x5A;
-[[maybe_unused]] const static uint8_t LLE_KEY_APOSTROPHE  // needs finding
-[[maybe_unused]] const static uint8_t LLE_KEY_BACKSLASH   // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_APOSTROPHE = VK_NONAME; // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_BACKSLASH = VK_NONAME;  // needs finding
 [[maybe_unused]] const static uint8_t LLE_KEY_COMMA = VK_OEM_COMMA;
-[[maybe_unused]] const static uint8_t LLE_KEY_GRAVE_ACCENT  // needs finding
-[[maybe_unused]] const static uint8_t LLE_KEY_LEFT_BRACKET  // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_GRAVE_ACCENT = VK_NONAME; // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_LEFT_BRACKET = VK_NONAME; // needs finding
 [[maybe_unused]] const static uint8_t LLE_KEY_MINUS = VK_OEM_MINUS;
 [[maybe_unused]] const static uint8_t LLE_KEY_PERIOD = VK_OEM_PERIOD;
-[[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_BRACKET  // needs finding
-[[maybe_unused]] const static uint8_t LLE_KEY_SEMICOLON      // needs finding
-[[maybe_unused]] const static uint8_t LLE_KEY_SLASH          // needs finding
-[[maybe_unused]] const static uint8_t LLE_KEY_WORLD_2        // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_RIGHT_BRACKET = VK_NONAME; // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_SEMICOLON = VK_NONAME;     // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_SLASH = VK_NONAME;         // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_WORLD_2 = VK_NONAME;       // needs finding
 [[maybe_unused]] const static uint8_t LLE_KEY_BACKSPACE = VK_BACK;
 [[maybe_unused]] const static uint8_t LLE_KEY_DELETE = VK_DELETE;
 [[maybe_unused]] const static uint8_t LLE_KEY_END = VK_END;
@@ -76,7 +76,7 @@ namespace LunaLux
 [[maybe_unused]] const static uint8_t LLE_KEY_ESCAPE = VK_ESCAPE;
 [[maybe_unused]] const static uint8_t LLE_KEY_HOME = VK_HOME;
 [[maybe_unused]] const static uint8_t LLE_KEY_INSERT = VK_INSERT;
-[[maybe_unused]] const static uint8_t LLE_KEY_MENU  // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_MENU = VK_NONAME; // needs finding
 [[maybe_unused]] const static uint8_t LLE_KEY_PAGE_DOWN = VK_NEXT;
 [[maybe_unused]] const static uint8_t LLE_KEY_PAGE_UP = VK_PRIOR;
 [[maybe_unused]] const static uint8_t LLE_KEY_PAUSE = VK_PAUSE;
@@ -138,7 +138,7 @@ namespace LunaLux
 [[maybe_unused]] const static uint8_t LLE_KEY_ADD = VK_ADD;
 [[maybe_unused]] const static uint8_t LLE_KEY_DECIMAL = VK_DECIMAL;
 [[maybe_unused]] const static uint8_t LLE_KEY_DIVIDE = VK_DIVIDE;
-[[maybe_unused]] const static uint8_t LLE_KEY_EQUAL  // needs finding
+[[maybe_unused]] const static uint8_t LLE_KEY_EQUAL = VK_NONAME; // needs finding
 [[maybe_unused]] const static uint8_t LLE_KEY_MULTIPLY = VK_MULTIPLY;
 [[maybe_unused]] const static uint8_t LLE_KEY_SUBTRACT = VK_SUBTRACT;
 } // namespace LunaLux

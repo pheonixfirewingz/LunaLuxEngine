@@ -27,7 +27,7 @@ void windowCreate(const std::string &title, int width, int height) noexcept
     if (width != 0 || height != 0)
     {
 #if __has_include(<windows.h>)
-        window = std::make_unique<LunaLux::window::WindowsWindow>(title.c_str(), width, height);
+        window = std::make_unique<LunaLux::WindowsWindow>(title.c_str(), width, height);
 #elif __has_include(<xcb/xcb.h>)
         window = std::make_unique<LunaLux::LinuxWindow>(title.c_str(), width, height);
 #endif
@@ -36,7 +36,7 @@ void windowCreate(const std::string &title, int width, int height) noexcept
         return;
     }
 #if __has_include(<windows.h>)
-    window = std::make_unique<LunaLux::window::WindowsWindow>(title.c_str(), width, height);
+    window = std::make_unique<LunaLux::WindowsWindow>(title.c_str(), width, height);
 #elif __has_include(<xcb/xcb.h>)
     window = std::make_unique<LunaLux::LinuxWindow>(title.c_str(), 1280, 720);
 #endif

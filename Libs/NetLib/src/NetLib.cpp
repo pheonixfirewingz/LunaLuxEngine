@@ -5,11 +5,16 @@
 //
 // Copyright Luke Shore (c) 2020, 2021
 #include <Api/NetLib.h>
-#include <memory>
 #include <atomic>
+#include <memory>
 #if __has_include(<sys/socket.h>)
 #    include <linux/LinuxNetManager.hpp>
 std::unique_ptr<LunaLux::net::LinuxNetManager> manager;
+#endif
+#if __has_include(<windows.h>)
+#include <stdexcept>
+#include <windows/WindowsNetManger.hpp>
+std::unique_ptr<LunaLux::net::WindowsNetManager> manager;
 #endif
 namespace LunaLux::net
 {
@@ -21,6 +26,9 @@ NetResult netInit() noexcept
 {
 #if __has_include(<sys/socket.h>)
     manager = std::make_unique<LinuxNetManager>();
+#endif
+#if __has_include(<windows.h>)
+    manager = std::make_unique<WindowsNetManager>();
 #endif
     return NetResult::SUCSESS;
 }

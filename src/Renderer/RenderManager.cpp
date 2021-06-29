@@ -1,10 +1,12 @@
+#include "RenderManager.h"
+#include <Renderer/Vulkan/VulkanRenderer.h>
+#include <Renderer/DirectX12/DirctX12Renderer.h>
+#include <utils/TimeTracker.hpp>
+
 //
 // Created by luket on 08/06/2021.
 //
 
-#include "RenderManager.h"
-#include <Renderer/Vulkan/VulkanRenderer.h>
-#include <utils/TimeTracker.hpp>
 // GNU Lesser General Public License Version 2.1
 //
 // Copyright Luke Shore (c) 2020, 2021
@@ -18,6 +20,7 @@ EngineResult RenderManager::initialise(API api)
     switch (api)
     {
     case API::DIRECTX12:
+        renderer = std::make_unique<DirectX12Renderer>();
         break;
     case API::VULKAN:
         renderer = std::make_unique<VulkanRenderer>();
