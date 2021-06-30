@@ -67,11 +67,11 @@ NetResult connect(const std::string &ip) noexcept
     }
 }
 
-NetResult receive(void** data,size_t byte_size)
+char* receive(size_t byte_size)
 {
     if(!is_conection_open) throw std::runtime_error("LunaLuxNetLib: tried to read data from a non existent connection");
 
-    return manager->receive(data,byte_size);
+    return manager->receive(byte_size);
 }
 
 NetResult send(void *data, size_t byte_size) noexcept

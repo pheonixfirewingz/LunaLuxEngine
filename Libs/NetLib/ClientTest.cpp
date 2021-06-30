@@ -24,12 +24,7 @@ int main()
         exit(-1);
     }
 
-    void* data;
-    if(receive(&data,4) != NetResult::SUCSESS)
-    {
-        printf("CLIENT: failed to receive message\n");
-        exit(-1);
-    }
+    auto data = receive(4);
 
     printf("CLIENT: data returned - %s\n",data);
 

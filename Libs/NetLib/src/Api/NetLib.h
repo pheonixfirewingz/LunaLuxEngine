@@ -53,7 +53,7 @@ LLNL_EXPORT void setProtocol(Protocol protocol) noexcept;
 //=====================================================================================================================
 //                                  names explain what they do
 LLNL_EXPORT NetResult connect(const std::string& ip) noexcept;
-LLNL_EXPORT NetResult receive(void** data,size_t byte_size);
+LLNL_EXPORT char* receive(size_t byte_size);
 LLNL_EXPORT NetResult send(void *data, size_t byte_size) noexcept;
 LLNL_EXPORT NetResult disconnect() noexcept;
 //=====================================================================================================================

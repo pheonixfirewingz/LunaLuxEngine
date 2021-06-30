@@ -17,12 +17,9 @@ int main()
 
     while (true)
     {
-        waitForClientConnection();
-        char* data;
-        if(receive((void**)&data,4) != NetResult::SUCSESS)
-        {
-            printf("SERVER: failed to receive message\n");
-        }
+        if(waitForClientConnection() != NetResult::SUCSESS) exit(-1);
+
+        auto data = receive(4);
 
         printf("SERVER: data got - %s\n",data);
         fflush(stdout);

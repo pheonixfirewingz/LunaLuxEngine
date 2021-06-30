@@ -12,121 +12,113 @@
 #include <unistd.h>
 namespace LunaLux::net
 {
+
+#define CHECK(name, args)        \
+    if (name args < 0)           \
+    {                            \
+        perror(#name);           \
+        return NetResult::ERROR; \
+    }
+
+#define CHECK_WITH_RET(ret, name, args) \
+    if ((ret = name args) < 0)          \
+    {                                   \
+        perror(#name);                  \
+        return NetResult::ERROR;        \
+    }
+
 class LinuxNetManager
 {
-    int32_t m_socket = 0,m_client_socket = 0;
-    sockaddr_in m_address{};
+    int32_t m_socket = 0, m_client_socket = 0;
+    sockaddr_in m_address{},m_client_address{};
     bool client{false};
-    NetResult createSocket() noexcept
-    {
-        if ((m_socket = socket(AF_INET, SOCK_STREAM, 0)) == 0) return NetResult::ERROR;
-        return NetResult::SUCSESS;
-    }
+
   public:
-    [[nodiscard]] NetResult createClientConnection(const std::string& ip) noexcept
+    [[nodiscard]] NetResult createClientConnection(const std::string &ip) noexcept
     {
         client = true;
-        auto splits = split(ip,':');
-        std::string ip_address = splits[0],port = splits[1];
+        auto splits = split(ip, ':');
+        std::string ip_address = splits[0], port = splits[1];
 
-        if(createSocket() == NetResult::ERROR) return NetResult::ERROR;
-
+        CHECK_WITH_RET(m_socket, socket, (AF_INET, SOCK_STREAM, 0))
         m_address.sin_family = AF_INET;
         m_address.sin_port = htons(std::stoi(port));
 
-        if(inet_pton(AF_INET, "127.0.0.1", &m_address.sin_addr)<=0) return  NetResult::ERROR;
-
-        if (connect(m_socket, reinterpret_cast<sockaddr*>(&m_address), sizeof(m_address)) < 0) return NetResult::ERROR;
-
+        CHECK(inet_pton,(AF_INET, "127.0.0.1", &m_address.sin_addr))
+        CHECK(connect,(m_socket, reinterpret_cast<sockaddr *>(&m_address), sizeof(m_address)))
         return NetResult::SUCSESS;
     }
 
-    [[nodiscard]] NetResult createServerConnection(const std::string& ip) noexcept
+    [[nodiscard]] NetResult createServerConnection(const std::string &ip) noexcept
     {
         client = false;
-        auto splits = split(ip,':');
-        std::string port = splits[1];
 
-        if(createSocket() == NetResult::ERROR) return NetResult::ERROR;
-
+        CHECK_WITH_RET(m_socket, socket, (AF_INET, SOCK_STREAM, 0))
         m_address.sin_family = AF_INET;
-        m_address.sin_port = htons(std::stoi(port));
+        m_address.sin_port = htons(std::stoi(split(ip, ':')[1]));
         m_address.sin_addr.s_addr = htonl(INADDR_ANY);
 
-        if(bind(m_socket,reinterpret_cast<sockaddr*>(&m_address), sizeof(m_address)) < 0)
-        {
-            printf("LunaLuxNetLib: SERVER - port not available\n");
-            return NetResult::ERROR;
-        }
-
+        CHECK(bind,(m_socket, reinterpret_cast<sockaddr *>(&m_address), sizeof(m_address)))
         return NetResult::SUCSESS;
     }
 
-    [[nodiscard]] NetResult receive(void** data,size_t byte_size) const
+    [[nodiscard]] char *receive(size_t byte_size) const
     {
-        *data = malloc(byte_size);
-        if(client)
+        char *buffer = new char[byte_size]{0};
+        if (client)
         {
             size_t error = 0;
-            if ((error = recv(m_socket, *data, byte_size, 0)) < 0)
+            if ((error = recv(m_socket, buffer, byte_size, 0)) < 0)
             {
-                printf("LunaLuxNetLib: error - &ul",error);
-                free(*data);
-                return NetResult::ERROR;
+                printf("LunaLuxNetLib: error - &ul", error);
+                delete[] buffer;
+                return nullptr;
             }
         }
         else
         {
             size_t error = 0;
-            if ((error = recv(m_client_socket, *data, byte_size, 0)) < 0)
+            if ((error = recv(m_client_socket, buffer, 1024, 0)) < 0)
             {
-                printf("LunaLuxNetLib: error - &ul",error);
-                free(*data);
-                return NetResult::ERROR;
+                printf("LunaLuxNetLib: error - &ul", error);
+                delete[] buffer;
+                return nullptr;
             }
         }
-        return NetResult::SUCSESS;
+        printf("LunaLuxNetLib: Debug - %s\n", buffer);
+        return buffer;
     }
 
-    [[nodiscard]] NetResult sendPackage(void* data,size_t byte_size) const noexcept
+    [[nodiscard]] NetResult sendPackage(void *data, size_t byte_size) const noexcept
     {
-        if(client)
+        if (client)
         {
-            size_t error = 0;
-            if ((error = ::send(m_socket, data, byte_size, 0)) < 0)
-            {
-                printf("LunaLuxNetLib: error - &ul",error);
-                return NetResult::ERROR;
-            }
+            CHECK(::send,(m_socket, data, byte_size, 0));
         }
         else
         {
-            size_t error = 0;
-            if((error = ::send(m_client_socket, data, byte_size, 0)) < 0)
-            {
-                printf("LunaLuxNetLib: error - &ul",error);
-                return NetResult::ERROR;
-            }
+            CHECK(::send,(m_client_socket, data, byte_size, 0));
         }
         return NetResult::SUCSESS;
     }
 
     [[nodiscard]] NetResult waitForClientConnection() const noexcept
     {
-        if (listen(m_socket,3) < 0) return NetResult::ERROR;
+        CHECK(listen,(m_socket, 3))
         return NetResult::SUCSESS;
     }
 
     [[nodiscard]] NetResult accept_client() noexcept
     {
-        if((m_client_socket = accept(m_socket, (sockaddr*)&m_address, reinterpret_cast<socklen_t *>(sizeof(m_address)))) < 0)  return NetResult::ERROR;
+        //FIXME: accept: Bad address - WTF
+        auto * size = reinterpret_cast<socklen_t *>(sizeof(sockaddr_in));
+        CHECK_WITH_RET(m_client_socket,accept,(m_socket, reinterpret_cast<sockaddr *>(&m_client_address),size))
         return NetResult::SUCSESS;
     }
 
     [[nodiscard]] NetResult destroyConnection() const noexcept
     {
-        if(close(m_socket) < 0) return NetResult::ERROR;
-
+        CHECK(close,(m_socket))
         return NetResult::SUCSESS;
     }
 };
