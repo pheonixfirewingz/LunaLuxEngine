@@ -5,6 +5,7 @@
 // GNU Lesser General Public License Version 2.1
 //
 // Copyright Luke Shore (c) 2020, 2021
+#include <ClientSocketManager.hpp>
 #include <Definds.h>
 #include <StringUtil.h>
 #include <arpa/inet.h>
@@ -29,11 +30,23 @@ namespace LunaLux::net
 
 class LinuxNetManager
 {
-    int32_t m_socket = 0, m_client_socket = 0;
-    sockaddr_in m_address{},m_client_address{};
+    int32_t m_socket = 0;
+    sockaddr_in m_address{};
+
     bool client{false};
+    ClientSocketManager<std::tuple<int32_t, sockaddr>> *clientSocketManager;
 
   public:
+    explicit LinuxNetManager()
+    {
+        clientSocketManager = new ClientSocketManager<std::tuple<int32_t, sockaddr>>;
+    }
+
+    ~LinuxNetManager()
+    {
+        delete clientSocketManager;
+    }
+
     [[nodiscard]] NetResult createClientConnection(const std::string &ip) noexcept
     {
         client = true;
@@ -44,8 +57,8 @@ class LinuxNetManager
         m_address.sin_family = AF_INET;
         m_address.sin_port = htons(std::stoi(port));
 
-        CHECK(inet_pton,(AF_INET, "127.0.0.1", &m_address.sin_addr))
-        CHECK(connect,(m_socket, reinterpret_cast<sockaddr *>(&m_address), sizeof(m_address)))
+        CHECK(inet_pton, (AF_INET, "127.0.0.1", &m_address.sin_addr))
+        CHECK(connect, (m_socket, reinterpret_cast<sockaddr *>(&m_address), sizeof(m_address)))
         return NetResult::SUCSESS;
     }
 
@@ -58,67 +71,79 @@ class LinuxNetManager
         m_address.sin_port = htons(std::stoi(split(ip, ':')[1]));
         m_address.sin_addr.s_addr = htonl(INADDR_ANY);
 
-        CHECK(bind,(m_socket, reinterpret_cast<sockaddr *>(&m_address), sizeof(m_address)))
+        CHECK(bind, (m_socket, reinterpret_cast<sockaddr *>(&m_address), sizeof(m_address)))
         return NetResult::SUCSESS;
     }
 
-    [[nodiscard]] char *receive(size_t byte_size) const
+    [[nodiscard]] char *receive(uint8_t id, size_t byte_size) const
     {
         char *buffer = new char[byte_size]{0};
         if (client)
         {
-            size_t error = 0;
-            if ((error = recv(m_socket, buffer, byte_size, 0)) < 0)
+            (void)id;
+            if (recv(m_socket, buffer, byte_size, 0) < 0)
             {
-                printf("LunaLuxNetLib: error - &ul", error);
+                perror("recv");
                 delete[] buffer;
                 return nullptr;
             }
         }
         else
         {
-            size_t error = 0;
-            if ((error = recv(m_client_socket, buffer, 1024, 0)) < 0)
+            if (recv(std::get<0>(clientSocketManager->get(id)), buffer, 1024, 0) < 0)
             {
-                printf("LunaLuxNetLib: error - &ul", error);
+                perror("recv");
                 delete[] buffer;
                 return nullptr;
             }
         }
-        printf("LunaLuxNetLib: Debug - %s\n", buffer);
         return buffer;
     }
 
-    [[nodiscard]] NetResult sendPackage(void *data, size_t byte_size) const noexcept
+    [[nodiscard]] NetResult sendPackage(uint8_t id, void *data, size_t byte_size) const noexcept
     {
         if (client)
         {
-            CHECK(::send,(m_socket, data, byte_size, 0));
+            (void)id;
+            if (::send(m_socket, data, byte_size, 0) < 0)
+            {
+                perror("send");
+                return NetResult::ERROR;
+            }
         }
         else
         {
-            CHECK(::send,(m_client_socket, data, byte_size, 0));
+            if (::send(std::get<0>(clientSocketManager->get(id)), data, byte_size, 0) < 0)
+            {
+                perror("send");
+                return NetResult::ERROR;
+            }
         }
         return NetResult::SUCSESS;
     }
 
     [[nodiscard]] NetResult waitForClientConnection() const noexcept
     {
-        CHECK(listen,(m_socket, 3))
+        CHECK(listen, (m_socket, 3))
         return NetResult::SUCSESS;
     }
 
-    [[nodiscard]] NetResult accept_client() noexcept
+    [[nodiscard]] std::tuple<NetResult,uint8_t> accept_client() noexcept
     {
-        //FIXME: accept: Bad address - WTF
-        auto * size = reinterpret_cast<socklen_t *>(sizeof(sockaddr_in));
-        CHECK_WITH_RET(m_client_socket,accept,(m_socket, reinterpret_cast<sockaddr *>(&m_client_address),size))
-        return NetResult::SUCSESS;
+        socklen_t size = sizeof(sockaddr_in);
+        sockaddr client_address{};
+        uint32_t client_socket = 0;
+        if ((client_socket = accept(m_socket, &client_address, &size)) < 0)
+        {
+            perror("accept");
+            return {NetResult::ERROR,0};
+        }
+        return {NetResult::SUCSESS,clientSocketManager->add({client_socket, client_address})};
     }
 
     [[nodiscard]] NetResult destroyConnection() const noexcept
     {
-        CHECK(close,(m_socket))
+        CHECK(close, (m_socket))
         return NetResult::SUCSESS;
     }
 };

@@ -43,6 +43,13 @@ enum class Protocol
     TCP = 0,
     UDP = 1,
 };
+//this is for the server wait function
+struct WaitReturn
+{
+    NetResult result;
+    [[maybe_unused]] uint8_t id;
+    WaitReturn(NetResult result,uint8_t id) : result(result), id(id){};
+};
 //this is the common network functions
 //this is called to set up the internal network manager to handle operating system pacific network apis
 LLNL_EXPORT NetResult netInit() noexcept;
@@ -53,11 +60,11 @@ LLNL_EXPORT void setProtocol(Protocol protocol) noexcept;
 //=====================================================================================================================
 //                                  names explain what they do
 LLNL_EXPORT NetResult connect(const std::string& ip) noexcept;
-LLNL_EXPORT char* receive(size_t byte_size);
-LLNL_EXPORT NetResult send(void *data, size_t byte_size) noexcept;
+LLNL_EXPORT char* receive(size_t byte_size,uint8_t id = 0);
+LLNL_EXPORT NetResult send(void *data, size_t byte_size,uint8_t id = 0) noexcept;
 LLNL_EXPORT NetResult disconnect() noexcept;
 //=====================================================================================================================
 LLNL_EXPORT void terminate() noexcept;
 //this is unique server pacific function
-LLNL_EXPORT NetResult waitForClientConnection() noexcept;
+LLNL_EXPORT WaitReturn waitForClientConnection() noexcept;
 } // namespace LunaLux

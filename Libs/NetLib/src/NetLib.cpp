@@ -67,16 +67,16 @@ NetResult connect(const std::string &ip) noexcept
     }
 }
 
-char* receive(size_t byte_size)
+char* receive(size_t byte_size,uint8_t id)
 {
     if(!is_conection_open) throw std::runtime_error("LunaLuxNetLib: tried to read data from a non existent connection");
 
-    return manager->receive(byte_size);
+    return manager->receive(id,byte_size);
 }
 
-NetResult send(void *data, size_t byte_size) noexcept
+NetResult send(void *data, size_t byte_size,uint8_t id) noexcept
 {
-    return manager->sendPackage(data,byte_size);
+    return manager->sendPackage(id,data,byte_size);
 }
 
 NetResult disconnect() noexcept
@@ -88,19 +88,20 @@ NetResult disconnect() noexcept
 }
 
 
-NetResult waitForClientConnection() noexcept
+WaitReturn waitForClientConnection() noexcept
 {
-    if(current_protocol_state == Protocol::UDP) return NetResult::SUCSESS;
+    if(current_protocol_state == Protocol::UDP) return {NetResult::SUCSESS,0};
 
     if(current_type_state == NetworkType::CLIENT || !is_conection_open)
     {
         printf("LunaLuxNetLib: you tried to use waitForClientConnection in client mode or connection is not open");
-        return NetResult::ERROR;
+        return {NetResult::ERROR,0};
     }
 
-    if (manager->waitForClientConnection() != NetResult::SUCSESS) return NetResult::ERROR;
+    if (manager->waitForClientConnection() != NetResult::SUCSESS) return {NetResult::ERROR,0};
 
-    return manager->accept_client();
+    auto[result,id] = manager->accept_client();
+    return {result,id};
 }
 
 void terminate() noexcept

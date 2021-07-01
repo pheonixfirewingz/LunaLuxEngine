@@ -17,18 +17,18 @@ int main()
 
     while (true)
     {
-        if(waitForClientConnection() != NetResult::SUCSESS) exit(-1);
+        WaitReturn waitReturn = waitForClientConnection();
+        if(waitReturn.result != NetResult::SUCSESS) exit(-1);
 
-        auto data = receive(4);
-
-        printf("SERVER: data got - %s\n",data);
-        fflush(stdout);
-
-        if(send(data, 4) != NetResult::SUCSESS)
+        std::string data(receive(4),waitReturn.id);
+        if(data == "ping")
         {
-            printf("SERVER: failed to send message\n");
+            char * ret = "pong";
+            if (send(ret, 4,waitReturn.id) != NetResult::SUCSESS)
+            {
+                printf("SERVER: failed to send message\n");
+            }
         }
-        else break;
     }
 
     if(disconnect() != NetResult::SUCSESS)
