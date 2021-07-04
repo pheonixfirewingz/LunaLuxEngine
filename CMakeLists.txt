@@ -12,7 +12,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     include_directories(${X11_INCLUDE_DIR})
 endif()
 include_directories(${Vulkan_INCLUDE_DIRS})
-configure_file(src/Debug.h.in ../src/Debug.h @ONLY)
 add_subdirectory(Libs)
 #main engine
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined,implicit-integer-truncation,implicit-integer-arithmetic-value-change,implicit-conversion,integer,nullability")

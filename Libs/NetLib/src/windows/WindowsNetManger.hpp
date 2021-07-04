@@ -25,12 +25,12 @@ class WindowsNetManager
         return NetResult::SUCSESS;
     }
 
-    [[nodiscard]] NetResult receive(void** data,size_t byte_size) const
+    [[nodiscard]] char *receive(uint8_t id, size_t byte_size) const
     {
-        return NetResult::SUCSESS;
+        return nullptr;
     }
 
-    [[nodiscard]] NetResult sendPackage(void* data,size_t byte_size) const noexcept
+    [[nodiscard]] NetResult sendPackage(uint8_t id, void *data, size_t byte_size) const noexcept
     {
         return NetResult::SUCSESS;
     }
@@ -40,9 +40,9 @@ class WindowsNetManager
        return NetResult::SUCSESS;
     }
 
-    [[nodiscard]] NetResult accept_client() noexcept
+    [[nodiscard]] std::tuple<NetResult,uint8_t> accept_client() noexcept
     {
-       return NetResult::SUCSESS;
+       return {NetResult::SUCSESS,0};
     }
 
     [[nodiscard]] NetResult destroyConnection() const noexcept
