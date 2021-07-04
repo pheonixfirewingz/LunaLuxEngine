@@ -21,12 +21,11 @@ class VulkanRenderer : public IRenderer
     std::vector<Semaphore>  image_ownership;
     std::vector<Fence>      fences;
   public:
-    EngineResult initialise(uint8_t) final;
+    EngineResult initialise(uint8_t frames_in_flight) final;
     EngineResult refreshRenderWindow() final;
     EngineResult beginFrame() final;
-    EngineResult draw(IRenderable renderable) final;
-    EngineResult drawBulk(std::vector<IRenderable> vector) final;
-    EngineResult endFrame() override;
+    EngineResult draw(Component<Entity> entity) final;
+    EngineResult endFrame() final;
     EngineResult submitToScreen() final;
     EngineResult cleanUp() final;
 };

@@ -17,13 +17,13 @@ void HandleError(EngineResult result,const std::string& error)
     {
     case EngineResult::SUCSESS: break;
     case EngineResult::DIRECTX_TWELVE_ERROR:
-        printf("LunaLuxEngine - DIRECTX_TWELVE_ERROR: %s",error.c_str());
+        printf("LunaLuxEngine - DIRECTX_TWELVE_ERROR: %s\n",error.c_str());
         break;
     case EngineResult::VULKAN_ERROR:
-        printf("LunaLuxEngine - VULKAN_ERROR: %s",error.c_str());
+        printf("LunaLuxEngine - VULKAN_ERROR: %s\n",error.c_str());
         break;
     case EngineResult::ENGINE_ERROR:
-        printf("LunaLuxEngine - ENGINE_ERROR: %s",error.c_str());
+        printf("LunaLuxEngine - ENGINE_ERROR: %s\n",error.c_str());
         break;
     }
 }

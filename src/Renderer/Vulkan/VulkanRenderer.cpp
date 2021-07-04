@@ -12,10 +12,10 @@
 #include <LunaLux/WindowLib.h>
 namespace LunaLux
 {
-EngineResult VulkanRenderer::initialise(uint8_t max_frames_in_flight)
+EngineResult VulkanRenderer::initialise(uint8_t frames_in_flight)
 {
     vulkanInit(windowGetNative(),windowGetRectSize());
-    for (uint8_t i = 0; i < max_frames_in_flight; i++)
+    for (uint8_t i = 0; i < frames_in_flight; i++)
     {
         image_acquired.emplace_back();
         draw_complete.emplace_back();
@@ -36,12 +36,7 @@ EngineResult VulkanRenderer::beginFrame()
     return EngineResult::SUCSESS;
 }
 
-EngineResult VulkanRenderer::draw(IRenderable renderable)
-{
-    return EngineResult::SUCSESS;
-}
-
-EngineResult VulkanRenderer::drawBulk(std::vector<IRenderable> vector)
+EngineResult VulkanRenderer::draw(Component<Entity> entity)
 {
     return EngineResult::SUCSESS;
 }
@@ -59,25 +54,10 @@ EngineResult VulkanRenderer::submitToScreen()
 EngineResult VulkanRenderer::cleanUp()
 {
     vkDeviceWaitIdle();
-    for (Semaphore& item: image_acquired)
-    {
-        item.clear();
-    }
-
-    for (Semaphore& item: draw_complete)
-    {
-        item.clear();
-    }
-
-    for (Semaphore& item: image_ownership)
-    {
-        item.clear();
-    }
-
-    for (Fence& item: fences)
-    {
-        item.clear();
-    }
+    for (Semaphore& item: image_acquired) item.clear();
+    for (Semaphore& item: draw_complete) item.clear();
+    for (Semaphore& item: image_ownership) item.clear();
+    for (Fence& item: fences) item.clear();
 
     vulkanCleanUp();
     return EngineResult::SUCSESS;

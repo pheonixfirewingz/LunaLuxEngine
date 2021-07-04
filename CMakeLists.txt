@@ -24,7 +24,7 @@ add_executable(LunaLuxEngine    src/Test.cpp
                                 src/Renderer/RenderManager.cpp
                                 src/Renderer/DirectX12/DirctX12Renderer.cpp
                                 src/Network/NetworkManager.cpp
-                                src/utils/StringUtils.cpp)
+                                src/utils/StringUtils.cpp src/EntitySystem/Component.h src/utils/BinaryTree.hpp src/EntitySystem/Entity.h)
 
 target_link_libraries(LunaLuxEngine LunaLuxWindowLib LunaLuxNetLib LunaLuxVulkanLib LunaLuxVulkanUtilLib)
 

@@ -8,8 +8,10 @@
 // Copyright Luke Shore (c) 2020, 2021
 //
 #include <EngineError.h>
+#include <EntitySystem/Entity.h>
 #include <Renderer/IRenderer.h>
 #include <memory>
+#include <utils/BinaryTree.hpp>
 #include <utils/EngineDefines.h>
 
 // TODO: write documentation
@@ -17,7 +19,12 @@ namespace LunaLux
 {
 class RenderManager
 {
+    typedef Entity RenderEntity;
+
     std::unique_ptr<IRenderer> renderer;
+    std::unique_ptr<BinaryTree<RenderEntity>> renderable_entities;
+
+    EngineResult drawTree(Component<RenderEntity>* root_entity);
   public:
     enum class API
     {
@@ -31,9 +38,12 @@ class RenderManager
         return render;
     }
 
-    EngineResult initialise(API);
+    EngineResult initialise(API api);
     EngineResult RefreshRenderWindow();
     EngineResult update();
     EngineResult cleanUp();
+
+    EngineResult addEntity(RenderEntity entity);
+    EngineResult removeEntity(RenderEntity entity);
 };
 } // namespace LunaLux

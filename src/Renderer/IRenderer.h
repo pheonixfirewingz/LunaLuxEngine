@@ -7,8 +7,9 @@
 //
 // Copyright Luke Shore (c) 2020, 2021
 //
-#include <Renderer/IRenderable.h>
+#include <EntitySystem/Entity.h>
 #include <cstdint>
+#include <utils/BinaryTree.hpp>
 #include <utils/EngineDefines.h>
 #include <vector>
 // TODO: write documentation
@@ -23,11 +24,10 @@ class IRenderer
         EngineResult result = EngineResult::SUCSESS;
     };
 
-    virtual EngineResult initialise(uint8_t) = 0;
+    virtual EngineResult initialise(uint8_t frames_in_flight) = 0;
     virtual EngineResult refreshRenderWindow() = 0;
     virtual EngineResult beginFrame() = 0;
-    virtual EngineResult draw(IRenderable) = 0;
-    virtual EngineResult drawBulk(std::vector<IRenderable>) = 0;
+    virtual EngineResult draw(Component<Entity> entity) = 0;
     virtual EngineResult endFrame() = 0;
     virtual EngineResult submitToScreen() = 0;
     virtual EngineResult cleanUp() = 0;

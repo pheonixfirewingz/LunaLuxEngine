@@ -12,36 +12,37 @@
 // TODO: write documentation
 namespace LunaLux
 {
-
-EngineResult DirectX12Renderer::initialise(uint8_t max_frames_in_flight)
+EngineResult DirectX12Renderer::initialise(uint8_t frames_in_flight)
 {
     directx12Init(reinterpret_cast<HWND>(windowGetNative()),windowGetRectSize());
     return EngineResult::SUCSESS;
 }
+
 EngineResult DirectX12Renderer::refreshRenderWindow()
 {
     return EngineResult::SUCSESS;
 }
+
 EngineResult DirectX12Renderer::beginFrame()
 {
     return EngineResult::SUCSESS;
 }
-EngineResult DirectX12Renderer::draw(IRenderable renderable)
+
+EngineResult DirectX12Renderer::draw(Component<Entity> entity)
 {
     return EngineResult::SUCSESS;
 }
-EngineResult DirectX12Renderer::drawBulk(std::vector<IRenderable> vector)
-{
-    return EngineResult::SUCSESS;
-}
+
 EngineResult DirectX12Renderer::endFrame()
 {
     return EngineResult::SUCSESS;
 }
+
 EngineResult DirectX12Renderer::submitToScreen()
 {
     return EngineResult::SUCSESS;
 }
+
 EngineResult DirectX12Renderer::cleanUp()
 {
     return EngineResult::SUCSESS;

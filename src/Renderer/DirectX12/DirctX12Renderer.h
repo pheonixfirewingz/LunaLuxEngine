@@ -7,6 +7,7 @@
 //
 // Copyright Luke Shore (c) 2020, 2021
 #include <Renderer/IRenderer.h>
+#include <utils/BinaryTree.hpp>
 // TODO: write documentation
 namespace LunaLux
 {
@@ -14,16 +15,13 @@ namespace LunaLux
 class DirectX12Renderer : public IRenderer
 {
   public:
-    EngineResult initialise(uint8_t uint8) override;
-    EngineResult refreshRenderWindow() override;
-    EngineResult beginFrame() override;
-    EngineResult draw(IRenderable renderable) override;
-    EngineResult drawBulk(std::vector<IRenderable> vector) override;
-    EngineResult endFrame() override;
-    EngineResult submitToScreen() override;
-    EngineResult cleanUp() override;
+    EngineResult initialise(uint8_t frames_in_flight) final;
+    EngineResult refreshRenderWindow() final;
+    EngineResult beginFrame() final;
+    EngineResult draw(Component<Entity> entity) final;
+    EngineResult endFrame() final;
+    EngineResult submitToScreen() final;
+    EngineResult cleanUp() final;
 };
-#else
-class DirectX12Renderer : public IRenderer;
 #endif
 }
