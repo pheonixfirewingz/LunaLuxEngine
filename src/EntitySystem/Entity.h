@@ -13,6 +13,13 @@ namespace LunaLux
 {
 class Entity
 {
-    BinaryTree<EntityComponent> components;
+  protected:
+    uint64_t entity_id = 0;
+  public:
+    BinaryTree<EntityComponent> components{};
+    [[nodiscard]] bool equl(Entity entity_in) const
+    {
+        return entity_id == entity_in.entity_id;
+    };
 };
 } // namespace LunaLux

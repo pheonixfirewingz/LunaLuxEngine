@@ -70,10 +70,12 @@ EngineResult RenderManager::drawTree(Component<RenderEntity>* root_entity)
 
 EngineResult RenderManager::addEntity(RenderEntity entity)
 {
+    renderable_entities->insert(std::move(new Component<RenderEntity>(entity)));
     return EngineResult::SUCSESS;
 }
+
 EngineResult RenderManager::removeEntity(RenderEntity entity)
 {
-    return EngineResult::VULKAN_ERROR;
+    return EngineResult::SUCSESS;
 }
 } // namespace LunaLux
